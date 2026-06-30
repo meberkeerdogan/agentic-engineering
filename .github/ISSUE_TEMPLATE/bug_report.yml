@@ -1,0 +1,36 @@
+name: Bug Report
+description: Report something that is broken or confusing.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping improve Loops.
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the bug or confusing behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include commands, files, loop definitions, or screenshots if useful.
+    validations:
+      required: false
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include OS, tool versions, and agent/runtime details if relevant.
+    validations:
+      required: false
