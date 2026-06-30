@@ -1,12 +1,13 @@
 # Contributing
 
-Thanks for helping build Loops.
+Thanks for helping build Agent Loops.
 
 This project is early, so the most valuable contributions are clear problem statements, small working examples, design notes, and focused pull requests.
 
 ## Ways to Contribute
 
 - Propose a loop pattern for a real coding-agent workflow.
+- Propose a reusable coding-agent skill.
 - Improve docs, examples, or terminology.
 - Add tests once implementation begins.
 - Report confusing behavior or missing guardrails.
@@ -16,7 +17,7 @@ This project is early, so the most valuable contributions are clear problem stat
 
 - Make agent behavior inspectable.
 - Prefer small, composable primitives over large hidden workflows.
-- Treat verification as part of the loop, not an afterthought.
+- Treat verification as part of the workflow, not an afterthought.
 - Keep humans in control of risky decisions.
 - Document assumptions and handoffs clearly.
 
@@ -33,6 +34,8 @@ This project is early, so the most valuable contributions are clear problem stat
 The project has not chosen a runtime yet. Until then:
 
 - keep examples in `examples/`
+- keep loop definitions in `loops/`
+- keep reusable skills in `skills/`
 - keep design notes in `docs/`
 - record architecture decisions in `docs/adr/`
 - avoid adding large dependencies without an issue discussion

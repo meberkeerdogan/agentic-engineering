@@ -2,7 +2,7 @@
 
 ## Our Pledge
 
-We pledge to make participation in Loops a respectful and welcoming experience for everyone.
+We pledge to make participation in Agent Loops a respectful and welcoming experience for everyone.
 
 ## Expected Behavior
 

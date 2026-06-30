@@ -15,7 +15,7 @@ body:
     id: proposal
     attributes:
       label: Proposal
-      description: What should Loops do?
+      description: What should Agent Loops do?
     validations:
       required: true
   - type: textarea
@@ -29,6 +29,6 @@ body:
     id: context
     attributes:
       label: Additional context
-      description: Link related projects, examples, or prior discussion.
+      description: Link related projects, examples, skills, or prior discussion.
     validations:
       required: false

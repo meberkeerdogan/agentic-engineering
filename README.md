@@ -1,26 +1,29 @@
-# Loops
+# Agent Loops
 
-Loops is an open-source project for building reliable feedback loops around coding agents.
+Agent Loops is an open-source project for reusable workflows, loops, and skills for coding agents.
 
-The goal is to make agent work easier to repeat, inspect, improve, and share. A loop can describe how an agent plans, edits, verifies, reviews, records decisions, and hands work back to a person or another agent.
+The goal is to make agent work easier to repeat, inspect, improve, and share. The repository can hold loop definitions, reusable skills, schemas, runners, examples, and documentation that help people build more reliable coding-agent workflows.
 
 ## Project Status
 
-Loops is in early project setup. The current focus is shaping the core concepts, repository structure, and contribution process before locking in a runtime or package format.
+Agent Loops is in early project setup. The current focus is shaping the core concepts, repository structure, and contribution process before locking in a runtime or package format.
 
-## Why Loops
+## Why Agent Loops
 
-Coding agents are powerful, but their work can become hard to trust when the process is invisible. Loops aims to make the process explicit:
+Coding agents are powerful, but their work can become hard to trust when the process is invisible. Agent Loops aims to make the process explicit:
 
 - repeatable workflows for common agent tasks
+- reusable skills that package agent behavior and instructions
 - checkpoints for human review and agent self-review
 - verification steps that run tests, linters, or custom checks
 - records of decisions, assumptions, and handoffs
-- portable loop definitions that teams can adapt
+- portable definitions and examples that teams can adapt
 
 ## Initial Concepts
 
+- **Workflow**: A complete agent process that may combine loops, skills, tools, and verification.
 - **Loop**: A repeatable workflow for an agent.
+- **Skill**: A reusable instruction set, capability, or pattern an agent can apply.
 - **Step**: One unit of work inside a loop.
 - **Checkpoint**: A place where progress is verified or reviewed.
 - **Context**: The files, prompts, tool outputs, and decisions a loop uses.
@@ -35,8 +38,12 @@ See [docs/vision.md](docs/vision.md) and [docs/architecture.md](docs/architectur
 .
 |-- .github/              GitHub workflows, issue templates, and PR template
 |-- docs/                 Product, architecture, and decision records
-|-- examples/             Example loops and usage sketches
+|-- examples/             Example workflows, loops, and skill sketches
+|-- loops/                Reusable loop definitions
+|-- runners/              Future runner prototypes
 |-- scripts/              Developer automation helpers
+|-- schemas/              Future shared schemas
+|-- skills/               Reusable coding-agent skills
 |-- src/                  Future implementation code
 |-- tests/                Future automated tests
 |-- CHANGELOG.md          Release notes
@@ -65,4 +72,4 @@ If you want to propose a major direction, open a GitHub issue first so the desig
 
 ## License
 
-Loops is licensed under the MIT License. See [LICENSE](LICENSE).
+Agent Loops is licensed under the MIT License. See [LICENSE](LICENSE).

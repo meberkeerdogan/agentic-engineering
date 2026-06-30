@@ -5,6 +5,14 @@ This document captures the starting architecture direction. It is expected to ch
 ## Core Model
 
 ```text
+Workflow
+|-- metadata
+|-- skills
+|-- loops
+|-- tools
+|-- verification
+|-- outputs
+
 Loop
 |-- metadata
 |-- inputs
@@ -14,9 +22,17 @@ Loop
 |-- outputs
 ```
 
+### Workflow
+
+A workflow is a complete agent process. It may combine loops, skills, tools, verification rules, and handoff outputs.
+
 ### Loop
 
 A loop is a named workflow that can be run, inspected, versioned, and improved.
+
+### Skill
+
+A skill is a reusable instruction set or capability that an agent can apply inside one or more workflows.
 
 ### Step
 
@@ -48,14 +64,16 @@ A handoff is the structured output of a loop. It should let a person or another 
 ## Candidate Package Boundaries
 
 - **Loop schema**: Defines portable loop files and validation rules.
+- **Skill format**: Defines reusable skill files and metadata.
 - **Runner**: Executes loop steps and handles checkpoint state.
 - **Adapters**: Integrate with coding-agent tools, shells, CI, or GitHub.
 - **Evaluators**: Provide reusable checks and review rubrics.
-- **Examples**: Demonstrate practical loops for common workflows.
+- **Examples**: Demonstrate practical loops and skills for common workflows.
 
 ## First Implementation Questions
 
-- Should loop files be written in YAML, JSON, Markdown, or code?
+- Should loop files be written in YAML, JSON, Markdown, code, or a hybrid?
+- Should skills share the same schema system as loops?
 - Should the runner be a CLI, library, or both?
 - Which state should be persisted between steps?
 - How should human approval be represented?

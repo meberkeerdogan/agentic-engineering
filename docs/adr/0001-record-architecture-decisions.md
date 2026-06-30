@@ -8,7 +8,7 @@ Accepted
 
 ## Context
 
-Loops will involve choices about schema design, runtime behavior, safety boundaries, supported tools, and contribution standards. These decisions should be visible to future contributors.
+Agent Loops will involve choices about schema design, runtime behavior, safety boundaries, supported tools, skill formats, and contribution standards. These decisions should be visible to future contributors.
 
 ## Decision
 

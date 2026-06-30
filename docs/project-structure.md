@@ -6,8 +6,12 @@ This repository starts with a documentation-first structure and leaves room for 
 
 - `.github/`: GitHub workflows, issue templates, and pull request template.
 - `docs/`: Vision, architecture, design notes, and architecture decisions.
-- `examples/`: Example loop definitions and usage sketches.
+- `examples/`: Example workflows, loops, and skills.
+- `loops/`: Reusable loop definitions.
+- `runners/`: Future workflow runner prototypes.
 - `scripts/`: Developer automation helpers.
+- `schemas/`: Shared schemas for loops, skills, and outputs.
+- `skills/`: Reusable coding-agent skills.
 - `src/`: Future implementation code.
 - `tests/`: Future automated tests.
 
