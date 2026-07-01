@@ -1,6 +1,6 @@
 # Security Policy
 
-Agent Loops is early-stage software. Please do not use unreleased code to run untrusted automation in sensitive environments.
+Agent Playbooks is early-stage software. Please do not use unreleased code to run untrusted automation in sensitive environments.
 
 ## Reporting a Vulnerability
 
@@ -15,7 +15,7 @@ Until a private contact is listed, open a public issue with a high-level note th
 ## Security Principles
 
 - Human approval should be required for destructive or high-risk actions.
-- Loop and skill definitions should make tool access and permissions visible.
+- Playbook and skill definitions should make tool access and permissions visible.
 - Secrets should never be committed to the repository.
 - Logs should avoid leaking tokens, private prompts, credentials, or user data.
 - Verification should happen before publishing, deploying, or handing off important work.

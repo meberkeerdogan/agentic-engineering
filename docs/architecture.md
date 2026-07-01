@@ -5,38 +5,39 @@ This document captures the starting architecture direction. It is expected to ch
 ## Core Model
 
 ```text
-Workflow
+Playbook
 |-- metadata
+|-- purpose
+|-- inputs
+|-- workflow
 |-- skills
-|-- loops
 |-- tools
 |-- verification
 |-- outputs
 
-Loop
+Workflow
 |-- metadata
-|-- inputs
 |-- steps
 |-- checkpoints
 |-- evaluators
-|-- outputs
+|-- handoff
 ```
+
+### Playbook
+
+A playbook is a reusable guide for an agent task or family of tasks. It can be inspected, versioned, adapted, and improved over time.
 
 ### Workflow
 
-A workflow is a complete agent process. It may combine loops, skills, tools, verification rules, and handoff outputs.
-
-### Loop
-
-A loop is a named workflow that can be run, inspected, versioned, and improved.
+A workflow is the executable or repeatable process inside a playbook. It may combine steps, skills, tools, verification rules, and handoff outputs.
 
 ### Skill
 
-A skill is a reusable instruction set or capability that an agent can apply inside one or more workflows.
+A skill is a reusable instruction set or capability that an agent can apply inside one or more playbooks.
 
 ### Step
 
-A step is one action inside a loop. Examples:
+A step is one action inside a workflow. Examples:
 
 - gather repository context
 - draft an implementation plan
@@ -47,7 +48,7 @@ A step is one action inside a loop. Examples:
 
 ### Checkpoint
 
-A checkpoint pauses or verifies the loop before continuing. It may require a human decision, automated evaluation, or both.
+A checkpoint pauses or verifies the workflow before continuing. It may require a human decision, automated evaluation, or both.
 
 ### Evaluator
 
@@ -55,25 +56,26 @@ An evaluator decides whether a result is acceptable. Evaluators can be determini
 
 ### Context
 
-Context is the information a loop depends on. It can include repository files, prompts, tool output, issue data, prior decisions, and constraints.
+Context is the information a playbook depends on. It can include repository files, prompts, tool output, issue data, prior decisions, and constraints.
 
 ### Handoff
 
-A handoff is the structured output of a loop. It should let a person or another agent continue without reconstructing the whole run.
+A handoff is the structured output of a workflow. It should let a person or another agent continue without reconstructing the whole run.
 
 ## Candidate Package Boundaries
 
-- **Loop schema**: Defines portable loop files and validation rules.
+- **Playbook format**: Defines portable playbook files and validation rules.
 - **Skill format**: Defines reusable skill files and metadata.
-- **Runner**: Executes loop steps and handles checkpoint state.
+- **Workflow schema**: Defines reusable workflow structure and state transitions.
+- **Runner**: Executes or simulates workflow steps and checkpoint state.
 - **Adapters**: Integrate with coding-agent tools, shells, CI, or GitHub.
 - **Evaluators**: Provide reusable checks and review rubrics.
-- **Examples**: Demonstrate practical loops and skills for common workflows.
+- **Examples**: Demonstrate practical playbooks and skills for common workflows.
 
 ## First Implementation Questions
 
-- Should loop files be written in YAML, JSON, Markdown, code, or a hybrid?
-- Should skills share the same schema system as loops?
+- Should playbook files be written in YAML, JSON, Markdown, code, or a hybrid?
+- Should skills share the same schema system as playbooks?
 - Should the runner be a CLI, library, or both?
 - Which state should be persisted between steps?
 - How should human approval be represented?

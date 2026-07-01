@@ -1,12 +1,12 @@
 # Contributing
 
-Thanks for helping build Agent Loops.
+Thanks for helping build Agent Playbooks.
 
 This project is early, so the most valuable contributions are clear problem statements, small working examples, design notes, and focused pull requests.
 
 ## Ways to Contribute
 
-- Propose a loop pattern for a real coding-agent workflow.
+- Propose a playbook pattern for a real coding-agent workflow.
 - Propose a reusable coding-agent skill.
 - Improve docs, examples, or terminology.
 - Add tests once implementation begins.
@@ -34,8 +34,9 @@ This project is early, so the most valuable contributions are clear problem stat
 The project has not chosen a runtime yet. Until then:
 
 - keep examples in `examples/`
-- keep loop definitions in `loops/`
+- keep playbook definitions in `playbooks/`
 - keep reusable skills in `skills/`
+- keep workflow definitions in `workflows/`
 - keep design notes in `docs/`
 - record architecture decisions in `docs/adr/`
 - avoid adding large dependencies without an issue discussion
@@ -45,9 +46,9 @@ The project has not chosen a runtime yet. Until then:
 Use clear, imperative commit messages:
 
 ```text
-Add loop definition glossary
+Add playbook definition glossary
 Document evaluator lifecycle
-Create first planning-loop example
+Create first planning playbook example
 ```
 
 ## Code of Conduct

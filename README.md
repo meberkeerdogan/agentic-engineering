@@ -1,18 +1,18 @@
-# Agent Loops
+# Agent Playbooks
 
-Agent Loops is an open-source project for reusable workflows, loops, and skills for coding agents.
+Agent Playbooks is an open-source project for reusable playbooks, workflows, and skills for coding agents.
 
-The goal is to make agent work easier to repeat, inspect, improve, and share. The repository can hold loop definitions, reusable skills, schemas, runners, examples, and documentation that help people build more reliable coding-agent workflows.
+The goal is to make agent work easier to repeat, inspect, improve, and share. The repository can hold playbook definitions, reusable skills, schemas, runners, examples, and documentation that help people build more reliable coding-agent workflows.
 
 ## Project Status
 
-Agent Loops is in early project setup. The current focus is shaping the core concepts, repository structure, and contribution process before locking in a runtime or package format.
+Agent Playbooks is in early project setup. The current focus is shaping the core concepts, repository structure, and contribution process before locking in a runtime or package format.
 
-## Why Agent Loops
+## Why Agent Playbooks
 
-Coding agents are powerful, but their work can become hard to trust when the process is invisible. Agent Loops aims to make the process explicit:
+Coding agents are powerful, but their work can become hard to trust when the process is invisible. Agent Playbooks aims to make the process explicit:
 
-- repeatable workflows for common agent tasks
+- repeatable playbooks for common agent tasks
 - reusable skills that package agent behavior and instructions
 - checkpoints for human review and agent self-review
 - verification steps that run tests, linters, or custom checks
@@ -21,14 +21,14 @@ Coding agents are powerful, but their work can become hard to trust when the pro
 
 ## Initial Concepts
 
-- **Workflow**: A complete agent process that may combine loops, skills, tools, and verification.
-- **Loop**: A repeatable workflow for an agent.
+- **Playbook**: A reusable guide for an agent task or family of tasks.
+- **Workflow**: A complete agent process that may combine playbooks, skills, tools, and verification.
 - **Skill**: A reusable instruction set, capability, or pattern an agent can apply.
-- **Step**: One unit of work inside a loop.
+- **Step**: One unit of work inside a workflow.
 - **Checkpoint**: A place where progress is verified or reviewed.
-- **Context**: The files, prompts, tool outputs, and decisions a loop uses.
+- **Context**: The files, prompts, tool outputs, and decisions a workflow uses.
 - **Handoff**: A structured summary that lets a person or another agent continue.
-- **Evaluator**: A test, review, or rule that decides whether a loop can continue.
+- **Evaluator**: A test, review, or rule that decides whether a workflow can continue.
 
 See [docs/vision.md](docs/vision.md) and [docs/architecture.md](docs/architecture.md) for the starting design notes.
 
@@ -38,14 +38,15 @@ See [docs/vision.md](docs/vision.md) and [docs/architecture.md](docs/architectur
 .
 |-- .github/              GitHub workflows, issue templates, and PR template
 |-- docs/                 Product, architecture, and decision records
-|-- examples/             Example workflows, loops, and skill sketches
-|-- loops/                Reusable loop definitions
+|-- examples/             Example playbooks, workflows, and skill sketches
+|-- playbooks/            Reusable agent playbooks
 |-- runners/              Future runner prototypes
 |-- scripts/              Developer automation helpers
 |-- schemas/              Future shared schemas
 |-- skills/               Reusable coding-agent skills
 |-- src/                  Future implementation code
 |-- tests/                Future automated tests
+|-- workflows/            Reusable workflow definitions
 |-- CHANGELOG.md          Release notes
 |-- CONTRIBUTING.md       Contribution guide
 |-- LICENSE               Project license
@@ -72,4 +73,4 @@ If you want to propose a major direction, open a GitHub issue first so the desig
 
 ## License
 
-Agent Loops is licensed under the MIT License. See [LICENSE](LICENSE).
+Agent Playbooks is licensed under the MIT License. See [LICENSE](LICENSE).

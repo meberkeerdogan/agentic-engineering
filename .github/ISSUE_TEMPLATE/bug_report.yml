@@ -6,7 +6,7 @@ labels:
 body:
   - type: markdown
     attributes:
-      value: Thanks for helping improve Agent Loops.
+      value: Thanks for helping improve Agent Playbooks.
   - type: textarea
     id: description
     attributes:
@@ -24,7 +24,7 @@ body:
     id: steps
     attributes:
       label: Steps to reproduce
-      description: Include commands, files, loop definitions, skills, or screenshots if useful.
+      description: Include commands, files, playbooks, skills, or screenshots if useful.
     validations:
       required: false
   - type: textarea

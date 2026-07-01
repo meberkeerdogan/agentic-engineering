@@ -8,7 +8,7 @@ Accepted
 
 ## Context
 
-Agent Loops will involve choices about schema design, runtime behavior, safety boundaries, supported tools, skill formats, and contribution standards. These decisions should be visible to future contributors.
+Agent Playbooks will involve choices about schema design, runtime behavior, safety boundaries, supported tools, skill formats, workflow structure, and contribution standards. These decisions should be visible to future contributors.
 
 ## Decision
 
