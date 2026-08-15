@@ -63,4 +63,4 @@ Revert the M06 harness, report/replay schemas, examples, tests, and documentatio
 
 ## Next Module
 
-M07 will add optional interventions one at a time and require each to beat this experiment baseline on its declared target.
+M07 is adding optional interventions one at a time, beginning with an observe-only trajectory watchdog. Behavioral interventions must beat this experiment baseline on their declared target.

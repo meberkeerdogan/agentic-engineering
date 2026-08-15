@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "trajectory_id": "trajectory-watchdog-fixture",
+  "task_id": "fixture-01",
+  "trajectory_fingerprint": "60b8645da61ac0ed5000eb56b50427135480744fa9feb1e0a34e9d519004fbb5",
+  "mode": "observe_only",
+  "config": {
+    "repeat_threshold": 3,
+    "stagnation_threshold": 4,
+    "oscillation_cycles": 2
+  },
+  "event_count": 8,
+  "signal_count": 5,
+  "signals": [
+    {
+      "type": "repeated_action",
+      "category": "advisory_candidate",
+      "start_step": 1,
+      "end_step": 3,
+      "summary": "action open repeated on app.py",
+      "evidence_refs": ["trace/step-1.json", "trace/step-2.json", "trace/step-3.json"],
+      "id": "signal-001-repeated_action"
+    },
+    {
+      "type": "premature_patching",
+      "category": "blocking_candidate",
+      "start_step": 4,
+      "end_step": 4,
+      "summary": "patching began before a reproduction event",
+      "evidence_refs": ["trace/step-4.json"],
+      "id": "signal-002-premature_patching"
+    },
+    {
+      "type": "action_oscillation",
+      "category": "blocking_candidate",
+      "start_step": 4,
+      "end_step": 7,
+      "summary": "actions alternated without escaping the two-action cycle",
+      "evidence_refs": ["trace/step-4.json", "trace/step-5.json", "trace/step-6.json", "trace/step-7.json"],
+      "id": "signal-003-action_oscillation"
+    },
+    {
+      "type": "stagnation",
+      "category": "advisory_candidate",
+      "start_step": 4,
+      "end_step": 7,
+      "summary": "external state did not change for 4 events",
+      "evidence_refs": ["trace/step-4.json", "trace/step-5.json", "trace/step-6.json", "trace/step-7.json"],
+      "id": "signal-004-stagnation"
+    },
+    {
+      "type": "skipped_validation",
+      "category": "blocking_candidate",
+      "start_step": 7,
+      "end_step": 8,
+      "summary": "completion was claimed after a patch without later validation",
+      "evidence_refs": ["trace/step-7.json", "trace/step-8.json"],
+      "id": "signal-005-skipped_validation"
+    }
+  ],
+  "interventions": [],
+  "report_id": "watchdog-report-842c925bda6437e8",
+  "fingerprint": "842c925bda6437e8893e020b47d7bd4ab815f4c9ef732364fac85291f91889f0"
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "trajectory_id": "trajectory-watchdog-fixture",
+  "task_id": "fixture-01",
+  "events": [
+    {"step": 1, "phase": "navigate", "action": "open", "target": "app.py", "state_fingerprint": "state-0", "evidence_refs": ["trace/step-1.json"]},
+    {"step": 2, "phase": "navigate", "action": "open", "target": "app.py", "state_fingerprint": "state-0", "evidence_refs": ["trace/step-2.json"]},
+    {"step": 3, "phase": "navigate", "action": "open", "target": "app.py", "state_fingerprint": "state-0", "evidence_refs": ["trace/step-3.json"]},
+    {"step": 4, "phase": "patch", "action": "edit", "target": "app.py", "state_fingerprint": "state-1", "evidence_refs": ["trace/step-4.json"]},
+    {"step": 5, "phase": "patch", "action": "edit", "target": "test_app.py", "state_fingerprint": "state-1", "evidence_refs": ["trace/step-5.json"]},
+    {"step": 6, "phase": "patch", "action": "edit", "target": "app.py", "state_fingerprint": "state-1", "evidence_refs": ["trace/step-6.json"]},
+    {"step": 7, "phase": "patch", "action": "edit", "target": "test_app.py", "state_fingerprint": "state-1", "evidence_refs": ["trace/step-7.json"]},
+    {"step": 8, "phase": "complete", "action": "claim_complete", "target": "fixture-01", "state_fingerprint": "state-1", "evidence_refs": ["trace/step-8.json"]}
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/watchdog-report.schema.json",
+  "title": "Observe-Only Watchdog Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version", "trajectory_id", "task_id", "trajectory_fingerprint", "mode", "config", "event_count",
+    "signal_count", "signals", "interventions", "report_id", "fingerprint"
+  ],
+  "properties": {
+    "version": { "const": 1 },
+    "trajectory_id": { "$ref": "#/$defs/id" },
+    "task_id": { "$ref": "#/$defs/id" },
+    "trajectory_fingerprint": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "mode": { "const": "observe_only" },
+    "config": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repeat_threshold", "stagnation_threshold", "oscillation_cycles"],
+      "properties": {
+        "repeat_threshold": { "type": "integer", "minimum": 2 },
+        "stagnation_threshold": { "type": "integer", "minimum": 2 },
+        "oscillation_cycles": { "type": "integer", "minimum": 2 }
+      }
+    },
+    "event_count": { "type": "integer", "minimum": 1 },
+    "signal_count": { "type": "integer", "minimum": 0 },
+    "signals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "category", "start_step", "end_step", "summary", "evidence_refs", "id"],
+        "properties": {
+          "type": { "enum": ["repeated_action", "stagnation", "action_oscillation", "premature_patching", "skipped_validation"] },
+          "category": { "enum": ["advisory_candidate", "blocking_candidate"] },
+          "start_step": { "type": "integer", "minimum": 1 },
+          "end_step": { "type": "integer", "minimum": 1 },
+          "summary": { "type": "string", "minLength": 1 },
+          "evidence_refs": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "id": { "$ref": "#/$defs/id" }
+        }
+      }
+    },
+    "interventions": { "type": "array", "maxItems": 0 },
+    "report_id": { "$ref": "#/$defs/id" },
+    "fingerprint": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" }
+  }
+}

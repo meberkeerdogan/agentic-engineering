@@ -25,4 +25,6 @@ Current examples:
 - [`experiment-record.json`](experiment-record.json)
 - [`experiment-observations.json`](experiment-observations.json): complete replay matrix for the M06 example.
 - [`expected-experiment-report.json`](expected-experiment-report.json): deterministic M06 golden report.
+- [`watchdog-trajectory.json`](watchdog-trajectory.json): M07a trajectory containing repeat, stagnation, oscillation, and phase-order failures.
+- [`expected-watchdog-report.json`](expected-watchdog-report.json): deterministic observe-only M07a report.
 - [`fixture-task/`](fixture-task/): a prepared candidate, four-type evidence contract, and deterministic golden evaluation report for M03.

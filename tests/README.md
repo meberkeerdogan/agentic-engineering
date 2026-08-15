@@ -17,3 +17,5 @@ Later modules will add workflow state-transition, evaluator, checkpoint, runner,
 `test_runner.py` verifies M05 manager/executor/auditor separation, fresh executors per attempt, independent evidence, mismatch blocking, and rejection of executor-authored reports.
 
 `test_experiments.py` verifies the M06 fixed matrix, deterministic golden report, independent false-completion derivation, paired aggregation, complete replay coverage, adapter preflight, evidence requirements, and command-line output.
+
+`test_watchdog.py` verifies M07a observe-only signal detection, healthy-flow silence, threshold validation, immutable input, deterministic fingerprints, and command-line output.

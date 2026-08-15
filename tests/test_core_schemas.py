@@ -13,6 +13,8 @@ SCHEMA_EXAMPLE_PAIRS = [
     ("experiment-record.schema.json", "experiment-record.json"),
     ("experiment-observations.schema.json", "experiment-observations.json"),
     ("experiment-report.schema.json", "expected-experiment-report.json"),
+    ("trajectory.schema.json", "watchdog-trajectory.json"),
+    ("watchdog-report.schema.json", "expected-watchdog-report.json"),
     ("project-preferences.schema.json", "project-preferences.json"),
     ("spec-history.schema.json", "spec-history-direct.json"),
     ("spec-history.schema.json", "spec-history-revised.json"),
