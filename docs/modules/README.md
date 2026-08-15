@@ -23,7 +23,7 @@ M01 Core contracts
 | [M01 Core contracts](01-core-contracts.md) | Portable formats for specifications, evidence, state, and experiments | Schemas and examples pass automated validation |
 | [M02 Active-spec compiler](02-active-spec-compiler.md) | One current contract from direct or revised requirements | Contract-equivalent histories compile to the same active behavior |
 | [M03 Baseline and evaluators](03-baseline-and-evaluators.md) | Agentless-style baseline plus command, artifact, rubric, and world-state evaluator interfaces | A fixture task produces reproducible evidence without an autonomous loop |
-| M04 Verified state store | Append-only run state derived from evaluator evidence | Invalid transitions and unevidenced completion are rejected |
+| [M04 Verified state store](04-verified-state-store.md) | Append-only run state derived from evaluator evidence | Invalid transitions and unevidenced completion are rejected |
 | M05 Verified single-agent runner | Manager, fresh executor, and read-only auditor orchestration | Executor claims cannot mark work verified; only auditor evidence can |
 | M06 Experiment harness | Repeatable control/treatment comparisons | Repeated runs report completion, regressions, false completion, cost, and time |
 | M07 Optional interventions | Adaptive planning, memory, property testing, and observe-first watchdog | Each intervention beats the baseline on its declared target without unacceptable regressions |

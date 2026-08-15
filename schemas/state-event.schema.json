@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/state-event.schema.json",
+  "title": "Verified State Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "sequence", "type", "recorded_at", "previous_hash", "payload", "hash"],
+  "properties": {
+    "version": { "const": 1 },
+    "sequence": { "type": "integer", "minimum": 1 },
+    "type": {
+      "enum": [
+        "run_created",
+        "work_started",
+        "executor_submitted",
+        "evaluation_recorded",
+        "work_retried",
+        "work_blocked"
+      ]
+    },
+    "recorded_at": { "type": "string", "format": "date-time" },
+    "previous_hash": { "$ref": "#/$defs/hash" },
+    "payload": { "type": "object" },
+    "hash": { "$ref": "#/$defs/hash" }
+  },
+  "$defs": {
+    "hash": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}
+

@@ -49,5 +49,4 @@ Revert the M03 evaluator code, expanded evidence schema, evaluation-report schem
 
 ## Next Module
 
-M04 will use these reports to drive an append-only verified-state store. Claims alone will not be allowed to advance a work item.
-
+[M04](04-verified-state-store.md) uses these reports to drive an append-only verified-state store. Claims alone cannot advance a work item to verified.

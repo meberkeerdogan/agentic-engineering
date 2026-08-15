@@ -12,6 +12,7 @@ Current schemas:
 - [`evidence-contract.schema.json`](evidence-contract.schema.json): acceptance criteria, evaluators, baselines, and regression policy.
 - [`evaluation-report.schema.json`](evaluation-report.schema.json): deterministic criterion, evaluator, and regression evidence from one baseline run.
 - [`verified-state.schema.json`](verified-state.schema.json): evidence-backed work-item and run state.
+- [`state-event.schema.json`](state-event.schema.json): hash-chained append-only events that reduce to verified state.
 - [`experiment-record.schema.json`](experiment-record.schema.json): reproducible control/treatment experiment records.
 
 The core schema module and its validation rules are documented in [M01: Core Contracts](../docs/modules/01-core-contracts.md).
