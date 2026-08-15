@@ -38,5 +38,4 @@ Revert the M05 runner, tests, and documentation. M03 evaluators and M04 logs rem
 
 ## Next Module
 
-M06 will run repeatable control/treatment comparisons and aggregate completion, regression, false-completion, cost, and time metrics.
-
+M06 now runs repeatable control/treatment comparisons and aggregates completion, regression, false-completion, cost, time, and intervention metrics.

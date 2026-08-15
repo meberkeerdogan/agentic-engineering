@@ -11,6 +11,8 @@ SCHEMA_EXAMPLE_PAIRS = [
     ("evidence-contract.schema.json", "evidence-contract.json"),
     ("verified-state.schema.json", "verified-state.json"),
     ("experiment-record.schema.json", "experiment-record.json"),
+    ("experiment-observations.schema.json", "experiment-observations.json"),
+    ("experiment-report.schema.json", "expected-experiment-report.json"),
     ("project-preferences.schema.json", "project-preferences.json"),
     ("spec-history.schema.json", "spec-history-direct.json"),
     ("spec-history.schema.json", "spec-history-revised.json"),
@@ -113,6 +115,7 @@ def test_experiment_ids_are_unique_and_referenced() -> None:
     assert_unique(experiment["tasks"], "id", "experiment task IDs")
     assert_unique(experiment["metrics"], "id", "metric IDs")
     assert_unique(experiment["runs"], "id", "run IDs")
+    assert len(experiment["seeds"]) == len(set(experiment["seeds"]))
 
     arm_ids = {arm["id"] for arm in arms}
     task_ids = {task["id"] for task in experiment["tasks"]}

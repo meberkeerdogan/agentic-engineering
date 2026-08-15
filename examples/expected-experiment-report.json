@@ -1,0 +1,133 @@
+{
+  "version": 1,
+  "experiment_id": "exp-verified-runner-001",
+  "plan_fingerprint": "3f70014ddaf353edf8cd42ab42312ff579501d0de861dd7c72abb3aa434ce426",
+  "adoption_rule": "Adopt only if the treatment increases verified completion, does not increase mean regressions or false completion, and costs at most 2 USD per additional verified completion.",
+  "control_arm_id": "control-baseline",
+  "seeds": [
+    11,
+    23
+  ],
+  "run_count": 4,
+  "matrix_complete": true,
+  "runs": [
+    {
+      "id": "run-a16-control-baseline-t10-fixture-01-s11",
+      "arm_id": "control-baseline",
+      "task_id": "fixture-01",
+      "seed": 11,
+      "claimed_complete": true,
+      "results": {
+        "verified-completion": 0.0,
+        "regressions": 1,
+        "false-completion": 1.0,
+        "cost": 1.0,
+        "time": 90.0,
+        "human-interventions": 1
+      },
+      "evidence_refs": [
+        "evidence/control-fixture-01-11.json"
+      ]
+    },
+    {
+      "id": "run-a16-control-baseline-t10-fixture-01-s23",
+      "arm_id": "control-baseline",
+      "task_id": "fixture-01",
+      "seed": 23,
+      "claimed_complete": true,
+      "results": {
+        "verified-completion": 1.0,
+        "regressions": 0,
+        "false-completion": 0.0,
+        "cost": 1.2,
+        "time": 100.0,
+        "human-interventions": 0
+      },
+      "evidence_refs": [
+        "evidence/control-fixture-01-23.json"
+      ]
+    },
+    {
+      "id": "run-a25-treatment-verified-runner-t10-fixture-01-s11",
+      "arm_id": "treatment-verified-runner",
+      "task_id": "fixture-01",
+      "seed": 11,
+      "claimed_complete": true,
+      "results": {
+        "verified-completion": 1.0,
+        "regressions": 0,
+        "false-completion": 0.0,
+        "cost": 1.6,
+        "time": 120.0,
+        "human-interventions": 0
+      },
+      "evidence_refs": [
+        "evidence/treatment-fixture-01-11.json"
+      ]
+    },
+    {
+      "id": "run-a25-treatment-verified-runner-t10-fixture-01-s23",
+      "arm_id": "treatment-verified-runner",
+      "task_id": "fixture-01",
+      "seed": 23,
+      "claimed_complete": true,
+      "results": {
+        "verified-completion": 1.0,
+        "regressions": 0,
+        "false-completion": 0.0,
+        "cost": 1.8,
+        "time": 130.0,
+        "human-interventions": 0
+      },
+      "evidence_refs": [
+        "evidence/treatment-fixture-01-23.json"
+      ]
+    }
+  ],
+  "arm_summaries": [
+    {
+      "arm_id": "control-baseline",
+      "run_count": 2,
+      "verified_completion_rate": 0.5,
+      "regression_count": 1,
+      "mean_regressions": 0.5,
+      "false_completion_count": 1,
+      "false_completion_rate": 0.5,
+      "mean_cost": 1.1,
+      "mean_time_seconds": 95.0,
+      "human_intervention_count": 1,
+      "mean_human_interventions": 0.5
+    },
+    {
+      "arm_id": "treatment-verified-runner",
+      "run_count": 2,
+      "verified_completion_rate": 1.0,
+      "regression_count": 0,
+      "mean_regressions": 0.0,
+      "false_completion_count": 0,
+      "false_completion_rate": 0.0,
+      "mean_cost": 1.7,
+      "mean_time_seconds": 125.0,
+      "human_intervention_count": 0,
+      "mean_human_interventions": 0.0
+    }
+  ],
+  "comparisons": [
+    {
+      "control_arm_id": "control-baseline",
+      "treatment_arm_id": "treatment-verified-runner",
+      "paired_runs": 2,
+      "deltas": {
+        "verified_completion_rate": 0.5,
+        "mean_regressions": -0.5,
+        "false_completion_rate": -0.5,
+        "mean_cost": 0.6,
+        "mean_time_seconds": 30.0,
+        "mean_human_interventions": -0.5
+      },
+      "cost_per_additional_verified_completion": 1.2
+    }
+  ],
+  "report_id": "experiment-report-5ea08b1bca9d866b",
+  "fingerprint": "5ea08b1bca9d866bffde8093cb72f28bdb7cb764210401b2a79a910f610b506a"
+}

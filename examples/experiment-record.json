@@ -23,6 +23,10 @@
       "spec_ref": "examples/fixture-repository/ACTIVE_SPEC.json"
     }
   ],
+  "seeds": [
+    11,
+    23
+  ],
   "metrics": [
     {
       "id": "verified-completion",
@@ -35,12 +39,36 @@
       "description": "Previously passing protected checks that now fail.",
       "direction": "lower",
       "unit": "count"
+    },
+    {
+      "id": "false-completion",
+      "description": "Runs claimed complete but rejected by independent verification.",
+      "direction": "lower",
+      "unit": "ratio"
+    },
+    {
+      "id": "cost",
+      "description": "Measured monetary cost of the run.",
+      "direction": "lower",
+      "unit": "USD"
+    },
+    {
+      "id": "time",
+      "description": "Measured wall-clock duration of the run.",
+      "direction": "lower",
+      "unit": "seconds"
+    },
+    {
+      "id": "human-interventions",
+      "description": "Human actions needed to finish or recover the run.",
+      "direction": "lower",
+      "unit": "count"
     }
   ],
   "runs": [],
   "decision": {
+    "adoption_rule": "Adopt only if the treatment increases verified completion, does not increase mean regressions or false completion, and costs at most 2 USD per additional verified completion.",
     "outcome": "pending",
     "reason": "The experiment has not run yet."
   }
 }
-

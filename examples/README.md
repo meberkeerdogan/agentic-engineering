@@ -23,4 +23,6 @@ Current examples:
 - [`evidence-contract.json`](evidence-contract.json)
 - [`verified-state.json`](verified-state.json)
 - [`experiment-record.json`](experiment-record.json)
+- [`experiment-observations.json`](experiment-observations.json): complete replay matrix for the M06 example.
+- [`expected-experiment-report.json`](expected-experiment-report.json): deterministic M06 golden report.
 - [`fixture-task/`](fixture-task/): a prepared candidate, four-type evidence contract, and deterministic golden evaluation report for M03.

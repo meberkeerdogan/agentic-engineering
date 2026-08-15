@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "observations": [
+    {
+      "arm_id": "control-baseline",
+      "task_id": "fixture-01",
+      "seed": 11,
+      "claimed_complete": true,
+      "verified_complete": false,
+      "regressions": 1,
+      "cost": 1.0,
+      "time_seconds": 90.0,
+      "human_interventions": 1,
+      "evidence_refs": ["evidence/control-fixture-01-11.json"]
+    },
+    {
+      "arm_id": "control-baseline",
+      "task_id": "fixture-01",
+      "seed": 23,
+      "claimed_complete": true,
+      "verified_complete": true,
+      "regressions": 0,
+      "cost": 1.2,
+      "time_seconds": 100.0,
+      "human_interventions": 0,
+      "evidence_refs": ["evidence/control-fixture-01-23.json"]
+    },
+    {
+      "arm_id": "treatment-verified-runner",
+      "task_id": "fixture-01",
+      "seed": 11,
+      "claimed_complete": true,
+      "verified_complete": true,
+      "regressions": 0,
+      "cost": 1.6,
+      "time_seconds": 120.0,
+      "human_interventions": 0,
+      "evidence_refs": ["evidence/treatment-fixture-01-11.json"]
+    },
+    {
+      "arm_id": "treatment-verified-runner",
+      "task_id": "fixture-01",
+      "seed": 23,
+      "claimed_complete": true,
+      "verified_complete": true,
+      "regressions": 0,
+      "cost": 1.8,
+      "time_seconds": 130.0,
+      "human_interventions": 0,
+      "evidence_refs": ["evidence/treatment-fixture-01-23.json"]
+    }
+  ]
+}

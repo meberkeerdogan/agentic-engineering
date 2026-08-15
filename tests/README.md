@@ -15,3 +15,5 @@ Later modules will add workflow state-transition, evaluator, checkpoint, runner,
 `test_state_store.py` verifies M04 state transitions, dependency unlocking, report integrity, claim/evidence separation, retry behavior, hash-chain tamper detection, and schema-valid replay.
 
 `test_runner.py` verifies M05 manager/executor/auditor separation, fresh executors per attempt, independent evidence, mismatch blocking, and rejection of executor-authored reports.
+
+`test_experiments.py` verifies the M06 fixed matrix, deterministic golden report, independent false-completion derivation, paired aggregation, complete replay coverage, adapter preflight, evidence requirements, and command-line output.

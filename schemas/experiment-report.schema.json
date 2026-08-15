@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/experiment-report.schema.json",
+  "title": "Deterministic Experiment Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "experiment_id",
+    "plan_fingerprint",
+    "adoption_rule",
+    "control_arm_id",
+    "seeds",
+    "run_count",
+    "matrix_complete",
+    "runs",
+    "arm_summaries",
+    "comparisons",
+    "report_id",
+    "fingerprint"
+  ],
+  "properties": {
+    "version": { "const": 1 },
+    "experiment_id": { "$ref": "#/$defs/id" },
+    "plan_fingerprint": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "adoption_rule": { "type": "string", "minLength": 1 },
+    "control_arm_id": { "$ref": "#/$defs/id" },
+    "seeds": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "integer", "minimum": 0 },
+      "uniqueItems": true
+    },
+    "run_count": { "type": "integer", "minimum": 1 },
+    "matrix_complete": { "const": true },
+    "runs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/run" }
+    },
+    "arm_summaries": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "$ref": "#/$defs/arm_summary" }
+    },
+    "comparisons": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/comparison" }
+    },
+    "report_id": { "$ref": "#/$defs/id" },
+    "fingerprint": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+    "rate": { "type": "number", "minimum": 0, "maximum": 1 },
+    "nonnegative_number": { "type": "number", "minimum": 0 },
+    "results": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "verified-completion",
+        "regressions",
+        "false-completion",
+        "cost",
+        "time",
+        "human-interventions"
+      ],
+      "properties": {
+        "verified-completion": { "$ref": "#/$defs/rate" },
+        "regressions": { "type": "integer", "minimum": 0 },
+        "false-completion": { "$ref": "#/$defs/rate" },
+        "cost": { "$ref": "#/$defs/nonnegative_number" },
+        "time": { "$ref": "#/$defs/nonnegative_number" },
+        "human-interventions": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "arm_id",
+        "task_id",
+        "seed",
+        "claimed_complete",
+        "results",
+        "evidence_refs"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "arm_id": { "$ref": "#/$defs/id" },
+        "task_id": { "$ref": "#/$defs/id" },
+        "seed": { "type": "integer", "minimum": 0 },
+        "claimed_complete": { "type": "boolean" },
+        "results": { "$ref": "#/$defs/results" },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    },
+    "arm_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "arm_id",
+        "run_count",
+        "verified_completion_rate",
+        "regression_count",
+        "mean_regressions",
+        "false_completion_count",
+        "false_completion_rate",
+        "mean_cost",
+        "mean_time_seconds",
+        "human_intervention_count",
+        "mean_human_interventions"
+      ],
+      "properties": {
+        "arm_id": { "$ref": "#/$defs/id" },
+        "run_count": { "type": "integer", "minimum": 1 },
+        "verified_completion_rate": { "$ref": "#/$defs/rate" },
+        "regression_count": { "type": "integer", "minimum": 0 },
+        "mean_regressions": { "$ref": "#/$defs/nonnegative_number" },
+        "false_completion_count": { "type": "integer", "minimum": 0 },
+        "false_completion_rate": { "$ref": "#/$defs/rate" },
+        "mean_cost": { "$ref": "#/$defs/nonnegative_number" },
+        "mean_time_seconds": { "$ref": "#/$defs/nonnegative_number" },
+        "human_intervention_count": { "type": "integer", "minimum": 0 },
+        "mean_human_interventions": { "$ref": "#/$defs/nonnegative_number" }
+      }
+    },
+    "deltas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "verified_completion_rate",
+        "mean_regressions",
+        "false_completion_rate",
+        "mean_cost",
+        "mean_time_seconds",
+        "mean_human_interventions"
+      ],
+      "properties": {
+        "verified_completion_rate": { "type": "number" },
+        "mean_regressions": { "type": "number" },
+        "false_completion_rate": { "type": "number" },
+        "mean_cost": { "type": "number" },
+        "mean_time_seconds": { "type": "number" },
+        "mean_human_interventions": { "type": "number" }
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "control_arm_id",
+        "treatment_arm_id",
+        "paired_runs",
+        "deltas",
+        "cost_per_additional_verified_completion"
+      ],
+      "properties": {
+        "control_arm_id": { "$ref": "#/$defs/id" },
+        "treatment_arm_id": { "$ref": "#/$defs/id" },
+        "paired_runs": { "type": "integer", "minimum": 1 },
+        "deltas": { "$ref": "#/$defs/deltas" },
+        "cost_per_additional_verified_completion": {
+          "type": ["number", "null"]
+        }
+      }
+    }
+  }
+}
