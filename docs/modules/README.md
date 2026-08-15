@@ -21,7 +21,7 @@ M01 Core contracts
 | Module | Outcome | Promotion gate |
 | --- | --- | --- |
 | [M01 Core contracts](01-core-contracts.md) | Portable formats for specifications, evidence, state, and experiments | Schemas and examples pass automated validation |
-| M02 Active-spec compiler | One current contract from direct or revised requirements | Contract-equivalent histories compile to the same active behavior |
+| [M02 Active-spec compiler](02-active-spec-compiler.md) | One current contract from direct or revised requirements | Contract-equivalent histories compile to the same active behavior |
 | M03 Baseline and evaluators | Agentless-style baseline plus command, artifact, rubric, and world-state evaluator interfaces | A fixture task produces reproducible evidence without an autonomous loop |
 | M04 Verified state store | Append-only run state derived from evaluator evidence | Invalid transitions and unevidenced completion are rejected |
 | M05 Verified single-agent runner | Manager, fresh executor, and read-only auditor orchestration | Executor claims cannot mark work verified; only auditor evidence can |
@@ -33,4 +33,3 @@ M01 Core contracts
 ## Execution Rule
 
 Only one module is active at a time. Work on the next module begins after the current module passes its promotion gate. Later module specifications are intentionally brief until measurements from their dependencies are available.
-

@@ -38,5 +38,4 @@ Revert the M01 files. No migrations or external state are involved.
 
 ## Next Module
 
-M02 will compile a revision history into one active specification. Its key test will confirm that contract-equivalent requirement histories produce the same current requirements.
-
+[M02](02-active-spec-compiler.md) compiles a revision history into one active specification. Its key test confirms that contract-equivalent requirement histories produce the same current requirements.

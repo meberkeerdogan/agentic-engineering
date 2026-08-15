@@ -88,6 +88,12 @@ uv run --group test pytest
 
 Research-PDF verification has its own optional dependency group and command in [research/README.md](research/README.md#reproducibility).
 
+Compile an ordered requirement history into one current active specification:
+
+```powershell
+uv run python -m agentic_engineering examples/spec-history-revised.json --output active-spec.json
+```
+
 ## Contributing
 
 Contributions are welcome. Before opening a pull request, read [CONTRIBUTING.md](CONTRIBUTING.md).

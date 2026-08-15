@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/spec-history.schema.json",
+  "title": "Specification Revision History",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "base_spec", "revisions"],
+  "properties": {
+    "version": { "const": 1 },
+    "base_spec": {
+      "$ref": "https://agentic-engineering.dev/schemas/active-spec.schema.json"
+    },
+    "revisions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/revision" }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "statement"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "statement": { "type": "string", "minLength": 1 }
+      }
+    },
+    "requirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "statement", "priority", "acceptance_criteria", "supersedes"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "statement": { "type": "string", "minLength": 1 },
+        "priority": { "enum": ["must", "should", "could"] },
+        "acceptance_criteria": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/criterion" }
+        },
+        "supersedes": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/id" },
+          "uniqueItems": true
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "reference"],
+      "properties": {
+        "kind": { "enum": ["user", "issue", "file", "paper", "standard", "url"] },
+        "reference": { "type": "string", "minLength": 1 },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "revision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "recorded_at", "operations"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "recorded_at": { "type": "string", "format": "date-time" },
+        "operations": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/operation" }
+        }
+      }
+    },
+    "operation": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "value"],
+          "properties": {
+            "op": { "const": "set_objective" },
+            "value": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "value"],
+          "properties": {
+            "op": { "const": "set_status" },
+            "value": { "enum": ["draft", "active", "superseded", "completed"] }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "requirement"],
+          "properties": {
+            "op": { "const": "upsert_requirement" },
+            "requirement": { "$ref": "#/$defs/requirement" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "requirement_id"],
+          "properties": {
+            "op": { "const": "supersede_requirement" },
+            "requirement_id": { "$ref": "#/$defs/id" }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "value"],
+          "properties": {
+            "op": {
+              "enum": [
+                "add_constraint",
+                "remove_constraint",
+                "add_out_of_scope",
+                "remove_out_of_scope"
+              ]
+            },
+            "value": { "type": "string", "minLength": 1 }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["op", "source"],
+          "properties": {
+            "op": { "const": "add_source" },
+            "source": { "$ref": "#/$defs/source" }
+          }
+        }
+      ]
+    }
+  }
+}
+

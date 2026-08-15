@@ -5,6 +5,10 @@ description = "Research-informed infrastructure for reliable agentic software en
 requires-python = ">=3.11"
 dependencies = []
 
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [dependency-groups]
 research = [
   "pypdf>=5,<7",

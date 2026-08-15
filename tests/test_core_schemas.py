@@ -3,6 +3,7 @@ from pathlib import Path
 
 import pytest
 from jsonschema import Draft202012Validator, FormatChecker
+from referencing import Registry, Resource
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,11 +13,21 @@ SCHEMA_EXAMPLE_PAIRS = [
     ("verified-state.schema.json", "verified-state.json"),
     ("experiment-record.schema.json", "experiment-record.json"),
     ("project-preferences.schema.json", "project-preferences.json"),
+    ("spec-history.schema.json", "spec-history-direct.json"),
+    ("spec-history.schema.json", "spec-history-revised.json"),
 ]
 
 
 def load_json(relative_path: str) -> dict:
     return json.loads((ROOT / relative_path).read_text(encoding="utf-8"))
+
+
+def schema_registry() -> Registry:
+    registry = Registry()
+    for path in (ROOT / "schemas").glob("*.schema.json"):
+        schema = json.loads(path.read_text(encoding="utf-8"))
+        registry = registry.with_resource(schema["$id"], Resource.from_contents(schema))
+    return registry
 
 
 def assert_unique(records: list[dict], field: str, label: str) -> None:
@@ -29,7 +40,11 @@ def test_schema_and_example_are_valid(schema_name: str, example_name: str) -> No
     schema = load_json(f"schemas/{schema_name}")
     example = load_json(f"examples/{example_name}")
     Draft202012Validator.check_schema(schema)
-    validator = Draft202012Validator(schema, format_checker=FormatChecker())
+    validator = Draft202012Validator(
+        schema,
+        format_checker=FormatChecker(),
+        registry=schema_registry(),
+    )
     errors = sorted(validator.iter_errors(example), key=lambda error: list(error.path))
     assert not errors, "\n".join(error.message for error in errors)
 

@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "base_spec": {
+    "version": 1,
+    "id": "example-active-contract",
+    "title": "Verified change delivery",
+    "objective": "Deliver changes only when declared acceptance evidence passes.",
+    "status": "active",
+    "requirements": [
+      {
+        "id": "REQ-001",
+        "statement": "Run the declared acceptance evaluators.",
+        "priority": "must",
+        "status": "active",
+        "acceptance_criteria": [
+          {
+            "id": "AC-001",
+            "statement": "Every required evaluator records a passing result."
+          }
+        ],
+        "supersedes": []
+      },
+      {
+        "id": "REQ-002",
+        "statement": "Preserve prior requirements as traceable history.",
+        "priority": "should",
+        "status": "active",
+        "acceptance_criteria": [
+          {
+            "id": "AC-002",
+            "statement": "Superseded requirements remain available in the compiled artifact."
+          }
+        ],
+        "supersedes": []
+      }
+    ],
+    "constraints": [
+      "Compilation is deterministic."
+    ],
+    "out_of_scope": [
+      "Executing an agent"
+    ],
+    "sources": [
+      {
+        "kind": "file",
+        "reference": "docs/modules/02-active-spec-compiler.md"
+      }
+    ],
+    "updated_at": "2026-08-15T19:00:00Z"
+  },
+  "revisions": []
+}
+

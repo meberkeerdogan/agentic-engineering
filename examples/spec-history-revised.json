@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "base_spec": {
+    "version": 1,
+    "id": "example-active-contract",
+    "title": "Verified change delivery",
+    "objective": "Ask an agent to report when it thinks the work is complete.",
+    "status": "draft",
+    "requirements": [
+      {
+        "id": "REQ-LEGACY",
+        "statement": "Accept the agent's completion report.",
+        "priority": "must",
+        "status": "active",
+        "acceptance_criteria": [
+          {
+            "id": "AC-LEGACY",
+            "statement": "The agent reports completion."
+          }
+        ],
+        "supersedes": []
+      }
+    ],
+    "constraints": [],
+    "out_of_scope": [
+      "Executing an agent"
+    ],
+    "sources": [
+      {
+        "kind": "user",
+        "reference": "initial request"
+      }
+    ],
+    "updated_at": "2026-08-15T18:00:00Z"
+  },
+  "revisions": [
+    {
+      "id": "REV-001",
+      "recorded_at": "2026-08-15T18:30:00Z",
+      "operations": [
+        {
+          "op": "set_objective",
+          "value": "Deliver changes only when declared acceptance evidence passes."
+        },
+        {
+          "op": "upsert_requirement",
+          "requirement": {
+            "id": "REQ-001",
+            "statement": "Run the declared acceptance evaluators.",
+            "priority": "must",
+            "acceptance_criteria": [
+              {
+                "id": "AC-001",
+                "statement": "Every required evaluator records a passing result."
+              }
+            ],
+            "supersedes": [
+              "REQ-LEGACY"
+            ]
+          }
+        },
+        {
+          "op": "add_constraint",
+          "value": "Compilation is deterministic."
+        }
+      ]
+    },
+    {
+      "id": "REV-002",
+      "recorded_at": "2026-08-15T19:00:00Z",
+      "operations": [
+        {
+          "op": "upsert_requirement",
+          "requirement": {
+            "id": "REQ-002",
+            "statement": "Preserve prior requirements as traceable history.",
+            "priority": "should",
+            "acceptance_criteria": [
+              {
+                "id": "AC-002",
+                "statement": "Superseded requirements remain available in the compiled artifact."
+              }
+            ],
+            "supersedes": []
+          }
+        },
+        {
+          "op": "set_status",
+          "value": "active"
+        },
+        {
+          "op": "add_source",
+          "source": {
+            "kind": "file",
+            "reference": "docs/modules/02-active-spec-compiler.md"
+          }
+        }
+      ]
+    }
+  ]
+}
+
