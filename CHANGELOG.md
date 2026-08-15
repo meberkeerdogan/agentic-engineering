@@ -19,3 +19,4 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 - Added the M02 active-spec compiler with explicit revision operations, preserved supersession lineage, deterministic behavior fingerprints, a CLI, and contract-equivalence tests.
 - Added the M03 single-pass baseline with command, artifact, structured-rubric, and world-state evaluators, deterministic evidence reports, protected-regression detection, and a golden fixture.
 - Added the M04 single-writer verified-state store with hash-chained events, dependency-aware state reduction, strict transitions, report-fingerprint validation, and evidence-only verification.
+- Added the M05 verified single-agent runner with manager-controlled transitions, fresh executors per attempt, constrained submissions, and independent single-pass auditing.

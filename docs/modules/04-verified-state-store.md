@@ -70,5 +70,4 @@ Revert the M04 store, event schema, tests, and documentation. Existing JSONL log
 
 ## Next Module
 
-M05 will connect a manager, fresh executor, and read-only auditor around this state boundary.
-
+[M05](05-verified-single-agent-runner.md) connects a manager, fresh executor, and read-only auditor around this state boundary.
