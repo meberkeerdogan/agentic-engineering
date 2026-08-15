@@ -2,6 +2,5 @@
 
 from .active_spec import main
 
-
 raise SystemExit(main())
 

@@ -6,10 +6,11 @@ import argparse
 import hashlib
 import json
 import re
+from collections.abc import Mapping, Sequence
 from copy import deepcopy
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Mapping, Sequence
+from typing import Any
 
 
 class SpecCompileError(ValueError):
@@ -44,7 +45,7 @@ SOURCE_FIELDS = {"kind", "reference", "note"}
 
 def _timestamp(value: str, label: str = "revision timestamp") -> datetime:
     try:
-        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        parsed = datetime.fromisoformat(value)
     except (AttributeError, ValueError) as error:
         raise SpecCompileError(f"invalid {label}: {value!r}") from error
     if parsed.tzinfo is None:

@@ -4,6 +4,7 @@ from pathlib import Path
 
 import pytest
 from jsonschema import Draft202012Validator, FormatChecker
+from test_core_schemas import load_json, schema_registry
 
 from agentic_engineering.active_spec import (
     SpecCompileError,
@@ -12,8 +13,6 @@ from agentic_engineering.active_spec import (
     compile_history,
     main,
 )
-from test_core_schemas import load_json, schema_registry
-
 
 ROOT = Path(__file__).resolve().parents[1]
 
