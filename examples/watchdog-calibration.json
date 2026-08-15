@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "calibration_id": "calibration-watchdog-fixture",
+  "policy": {
+    "minimum_labels": 1,
+    "minimum_precision": 0.8,
+    "minimum_recall": 0.8
+  },
+  "cases": [
+    {
+      "report": "expected-watchdog-report.json",
+      "labels": "watchdog-labels.json"
+    }
+  ]
+}

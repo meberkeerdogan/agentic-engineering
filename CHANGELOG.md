@@ -22,3 +22,4 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 - Added the M05 verified single-agent runner with manager-controlled transitions, fresh executors per attempt, constrained submissions, and independent single-pass auditing.
 - Added the M06 experiment harness with fixed control/treatment matrices, seeded replay adapters, independent false-completion derivation, evidence requirements, paired metric summaries, and deterministic report fingerprints.
 - Added the first M07 optional intervention slice: an observe-only trajectory watchdog for repeated actions, stagnation, oscillation, premature patching, and skipped validation, with no advice or blocking side effects.
+- Added watchdog calibration contracts and tooling for complete signal labels, missed-failure accounting, duplicate protection, per-type precision and recall, and evidence-gated advisory experiment eligibility.

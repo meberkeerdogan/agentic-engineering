@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/watchdog-calibration-report.schema.json",
+  "title": "Watchdog Calibration Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "calibration_id", "mode", "policy", "case_count", "case_fingerprints", "type_summaries", "overall", "eligible_advisory_types", "interventions", "report_id", "fingerprint"],
+  "properties": {
+    "version": { "const": 1 },
+    "calibration_id": { "$ref": "#/$defs/id" },
+    "mode": { "const": "calibration_only" },
+    "policy": { "$ref": "#/$defs/policy" },
+    "case_count": { "type": "integer", "minimum": 1 },
+    "case_fingerprints": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/fingerprint" }, "uniqueItems": true },
+    "type_summaries": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["signal_type", "true_positive", "false_positive", "false_negative", "support", "precision", "recall", "false_positive_rate", "eligible_for_advisory_experiment"],
+        "properties": {
+          "signal_type": { "$ref": "#/$defs/signal_type" },
+          "true_positive": { "$ref": "#/$defs/count" },
+          "false_positive": { "$ref": "#/$defs/count" },
+          "false_negative": { "$ref": "#/$defs/count" },
+          "support": { "$ref": "#/$defs/count" },
+          "precision": { "$ref": "#/$defs/nullable_rate" },
+          "recall": { "$ref": "#/$defs/nullable_rate" },
+          "false_positive_rate": { "$ref": "#/$defs/nullable_rate" },
+          "eligible_for_advisory_experiment": { "type": "boolean" }
+        }
+      }
+    },
+    "overall": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["true_positive", "false_positive", "false_negative", "precision", "recall", "false_positive_rate"],
+      "properties": {
+        "true_positive": { "$ref": "#/$defs/count" },
+        "false_positive": { "$ref": "#/$defs/count" },
+        "false_negative": { "$ref": "#/$defs/count" },
+        "precision": { "$ref": "#/$defs/nullable_rate" },
+        "recall": { "$ref": "#/$defs/nullable_rate" },
+        "false_positive_rate": { "$ref": "#/$defs/nullable_rate" }
+      }
+    },
+    "eligible_advisory_types": { "type": "array", "items": { "$ref": "#/$defs/signal_type" }, "uniqueItems": true },
+    "interventions": { "type": "array", "maxItems": 0 },
+    "report_id": { "$ref": "#/$defs/id" },
+    "fingerprint": { "$ref": "#/$defs/fingerprint" }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+    "fingerprint": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "count": { "type": "integer", "minimum": 0 },
+    "nullable_rate": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+    "signal_type": { "enum": ["repeated_action", "stagnation", "action_oscillation", "premature_patching", "skipped_validation"] },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum_labels", "minimum_precision", "minimum_recall"],
+      "properties": {
+        "minimum_labels": { "type": "integer", "minimum": 1 },
+        "minimum_precision": { "type": "number", "minimum": 0, "maximum": 1 },
+        "minimum_recall": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}

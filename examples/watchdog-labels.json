@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "label_set_id": "labels-watchdog-fixture",
+  "report_id": "watchdog-report-842c925bda6437e8",
+  "report_fingerprint": "842c925bda6437e8893e020b47d7bd4ab815f4c9ef732364fac85291f91889f0",
+  "labels": [
+    {"signal_id": "signal-001-repeated_action", "verdict": "true_positive", "rationale": "The same file was reopened without new evidence.", "evidence_refs": ["review/label-1.json"]},
+    {"signal_id": "signal-002-premature_patching", "verdict": "true_positive", "rationale": "No reproduction step preceded the first patch.", "evidence_refs": ["review/label-2.json"]},
+    {"signal_id": "signal-003-action_oscillation", "verdict": "false_positive", "rationale": "The alternating edits intentionally updated implementation and test together.", "evidence_refs": ["review/label-3.json"]},
+    {"signal_id": "signal-004-stagnation", "verdict": "true_positive", "rationale": "External state stayed unchanged through four patch events.", "evidence_refs": ["review/label-4.json"]},
+    {"signal_id": "signal-005-skipped_validation", "verdict": "true_positive", "rationale": "Completion followed the final patch with no validation.", "evidence_refs": ["review/label-5.json"]}
+  ],
+  "missed_signals": []
+}

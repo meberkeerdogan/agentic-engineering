@@ -16,6 +16,13 @@ class WatchdogError(ValueError):
 
 
 SUPPORTED_PHASES = {"navigate", "reproduce", "patch", "validate", "complete"}
+SIGNAL_TYPES = {
+    "repeated_action",
+    "stagnation",
+    "action_oscillation",
+    "premature_patching",
+    "skipped_validation",
+}
 
 
 @dataclass(frozen=True)

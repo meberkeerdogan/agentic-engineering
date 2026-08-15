@@ -19,3 +19,5 @@ Later modules will add workflow state-transition, evaluator, checkpoint, runner,
 `test_experiments.py` verifies the M06 fixed matrix, deterministic golden report, independent false-completion derivation, paired aggregation, complete replay coverage, adapter preflight, evidence requirements, and command-line output.
 
 `test_watchdog.py` verifies M07a observe-only signal detection, healthy-flow silence, threshold validation, immutable input, deterministic fingerprints, and command-line output.
+
+`test_watchdog_calibration.py` verifies complete signal labelling, exact report binding, duplicate-case rejection, false-negative accounting, eligibility thresholds, safe manifest paths, deterministic aggregation, and command-line output.

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "calibration_id": "calibration-watchdog-fixture",
+  "mode": "calibration_only",
+  "policy": {"minimum_labels": 1, "minimum_precision": 0.8, "minimum_recall": 0.8},
+  "case_count": 1,
+  "case_fingerprints": ["f08e4a28c26464c99b18fd9f0c9fb21807d796c90d2ed38df8a61223501c2472"],
+  "type_summaries": [
+    {"signal_type": "action_oscillation", "true_positive": 0, "false_positive": 1, "false_negative": 0, "support": 1, "precision": 0.0, "recall": null, "false_positive_rate": 1.0, "eligible_for_advisory_experiment": false},
+    {"signal_type": "premature_patching", "true_positive": 1, "false_positive": 0, "false_negative": 0, "support": 1, "precision": 1.0, "recall": 1.0, "false_positive_rate": 0.0, "eligible_for_advisory_experiment": true},
+    {"signal_type": "repeated_action", "true_positive": 1, "false_positive": 0, "false_negative": 0, "support": 1, "precision": 1.0, "recall": 1.0, "false_positive_rate": 0.0, "eligible_for_advisory_experiment": true},
+    {"signal_type": "skipped_validation", "true_positive": 1, "false_positive": 0, "false_negative": 0, "support": 1, "precision": 1.0, "recall": 1.0, "false_positive_rate": 0.0, "eligible_for_advisory_experiment": true},
+    {"signal_type": "stagnation", "true_positive": 1, "false_positive": 0, "false_negative": 0, "support": 1, "precision": 1.0, "recall": 1.0, "false_positive_rate": 0.0, "eligible_for_advisory_experiment": true}
+  ],
+  "overall": {"true_positive": 4, "false_positive": 1, "false_negative": 0, "precision": 0.8, "recall": 1.0, "false_positive_rate": 0.2},
+  "eligible_advisory_types": ["premature_patching", "repeated_action", "skipped_validation", "stagnation"],
+  "interventions": [],
+  "report_id": "watchdog-calibration-5288b688a018ea77",
+  "fingerprint": "5288b688a018ea771d3951d2e6ea13f1ee50a82ac53080329b8bd77be624cbb1"
+}

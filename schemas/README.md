@@ -18,5 +18,8 @@ Current schemas:
 - [`experiment-report.schema.json`](experiment-report.schema.json): deterministic run matrix, arm summaries, and paired treatment/control comparisons.
 - [`trajectory.schema.json`](trajectory.schema.json): ordered, evidenced coding-agent events with external state fingerprints.
 - [`watchdog-report.schema.json`](watchdog-report.schema.json): deterministic observe-only signals with explicit thresholds and no interventions.
+- [`watchdog-labels.schema.json`](watchdog-labels.schema.json): complete human labels for detected signals and reviewer-recorded misses.
+- [`watchdog-calibration.schema.json`](watchdog-calibration.schema.json): calibration policy and labelled case references.
+- [`watchdog-calibration-report.schema.json`](watchdog-calibration-report.schema.json): per-signal precision, recall, false-alarm rate, and advisory-experiment eligibility.
 
 The core schema module and its validation rules are documented in [M01: Core Contracts](../docs/modules/01-core-contracts.md). The experiment schemas are implemented by [M06: Experiment Harness](../docs/modules/06-experiment-harness.md).

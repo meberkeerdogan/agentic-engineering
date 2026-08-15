@@ -1,6 +1,6 @@
 # M07: Optional Interventions
 
-**Status:** In progress — M07a observe-only watchdog implemented
+**Status:** In progress — observe-only watchdog and calibration implemented
 
 ## Why This Module Is Split
 
@@ -42,9 +42,23 @@ uv run python -m agentic_engineering.watchdog `
 
 Collect watchdog reports on control trajectories, label true and false alarms, and use M06 to compare an advisory treatment against observation-only control. Blocking is eligible only if it improves verified completion without unacceptable regressions, false interventions, cost, or time.
 
+### Calibration workflow
+
+`watchdog_calibration` binds each label set to the exact fingerprinted watchdog report. Every detected signal must receive exactly one true-positive or false-positive label, while reviewer-found misses are recorded as false negatives. Duplicate cases and duplicate missed windows are rejected so support cannot be inflated.
+
+The calibration report calculates precision, recall, and false-positive rate for all five signal types. A signal becomes eligible for an advisory experiment only when it reaches the predeclared minimum support, precision, and recall. Eligibility does not enable advice; every calibration report remains `calibration_only` with an empty `interventions` array.
+
+```powershell
+uv run python -m agentic_engineering.watchdog_calibration `
+  examples/watchdog-calibration.json `
+  --output watchdog-calibration-report.json
+```
+
+The bundled labels are a deterministic fixture, not performance evidence. The default policy requires at least five labels per signal type, so the one-case fixture is ineligible unless its explicit test-only threshold is used.
+
 ## Remaining M07 Slices
 
-- M07b: calibrated advisory watchdog.
+- M07b: advisory watchdog tested only with signal types eligible from real calibration data.
 - M07c: static versus adaptive dependency planning.
 - M07d: phase-aware memory.
 - M07e: complementary agentic property testing.
