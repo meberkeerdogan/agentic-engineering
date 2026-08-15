@@ -40,5 +40,4 @@ Revert the M02 compiler, history schema, examples, tests, and documentation. The
 
 ## Next Module
 
-M03 will implement a simple agentless-style baseline and read-only evaluator interfaces that produce reproducible evidence for fixture tasks.
-
+[M03](03-baseline-and-evaluators.md) implements a simple agentless-style baseline and read-only evaluator interfaces that produce reproducible evidence for fixture tasks.

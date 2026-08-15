@@ -94,6 +94,12 @@ Compile an ordered requirement history into one current active specification:
 uv run python -m agentic_engineering examples/spec-history-revised.json --output active-spec.json
 ```
 
+Run the deterministic single-pass evaluation fixture:
+
+```powershell
+uv run python -m agentic_engineering.evaluators examples/fixture-task/evidence-contract.json --root examples/fixture-task
+```
+
 ## Contributing
 
 Contributions are welcome. Before opening a pull request, read [CONTRIBUTING.md](CONTRIBUTING.md).

@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "contract_id": "fixture-evidence-contract",
+  "work_item_id": "fixture-task",
+  "spec_id": "fixture-active-spec",
+  "outcome": "pass",
+  "criterion_results": [
+    {
+      "criterion_id": "EC-ARTIFACT",
+      "required": true,
+      "outcome": "pass",
+      "evaluator_ids": [
+        "fixture-artifact"
+      ]
+    },
+    {
+      "criterion_id": "EC-COMMAND",
+      "required": true,
+      "outcome": "pass",
+      "evaluator_ids": [
+        "fixture-command"
+      ]
+    },
+    {
+      "criterion_id": "EC-RUBRIC",
+      "required": true,
+      "outcome": "pass",
+      "evaluator_ids": [
+        "fixture-rubric"
+      ]
+    },
+    {
+      "criterion_id": "EC-WORLD",
+      "required": true,
+      "outcome": "pass",
+      "evaluator_ids": [
+        "fixture-world-state"
+      ]
+    }
+  ],
+  "evaluator_results": [
+    {
+      "evaluator_id": "fixture-artifact",
+      "type": "artifact",
+      "outcome": "pass",
+      "summary": "artifact checks passed",
+      "artifact_refs": [
+        "solution.json"
+      ],
+      "details": {
+        "path": "solution.json",
+        "bytes": 110,
+        "sha256": "2ad8058f599974fd263a1d06b241c332f0e7a70a73ee661e0989c9a947d13288"
+      }
+    },
+    {
+      "evaluator_id": "fixture-command",
+      "type": "command",
+      "outcome": "pass",
+      "summary": "command exited with expected code 0",
+      "artifact_refs": [],
+      "details": {
+        "command": [
+          "{python}",
+          "-c",
+          "import json, pathlib; data=json.loads(pathlib.Path('solution.json').read_text()); assert data['status']=='ready'; print('fixture-ok')"
+        ],
+        "exit_code": 0,
+        "stdout": "fixture-ok\n",
+        "stderr": ""
+      }
+    },
+    {
+      "evaluator_id": "fixture-rubric",
+      "type": "rubric",
+      "outcome": "pass",
+      "summary": "rubric score 1.000000; threshold 1.000000",
+      "artifact_refs": [
+        "solution.json"
+      ],
+      "details": {
+        "artifact": {
+          "path": "solution.json",
+          "bytes": 110,
+          "sha256": "2ad8058f599974fd263a1d06b241c332f0e7a70a73ee661e0989c9a947d13288"
+        },
+        "score": 1.0,
+        "threshold": 1.0,
+        "criteria": [
+          {
+            "id": "RUBRIC-READY",
+            "description": "The candidate declares a ready state.",
+            "weight": 0.4,
+            "path": "/status",
+            "operator": "equals",
+            "expected": "ready",
+            "passed": true,
+            "actual": "ready"
+          },
+          {
+            "id": "RUBRIC-TESTS",
+            "description": "The candidate records at least three checks.",
+            "weight": 0.6,
+            "path": "/tests",
+            "operator": "gte",
+            "expected": 3,
+            "passed": true,
+            "actual": 3
+          }
+        ]
+      }
+    },
+    {
+      "evaluator_id": "fixture-world-state",
+      "type": "world_state",
+      "outcome": "pass",
+      "summary": "all world-state assertions passed",
+      "artifact_refs": [
+        "solution.json"
+      ],
+      "details": {
+        "artifact": {
+          "path": "solution.json",
+          "bytes": 110,
+          "sha256": "2ad8058f599974fd263a1d06b241c332f0e7a70a73ee661e0989c9a947d13288"
+        },
+        "assertions": [
+          {
+            "path": "/status",
+            "operator": "equals",
+            "expected": "ready",
+            "passed": true,
+            "actual": "ready"
+          },
+          {
+            "path": "/summary",
+            "operator": "contains",
+            "expected": "declared contract",
+            "passed": true,
+            "actual": "The fixture candidate satisfies its declared contract."
+          }
+        ]
+      }
+    }
+  ],
+  "regressions": [],
+  "report_id": "evaluation-d03fcc535cfc2dd9",
+  "fingerprint": "d03fcc535cfc2dd90fa82a21b79bc42a01295793c4d1220591de65d56579a70d"
+}
+

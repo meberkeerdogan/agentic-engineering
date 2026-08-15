@@ -23,3 +23,4 @@ Current examples:
 - [`evidence-contract.json`](evidence-contract.json)
 - [`verified-state.json`](verified-state.json)
 - [`experiment-record.json`](experiment-record.json)
+- [`fixture-task/`](fixture-task/): a prepared candidate, four-type evidence contract, and deterministic golden evaluation report for M03.

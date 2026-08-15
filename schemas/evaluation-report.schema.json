@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/evaluation-report.schema.json",
+  "title": "Deterministic Evaluation Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "contract_id",
+    "work_item_id",
+    "spec_id",
+    "outcome",
+    "criterion_results",
+    "evaluator_results",
+    "regressions",
+    "report_id",
+    "fingerprint"
+  ],
+  "properties": {
+    "version": { "const": 1 },
+    "contract_id": { "$ref": "#/$defs/id" },
+    "work_item_id": { "$ref": "#/$defs/id" },
+    "spec_id": { "$ref": "#/$defs/id" },
+    "outcome": { "enum": ["pass", "fail", "error"] },
+    "criterion_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["criterion_id", "required", "outcome", "evaluator_ids"],
+        "properties": {
+          "criterion_id": { "$ref": "#/$defs/id" },
+          "required": { "type": "boolean" },
+          "outcome": { "enum": ["pass", "fail", "error"] },
+          "evaluator_ids": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/id" },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "evaluator_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["evaluator_id", "type", "outcome", "summary", "artifact_refs", "details"],
+        "properties": {
+          "evaluator_id": { "$ref": "#/$defs/id" },
+          "type": { "enum": ["command", "artifact", "rubric", "world_state"] },
+          "outcome": { "enum": ["pass", "fail", "error"] },
+          "summary": { "type": "string", "minLength": 1 },
+          "artifact_refs": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "details": { "type": "object" }
+        }
+      }
+    },
+    "regressions": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/id" },
+      "uniqueItems": true
+    },
+    "report_id": { "$ref": "#/$defs/id" },
+    "fingerprint": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" }
+  }
+}
+

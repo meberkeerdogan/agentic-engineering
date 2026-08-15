@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "id": "fixture-evidence-contract",
+  "work_item_id": "fixture-task",
+  "spec_id": "fixture-active-spec",
+  "criteria": [
+    {
+      "id": "EC-COMMAND",
+      "spec_criterion_id": "AC-COMMAND",
+      "description": "The candidate passes its deterministic smoke check.",
+      "evaluator_ids": ["fixture-command"],
+      "required": true
+    },
+    {
+      "id": "EC-ARTIFACT",
+      "spec_criterion_id": "AC-ARTIFACT",
+      "description": "The declared solution artifact exists and is non-empty.",
+      "evaluator_ids": ["fixture-artifact"],
+      "required": true
+    },
+    {
+      "id": "EC-RUBRIC",
+      "spec_criterion_id": "AC-RUBRIC",
+      "description": "The candidate satisfies the weighted structured rubric.",
+      "evaluator_ids": ["fixture-rubric"],
+      "required": true
+    },
+    {
+      "id": "EC-WORLD",
+      "spec_criterion_id": "AC-WORLD",
+      "description": "The externally observed fixture state is ready.",
+      "evaluator_ids": ["fixture-world-state"],
+      "required": true
+    }
+  ],
+  "evaluators": [
+    {
+      "id": "fixture-command",
+      "type": "command",
+      "command": [
+        "{python}",
+        "-c",
+        "import json, pathlib; data=json.loads(pathlib.Path('solution.json').read_text()); assert data['status']=='ready'; print('fixture-ok')"
+      ],
+      "expected_exit_code": 0,
+      "timeout_seconds": 10,
+      "read_only": true
+    },
+    {
+      "id": "fixture-artifact",
+      "type": "artifact",
+      "artifact": "solution.json",
+      "min_bytes": 32,
+      "read_only": true
+    },
+    {
+      "id": "fixture-rubric",
+      "type": "rubric",
+      "artifact": "solution.json",
+      "rubric": [
+        {
+          "id": "RUBRIC-READY",
+          "description": "The candidate declares a ready state.",
+          "weight": 0.4,
+          "path": "/status",
+          "operator": "equals",
+          "expected": "ready"
+        },
+        {
+          "id": "RUBRIC-TESTS",
+          "description": "The candidate records at least three checks.",
+          "weight": 0.6,
+          "path": "/tests",
+          "operator": "gte",
+          "expected": 3
+        }
+      ],
+      "threshold": 1,
+      "read_only": true
+    },
+    {
+      "id": "fixture-world-state",
+      "type": "world_state",
+      "artifact": "solution.json",
+      "assertions": [
+        {
+          "path": "/status",
+          "operator": "equals",
+          "expected": "ready"
+        },
+        {
+          "path": "/summary",
+          "operator": "contains",
+          "expected": "declared contract"
+        }
+      ],
+      "read_only": true
+    }
+  ],
+  "baselines": [
+    {
+      "evaluator_id": "fixture-command",
+      "result": "pass",
+      "artifact_refs": []
+    },
+    {
+      "evaluator_id": "fixture-artifact",
+      "result": "pass",
+      "artifact_refs": ["solution.json"]
+    },
+    {
+      "evaluator_id": "fixture-rubric",
+      "result": "pass",
+      "artifact_refs": ["solution.json"]
+    },
+    {
+      "evaluator_id": "fixture-world-state",
+      "result": "pass",
+      "artifact_refs": ["solution.json"]
+    }
+  ],
+  "regression_policy": {
+    "protected_evaluator_ids": [
+      "fixture-command",
+      "fixture-artifact",
+      "fixture-rubric",
+      "fixture-world-state"
+    ],
+    "exploration_allowed": false,
+    "restore_best_known_on_failure": true
+  },
+  "evidence_directory": ".agent/evidence/fixture-task"
+}
+

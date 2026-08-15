@@ -5,7 +5,6 @@ import pytest
 from jsonschema import Draft202012Validator, FormatChecker
 from referencing import Registry, Resource
 
-
 ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_EXAMPLE_PAIRS = [
     ("active-spec.schema.json", "active-spec.json"),
@@ -15,6 +14,8 @@ SCHEMA_EXAMPLE_PAIRS = [
     ("project-preferences.schema.json", "project-preferences.json"),
     ("spec-history.schema.json", "spec-history-direct.json"),
     ("spec-history.schema.json", "spec-history-revised.json"),
+    ("evidence-contract.schema.json", "fixture-task/evidence-contract.json"),
+    ("evaluation-report.schema.json", "fixture-task/expected-evaluation.json"),
 ]
 
 

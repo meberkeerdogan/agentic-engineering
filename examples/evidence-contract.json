@@ -23,7 +23,7 @@
     {
       "id": "schema-suite",
       "type": "command",
-      "command": "uv run --group test pytest",
+      "command": ["uv", "run", "--group", "test", "pytest"],
       "expected_exit_code": 0,
       "read_only": true
     }
@@ -42,4 +42,3 @@
   },
   "evidence_directory": ".agent/evidence/ae-module-01-core-contracts"
 }
-

@@ -10,6 +10,7 @@ Current schemas:
 - [`active-spec.schema.json`](active-spec.schema.json): the current, authoritative requirements contract.
 - [`spec-history.schema.json`](spec-history.schema.json): a base specification and ordered operations that compile into an active contract.
 - [`evidence-contract.schema.json`](evidence-contract.schema.json): acceptance criteria, evaluators, baselines, and regression policy.
+- [`evaluation-report.schema.json`](evaluation-report.schema.json): deterministic criterion, evaluator, and regression evidence from one baseline run.
 - [`verified-state.schema.json`](verified-state.schema.json): evidence-backed work-item and run state.
 - [`experiment-record.schema.json`](experiment-record.schema.json): reproducible control/treatment experiment records.
 
