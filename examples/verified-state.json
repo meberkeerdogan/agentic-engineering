@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "run_id": "run-module-01-example",
+  "spec_id": "ae-module-01-core-contracts",
+  "status": "verified",
+  "work_items": [
+    {
+      "id": "module-01",
+      "status": "verified",
+      "depends_on": [],
+      "attempt_count": 1,
+      "artifact_refs": [
+        "schemas/active-spec.schema.json",
+        "schemas/evidence-contract.schema.json",
+        "schemas/verified-state.schema.json",
+        "schemas/experiment-record.schema.json"
+      ],
+      "evidence_refs": ["EV-001"],
+      "last_error": null
+    }
+  ],
+  "decisions": [
+    {
+      "id": "DEC-001",
+      "summary": "Use JSON Schema Draft 2020-12 for portable contracts.",
+      "basis": "The contracts must remain usable outside one runner or agent vendor.",
+      "created_at": "2026-08-15T18:00:00Z"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EV-001",
+      "evaluator_id": "schema-suite",
+      "outcome": "pass",
+      "artifact_refs": ["tests/test_core_schemas.py"],
+      "recorded_at": "2026-08-15T18:00:00Z"
+    }
+  ],
+  "best_known_revision": "working-tree-example",
+  "audit_sequence": 1,
+  "updated_at": "2026-08-15T18:00:00Z"
+}
+

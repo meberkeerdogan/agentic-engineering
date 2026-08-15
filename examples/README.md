@@ -12,3 +12,12 @@ Candidate examples:
 - code-review playbook
 - release-handoff playbook
 - skill-driven review workflow
+
+Current examples:
+
+- [`planning-playbook.md`](planning-playbook.md)
+- [`project-preferences.json`](project-preferences.json)
+- [`active-spec.json`](active-spec.json)
+- [`evidence-contract.json`](evidence-contract.json)
+- [`verified-state.json`](verified-state.json)
+- [`experiment-record.json`](experiment-record.json)

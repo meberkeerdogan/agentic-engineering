@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "id": "ae-module-01-core-contracts",
+  "title": "Portable core contracts",
+  "objective": "Define portable data formats that later Agentic Engineering modules can share.",
+  "status": "active",
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "statement": "Define strict schemas for active specifications, evidence contracts, verified state, and experiment records.",
+      "priority": "must",
+      "status": "active",
+      "acceptance_criteria": [
+        {
+          "id": "AC-001",
+          "statement": "All four schema documents pass Draft 2020-12 schema validation."
+        }
+      ],
+      "supersedes": []
+    },
+    {
+      "id": "REQ-002",
+      "statement": "Provide valid examples and automated cross-reference checks.",
+      "priority": "must",
+      "status": "active",
+      "acceptance_criteria": [
+        {
+          "id": "AC-002",
+          "statement": "The documented test command completes with zero failures."
+        }
+      ],
+      "supersedes": []
+    }
+  ],
+  "constraints": [
+    "Contracts use JSON Schema Draft 2020-12.",
+    "Contracts do not depend on one agent vendor or runtime."
+  ],
+  "out_of_scope": [
+    "Agent execution",
+    "Retry behavior",
+    "Multi-agent orchestration"
+  ],
+  "sources": [
+    {
+      "kind": "file",
+      "reference": "docs/implementation-plan.md",
+      "note": "Project-level implementation direction"
+    }
+  ],
+  "updated_at": "2026-08-15T18:00:00Z"
+}
+

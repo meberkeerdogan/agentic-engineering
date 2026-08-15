@@ -1,13 +1,14 @@
 # Contributing
 
-Thanks for helping build Agent Playbooks.
+Thanks for helping build Agentic Engineering.
 
 This project is early, so the most valuable contributions are clear problem statements, small working examples, design notes, and focused pull requests.
 
 ## Ways to Contribute
 
-- Propose a playbook pattern for a real coding-agent workflow.
-- Propose a reusable coding-agent skill.
+- Document a recurring agentic-engineering problem with evidence.
+- Propose or implement a harness, evaluator, benchmark, playbook, workflow, skill, memory system, adapter, or other intervention.
+- Reproduce relevant research and test whether its findings transfer to real projects.
 - Improve docs, examples, or terminology.
 - Add tests once implementation begins.
 - Report confusing behavior or missing guardrails.
@@ -16,6 +17,7 @@ This project is early, so the most valuable contributions are clear problem stat
 ## Development Principles
 
 - Make agent behavior inspectable.
+- Measure improvements against explicit baselines and external outcomes.
 - Prefer small, composable primitives over large hidden workflows.
 - Treat verification as part of the workflow, not an afterthought.
 - Keep humans in control of risky decisions.
@@ -31,15 +33,22 @@ This project is early, so the most valuable contributions are clear problem stat
 
 ## Local Development
 
-The project has not chosen a runtime yet. Until then:
+The first implementation modules use Python 3.11+ and `uv`, while the portable contracts remain runtime-agnostic:
 
-- keep examples in `examples/`
+- keep examples and small experiments in `examples/`
 - keep playbook definitions in `playbooks/`
 - keep reusable skills in `skills/`
 - keep workflow definitions in `workflows/`
 - keep design notes in `docs/`
 - record architecture decisions in `docs/adr/`
+- add a well-named area when a solution does not fit the existing categories
 - avoid adding large dependencies without an issue discussion
+
+Run the current automated checks with:
+
+```powershell
+uv run --group test pytest
+```
 
 ## Commit Style
 

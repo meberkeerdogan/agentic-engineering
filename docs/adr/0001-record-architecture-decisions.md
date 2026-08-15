@@ -8,7 +8,7 @@ Accepted
 
 ## Context
 
-Agent Playbooks will involve choices about schema design, runtime behavior, safety boundaries, supported tools, skill formats, workflow structure, and contribution standards. These decisions should be visible to future contributors.
+Agentic Engineering will involve choices about evaluation, schema design, runtime behavior, safety boundaries, supported tools, skill formats, workflow structure, and contribution standards. These decisions should be visible to future contributors.
 
 ## Decision
 

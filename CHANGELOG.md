@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to Agent Playbooks will be documented in this file.
+All notable changes to Agentic Engineering will be documented in this file.
 
 This project follows the spirit of [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and intends to use semantic versioning once releases begin.
 
@@ -10,3 +10,9 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 
 - Initial open-source repository scaffold.
 - Umbrella structure for playbooks, workflows, skills, schemas, and runners.
+- Project onboarding playbook and `create-agents-md` skill.
+- Project preference schema, example, and `AGENTS.md` template.
+- Broadened the project identity beyond loops, playbooks, workflows, and skills to general agentic software-engineering improvement.
+- Research library containing nine primary papers on long-horizon agent reliability, integrity metadata, source provenance, and a critical research-to-design review.
+- Expanded the research corpus to twenty-seven papers and documented the complete evidence-first implementation plan, paper adoption decisions, and delivery order.
+- Split implementation into nine promotion-gated modules and completed M01 with portable core schemas, examples, and automated validation tests.

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/experiment-record.schema.json",
+  "title": "Agentic Engineering Experiment Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "experiment_id", "title", "hypothesis", "status", "control", "treatments", "tasks", "metrics", "runs", "decision"],
+  "properties": {
+    "version": { "const": 1 },
+    "experiment_id": { "$ref": "#/$defs/id" },
+    "title": { "type": "string", "minLength": 1 },
+    "hypothesis": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["planned", "running", "completed", "abandoned"] },
+    "control": { "$ref": "#/$defs/arm" },
+    "treatments": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/arm" } },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "repository", "spec_ref"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "repository": { "type": "string", "minLength": 1 },
+          "spec_ref": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "description", "direction", "unit"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "description": { "type": "string", "minLength": 1 },
+          "direction": { "enum": ["higher", "lower", "target"] },
+          "unit": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "arm_id", "task_id", "seed", "results", "evidence_refs"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "arm_id": { "$ref": "#/$defs/id" },
+          "task_id": { "$ref": "#/$defs/id" },
+          "seed": { "type": "integer", "minimum": 0 },
+          "results": { "type": "object", "additionalProperties": { "type": "number" } },
+          "evidence_refs": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["outcome", "reason"],
+      "properties": {
+        "outcome": { "enum": ["pending", "adopt", "revise", "reject"] },
+        "reason": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+    "arm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "workflow", "config_ref"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "workflow": { "type": "string", "minLength": 1 },
+        "config_ref": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}
+

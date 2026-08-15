@@ -1,6 +1,10 @@
 # Architecture Notes
 
-This document captures the starting architecture direction. It is expected to change as the project moves from concept to prototype.
+This document captures the starting architecture direction. It is expected to change as the project moves from concept to prototypes. No single package boundary or solution form below defines the scope of the project.
+
+## Architecture Principle
+
+Treat agentic software engineering as a system. Instructions, skills, playbooks, workflows, harnesses, evaluators, memory, tools, benchmarks, and human controls are independently useful layers that can be combined or evaluated separately.
 
 ## Core Model
 
@@ -64,12 +68,15 @@ A handoff is the structured output of a workflow. It should let a person or anot
 
 ## Candidate Package Boundaries
 
+- **Evaluation and benchmarks**: Define external success criteria, fixtures, metrics, and reproducible comparisons.
+- **Harness and state**: Manage execution state, context boundaries, evidence, retries, recovery, and audit history.
 - **Playbook format**: Defines portable playbook files and validation rules.
 - **Skill format**: Defines reusable skill files and metadata.
 - **Workflow schema**: Defines reusable workflow structure and state transitions.
 - **Runner**: Executes or simulates workflow steps and checkpoint state.
 - **Adapters**: Integrate with coding-agent tools, shells, CI, or GitHub.
 - **Evaluators**: Provide reusable checks and review rubrics.
+- **Research and experiments**: Reproduce relevant findings and test new interventions against baselines.
 - **Examples**: Demonstrate practical playbooks and skills for common workflows.
 
 ## First Implementation Questions
@@ -80,6 +87,8 @@ A handoff is the structured output of a workflow. It should let a person or anot
 - Which state should be persisted between steps?
 - How should human approval be represented?
 - What is the minimum useful evaluator interface?
+- Which agent-engineering failures deserve intervention first, and at which layer?
+- How will each proposed improvement be measured against a baseline?
 
 ## Decision Records
 

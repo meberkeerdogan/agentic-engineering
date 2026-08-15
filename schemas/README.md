@@ -1,5 +1,15 @@
 # Schemas
 
-Shared schemas will live here once the project chooses the first definition formats.
+Shared schemas describe portable playbook, skill, workflow, and output data.
 
 Candidate schemas include playbook definitions, skill manifests, workflow state, evaluator results, and handoff records.
+
+Current schemas:
+
+- [`project-preferences.schema.json`](project-preferences.schema.json): explicit human preferences gathered during project onboarding.
+- [`active-spec.schema.json`](active-spec.schema.json): the current, authoritative requirements contract.
+- [`evidence-contract.schema.json`](evidence-contract.schema.json): acceptance criteria, evaluators, baselines, and regression policy.
+- [`verified-state.schema.json`](verified-state.schema.json): evidence-backed work-item and run state.
+- [`experiment-record.schema.json`](experiment-record.schema.json): reproducible control/treatment experiment records.
+
+The core schema module and its validation rules are documented in [M01: Core Contracts](../docs/modules/01-core-contracts.md).

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/project-preferences.schema.json",
+  "title": "Project Agent Preferences",
+  "description": "Optional human preferences used to create simple agent guidance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "scope", "preferences"],
+  "properties": {
+    "version": { "const": 1 },
+    "scope": { "enum": ["personal", "repository", "subtree"] },
+    "path": {
+      "type": "string",
+      "description": "Required when scope is subtree."
+    },
+    "preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "confirmation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "frequency": { "type": "string", "minLength": 1 },
+            "conditions": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 },
+              "uniqueItems": true
+            }
+          }
+        },
+        "reporting": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "style": { "enum": ["plain-english", "technical", "combined"] },
+            "frequency": { "type": "string", "minLength": 1 }
+          }
+        },
+        "decision_making": { "type": "string", "minLength": 1 },
+        "verification": { "type": "string", "minLength": 1 },
+        "additional_guidance": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "scope": { "const": "subtree" } } },
+      "then": { "required": ["path"] }
+    }
+  ]
+}

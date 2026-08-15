@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "id": "evidence-module-01",
+  "work_item_id": "module-01",
+  "spec_id": "ae-module-01-core-contracts",
+  "criteria": [
+    {
+      "id": "EC-001",
+      "spec_criterion_id": "AC-001",
+      "description": "Validate every schema and example.",
+      "evaluator_ids": ["schema-suite"],
+      "required": true
+    },
+    {
+      "id": "EC-002",
+      "spec_criterion_id": "AC-002",
+      "description": "Run semantic uniqueness and cross-reference checks.",
+      "evaluator_ids": ["schema-suite"],
+      "required": true
+    }
+  ],
+  "evaluators": [
+    {
+      "id": "schema-suite",
+      "type": "command",
+      "command": "uv run --group test pytest",
+      "expected_exit_code": 0,
+      "read_only": true
+    }
+  ],
+  "baselines": [
+    {
+      "evaluator_id": "schema-suite",
+      "result": "pass",
+      "artifact_refs": ["tests/test_core_schemas.py"]
+    }
+  ],
+  "regression_policy": {
+    "protected_evaluator_ids": ["schema-suite"],
+    "exploration_allowed": false,
+    "restore_best_known_on_failure": true
+  },
+  "evidence_directory": ".agent/evidence/ae-module-01-core-contracts"
+}
+

@@ -1,0 +1,18 @@
+[project]
+name = "agentic-engineering"
+version = "0.0.0"
+description = "Research-informed infrastructure for reliable agentic software engineering"
+requires-python = ">=3.11"
+dependencies = []
+
+[dependency-groups]
+research = [
+  "pypdf>=5,<7",
+]
+test = [
+  "jsonschema>=4.23,<5",
+  "pytest>=8,<9",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

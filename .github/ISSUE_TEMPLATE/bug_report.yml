@@ -6,7 +6,7 @@ labels:
 body:
   - type: markdown
     attributes:
-      value: Thanks for helping improve Agent Playbooks.
+      value: Thanks for helping improve Agentic Engineering.
   - type: textarea
     id: description
     attributes:

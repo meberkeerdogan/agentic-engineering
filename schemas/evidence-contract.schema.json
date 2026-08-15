@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/evidence-contract.schema.json",
+  "title": "Evidence Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "id", "work_item_id", "spec_id", "criteria", "evaluators", "baselines", "regression_policy", "evidence_directory"],
+  "properties": {
+    "version": { "const": 1 },
+    "id": { "$ref": "#/$defs/id" },
+    "work_item_id": { "$ref": "#/$defs/id" },
+    "spec_id": { "$ref": "#/$defs/id" },
+    "criteria": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "spec_criterion_id", "description", "evaluator_ids", "required"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "spec_criterion_id": { "$ref": "#/$defs/id" },
+          "description": { "type": "string", "minLength": 1 },
+          "evaluator_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/id" },
+            "uniqueItems": true
+          },
+          "required": { "type": "boolean" }
+        }
+      }
+    },
+    "evaluators": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "type", "read_only"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "type": { "enum": ["command", "artifact", "rubric", "world_state"] },
+          "command": { "type": "string", "minLength": 1 },
+          "expected_exit_code": { "type": "integer" },
+          "artifact": { "type": "string", "minLength": 1 },
+          "instructions": { "type": "string", "minLength": 1 },
+          "read_only": { "type": "boolean" }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "type": { "const": "command" } }, "required": ["type"] },
+            "then": { "required": ["command", "expected_exit_code"] }
+          }
+        ]
+      }
+    },
+    "baselines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["evaluator_id", "result", "artifact_refs"],
+        "properties": {
+          "evaluator_id": { "$ref": "#/$defs/id" },
+          "result": { "enum": ["pass", "fail", "error", "not_run"] },
+          "artifact_refs": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "regression_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["protected_evaluator_ids", "exploration_allowed", "restore_best_known_on_failure"],
+      "properties": {
+        "protected_evaluator_ids": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/id" },
+          "uniqueItems": true
+        },
+        "exploration_allowed": { "type": "boolean" },
+        "restore_best_known_on_failure": { "type": "boolean" }
+      }
+    },
+    "evidence_directory": { "type": "string", "minLength": 1 }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" }
+  }
+}
+

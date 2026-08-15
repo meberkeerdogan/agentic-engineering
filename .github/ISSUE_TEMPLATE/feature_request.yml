@@ -15,7 +15,7 @@ body:
     id: proposal
     attributes:
       label: Proposal
-      description: What should Agent Playbooks do?
+      description: What should Agentic Engineering do?
     validations:
       required: true
   - type: textarea

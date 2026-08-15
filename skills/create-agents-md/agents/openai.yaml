@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create AGENTS.md"
+  short_description: "Create simple project agent guidance"
+  default_prompt: "Use $create-agents-md to inspect this project, ask about my collaboration preferences, and draft a simple AGENTS.md."

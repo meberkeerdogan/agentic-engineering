@@ -1,0 +1,218 @@
+[
+  {
+    "file": "2309.12499-codeplan.pdf",
+    "pages": 34,
+    "bytes": 2177115,
+    "sha256": "1c66e59351ba27e22fb2c6aeaa3bf4f35681f198a9c3c106f910e4290505315e",
+    "title": "CodePlan: Repository-level Coding using LLMs and Planning",
+    "text_chars": 121855
+  },
+  {
+    "file": "2310.01798-intrinsic-self-correction.pdf",
+    "pages": 17,
+    "bytes": 385585,
+    "sha256": "15e1731e255ec6b217792a1e077926807da77e8e46b69e6c57dda30d67794761",
+    "title": null,
+    "text_chars": 57913
+  },
+  {
+    "file": "2405.15793-swe-agent.pdf",
+    "pages": 118,
+    "bytes": 4963538,
+    "sha256": "d171e0693060b910ceb2cddd0fd4bc7cae302005d42d0d8059bfdbe056c3adba",
+    "title": null,
+    "text_chars": 291170
+  },
+  {
+    "file": "2407.01489-agentless.pdf",
+    "pages": 25,
+    "bytes": 1384716,
+    "sha256": "1675c2dcd5ecaef47e8a4356062f60be642cee82e1bbacb044c9d047dce4c856",
+    "title": null,
+    "text_chars": 96945
+  },
+  {
+    "file": "2504.01848-paperbench.pdf",
+    "pages": 30,
+    "bytes": 1703363,
+    "sha256": "2f58f1a6581af9d99432422dccf3cf61f5c263377c1e4550e7333c4a22d7184d",
+    "title": "PaperBench: Evaluating AI’s Ability to Replicate AI Research",
+    "text_chars": 103252
+  },
+  {
+    "file": "2505.20662-autoreproduce.pdf",
+    "pages": 23,
+    "bytes": 1956602,
+    "sha256": "b2b884421c05cc37875d8c1f16c2ac70f88f2b95351a26c7a602b7339a7cffc9",
+    "title": "AutoReproduce: Automatic AI Experiment Reproduction with Paper Lineage",
+    "text_chars": 87281
+  },
+  {
+    "file": "2505.24785-exp-bench.pdf",
+    "pages": 45,
+    "bytes": 8850399,
+    "sha256": "e90e40d9fdb08a83eac2a8b20064bcc5d4b81a1acbe800e8f109207ead7f95df",
+    "title": "EXP-Bench: Can AI Conduct AI Research Experiments?",
+    "text_chars": 118849
+  },
+  {
+    "file": "2507.19942-prometheus.pdf",
+    "pages": 21,
+    "bytes": 11354507,
+    "sha256": "e59b0b23e2c4dd2d6eb35c9a996abcf7d3423c8e5d70e740126a0323ebd7a86d",
+    "title": "Prometheus: Towards Long-Horizon Codebase Navigation for Repository-Level Problem Solving",
+    "text_chars": 82560
+  },
+  {
+    "file": "2510.09907-agentic-property-based-testing.pdf",
+    "pages": 21,
+    "bytes": 403894,
+    "sha256": "326c4fb8d9b5592e20d25efa6124122af9b29e6932b01549aedf2a22a6a32026",
+    "title": "Agentic Property-Based Testing: Finding Bugs Across the Python Ecosystem",
+    "text_chars": 66456
+  },
+  {
+    "file": "2511.13646-live-swe-agent.pdf",
+    "pages": 20,
+    "bytes": 1271380,
+    "sha256": "7bd8e1c6345c2ff8d5a93674a8a88fcfc70ab6f657f946c82a2961f449e01535",
+    "title": "Live-SWE-agent: Can Software Engineering Agents Self-Evolve on the Fly?",
+    "text_chars": 73991
+  },
+  {
+    "file": "2512.12730-nl2repo-bench.pdf",
+    "pages": 25,
+    "bytes": 4685096,
+    "sha256": "a56b714df3cb3d3e68ac57cff048fa16868ecb9788e57a94828253f6cab4e0e6",
+    "title": "NL2Repo-Bench: Towards Long-Horizon Repository Generation Evaluation of Coding Agents",
+    "text_chars": 73559
+  },
+  {
+    "file": "2512.18470-swe-evo.pdf",
+    "pages": 30,
+    "bytes": 5186392,
+    "sha256": "cfa2ca71f3bd14ed93021a00d39767be80d7e2843c47f7d7ca11cf50dc9767d8",
+    "title": "SWE-EVO: Benchmarking Coding Agents in Long-Horizon Software Evolution Scenarios",
+    "text_chars": 76665
+  },
+  {
+    "file": "2601.13295-cooperbench.pdf",
+    "pages": 33,
+    "bytes": 4727424,
+    "sha256": "70e02f3c03e3ec9c53e0a6655c7a339ada460b76448b0078a4856ba278c4fb6c",
+    "title": "CooperBench: Why Coding Agents Cannot be Your Teammates Yet",
+    "text_chars": 100505
+  },
+  {
+    "file": "2602.05892-contextbench.pdf",
+    "pages": 34,
+    "bytes": 12342589,
+    "sha256": "517140a2504959bfb94c7c875f6e80a031e899bc362dcc73c446536b45e18a46",
+    "title": "ContextBench: A Benchmark for Context Retrieval in Coding Agents",
+    "text_chars": 91386
+  },
+  {
+    "file": "2602.11988-evaluating-agents-md.pdf",
+    "pages": 24,
+    "bytes": 2736310,
+    "sha256": "efa31841f8ada102cc488e080209762957d78ff1a22bd6d4cd73b6bb565b6bec",
+    "title": "Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents?",
+    "text_chars": 69481
+  },
+  {
+    "file": "2603.13428-swe-milestone.pdf",
+    "pages": 46,
+    "bytes": 3886309,
+    "sha256": "ab1a668e7b7ba89399867479caca568faa65e3464c20cbb2fd5d2dc894f0cc8c",
+    "title": "SWE-Milestone: Evaluating AI Agents on Continuous Software Evolution",
+    "text_chars": 181147
+  },
+  {
+    "file": "2603.21489-caid.pdf",
+    "pages": 22,
+    "bytes": 3324961,
+    "sha256": "7db67ce0a2b2d4188149b5d84dd44f2a2aab6dc6edd1de02d5508ff561834e62",
+    "title": "Effective Strategies for Asynchronous Software Engineering Agents",
+    "text_chars": 86106
+  },
+  {
+    "file": "2604.12147-plan-to-action.pdf",
+    "pages": 12,
+    "bytes": 8494108,
+    "sha256": "adc0ddcedc82b70ec4c0aaa097ca3d0058577e00fdbb0f21059fb28161f75a19",
+    "title": "From Plan to Action: How Well Do Agents Follow the Plan?",
+    "text_chars": 65588
+  },
+  {
+    "file": "2605.15425-runtime-structured-decomposition.pdf",
+    "pages": 5,
+    "bytes": 669594,
+    "sha256": "8566964f244122ec14620e3eccde0b50d3399c24ea0f532a98899bc941d118be",
+    "title": "Runtime-Structured Task Decomposition for Agentic Coding Systems",
+    "text_chars": 20903
+  },
+  {
+    "file": "2605.15846-roadmapbench.pdf",
+    "pages": 30,
+    "bytes": 5871923,
+    "sha256": "6623545995103c66ecea898a8190af10115058c4469b53e49d2730a1dc2c98ba",
+    "title": "RoadmapBench: Evaluating Long-Horizon Agentic Software Development Across Version Upgrades",
+    "text_chars": 84852
+  },
+  {
+    "file": "2606.08135-ticoder.pdf",
+    "pages": 12,
+    "bytes": 1441202,
+    "sha256": "e5dc19c3151d0394c44463671675970e6caafb9ba3d0c28f7006e6a334eda0fc",
+    "title": "TICoder: A Repository-Level Code Generation Framework with Test-Driven Planning and Implementation-Aware Reuse",
+    "text_chars": 68567
+  },
+  {
+    "file": "2607.25152-progress-mirage.pdf",
+    "pages": 23,
+    "bytes": 449956,
+    "sha256": "0f4e38a6a796c069f921412877a71e9cee67a38959505d0e943e8bf35d779ed0",
+    "title": "When Do Agent Loops Mistake Stagnation for Progress?",
+    "text_chars": 116199
+  },
+  {
+    "file": "2608.01964-longhorizon-harness.pdf",
+    "pages": 29,
+    "bytes": 27448724,
+    "sha256": "ce534c4fd69b47086b724cdcf7af10faad54f44b025c13bd67ab6975d58f200a",
+    "title": "LongHorizon-Harness: Advancing Long-Horizon Agents for Real-World Tasks",
+    "text_chars": 111132
+  },
+  {
+    "file": "2608.06663-horizon-gap.pdf",
+    "pages": 39,
+    "bytes": 1787472,
+    "sha256": "2486a92f4af7ab2b75e3550cb4ad8531cde80a25be7459d9cc227cda8c92c3c4",
+    "title": "The Horizon Gap: Planning, Memory, Execution, Training, and Evaluation for Long-Horizon LLM Agents",
+    "text_chars": 136237
+  },
+  {
+    "file": "2608.06701-liveplan.pdf",
+    "pages": 12,
+    "bytes": 1463570,
+    "sha256": "fb8192827945d82004eedd4f411f92b393d981d89f3b7dd9904465e4ed4a2a6f",
+    "title": "Online Monitoring and Corrective Steering of Programming Agents",
+    "text_chars": 66543
+  },
+  {
+    "file": "2608.06811-pmcoder.pdf",
+    "pages": 12,
+    "bytes": 759696,
+    "sha256": "7ea41c90dee4f328e16c90fca5c99ac7441377cbb20e6793f2ebbb1e8663f5d0",
+    "title": "Coupling Planning with Episodic Memory in LLM Agents for Software Issue Resolution",
+    "text_chars": 64686
+  },
+  {
+    "file": "2608.09799-specpath.pdf",
+    "pages": 11,
+    "bytes": 386538,
+    "sha256": "8b87b62876842e1ec2dcd06b951e039ed2ab7fe9d5bcf6a022100273df5e7298",
+    "title": "SpecPath: Testing Coding Agents Across Contract-Equivalent Specification Histories",
+    "text_chars": 51838
+  }
+]

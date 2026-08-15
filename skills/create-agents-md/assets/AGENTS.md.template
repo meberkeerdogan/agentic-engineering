@@ -1,0 +1,23 @@
+# AGENTS.md
+
+## Project context
+
+{{brief project facts that materially help agents work}}
+
+## Working with the human
+
+- Confirmation: {{how often to ask and under which conditions}}
+- Reporting: {{plain English, technical, or combined; preferred update frequency}}
+- Decisions: {{when to proceed independently and when to present options}}
+
+## Commands
+
+{{essential verified setup, test, lint, or build commands; remove this section if unnecessary}}
+
+## Completion
+
+{{expected verification and final reporting behavior}}
+
+## Additional guidance
+
+{{only stable, recurring guidance that does not fit above; remove this section if empty}}

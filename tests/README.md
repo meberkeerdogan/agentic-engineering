@@ -1,12 +1,9 @@
 # Tests
 
-Automated tests will live here once implementation begins.
+The first implemented suite validates the M01 core schemas, examples, unique identifiers, and cross-references.
 
-The first test suite should cover:
+```powershell
+uv run --group test pytest
+```
 
-- playbook schema validation
-- skill manifest validation
-- workflow state transitions
-- checkpoint behavior
-- evaluator pass and fail paths
-- handoff output shape
+Later modules will add workflow state-transition, evaluator, checkpoint, runner, and handoff tests.

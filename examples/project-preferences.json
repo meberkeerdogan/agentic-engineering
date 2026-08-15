@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "scope": "repository",
+  "preferences": {
+    "confirmation": {
+      "frequency": "Ask only when the choice is consequential or cannot be safely reversed.",
+      "conditions": [
+        "external actions",
+        "destructive changes",
+        "material expansion beyond the request"
+      ]
+    },
+    "reporting": {
+      "style": "combined",
+      "frequency": "Report at meaningful milestones without narrating routine steps."
+    },
+    "decision_making": "Make ordinary in-scope decisions independently and present options when tradeoffs would materially change the result.",
+    "verification": "Run relevant checks when practical and summarize what was verified at the end."
+  }
+}

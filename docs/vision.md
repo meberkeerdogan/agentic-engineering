@@ -1,12 +1,12 @@
 # Vision
 
-Agent Playbooks exists to make coding-agent work more reliable, legible, and reusable.
+Agentic Engineering exists to improve the systems through which AI agents perform software engineering. It is an umbrella for research-informed, measurable, and reusable improvements to agentic coding.
 
 ## Problem
 
-Coding agents can plan, edit, test, review, and summarize work, but each run can feel one-off. Teams need a way to describe the process around the agent, not only the prompt or skill given to it.
+Coding agents can plan, edit, test, review, and summarize work, but long-running projects expose weaknesses in planning, context management, progress measurement, recovery, verification, and continuity. Teams need ways to improve the whole system around an agent, not only the prompt or skill given to it.
 
-Without explicit playbooks, important details often live in chat history:
+Without durable engineering mechanisms, important details often live only in chat history:
 
 - when to ask for approval
 - which tests to run
@@ -15,16 +15,17 @@ Without explicit playbooks, important details often live in chat history:
 - how to hand work to another person or agent
 - how to compare an agent run against expectations
 
-## Product Idea
+## Project Scope
 
-Agent Playbooks should let people define agent work as reusable playbooks, workflows, and skills. A playbook gives an agent a structured way to approach a task. A workflow describes the sequence of steps, the context each step needs, the checks that validate progress, and the handoff produced at the end. A skill packages focused agent behavior so it can be reused across many playbooks.
+Agentic Engineering should support multiple kinds of solution. A problem may call for a playbook or skill, but it may instead require a deterministic evaluator, persistent state model, benchmark, context strategy, agent harness, safety policy, tool adapter, orchestration method, or another mechanism. The project should compare approaches by evidence rather than make one abstraction universal.
 
-The project should help with four jobs:
+The project should help with five jobs:
 
-- **Design** repeatable agent playbooks.
-- **Package** reusable coding-agent skills.
-- **Run** workflows with visible checkpoints.
-- **Improve** workflows over time using structured outcomes.
+- **Understand** recurring failure modes and opportunities in agentic software engineering.
+- **Design** interventions at the appropriate layer: instructions, tools, runtime, evaluation, or process.
+- **Package** useful interventions so they can be reused across agents and projects.
+- **Run** agent work with inspectable state, evidence, and controls.
+- **Evaluate** whether interventions improve outcomes on realistic work.
 
 ## Design Values
 
@@ -33,10 +34,14 @@ The project should help with four jobs:
 - **Portable**: Definitions should not be trapped in one tool.
 - **Safe**: Risky operations should be explicit and reviewable.
 - **Practical**: The first useful version should help real projects quickly.
+- **Evidence-driven**: Claims of improvement should be backed by reproducible evaluation.
+- **Pluralistic**: Use the mechanism that fits the problem rather than forcing every solution into one format.
 
 ## Non-Goals
 
 - Replacing coding agents.
+- Treating playbooks, workflows, skills, or loops as the only valid solution.
 - Hiding tool behavior behind opaque automation.
-- Building a full project management suite.
-- Optimizing for every agent environment before the core model works.
+- Building a general project management suite.
+- Claiming improvement based only on an agent's self-assessment.
+- Optimizing for every agent environment before individual approaches demonstrate value.

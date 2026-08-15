@@ -1,6 +1,6 @@
 # Security Policy
 
-Agent Playbooks is early-stage software. Please do not use unreleased code to run untrusted automation in sensitive environments.
+Agentic Engineering is early-stage software. Please do not use unreleased code to run untrusted automation in sensitive environments.
 
 ## Reporting a Vulnerability
 

@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "experiment_id": "exp-verified-runner-001",
+  "title": "Verified runner versus simple baseline",
+  "hypothesis": "Independent evidence-based audit reduces false completion without increasing regressions.",
+  "status": "planned",
+  "control": {
+    "id": "control-baseline",
+    "workflow": "agentless-baseline",
+    "config_ref": "experiments/configs/control.json"
+  },
+  "treatments": [
+    {
+      "id": "treatment-verified-runner",
+      "workflow": "verified-single-agent",
+      "config_ref": "experiments/configs/verified-runner.json"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "fixture-01",
+      "repository": "examples/fixture-repository",
+      "spec_ref": "examples/fixture-repository/ACTIVE_SPEC.json"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "verified-completion",
+      "description": "Required criteria accepted by declared evaluators.",
+      "direction": "higher",
+      "unit": "ratio"
+    },
+    {
+      "id": "regressions",
+      "description": "Previously passing protected checks that now fail.",
+      "direction": "lower",
+      "unit": "count"
+    }
+  ],
+  "runs": [],
+  "decision": {
+    "outcome": "pending",
+    "reason": "The experiment has not run yet."
+  }
+}
+
