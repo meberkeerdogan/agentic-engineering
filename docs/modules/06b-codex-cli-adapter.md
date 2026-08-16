@@ -13,6 +13,7 @@ The invocation is based on the official [Codex CLI command reference](https://de
 - The trusted host supplies an isolated workspace, an independent evaluator, and an external cost meter.
 - The prompt is sent through standard input instead of the process argument list.
 - Each run uses `--ephemeral`, a declared `read-only` or `workspace-write` sandbox, and a JSON output schema.
+- The provider-facing schema uses the supported structured-output subset; stricter checks such as unique artifact references are enforced again by the trusted local parser.
 - `danger-full-access` and bypass flags are refused.
 - JSONL standard output, standard error, request and process metadata, output schema, and final response are preserved per experiment cell.
 - On Windows, the adapter resolves the installed `codex.cmd` shim explicitly and still invokes it with an argument array and `shell=False`.

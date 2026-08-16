@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest
 
 from agentic_engineering.codex_adapter import (
+    SUBMISSION_SCHEMA,
     CodexAdapterError,
     CodexExecConfig,
     CodexExecRunner,
@@ -17,6 +18,12 @@ from agentic_engineering.experiments import RunObservation, run_experiment
 
 ROOT = Path(__file__).resolve().parents[1]
 FAKE_CODEX = ROOT / "tests" / "fixtures" / "fake_codex.py"
+
+
+def test_provider_schema_uses_supported_subset_and_parser_keeps_strictness() -> None:
+    artifact_refs = SUBMISSION_SCHEMA["properties"]["artifact_refs"]
+
+    assert "uniqueItems" not in artifact_refs
 
 
 def test_windows_prefers_runnable_codex_cmd_shim() -> None:

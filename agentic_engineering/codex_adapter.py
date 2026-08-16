@@ -35,7 +35,6 @@ SUBMISSION_SCHEMA: dict[str, Any] = {
         "artifact_refs": {
             "type": "array",
             "items": {"type": "string", "minLength": 1},
-            "uniqueItems": True,
         },
     },
 }
