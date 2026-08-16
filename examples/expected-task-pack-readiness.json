@@ -22,8 +22,8 @@
       "id": "median-fix",
       "category": "bounded-bug-fix",
       "repository": "examples/live-pilot-template",
-      "repository_fingerprint": "e69bf97733fe160d0e90c9ef54b7e2869cf586a01875ca7301f85d170e0f816b",
-      "repository_entry_count": 7,
+      "repository_fingerprint": "5724ef41ec946c2c40e0866b051435d5f21f905bce5802c96c9d3403fe309d8f",
+      "repository_entry_count": 10,
       "baseline_outcome": "fail",
       "failing_evaluator_ids": ["median-tests"],
       "protected_regressions": []
@@ -32,8 +32,8 @@
       "id": "restock-report",
       "category": "multi-file-feature",
       "repository": "examples/task-pack/multi-file-feature",
-      "repository_fingerprint": "8bf43caf6ed8c02b97af7e266755f09d161c775c53969e87e9d8144fd8ce1dcb",
-      "repository_entry_count": 8,
+      "repository_fingerprint": "a022346b395e6cff059a7d251edc4bc20f59e423a1b880301c968b0d7c98037a",
+      "repository_entry_count": 11,
       "baseline_outcome": "fail",
       "failing_evaluator_ids": ["restock-tests"],
       "protected_regressions": []
@@ -42,13 +42,13 @@
       "id": "roadmap-evolution",
       "category": "multi-step-evolution",
       "repository": "examples/task-pack/multi-step-evolution",
-      "repository_fingerprint": "5a81e9e1c9680466415d132d02c98f7d73fdea0bc05a8119c30525af54c8c03e",
-      "repository_entry_count": 8,
+      "repository_fingerprint": "f2a9ac19e4c78c4ae9d09cfc9505d1fec58b3f0d3e639e0c08376e0d099df4e9",
+      "repository_entry_count": 11,
       "baseline_outcome": "fail",
       "failing_evaluator_ids": ["roadmap-tests"],
       "protected_regressions": []
     }
   ],
-  "report_id": "task-pack-readiness-2501047c98bd1a4c",
-  "fingerprint": "2501047c98bd1a4cd061fc2627e3431b8698ece42d49815b2d34202cbda77531"
+  "report_id": "task-pack-readiness-99542adb7330896b",
+  "fingerprint": "99542adb7330896bf8a60171436543a740e27c43ffd499a4e5569c54d2264d66"
 }

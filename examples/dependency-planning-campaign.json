@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "campaign_id": "dependency-planning-campaign-001",
+  "title": "M07c static-versus-adaptive planning evidence campaign",
+  "task_pack_ref": "examples/dependency-planning-task-pack.json",
+  "control_arm_id": "control-static-plan",
+  "treatment_arm_id": "treatment-adaptive-plan",
+  "static_workflow_ref": "workflow-static-plan.md",
+  "adaptive_workflow_ref": "workflow-adaptive-plan.md",
+  "requirements": {
+    "minimum_tasks": 3,
+    "minimum_distinct_repositories": 3,
+    "minimum_seeds": 3,
+    "required_graph_shapes": ["chain", "fan-out", "diamond"],
+    "minimum_divergent_plans": 2,
+    "minimum_negative_controls": 1
+  },
+  "task_plans": [
+    {
+      "id": "median-fix",
+      "graph_shape": "chain",
+      "plan_ref": "dependency-plan.json",
+      "expected_static_order": ["locate", "patch", "validate", "audit"],
+      "expected_adaptive_order": ["locate", "patch", "validate", "audit"],
+      "expected_ready_task_ids": ["locate"],
+      "expected_blocked_task_ids": [],
+      "expected_plan_divergence": false
+    },
+    {
+      "id": "restock-report",
+      "graph_shape": "fan-out",
+      "plan_ref": "dependency-plan.json",
+      "expected_static_order": ["inventory", "report", "tests", "audit"],
+      "expected_adaptive_order": ["report", "inventory", "tests", "audit"],
+      "expected_ready_task_ids": ["report", "inventory"],
+      "expected_blocked_task_ids": [],
+      "expected_plan_divergence": true
+    },
+    {
+      "id": "roadmap-evolution",
+      "graph_shape": "diamond",
+      "plan_ref": "dependency-plan.json",
+      "expected_static_order": ["readiness", "blocking", "summary", "validate"],
+      "expected_adaptive_order": ["blocking", "readiness", "summary", "validate"],
+      "expected_ready_task_ids": ["blocking", "readiness"],
+      "expected_blocked_task_ids": [],
+      "expected_plan_divergence": true
+    }
+  ],
+  "model_execution_allowed": false
+}

@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "campaign_id": "dependency-planning-campaign-001",
+  "status": "ready_for_separate_approval",
+  "campaign_fingerprint": "f59c7cf1c4ca974e0eaa97aef496dd63ba21ad19f19dc5c3f08fba8acf2e9d4e",
+  "task_pack_readiness_fingerprint": "0f717f0f796acfffd00321e89f322a937e0a38b225b45fe34aac6763a2e87863",
+  "experiment_id": "exp-dependency-planning-001",
+  "experiment_plan_fingerprint": "d9aeb3f13bf0ada361f58ea6bff0559d960d3e9b77ff798075f6e1d9d2fda923",
+  "shared_workflow_core_fingerprint": "9759fe67dc5261dc820cd96743f9b01ce68797a508c43e501ab4f5ef7d6aa101",
+  "static_policy_fingerprint": "8d1f087eef0099e3ba3d4f97cd27e7e07dc35fe25911a293202dfc96909ebda7",
+  "adaptive_policy_fingerprint": "6440c5574b88d2578d747953d53aab4f2d9a10ccdc5e183c4dbec04e10fae54a",
+  "task_count": 3,
+  "seed_count": 3,
+  "arm_count": 2,
+  "matrix_size": 18,
+  "divergent_plan_count": 2,
+  "negative_control_count": 1,
+  "model_calls_performed": false,
+  "paid_execution_authorized": false,
+  "tasks": [
+    {
+      "id": "median-fix",
+      "graph_shape": "chain",
+      "repository": "examples/live-pilot-template",
+      "plan_source_fingerprint": "8fc0326292e77143ba5fd4bf5751e8a3ac6f1f9294f7f688c91e02abb525db75",
+      "static_report_fingerprint": "5198878fe9cd3bee1489c0610479dfa4fdd70165aebf5858a2c8a25c37f8cd7b",
+      "adaptive_report_fingerprint": "f25777f69ac1dc4cf98723a9d713b54e72364ddadc9c15cb5866ff6c423a7fbd",
+      "static_order": ["locate", "patch", "validate", "audit"],
+      "adaptive_order": ["locate", "patch", "validate", "audit"],
+      "ready_task_ids": ["locate"],
+      "blocked_task_ids": [],
+      "plan_divergence": false
+    },
+    {
+      "id": "restock-report",
+      "graph_shape": "fan-out",
+      "repository": "examples/task-pack/multi-file-feature",
+      "plan_source_fingerprint": "b8f030e338f98f668fd6310265fed52c23cea357e1ee36895e01d900509a89ac",
+      "static_report_fingerprint": "3dc2217d2ea085ee9e215ce96a240b807903f69bcfbbeb31e035a7e29b9c3c61",
+      "adaptive_report_fingerprint": "7e7ea6cbab33ee2dd947db44d56288a9cedc5912e49aac9fcc756f3fefb0ea26",
+      "static_order": ["inventory", "report", "tests", "audit"],
+      "adaptive_order": ["report", "inventory", "tests", "audit"],
+      "ready_task_ids": ["report", "inventory"],
+      "blocked_task_ids": [],
+      "plan_divergence": true
+    },
+    {
+      "id": "roadmap-evolution",
+      "graph_shape": "diamond",
+      "repository": "examples/task-pack/multi-step-evolution",
+      "plan_source_fingerprint": "6e272a2a998da98425f1bfd6a98fc2a4ea7c074b793aabbb91975e9140d895cd",
+      "static_report_fingerprint": "db6d1a244f3512fa1a28b370de559b37d6215baba6020ec2b6bd5ca6a3a2356e",
+      "adaptive_report_fingerprint": "743b3f0e68f9eeb58460179d186b44ed4b6ad7ed0c92a8044af7b5cf360ab06b",
+      "static_order": ["readiness", "blocking", "summary", "validate"],
+      "adaptive_order": ["blocking", "readiness", "summary", "validate"],
+      "ready_task_ids": ["blocking", "readiness"],
+      "blocked_task_ids": [],
+      "plan_divergence": true
+    }
+  ],
+  "report_id": "planning-campaign-readiness-68bdbd2b9e470be8",
+  "fingerprint": "68bdbd2b9e470be8d42a5c7af9fcf7f3c310a3364c71e5694ee5f6b7a5bbf400"
+}

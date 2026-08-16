@@ -1,6 +1,6 @@
 # Examples
 
-This directory will hold example playbooks, workflows, and skills.
+This directory contains example contracts, fixtures, experiments, playbooks, workflows, and skills.
 
 Good examples should be small, realistic, and easy to copy into another project.
 
@@ -58,3 +58,7 @@ Current examples:
 - [`evolution-sentinel-batch.json`](evolution-sentinel-batch.json): two-cell evolution budget with one cell per invocation and a 0.75-credit per-cell ceiling.
 - [`evolution-sentinel-live.json`](evolution-sentinel-live.json): separately approval-gated launcher for the evolution sentinel.
 - [`multi-agent-run.json`](multi-agent-run.json) and [`multi-agent-fixture/`](multi-agent-fixture/): offline M09 dependency-wave and integration fixture.
+- [`dependency-planning-campaign.json`](dependency-planning-campaign.json): offline-only M07c readiness contract with graph-shape and isolated-factor requirements.
+- [`dependency-planning-experiment.json`](dependency-planning-experiment.json) and [`dependency-planning-task-pack.json`](dependency-planning-task-pack.json): three-task, three-seed static/adaptive comparison and its M06 evidence bindings.
+- [`expected-planning-campaign-readiness.json`](expected-planning-campaign-readiness.json): deterministic proof of an 18-cell comparison with two divergent plans, one negative control, and no model authorization.
+- The three representative task repositories now include dependency-plan inputs plus static and adaptive workflow policies with a byte-identical verified execution core.

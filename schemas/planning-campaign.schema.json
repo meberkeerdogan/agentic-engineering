@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/planning-campaign.schema.json",
+  "title": "Dependency Planning Evidence Campaign",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "campaign_id", "title", "task_pack_ref", "control_arm_id", "treatment_arm_id", "static_workflow_ref", "adaptive_workflow_ref", "requirements", "task_plans", "model_execution_allowed"],
+  "properties": {
+    "version": {"const": 1},
+    "campaign_id": {"$ref": "#/$defs/id"},
+    "title": {"type": "string", "minLength": 1},
+    "task_pack_ref": {"$ref": "#/$defs/path"},
+    "control_arm_id": {"$ref": "#/$defs/id"},
+    "treatment_arm_id": {"$ref": "#/$defs/id"},
+    "static_workflow_ref": {"$ref": "#/$defs/path"},
+    "adaptive_workflow_ref": {"$ref": "#/$defs/path"},
+    "requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum_tasks", "minimum_distinct_repositories", "minimum_seeds", "required_graph_shapes", "minimum_divergent_plans", "minimum_negative_controls"],
+      "properties": {
+        "minimum_tasks": {"type": "integer", "minimum": 3},
+        "minimum_distinct_repositories": {"type": "integer", "minimum": 3},
+        "minimum_seeds": {"type": "integer", "minimum": 3},
+        "required_graph_shapes": {"type": "array", "minItems": 3, "maxItems": 3, "uniqueItems": true, "items": {"enum": ["chain", "fan-out", "diamond"]}},
+        "minimum_divergent_plans": {"type": "integer", "minimum": 1},
+        "minimum_negative_controls": {"type": "integer", "minimum": 1}
+      }
+    },
+    "task_plans": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "graph_shape", "plan_ref", "expected_static_order", "expected_adaptive_order", "expected_ready_task_ids", "expected_blocked_task_ids", "expected_plan_divergence"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "graph_shape": {"enum": ["chain", "fan-out", "diamond"]},
+          "plan_ref": {"$ref": "#/$defs/path"},
+          "expected_static_order": {"$ref": "#/$defs/ids"},
+          "expected_adaptive_order": {"$ref": "#/$defs/ids"},
+          "expected_ready_task_ids": {"$ref": "#/$defs/ids"},
+          "expected_blocked_task_ids": {"$ref": "#/$defs/ids"},
+          "expected_plan_divergence": {"type": "boolean"}
+        }
+      }
+    },
+    "model_execution_allowed": {"const": false}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"},
+    "path": {"type": "string", "minLength": 1, "pattern": "^(?![A-Za-z]:)(?![/\\\\])(?!.*(?:^|[/\\\\])\\.\\.(?:[/\\\\]|$)).+"},
+    "ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}
+  }
+}

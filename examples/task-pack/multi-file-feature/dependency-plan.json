@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "plan_id": "restock-report-plan-001",
+  "tasks": [
+    {"id": "spec", "depends_on": [], "priority": 10, "evidence_refs": ["ACTIVE_SPEC.md"]},
+    {"id": "inventory", "depends_on": ["spec"], "priority": 6, "evidence_refs": ["inventory.py"]},
+    {"id": "report", "depends_on": ["spec"], "priority": 10, "evidence_refs": ["reporting.py"]},
+    {"id": "tests", "depends_on": ["inventory", "report"], "priority": 9, "evidence_refs": ["test_restock.py"]},
+    {"id": "audit", "depends_on": ["tests"], "priority": 5, "evidence_refs": ["evidence-contract.json"]}
+  ],
+  "runtime_states": [
+    {"id": "spec", "state": "completed", "evidence_refs": ["ACTIVE_SPEC.md"]}
+  ]
+}

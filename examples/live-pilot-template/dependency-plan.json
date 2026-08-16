@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "plan_id": "median-fix-plan-001",
+  "tasks": [
+    {"id": "reproduce", "depends_on": [], "priority": 10, "evidence_refs": ["test_calculator.py"]},
+    {"id": "locate", "depends_on": ["reproduce"], "priority": 9, "evidence_refs": ["calculator.py"]},
+    {"id": "patch", "depends_on": ["locate"], "priority": 8, "evidence_refs": ["ACTIVE_SPEC.md"]},
+    {"id": "validate", "depends_on": ["patch"], "priority": 7, "evidence_refs": ["test_calculator.py"]},
+    {"id": "audit", "depends_on": ["validate"], "priority": 6, "evidence_refs": ["evidence-contract.json"]}
+  ],
+  "runtime_states": [
+    {"id": "reproduce", "state": "completed", "evidence_refs": ["test_calculator.py"]}
+  ]
+}

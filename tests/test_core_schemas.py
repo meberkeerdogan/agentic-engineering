@@ -50,6 +50,10 @@ SCHEMA_EXAMPLE_PAIRS = [
     ("batch-experiment.schema.json", "evolution-sentinel-batch.json"),
     ("live-experiment.schema.json", "evolution-sentinel-live.json"),
     ("multi-agent-run.schema.json", "multi-agent-run.json"),
+    ("planning-campaign.schema.json", "dependency-planning-campaign.json"),
+    ("experiment-record.schema.json", "dependency-planning-experiment.json"),
+    ("task-pack.schema.json", "dependency-planning-task-pack.json"),
+    ("planning-campaign-readiness.schema.json", "expected-planning-campaign-readiness.json"),
 ]
 
 

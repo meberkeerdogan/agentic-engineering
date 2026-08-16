@@ -30,6 +30,8 @@ uv run --group test pytest
 
 `test_dependency_planning.py` verifies deterministic static and adaptive ordering, ready-frontier selection, transitive failure blocking, cycle rejection, and read-only outputs.
 
+`test_planning_campaign.py` verifies the three-repository M07c comparison, shared workflow-core isolation, deterministic static/adaptive plan evidence, negative-control coverage, schema-valid golden readiness, and the prohibition on model authorization.
+
 `test_phase_memory.py` verifies immutable provenance, safe supersession, deterministic per-phase bounds, phase/task-aware retrieval, and read-only output.
 
 `test_property_testing.py` verifies independent proposal review, rejection of invented properties, read-only evidence requirements, counterexample follow-up, and no generated-code execution.

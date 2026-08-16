@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/planning-campaign-readiness.schema.json",
+  "title": "Dependency Planning Campaign Readiness Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "campaign_id", "status", "campaign_fingerprint", "task_pack_readiness_fingerprint", "experiment_id", "experiment_plan_fingerprint", "shared_workflow_core_fingerprint", "static_policy_fingerprint", "adaptive_policy_fingerprint", "task_count", "seed_count", "arm_count", "matrix_size", "divergent_plan_count", "negative_control_count", "model_calls_performed", "paid_execution_authorized", "tasks", "report_id", "fingerprint"],
+  "properties": {
+    "version": {"const": 1},
+    "campaign_id": {"$ref": "#/$defs/id"},
+    "status": {"const": "ready_for_separate_approval"},
+    "campaign_fingerprint": {"$ref": "#/$defs/hash"},
+    "task_pack_readiness_fingerprint": {"$ref": "#/$defs/hash"},
+    "experiment_id": {"$ref": "#/$defs/id"},
+    "experiment_plan_fingerprint": {"$ref": "#/$defs/hash"},
+    "shared_workflow_core_fingerprint": {"$ref": "#/$defs/hash"},
+    "static_policy_fingerprint": {"$ref": "#/$defs/hash"},
+    "adaptive_policy_fingerprint": {"$ref": "#/$defs/hash"},
+    "task_count": {"type": "integer", "minimum": 3},
+    "seed_count": {"type": "integer", "minimum": 3},
+    "arm_count": {"const": 2},
+    "matrix_size": {"type": "integer", "minimum": 18},
+    "divergent_plan_count": {"type": "integer", "minimum": 1},
+    "negative_control_count": {"type": "integer", "minimum": 1},
+    "model_calls_performed": {"const": false},
+    "paid_execution_authorized": {"const": false},
+    "tasks": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "graph_shape", "repository", "plan_source_fingerprint", "static_report_fingerprint", "adaptive_report_fingerprint", "static_order", "adaptive_order", "ready_task_ids", "blocked_task_ids", "plan_divergence"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "graph_shape": {"enum": ["chain", "fan-out", "diamond"]},
+          "repository": {"type": "string", "minLength": 1},
+          "plan_source_fingerprint": {"$ref": "#/$defs/hash"},
+          "static_report_fingerprint": {"$ref": "#/$defs/hash"},
+          "adaptive_report_fingerprint": {"$ref": "#/$defs/hash"},
+          "static_order": {"$ref": "#/$defs/ids"},
+          "adaptive_order": {"$ref": "#/$defs/ids"},
+          "ready_task_ids": {"$ref": "#/$defs/ids"},
+          "blocked_task_ids": {"$ref": "#/$defs/ids"},
+          "plan_divergence": {"type": "boolean"}
+        }
+      }
+    },
+    "report_id": {"$ref": "#/$defs/id"},
+    "fingerprint": {"$ref": "#/$defs/hash"}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"},
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}
+  }
+}

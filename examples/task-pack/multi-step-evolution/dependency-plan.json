@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "plan_id": "roadmap-evolution-plan-001",
+  "tasks": [
+    {"id": "understand", "depends_on": [], "priority": 10, "evidence_refs": ["ACTIVE_SPEC.md"]},
+    {"id": "readiness", "depends_on": ["understand"], "priority": 6, "evidence_refs": ["roadmap.py"]},
+    {"id": "blocking", "depends_on": ["understand"], "priority": 10, "evidence_refs": ["roadmap.py"]},
+    {"id": "summary", "depends_on": ["readiness", "blocking"], "priority": 9, "evidence_refs": ["progress.py"]},
+    {"id": "validate", "depends_on": ["summary"], "priority": 5, "evidence_refs": ["test_evolution.py"]}
+  ],
+  "runtime_states": [
+    {"id": "understand", "state": "completed", "evidence_refs": ["ACTIVE_SPEC.md"]}
+  ]
+}
