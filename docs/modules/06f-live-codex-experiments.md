@@ -14,7 +14,7 @@ This bridge connects the M06e resumable matrix to the real M06b Codex adapter. E
 - Each cell gets a fresh Git repository and temporary plugin-free Codex home.
 - A cell workspace contains only its selected workflow file, so the control cannot discover treatment instructions and vice versa.
 - M06d runs before every model call, not merely once at batch startup.
-- Writable cells use explicit CLI auto-review. It changes who reviews approval requests, not the filesystem or network permissions granted to the cell.
+- Writable cells use explicit CLI auto-review. The CLI flag selects `workspace-write` and changes who reviews approval requests, not the filesystem or network permissions granted to the cell.
 - Executor claims remain untrusted. Only the independent evidence contract can set verified completion.
 - Cell status stores exception types but not exception messages that may contain private output.
 - The batch still refuses to repeat a cell left `running` by an interrupted paid process.

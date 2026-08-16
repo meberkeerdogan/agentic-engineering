@@ -104,6 +104,7 @@ def test_exec_uses_stdin_safe_sandbox_and_structured_output(tmp_path: Path) -> N
         "schema_exists": True,
         "json_mode": True,
         "auto_review": False,
+        "sandbox_flag": True,
     }
     assert request["sandbox"] == "workspace-write"
     assert request["approval_mode"] == "none"
@@ -204,7 +205,9 @@ def test_auto_review_is_explicit_and_requires_workspace_write(tmp_path: Path) ->
         prompt="bounded agentic-engineering task",
     )
 
-    assert json.loads(result.stdout)["auto_review"] is True
+    transport = json.loads(result.stdout)
+    assert transport["auto_review"] is True
+    assert transport["sandbox_flag"] is False
     request = json.loads((result.evidence_dir / "request.json").read_text("utf-8"))
     assert request["approval_mode"] == "auto-review"
     with pytest.raises(CodexAdapterError, match="requires the workspace-write"):

@@ -308,11 +308,11 @@ class CodexExecRunner:
             "--color",
             "never",
             "--json",
-            "--sandbox",
-            self.config.sandbox,
         ]
         if self.config.approve_for_me:
             command.append("--approve-for-me")
+        else:
+            command.extend(["--sandbox", self.config.sandbox])
         command.extend(
             [
                 "-C",

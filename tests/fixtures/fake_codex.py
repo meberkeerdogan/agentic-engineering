@@ -27,6 +27,7 @@ print(
             "schema_exists": schema_path.is_file(),
             "json_mode": "--json" in arguments,
             "auto_review": "--approve-for-me" in arguments,
+            "sandbox_flag": "--sandbox" in arguments,
         }
     )
 )

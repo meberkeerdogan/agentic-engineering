@@ -13,7 +13,7 @@ The invocation is based on the official [Codex CLI command reference](https://de
 - The trusted host supplies an isolated workspace, an independent evaluator, and an external cost meter.
 - The prompt is sent through standard input instead of the process argument list.
 - Each run uses `--ephemeral`, a declared `read-only` or `workspace-write` sandbox, and a JSON output schema.
-- Writable non-interactive runs must explicitly opt into CLI auto-review with `--approve-for-me`; this routes approval decisions to a reviewer without expanding the `workspace-write` sandbox.
+- Writable non-interactive runs explicitly opt into CLI auto-review with `--approve-for-me`. That flag selects the `workspace-write` sandbox and is therefore emitted instead of the mutually exclusive `--sandbox` flag.
 - The provider-facing schema uses the supported structured-output subset; stricter checks such as unique artifact references are enforced again by the trusted local parser.
 - `danger-full-access` and bypass flags are refused.
 - JSONL standard output, standard error, request and process metadata, output schema, and final response are preserved per experiment cell.

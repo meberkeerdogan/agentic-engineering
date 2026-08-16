@@ -53,7 +53,7 @@ def run_offline(project: Path):
 
 
 def batch_dir(project: Path) -> Path:
-    return project / ".agentic-runs" / "live-batches" / "codex-workflow-comparison-002"
+    return project / ".agentic-runs" / "live-batches" / "codex-workflow-comparison-003"
 
 
 def test_live_experiment_pauses_then_resumes_with_fresh_preflight_per_cell(
