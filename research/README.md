@@ -5,6 +5,7 @@ This directory keeps the evidence used to design and evaluate Agentic Engineerin
 ## Start Here
 
 - [Critical review: Long-Horizon Agent Reliability](reports/2026-08-14-long-horizon-reliability-review.md)
+- [Live Codex workflow pilot](reports/2026-08-16-live-codex-workflow-pilot.md)
 - [Source index](sources.md)
 - [PDF integrity and extraction manifest](papers/manifest.json)
 
