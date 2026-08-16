@@ -29,6 +29,9 @@ SCHEMA_EXAMPLE_PAIRS = [
     ("codex-preflight-report.schema.json", "expected-codex-preflight-report.json"),
     ("batch-experiment.schema.json", "batch-experiment.json"),
     ("batch-state.schema.json", "expected-batch-state.json"),
+    ("live-experiment.schema.json", "live-experiment.json"),
+    ("batch-experiment.schema.json", "live-batch-experiment.json"),
+    ("experiment-record.schema.json", "live-experiment-record.json"),
 ]
 
 

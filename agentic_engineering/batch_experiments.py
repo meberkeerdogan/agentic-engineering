@@ -10,6 +10,7 @@ import os
 import re
 import socket
 import sys
+import time
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from pathlib import Path
@@ -55,6 +56,7 @@ STATE_FIELDS = {
     "status",
     "plan_fingerprint",
     "config_fingerprint",
+    "execution_fingerprint",
     "matrix_size",
     "completed_count",
     "spent_cost",
@@ -237,7 +239,15 @@ def _write_json_atomic(path: Path, value: Any) -> None:
             stream.write(encoded)
             stream.flush()
             os.fsync(stream.fileno())
-        os.replace(temporary, path)
+        delays = (0.01, 0.02, 0.04, 0.08)
+        for attempt in range(len(delays) + 1):
+            try:
+                os.replace(temporary, path)
+                break
+            except PermissionError:
+                if attempt == len(delays):
+                    raise
+                time.sleep(delays[attempt])
     finally:
         if temporary.exists():
             temporary.unlink()
@@ -285,7 +295,9 @@ def _observation_from_mapping(value: Mapping[str, Any]) -> RunObservation:
 
 
 def _new_state(
-    plan: Mapping[str, Any], config: BatchExperimentConfig
+    plan: Mapping[str, Any],
+    config: BatchExperimentConfig,
+    execution_fingerprint: str | None,
 ) -> dict[str, Any]:
     cells = [
         {
@@ -305,6 +317,7 @@ def _new_state(
         "status": "planned",
         "plan_fingerprint": experiment_plan_fingerprint(plan),
         "config_fingerprint": config.fingerprint,
+        "execution_fingerprint": execution_fingerprint,
         "matrix_size": len(cells),
         "completed_count": 0,
         "spent_cost": 0.0,
@@ -335,6 +348,7 @@ def _validate_state(
     state: Mapping[str, Any],
     plan: Mapping[str, Any],
     config: BatchExperimentConfig,
+    execution_fingerprint: str | None,
 ) -> None:
     if set(state) != STATE_FIELDS or state.get("version") != 1:
         raise BatchExperimentError("batch state fields are invalid")
@@ -344,6 +358,8 @@ def _validate_state(
         raise BatchExperimentError("experiment plan changed after the batch started")
     if state.get("config_fingerprint") != config.fingerprint:
         raise BatchExperimentError("batch config changed after the batch started")
+    if state.get("execution_fingerprint") != execution_fingerprint:
+        raise BatchExperimentError("batch execution inputs changed after the batch started")
     if state.get("status") not in {"planned", "running", "paused", "completed", "failed"}:
         raise BatchExperimentError("batch state has an invalid status")
     if state.get("pause_reason") not in {None, "invocation_run_limit"}:
@@ -507,10 +523,16 @@ def run_experiment_batch(
     adapters: Mapping[str, ExperimentAdapter],
     config: BatchExperimentConfig,
     run_root: Path,
+    *,
+    execution_fingerprint: str | None = None,
 ) -> BatchOutcome:
     """Run or resume one bounded chunk without repeating completed cells."""
 
     validate_experiment_plan(plan, adapters)
+    if execution_fingerprint is not None and not re.fullmatch(
+        r"[a-f0-9]{64}", execution_fingerprint
+    ):
+        raise BatchExperimentError("execution fingerprint must be a lowercase SHA-256 digest")
     _validate_budget_capacity(plan, config)
     run_root = run_root.resolve()
     run_root.mkdir(parents=True, exist_ok=True)
@@ -530,13 +552,13 @@ def run_experiment_batch(
     with _BatchLock(lock_path):
         if state_path.exists():
             state = _load_object(state_path, "batch state")
-            _validate_state(state, plan, config)
+            _validate_state(state, plan, config, execution_fingerprint)
         else:
             if any(path != lock_path for path in batch_dir.iterdir()):
                 raise BatchExperimentError(
                     "batch directory contains files but no trustworthy state"
                 )
-            state = _new_state(plan, config)
+            state = _new_state(plan, config, execution_fingerprint)
             _write_json_atomic(state_path, state)
 
         if state["status"] == "completed":
@@ -649,7 +671,13 @@ def main(argv: Sequence[str] | None = None) -> int:
     run_root = _resolve_inside(root, config.run_root_ref, "run-root reference")
     plan = _load_object(plan_path, "experiment plan")
     replay = _load_object(observations_path, "replay observations")
-    outcome = run_experiment_batch(plan, replay_adapters(plan, replay), config, run_root)
+    outcome = run_experiment_batch(
+        plan,
+        replay_adapters(plan, replay),
+        config,
+        run_root,
+        execution_fingerprint=_fingerprint(replay),
+    )
     json.dump(
         {
             "status": outcome.status,

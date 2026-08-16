@@ -4,6 +4,7 @@
   "status": "paused",
   "plan_fingerprint": "3f70014ddaf353edf8cd42ab42312ff579501d0de861dd7c72abb3aa434ce426",
   "config_fingerprint": "ab97e45a3f5c2550bcdb69bda4e3e30be15aff5db468b28f70393ddd4d4f462f",
+  "execution_fingerprint": null,
   "matrix_size": 4,
   "completed_count": 2,
   "spent_cost": 2.2,

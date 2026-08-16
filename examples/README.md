@@ -37,4 +37,7 @@ Current examples:
 - [`expected-codex-preflight-report.json`](expected-codex-preflight-report.json): portable shape plus the initial local prompt-footprint measurement.
 - [`batch-experiment.json`](batch-experiment.json): a four-cell batch with two cells allowed per invocation.
 - [`expected-batch-state.json`](expected-batch-state.json): golden paused state after the first two cells.
+- [`live-experiment.json`](live-experiment.json): paid-run-gated launcher for the M06f Codex matrix.
+- [`live-batch-experiment.json`](live-batch-experiment.json): two-cell budget with one live cell allowed per invocation.
+- [`live-experiment-record.json`](live-experiment-record.json): one-task control versus verified-loop plumbing comparison.
 - [`live-pilot-template/`](live-pilot-template/): a tiny deterministic median bug, tests, workflow, and independent evidence contract.

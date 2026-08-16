@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "experiment_id": "exp-codex-workflow-comparison-001",
+  "title": "Bounded baseline versus verified loop",
+  "hypothesis": "A verification loop reduces false completion without increasing regressions.",
+  "status": "planned",
+  "control": {
+    "id": "control-bounded",
+    "workflow": "bounded-baseline",
+    "config_ref": "workflow-control.md"
+  },
+  "treatments": [
+    {
+      "id": "treatment-verified-loop",
+      "workflow": "verified-loop",
+      "config_ref": "workflow-treatment.md"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "median-fix",
+      "repository": "examples/live-pilot-template",
+      "spec_ref": "ACTIVE_SPEC.md"
+    }
+  ],
+  "seeds": [0],
+  "metrics": [
+    { "id": "verified-completion", "description": "Required criteria accepted by declared evaluators.", "direction": "higher", "unit": "ratio" },
+    { "id": "regressions", "description": "Previously passing protected checks that now fail.", "direction": "lower", "unit": "count" },
+    { "id": "false-completion", "description": "Runs claimed complete but rejected by independent verification.", "direction": "lower", "unit": "ratio" },
+    { "id": "cost", "description": "Measured subscription-credit estimate derived from documented usage.", "direction": "lower", "unit": "credits" },
+    { "id": "time", "description": "Measured wall-clock duration of the model execution.", "direction": "lower", "unit": "seconds" },
+    { "id": "human-interventions", "description": "Human actions needed to finish or recover the run.", "direction": "lower", "unit": "count" }
+  ],
+  "runs": [],
+  "decision": {
+    "adoption_rule": "For this plumbing comparison, require both arms to verify with zero regressions and zero false completions; do not make an efficacy claim from one task and one seed.",
+    "outcome": "pending",
+    "reason": "The live comparison has not run yet."
+  }
+}

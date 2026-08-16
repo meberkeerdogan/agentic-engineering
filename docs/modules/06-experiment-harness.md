@@ -65,4 +65,6 @@ Revert the M06 harness, report/replay schemas, examples, tests, and documentatio
 
 ## Next Module
 
+The live M06 execution path is documented in [M06f: Live Codex Experiment Bridge](06f-live-codex-experiments.md).
+
 M07 is adding optional interventions one at a time, beginning with an observe-only trajectory watchdog. Behavioral interventions must beat this experiment baseline on their declared target.

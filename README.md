@@ -118,6 +118,14 @@ uv run python -m agentic_engineering.batch_experiments examples/batch-experiment
 
 The [M06e batch runner](docs/modules/06e-resumable-batch-runner.md) enforces worst-case budgets, locks concurrent execution, preserves completed cells, and generates the normal deterministic experiment report. The replay example makes no model calls.
 
+Run one explicitly confirmed live control or treatment cell through the clean Codex environment:
+
+```powershell
+uv run python -m agentic_engineering.live_experiments examples/live-experiment.json --confirm-paid-run
+```
+
+The [M06f live experiment bridge](docs/modules/06f-live-codex-experiments.md) creates a fresh repository per cell, preflights immediately before every model call, binds all execution inputs against resume-time drift, and independently evaluates the result. The command can consume Codex credits; its automated tests cannot.
+
 ## Contributing
 
 Contributions are welcome. Before opening a pull request, read [CONTRIBUTING.md](CONTRIBUTING.md).

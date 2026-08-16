@@ -27,5 +27,6 @@ Current schemas:
 - [`codex-preflight-report.schema.json`](codex-preflight-report.schema.json): redacted evidence that a live Codex environment passed its gates.
 - [`batch-experiment.schema.json`](batch-experiment.schema.json): immutable matrix references, invocation size, and worst-case budgets.
 - [`batch-state.schema.json`](batch-state.schema.json): resumable per-cell progress, observations, failures, and accumulated usage.
+- [`live-experiment.schema.json`](live-experiment.schema.json): model, environment, rate-card, and evidence bindings for a live Codex batch.
 
 The core schema module and its validation rules are documented in [M01: Core Contracts](../docs/modules/01-core-contracts.md). The experiment schemas are implemented by [M06: Experiment Harness](../docs/modules/06-experiment-harness.md).

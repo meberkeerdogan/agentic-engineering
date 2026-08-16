@@ -5,6 +5,7 @@ from pathlib import Path
 import pytest
 from test_core_schemas import load_json
 
+import agentic_engineering.batch_experiments as batch_module
 from agentic_engineering.batch_experiments import (
     BatchExperimentConfig,
     BatchExperimentError,
@@ -71,6 +72,27 @@ def test_batch_pauses_and_resumes_without_repeating_completed_cells(tmp_path: Pa
     assert report == load_json("examples/expected-experiment-report.json")
 
 
+def test_atomic_state_write_retries_transient_windows_replace_denial(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    real_replace = batch_module.os.replace
+    attempts = 0
+
+    def flaky_replace(source, destination):
+        nonlocal attempts
+        attempts += 1
+        if attempts == 1:
+            raise PermissionError("transient scanner lock")
+        return real_replace(source, destination)
+
+    monkeypatch.setattr(batch_module.os, "replace", flaky_replace)
+
+    outcome = run_experiment_batch(plan(), recording_adapters([]), config(), tmp_path)
+
+    assert outcome.status == "paused"
+    assert attempts > 1
+
+
 def test_completed_batch_is_idempotent(tmp_path: Path) -> None:
     calls: list[tuple[str, str, int]] = []
     adapters = recording_adapters(calls)
@@ -103,6 +125,34 @@ def test_changed_plan_cannot_resume_existing_state(tmp_path: Path) -> None:
             replay_adapters(changed_plan, replay()),
             config(),
             tmp_path,
+        )
+
+
+def test_changed_execution_inputs_cannot_resume_existing_state(tmp_path: Path) -> None:
+    first = "a" * 64
+    second = "b" * 64
+    run_experiment_batch(
+        plan(), recording_adapters([]), config(), tmp_path, execution_fingerprint=first
+    )
+
+    with pytest.raises(BatchExperimentError, match="execution inputs changed"):
+        run_experiment_batch(
+            plan(),
+            recording_adapters([]),
+            config(),
+            tmp_path,
+            execution_fingerprint=second,
+        )
+
+
+def test_execution_fingerprint_must_be_a_sha256_digest(tmp_path: Path) -> None:
+    with pytest.raises(BatchExperimentError, match="lowercase SHA-256"):
+        run_experiment_batch(
+            plan(),
+            recording_adapters([]),
+            config(),
+            tmp_path,
+            execution_fingerprint="not-a-digest",
         )
 
 
@@ -331,6 +381,34 @@ def test_cli_resumes_replay_batch(tmp_path: Path, capsys: pytest.CaptureFixture[
     assert first["status"] == "paused"
     assert second["status"] == "completed"
     assert second["report_path"].endswith("experiment-report.json")
+
+
+def test_cli_rejects_changed_replay_inputs_during_resume(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    project = tmp_path / "project"
+    (project / "examples").mkdir(parents=True)
+    for name in (
+        "batch-experiment.json",
+        "experiment-record.json",
+        "experiment-observations.json",
+    ):
+        (project / "examples" / name).write_bytes((ROOT / "examples" / name).read_bytes())
+    arguments = [
+        str(project / "examples" / "batch-experiment.json"),
+        str(project / "examples" / "experiment-observations.json"),
+        "--project-root",
+        str(project),
+    ]
+    assert main(arguments) == 0
+    capsys.readouterr()
+    path = project / "examples" / "experiment-observations.json"
+    observations = json.loads(path.read_text("utf-8"))
+    observations["observations"][-1]["cost"] += 1
+    path.write_text(json.dumps(observations), encoding="utf-8")
+
+    with pytest.raises(BatchExperimentError, match="execution inputs changed"):
+        main(arguments)
 
 
 def test_cli_rejects_experiment_reference_outside_project(tmp_path: Path) -> None:

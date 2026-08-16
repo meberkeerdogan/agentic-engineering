@@ -8,7 +8,7 @@ The batch runner executes a complete control/treatment matrix in small, durable 
 
 ## How it works
 
-The committed batch configuration declares the experiment, storage location, cost unit, total ceilings, per-run ceilings, and the number of cells allowed in one invocation. Before the first adapter runs, the runner verifies that the budgets can reserve the entire worst-case matrix.
+The committed batch configuration declares the experiment, storage location, cost unit, total ceilings, per-run ceilings, and the number of cells allowed in one invocation. Before the first adapter runs, the runner verifies that the budgets can reserve the entire worst-case matrix. Adapter launchers can also bind an execution fingerprint so changed prompts, templates, rate cards, or other execution inputs cannot be mixed into a resumed batch.
 
 For every cell, the runner atomically records `running` before calling the adapter and records the validated observation afterward. A lock prevents two processes from executing the same batch concurrently. The plan and configuration fingerprints prevent a resume from silently changing the experiment.
 
@@ -39,3 +39,5 @@ The first call returns `paused` at 2/4. Run the same command again to finish at 
 - [`expected-batch-state.json`](../../examples/expected-batch-state.json) is the golden paused checkpoint.
 
 Private batch state belongs under ignored `.agentic-runs/` storage and should not be committed.
+
+For real Codex control/treatment cells with a fresh preflight before each call, see [M06f: Live Codex Experiment Bridge](06f-live-codex-experiments.md).
