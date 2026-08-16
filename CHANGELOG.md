@@ -25,3 +25,4 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 - Added watchdog calibration contracts and tooling for complete signal labels, missed-failure accounting, duplicate protection, per-type precision and recall, and evidence-gated advisory experiment eligibility.
 - Added the M06g representative task pack with three task categories, repeated seeds, protected baselines, known passing solutions, deterministic repository fingerprints, and a zero-model-call readiness validator.
 - Added the M06h live trajectory bridge with redacted Codex JSONL provenance, durable workspace fingerprints, executor-claim and independent-audit events, schema validation, and observe-only watchdog compatibility.
+- Added the M06i representative live sentinel: a two-cell multi-file control/treatment stage with one-cell invocations, explicit credit and time ceilings, and no efficacy claim.

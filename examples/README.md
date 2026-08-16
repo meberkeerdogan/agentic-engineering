@@ -46,3 +46,6 @@ Current examples:
 - [`evaluation-task-pack-experiment.json`](evaluation-task-pack-experiment.json): three tasks, three seeds, two arms, and a predeclared efficacy decision rule.
 - [`expected-task-pack-readiness.json`](expected-task-pack-readiness.json): deterministic proof that the representative matrix passes every offline gate without model execution.
 - [`task-pack/`](task-pack/): deterministic multi-file feature and multi-step evolution repositories; the pack also reuses the median fixture.
+- [`representative-sentinel-experiment.json`](representative-sentinel-experiment.json): one multi-file task, one seed, and both workflow arms for a safety sentinel rather than an efficacy claim.
+- [`representative-sentinel-batch.json`](representative-sentinel-batch.json): two-cell sentinel with one cell per invocation, a 0.5-credit per-cell ceiling, and a 1-credit total ceiling.
+- [`representative-sentinel-live.json`](representative-sentinel-live.json): paid-run-gated launcher for the representative sentinel.

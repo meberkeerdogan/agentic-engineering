@@ -45,20 +45,51 @@ workspace = Path(arguments[arguments.index("-C") + 1])
 output_path = Path(arguments[arguments.index("--output-last-message") + 1])
 prompt = sys.stdin.read()
 calculator = workspace / "calculator.py"
-source = calculator.read_text(encoding="utf-8")
-source = source.replace(
-    "    return ordered[middle]\n",
-    "    if len(ordered) % 2:\n"
-    "        return ordered[middle]\n"
-    "    return (ordered[middle - 1] + ordered[middle]) / 2\n",
-)
-calculator.write_text(source, encoding="utf-8")
+inventory = workspace / "inventory.py"
+reporting = workspace / "reporting.py"
+if calculator.is_file():
+    source = calculator.read_text(encoding="utf-8")
+    source = source.replace(
+        "    return ordered[middle]\n",
+        "    if len(ordered) % 2:\n"
+        "        return ordered[middle]\n"
+        "    return (ordered[middle - 1] + ordered[middle]) / 2\n",
+    )
+    calculator.write_text(source, encoding="utf-8")
+    task_id = "median-fix"
+    summary = "fixed the bounded median fixture"
+    artifact_refs = ["calculator.py"]
+    changed_paths = [calculator]
+    test_command = "python -m unittest -v test_calculator.py"
+elif inventory.is_file() and reporting.is_file():
+    with inventory.open("a", encoding="utf-8") as stream:
+        stream.write(
+            "\n\ndef low_stock_skus(items: list[dict], threshold: int = 5) -> list[str]:\n"
+            "    if threshold < 0:\n"
+            "        raise ValueError('threshold must be non-negative')\n"
+            "    return sorted(normalize_sku(item['sku']) for item in items "
+            "if item['quantity'] <= threshold)\n"
+        )
+    with reporting.open("a", encoding="utf-8") as stream:
+        stream.write(
+            "\n\ndef format_restock_report(items: list[dict], threshold: int = 5) -> str:\n"
+            "    from inventory import low_stock_skus\n"
+            "    skus = low_stock_skus(items, threshold)\n"
+            "    return 'Restock: ' + (', '.join(skus) if skus else 'none')\n"
+        )
+    task_id = "restock-report"
+    summary = "implemented the multi-file restock report"
+    artifact_refs = ["inventory.py", "reporting.py"]
+    changed_paths = [inventory, reporting]
+    test_command = "python -m unittest -v test_restock.py test_existing.py"
+else:
+    raise SystemExit("unsupported offline live fixture")
 output_path.write_text(
     json.dumps(
         {
             "claimed_complete": True,
-            "summary": "fixed the bounded median fixture",
-            "artifact_refs": ["calculator.py"],
+            "summary": summary,
+            "artifact_refs": artifact_refs,
         }
     ),
     encoding="utf-8",
@@ -71,7 +102,7 @@ print(
             "item": {
                 "id": "command-reproduce",
                 "type": "command_execution",
-                "command": "python -m unittest -v test_calculator.py",
+                "command": test_command,
                 "aggregated_output": "simulated initial failure",
                 "exit_code": 1,
                 "status": "failed",
@@ -84,9 +115,11 @@ print(
         {
             "type": "item.completed",
             "item": {
-                "id": "change-calculator",
+                "id": "change-workspace",
                 "type": "file_change",
-                "changes": [{"path": str(calculator), "kind": "update"}],
+                "changes": [
+                    {"path": str(path), "kind": "update"} for path in changed_paths
+                ],
                 "status": "completed",
             },
         }
@@ -99,7 +132,7 @@ print(
             "item": {
                 "id": "command-validate",
                 "type": "command_execution",
-                "command": "python -m unittest -v test_calculator.py",
+                "command": test_command,
                 "aggregated_output": "simulated passing tests",
                 "exit_code": 0,
                 "status": "completed",
@@ -112,7 +145,7 @@ print(
         {
             "type": "item.completed",
             "item": {"type": "agent_message", "text": "fixture complete"},
-            "prompt_received": "median-fix" in prompt,
+            "prompt_received": task_id in prompt,
         }
     )
 )

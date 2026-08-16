@@ -35,6 +35,9 @@ SCHEMA_EXAMPLE_PAIRS = [
     ("experiment-record.schema.json", "live-experiment-record.json"),
     ("task-pack.schema.json", "evaluation-task-pack.json"),
     ("task-pack-readiness.schema.json", "expected-task-pack-readiness.json"),
+    ("experiment-record.schema.json", "representative-sentinel-experiment.json"),
+    ("batch-experiment.schema.json", "representative-sentinel-batch.json"),
+    ("live-experiment.schema.json", "representative-sentinel-live.json"),
 ]
 
 
