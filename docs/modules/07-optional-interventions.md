@@ -1,6 +1,6 @@
 # M07: Optional Interventions
 
-**Status:** In progress — observe-only watchdog and calibration implemented
+**Status:** Implemented; experimental slices remain promotion-gated
 
 ## Why This Module Is Split
 
@@ -80,8 +80,12 @@ The synthetic fixture proves the mechanism. The combined real calibration curren
 
 `phase_memory` builds a deterministic read-only view from immutable, evidenced entries. Newer entries may explicitly supersede older facts for the same task; each phase has a fixed capacity; retrieval ranks current-task and current-phase evidence first. Reports expose retained, superseded, and evicted IDs and have structurally empty write and state-mutation arrays. Adoption still requires a separate M06 comparison.
 
-## Remaining M07 Slices
+## M07e: Independently Reviewed Property Evidence
 
-- M07e: complementary agentic property testing.
+`property_testing` accepts agent-proposed properties only after an independent auditor binds them to specification evidence. Rejected or unreviewed proposals cannot contribute results. Accepted properties require externally supplied read-only evidence, while counterexamples and invalid properties become explicit follow-up. The tool never executes generated test code or mutates state.
+
+## Promotion State
+
+All M07 mechanisms are implemented as separately measurable primitives. None is a default intervention: real watchdog calibration permits no advice, while planning, memory, and property evidence still require their own M06 control/treatment results.
 
 Each slice will be implemented and promoted independently.

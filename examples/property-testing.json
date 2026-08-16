@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "suite_id": "restock-properties-001",
+  "proposals": [
+    {"id": "normalized-sort", "proposer_role": "agent", "requirement_id": "AC-RESTOCK", "statement": "Low-stock SKUs are normalized and sorted.", "oracle": "Compare with sorted normalized qualifying inputs.", "evidence_refs": ["spec/AC-RESTOCK"]},
+    {"id": "no-mutation", "proposer_role": "agent", "requirement_id": "AC-RESTOCK", "statement": "The input sequence and mappings are not mutated.", "oracle": "Deep-copy equality before and after execution.", "evidence_refs": ["spec/AC-RESTOCK"]},
+    {"id": "invented-limit", "proposer_role": "agent", "requirement_id": "AC-RESTOCK", "statement": "At most ten SKUs may be returned.", "oracle": "Count returned SKUs.", "evidence_refs": ["spec/AC-RESTOCK"]}
+  ],
+  "reviews": [
+    {"proposal_id": "normalized-sort", "reviewer_role": "independent_auditor", "verdict": "accepted", "rationale": "Directly follows the specification.", "evidence_refs": ["review/normalized-sort.json"]},
+    {"proposal_id": "no-mutation", "reviewer_role": "independent_auditor", "verdict": "accepted", "rationale": "Directly follows the non-mutation requirement.", "evidence_refs": ["review/no-mutation.json"]},
+    {"proposal_id": "invented-limit", "reviewer_role": "independent_auditor", "verdict": "rejected", "rationale": "The specification declares no result-count limit.", "evidence_refs": ["review/invented-limit.json"]}
+  ],
+  "results": [
+    {"proposal_id": "normalized-sort", "outcome": "pass", "read_only": true, "evidence_refs": ["results/normalized-sort.json"]},
+    {"proposal_id": "no-mutation", "outcome": "counterexample", "read_only": true, "evidence_refs": ["results/no-mutation.json"]}
+  ]
+}

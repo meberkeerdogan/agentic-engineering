@@ -26,6 +26,8 @@ Current schemas:
 - [`dependency-plan-report.schema.json`](dependency-plan-report.schema.json): deterministic static or adaptive plan views with no execution side effects.
 - [`phase-memory.schema.json`](phase-memory.schema.json): immutable phase-tagged entries, provenance, supersession, capacity, and retrieval query.
 - [`phase-memory-report.schema.json`](phase-memory-report.schema.json): bounded retained and retrieved memory with no write side effects.
+- [`property-testing.schema.json`](property-testing.schema.json): agent proposals, independent reviews, and read-only external property results.
+- [`property-testing-report.schema.json`](property-testing-report.schema.json): accepted/rejected properties and evidenced counterexamples requiring follow-up.
 - [`watchdog-calibration-report.schema.json`](watchdog-calibration-report.schema.json): per-signal precision, recall, false-alarm rate, and advisory-experiment eligibility.
 - [`live-pilot.schema.json`](live-pilot.schema.json): one isolated Codex control-cell configuration.
 - [`usage-rates.schema.json`](usage-rates.schema.json): a dated, externally sourced model-usage rate card.

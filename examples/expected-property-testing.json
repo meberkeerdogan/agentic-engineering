@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "suite_id": "restock-properties-001",
+  "source_fingerprint": "365e33e51112ac57ebafe45eed36ad0d7476aa43e84675198e96dde8d6d453fe",
+  "accepted_proposal_ids": [
+    "no-mutation",
+    "normalized-sort"
+  ],
+  "rejected_proposal_ids": [
+    "invented-limit"
+  ],
+  "counterexample_proposal_ids": [
+    "no-mutation"
+  ],
+  "invalid_proposal_ids": [],
+  "required_follow_up": [
+    "no-mutation"
+  ],
+  "result_count": 2,
+  "executions": [],
+  "state_mutations": [],
+  "report_id": "property-evidence-9051ec6f9d977a24",
+  "fingerprint": "9051ec6f9d977a248274bca37d7e385382f4ff10c72d1c47259504ea1f452081"
+}

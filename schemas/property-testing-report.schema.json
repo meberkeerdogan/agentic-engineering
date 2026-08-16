@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/property-testing-report.schema.json",
+  "title": "Property-Test Evidence Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "suite_id", "source_fingerprint", "accepted_proposal_ids", "rejected_proposal_ids", "counterexample_proposal_ids", "invalid_proposal_ids", "required_follow_up", "result_count", "executions", "state_mutations", "report_id", "fingerprint"],
+  "properties": {
+    "version": {"const": 1},
+    "suite_id": {"$ref": "#/$defs/id"},
+    "source_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "accepted_proposal_ids": {"$ref": "#/$defs/ids"},
+    "rejected_proposal_ids": {"$ref": "#/$defs/ids"},
+    "counterexample_proposal_ids": {"$ref": "#/$defs/ids"},
+    "invalid_proposal_ids": {"$ref": "#/$defs/ids"},
+    "required_follow_up": {"$ref": "#/$defs/ids"},
+    "result_count": {"type": "integer", "minimum": 0},
+    "executions": {"type": "array", "maxItems": 0},
+    "state_mutations": {"type": "array", "maxItems": 0},
+    "report_id": {"$ref": "#/$defs/id"},
+    "fingerprint": {"$ref": "#/$defs/fingerprint"}
+  },
+  "$defs": {"id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"}, "ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}, "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}
