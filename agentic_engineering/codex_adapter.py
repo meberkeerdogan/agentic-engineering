@@ -5,7 +5,9 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import os
 import re
+import shutil
 import subprocess
 import time
 from collections.abc import Callable, Mapping
@@ -135,6 +137,24 @@ class CostMeter(Protocol):
 
 WorkspaceResolver = Callable[[Mapping[str, Any], Mapping[str, Any], int], Path]
 Clock = Callable[[], float]
+ExecutableResolver = Callable[[str], str | None]
+
+
+def resolve_command_prefix(
+    command_prefix: tuple[str, ...],
+    *,
+    platform_name: str = os.name,
+    resolver: ExecutableResolver = shutil.which,
+) -> tuple[str, ...]:
+    """Resolve the Windows Codex batch shim without enabling shell execution."""
+
+    if platform_name != "nt" or command_prefix[0].casefold() != "codex":
+        return command_prefix
+    for candidate in ("codex.cmd", "codex.exe"):
+        resolved = resolver(candidate)
+        if resolved:
+            return (resolved, *command_prefix[1:])
+    return command_prefix
 
 
 def _resolve_inside(root: Path, candidate: Path, label: str) -> Path:
@@ -239,7 +259,7 @@ class CodexExecRunner:
         _write_json(schema_path, SUBMISSION_SCHEMA)
 
         command = [
-            *self.config.command_prefix,
+            *resolve_command_prefix(self.config.command_prefix),
             "exec",
             "--ephemeral",
             "--color",

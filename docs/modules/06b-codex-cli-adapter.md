@@ -15,6 +15,7 @@ The invocation is based on the official [Codex CLI command reference](https://de
 - Each run uses `--ephemeral`, a declared `read-only` or `workspace-write` sandbox, and a JSON output schema.
 - `danger-full-access` and bypass flags are refused.
 - JSONL standard output, standard error, request and process metadata, output schema, and final response are preserved per experiment cell.
+- On Windows, the adapter resolves the installed `codex.cmd` shim explicitly and still invokes it with an argument array and `shell=False`.
 - Existing cell evidence cannot be overwritten.
 - Executor artifact references are untrusted strings. Evaluators must resolve and inspect artifacts independently.
 - The CLI seed field labels repeated trials; it does not claim to control model randomness because the current CLI exposes no model-seed option.

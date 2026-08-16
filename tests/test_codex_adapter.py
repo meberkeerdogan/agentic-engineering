@@ -11,11 +11,35 @@ from agentic_engineering.codex_adapter import (
     CodexExperimentAdapter,
     CostMeasurement,
     EvaluationOutcome,
+    resolve_command_prefix,
 )
 from agentic_engineering.experiments import RunObservation, run_experiment
 
 ROOT = Path(__file__).resolve().parents[1]
 FAKE_CODEX = ROOT / "tests" / "fixtures" / "fake_codex.py"
+
+
+def test_windows_prefers_runnable_codex_cmd_shim() -> None:
+    lookups: list[str] = []
+
+    def resolver(name: str) -> str | None:
+        lookups.append(name)
+        return "C:/npm/codex.cmd" if name == "codex.cmd" else None
+
+    resolved = resolve_command_prefix(
+        ("codex", "fixture-argument"), platform_name="nt", resolver=resolver
+    )
+
+    assert resolved == ("C:/npm/codex.cmd", "fixture-argument")
+    assert lookups == ["codex.cmd"]
+
+
+def test_non_windows_command_prefix_is_unchanged() -> None:
+    resolved = resolve_command_prefix(
+        ("codex",), platform_name="posix", resolver=lambda name: "unexpected"
+    )
+
+    assert resolved == ("codex",)
 
 
 def arm() -> dict:
