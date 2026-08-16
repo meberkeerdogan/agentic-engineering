@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "reproduction_id": "progress-mirage-claim-001",
+  "scope": "claim_level",
+  "paper_id": "2607.25152",
+  "claim_id": "self-report-can-diverge",
+  "source_fingerprint": "6ae123f93e9b1badfb06ebb6636fd13dd410efc59b2650c6775d2522dcd8bd8b",
+  "artifact_hashes": [
+    {
+      "ref": "pyproject.toml",
+      "sha256": "f1069271f0c266ac153f8aba2628b6dc8828cffe2e52fefe097f3ca665e24aa6"
+    },
+    {
+      "ref": "research/papers/2607.25152-progress-mirage.pdf",
+      "sha256": "0f4e38a6a796c069f921412877a71e9cee67a38959505d0e943e8bf35d779ed0"
+    },
+    {
+      "ref": "research/reproductions/progress-mirage-claim/claimed-complete.json",
+      "sha256": "cf7bd95c97b30ec299582c37e87add0a9e0edf7e86907f3eb69d5658bedbbe44"
+    },
+    {
+      "ref": "research/reproductions/progress-mirage-claim/experiment.py",
+      "sha256": "972909c8f3986480b927cb54ae6f13ad19633d4823128679ef6a049c8ff03486"
+    },
+    {
+      "ref": "research/reproductions/progress-mirage-claim/independent-evaluation.json",
+      "sha256": "1eb7ee5bac6152730d556cd7d483594133adc6224156e02b445438d378b3ca56"
+    }
+  ],
+  "environment": {
+    "runtime": "Python >=3.11",
+    "lock_ref": "pyproject.toml",
+    "network": "disabled",
+    "model_calls": "disabled"
+  },
+  "experiment_results": [
+    {
+      "experiment_id": "claim-audit-divergence",
+      "outcome": "matched",
+      "observation": {
+        "claimed_complete": true,
+        "divergence": true,
+        "verified_complete": false
+      },
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "evidence_refs": [
+        "claimed-complete.json",
+        "independent-evaluation.json"
+      ]
+    }
+  ],
+  "criterion_results": [
+    {
+      "id": "claim-observed",
+      "passed": true,
+      "actual": true,
+      "expected": true,
+      "evidence_refs": [
+        "claimed-complete.json"
+      ]
+    },
+    {
+      "id": "audit-observed",
+      "passed": true,
+      "actual": false,
+      "expected": false,
+      "evidence_refs": [
+        "independent-evaluation.json"
+      ]
+    },
+    {
+      "id": "divergence-observed",
+      "passed": true,
+      "actual": true,
+      "expected": true,
+      "evidence_refs": [
+        "experiment.py"
+      ]
+    }
+  ],
+  "outcome": "supported_in_fixture",
+  "deviations": [
+    {
+      "id": "synthetic-task",
+      "description": "Uses one deterministic synthetic claim/audit pair instead of the paper's long-running agent testbed.",
+      "impact": "Supports only the structural possibility of divergence, not the paper's measured rates or effect sizes.",
+      "evidence_refs": [
+        "experiment.py"
+      ]
+    },
+    {
+      "id": "no-model-loop",
+      "description": "Performs no model calls or iterative agent execution.",
+      "impact": "Cannot reproduce behavioral frequency, judge comparisons, or longitudinal degradation.",
+      "evidence_refs": [
+        "pyproject.toml"
+      ]
+    }
+  ],
+  "model_calls_performed": false,
+  "report_id": "reproduction-6aae685d8197ce3b",
+  "fingerprint": "6aae685d8197ce3b2766375e4c5e2c090621a1e17f74b23b0bd236e048166f70"
+}

@@ -28,6 +28,8 @@ Current schemas:
 - [`phase-memory-report.schema.json`](phase-memory-report.schema.json): bounded retained and retrieved memory with no write side effects.
 - [`property-testing.schema.json`](property-testing.schema.json): agent proposals, independent reviews, and read-only external property results.
 - [`property-testing-report.schema.json`](property-testing-report.schema.json): accepted/rejected properties and evidenced counterexamples requiring follow-up.
+- [`paper-reproduction.schema.json`](paper-reproduction.schema.json): paper, claim, lineage, environment, experiment, rubric, and deviation contract.
+- [`paper-reproduction-report.schema.json`](paper-reproduction-report.schema.json): hash-bound claim-level reproduction results with explicit scope.
 - [`watchdog-calibration-report.schema.json`](watchdog-calibration-report.schema.json): per-signal precision, recall, false-alarm rate, and advisory-experiment eligibility.
 - [`live-pilot.schema.json`](live-pilot.schema.json): one isolated Codex control-cell configuration.
 - [`usage-rates.schema.json`](usage-rates.schema.json): a dated, externally sourced model-usage rate card.

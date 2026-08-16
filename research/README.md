@@ -9,6 +9,7 @@ This directory keeps the evidence used to design and evaluate Agentic Engineerin
 - [Representative live sentinel](reports/2026-08-16-representative-live-sentinel.md)
 - [Multi-step evolution live sentinel](reports/2026-08-16-evolution-live-sentinel.md)
 - [Watchdog calibration evidence](calibration/README.md)
+- [Progress Mirage claim-level reproduction](reproductions/progress-mirage-claim/reproduction.json)
 - [Source index](sources.md)
 - [PDF integrity and extraction manifest](papers/manifest.json)
 

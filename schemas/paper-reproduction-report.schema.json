@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/paper-reproduction-report.schema.json",
+  "title": "Claim-Level Reproduction Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "reproduction_id", "scope", "paper_id", "claim_id", "source_fingerprint", "artifact_hashes", "environment", "experiment_results", "criterion_results", "outcome", "deviations", "model_calls_performed", "report_id", "fingerprint"],
+  "properties": {
+    "version": {"const": 1},
+    "reproduction_id": {"$ref": "#/$defs/id"},
+    "scope": {"const": "claim_level"},
+    "paper_id": {"$ref": "#/$defs/id"},
+    "claim_id": {"$ref": "#/$defs/id"},
+    "source_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "artifact_hashes": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["ref", "sha256"]}},
+    "environment": {"type": "object"},
+    "experiment_results": {"type": "array", "minItems": 1},
+    "criterion_results": {"type": "array", "minItems": 1},
+    "outcome": {"enum": ["supported_in_fixture", "not_supported_in_fixture"]},
+    "deviations": {"type": "array"},
+    "model_calls_performed": {"const": false},
+    "report_id": {"$ref": "#/$defs/id"},
+    "fingerprint": {"$ref": "#/$defs/fingerprint"}
+  },
+  "$defs": {"id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"}, "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

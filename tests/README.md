@@ -35,3 +35,5 @@ Later modules will add workflow state-transition, evaluator, checkpoint, runner,
 `test_phase_memory.py` verifies immutable provenance, safe supersession, deterministic per-phase bounds, phase/task-aware retrieval, and read-only output.
 
 `test_property_testing.py` verifies independent proposal review, rejection of invented properties, read-only evidence requirements, counterexample follow-up, and no generated-code execution.
+
+`test_paper_reproduction.py` verifies hash-bound paper lineage, contained trusted execution, deterministic observations, rubric scoring, deviations, schema validity, and fail-closed tampering.

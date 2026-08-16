@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "reproduction_id": "progress-mirage-claim-001",
+  "paper": {
+    "id": "2607.25152",
+    "title": "When Do Agent Loops Mistake Stagnation for Progress?",
+    "pdf_ref": "research/papers/2607.25152-progress-mirage.pdf",
+    "sha256": "0f4e38a6a796c069f921412877a71e9cee67a38959505d0e943e8bf35d779ed0",
+    "claim_id": "self-report-can-diverge",
+    "claim": "Agent-reported progress can diverge from externally measured outcomes.",
+    "source_pages": [1]
+  },
+  "lineage": [
+    {"id": "fixture-command", "kind": "derived_fixture", "ref": "research/reproductions/progress-mirage-claim/experiment.py", "relationship": "Local deterministic operationalization of claim-versus-verification divergence.", "sha256": "972909c8f3986480b927cb54ae6f13ad19633d4823128679ef6a049c8ff03486"},
+    {"id": "fixture-claim", "kind": "derived_fixture", "ref": "research/reproductions/progress-mirage-claim/claimed-complete.json", "relationship": "Synthetic executor self-report input.", "sha256": "cf7bd95c97b30ec299582c37e87add0a9e0edf7e86907f3eb69d5658bedbbe44"},
+    {"id": "fixture-audit", "kind": "derived_fixture", "ref": "research/reproductions/progress-mirage-claim/independent-evaluation.json", "relationship": "Synthetic externally grounded audit input.", "sha256": "1eb7ee5bac6152730d556cd7d483594133adc6224156e02b445438d378b3ca56"},
+    {"id": "environment-lock", "kind": "environment_lock", "ref": "pyproject.toml", "relationship": "Project runtime and dependency declaration.", "sha256": "f1069271f0c266ac153f8aba2628b6dc8828cffe2e52fefe097f3ca665e24aa6"}
+  ],
+  "environment": {
+    "runtime": "Python >=3.11",
+    "lock_ref": "pyproject.toml",
+    "network": "disabled",
+    "model_calls": "disabled"
+  },
+  "experiment_root": "research/reproductions/progress-mirage-claim",
+  "experiments": [
+    {
+      "id": "claim-audit-divergence",
+      "command": ["{python}", "experiment.py"],
+      "timeout_seconds": 30,
+      "expected_observation": {"claimed_complete": true, "divergence": true, "verified_complete": false},
+      "evidence_refs": ["claimed-complete.json", "independent-evaluation.json"]
+    }
+  ],
+  "rubric": [
+    {"id": "claim-observed", "experiment_id": "claim-audit-divergence", "path": "/claimed_complete", "expected": true, "evidence_refs": ["claimed-complete.json"]},
+    {"id": "audit-observed", "experiment_id": "claim-audit-divergence", "path": "/verified_complete", "expected": false, "evidence_refs": ["independent-evaluation.json"]},
+    {"id": "divergence-observed", "experiment_id": "claim-audit-divergence", "path": "/divergence", "expected": true, "evidence_refs": ["experiment.py"]}
+  ],
+  "deviations": [
+    {"id": "synthetic-task", "description": "Uses one deterministic synthetic claim/audit pair instead of the paper's long-running agent testbed.", "impact": "Supports only the structural possibility of divergence, not the paper's measured rates or effect sizes.", "evidence_refs": ["experiment.py"]},
+    {"id": "no-model-loop", "description": "Performs no model calls or iterative agent execution.", "impact": "Cannot reproduce behavioral frequency, judge comparisons, or longitudinal degradation.", "evidence_refs": ["pyproject.toml"]}
+  ]
+}
