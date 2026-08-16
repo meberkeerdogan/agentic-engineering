@@ -84,6 +84,7 @@ class CodexRunResult:
     """Captured executor output and persisted evidence for one cell."""
 
     submission: CodexSubmission
+    model: str | None
     duration_seconds: float
     stdout: str
     stderr: str
@@ -97,6 +98,14 @@ class EvaluationOutcome:
 
     verified_complete: bool
     regressions: int
+    evidence_refs: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class CostMeasurement:
+    """Externally derived cost plus evidence explaining the measurement."""
+
+    cost: float
     evidence_refs: tuple[str, ...]
 
 
@@ -121,7 +130,7 @@ class CostMeter(Protocol):
         arm: Mapping[str, Any],
         task: Mapping[str, Any],
         seed: int,
-    ) -> float: ...
+    ) -> float | CostMeasurement: ...
 
 
 WorkspaceResolver = Callable[[Mapping[str, Any], Mapping[str, Any], int], Path]
@@ -328,6 +337,7 @@ class CodexExecRunner:
         )
         return CodexRunResult(
             submission=submission,
+            model=self.config.model,
             duration_seconds=duration,
             stdout=completed.stdout,
             stderr=completed.stderr,
@@ -371,7 +381,19 @@ class CodexExperimentAdapter:
             workspace.resolve(), task, result.submission, result.evidence_dir
         )
         self._validate_outcome(outcome)
-        cost = self.cost_meter.measure(result, arm, task, seed)
+        measurement = self.cost_meter.measure(result, arm, task, seed)
+        cost_evidence_refs: tuple[str, ...] = ()
+        if isinstance(measurement, CostMeasurement):
+            cost = measurement.cost
+            cost_evidence_refs = measurement.evidence_refs
+            if not cost_evidence_refs or any(
+                not isinstance(ref, str) or not ref for ref in cost_evidence_refs
+            ):
+                raise CodexAdapterError("cost measurement requires evidence references")
+            if len(cost_evidence_refs) != len(set(cost_evidence_refs)):
+                raise CodexAdapterError("cost evidence references must be unique")
+        else:
+            cost = measurement
         if isinstance(cost, bool) or not isinstance(cost, (int, float)):
             raise CodexAdapterError("cost meter must return a non-negative finite number")
         if not math.isfinite(cost) or cost < 0:
@@ -391,7 +413,14 @@ class CodexExperimentAdapter:
             self.runner.evidence_root
         ).as_posix()
         evidence_refs = tuple(
-            dict.fromkeys((*result.evidence_refs, evaluation_ref, *outcome.evidence_refs))
+            dict.fromkeys(
+                (
+                    *result.evidence_refs,
+                    evaluation_ref,
+                    *outcome.evidence_refs,
+                    *cost_evidence_refs,
+                )
+            )
         )
         return RunObservation(
             claimed_complete=result.submission.claimed_complete,

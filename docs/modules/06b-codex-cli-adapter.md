@@ -40,6 +40,8 @@ Construct `CodexExecRunner` with a workspace root and private evidence root. The
 2. an evaluator that checks the workspace without trusting the executor;
 3. a meter that derives actual cost from provider or usage evidence.
 
+`EvidenceContractEvaluator` is the concrete bridge to M03 read-only evidence contracts. `JsonlUsageCostMeter` reads only documented `turn.completed` usage events and prices them with a required, dated `UsageRates` record. Rates are never hardcoded into the adapter because API prices and ChatGPT credit rates can change.
+
 The test suite uses an offline CLI double, so the promotion gate makes no model calls and spends no API credits.
 
 ## Promotion Gate

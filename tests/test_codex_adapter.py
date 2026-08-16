@@ -9,6 +9,7 @@ from agentic_engineering.codex_adapter import (
     CodexExecConfig,
     CodexExecRunner,
     CodexExperimentAdapter,
+    CostMeasurement,
     EvaluationOutcome,
 )
 from agentic_engineering.experiments import RunObservation, run_experiment
@@ -41,6 +42,7 @@ def runner(
     workspace.mkdir(parents=True)
     config = CodexExecConfig(
         command_prefix=(sys.executable, str(FAKE_CODEX), f"--fake-mode={mode}"),
+        model="fixture-model",
         timeout_seconds=10,
     )
     kwargs = {"clock": clock} if clock is not None else {}
@@ -64,6 +66,7 @@ def test_exec_uses_stdin_safe_sandbox_and_structured_output(tmp_path: Path) -> N
     transport = json.loads(result.stdout)
     request = json.loads((result.evidence_dir / "request.json").read_text("utf-8"))
     assert result.submission.claimed_complete is True
+    assert result.model == "fixture-model"
     assert transport == {
         "prompt_from_stdin": True,
         "prompt_in_argv": False,
@@ -86,7 +89,7 @@ def test_executor_claim_cannot_verify_its_own_work(tmp_path: Path) -> None:
 
     class FixedCostMeter:
         def measure(self, result, arm, task, seed):
-            return 1.25
+            return CostMeasurement(1.25, ("usage/control.json",))
 
     adapter = CodexExperimentAdapter(
         selected_runner,
@@ -139,6 +142,7 @@ def test_executor_claim_cannot_verify_its_own_work(tmp_path: Path) -> None:
         "human-interventions": 0,
     }
     assert "audits/rejected.json" in observation["evidence_refs"]
+    assert "usage/control.json" in observation["evidence_refs"]
 
 
 def test_unrestricted_sandbox_is_refused() -> None:
@@ -226,4 +230,26 @@ def test_cost_must_come_from_valid_external_meter(tmp_path: Path) -> None:
     )
 
     with pytest.raises(CodexAdapterError, match="non-negative finite"):
+        adapter.run(arm(), task(), 0)
+
+
+def test_structured_cost_measurement_requires_evidence(tmp_path: Path) -> None:
+    selected_runner, workspace = runner(tmp_path)
+
+    class PassingEvaluator:
+        def evaluate(self, workspace, task, submission, evidence_dir):
+            return EvaluationOutcome(True, 0, ("audits/passed.json",))
+
+    class UnevidencedCostMeter:
+        def measure(self, result, arm, task, seed):
+            return CostMeasurement(1.0, ())
+
+    adapter = CodexExperimentAdapter(
+        selected_runner,
+        lambda arm, task, seed: workspace,
+        PassingEvaluator(),
+        UnevidencedCostMeter(),
+    )
+
+    with pytest.raises(CodexAdapterError, match="requires evidence references"):
         adapter.run(arm(), task(), 0)
