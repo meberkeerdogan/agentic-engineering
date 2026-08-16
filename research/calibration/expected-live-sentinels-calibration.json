@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "calibration_id": "calibration-live-sentinels-001",
+  "mode": "calibration_only",
+  "policy": {
+    "minimum_labels": 5,
+    "minimum_precision": 0.8,
+    "minimum_recall": 0.8
+  },
+  "case_count": 4,
+  "case_fingerprints": [
+    "3908cdc1efdee570b3961a70637496abf2b35a78e9c80f34e4655aece58917d5",
+    "539d7bf724265cfb513e035522cd90a6f1bc47aef2ee53ceb564be0276ce7dfc",
+    "c1e2784319a3acad765bfb9f48a80bab183293a9b95bec03d96bd353d4f5b30f",
+    "dde76945ad19f6d4c9524f50ca8144275cf08c2291de86995747940515cf9ac0"
+  ],
+  "type_summaries": [
+    {
+      "signal_type": "action_oscillation",
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "support": 0,
+      "precision": null,
+      "recall": null,
+      "false_positive_rate": null,
+      "eligible_for_advisory_experiment": false
+    },
+    {
+      "signal_type": "premature_patching",
+      "true_positive": 0,
+      "false_positive": 4,
+      "false_negative": 0,
+      "support": 4,
+      "precision": 0.0,
+      "recall": null,
+      "false_positive_rate": 1.0,
+      "eligible_for_advisory_experiment": false
+    },
+    {
+      "signal_type": "repeated_action",
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "support": 0,
+      "precision": null,
+      "recall": null,
+      "false_positive_rate": null,
+      "eligible_for_advisory_experiment": false
+    },
+    {
+      "signal_type": "skipped_validation",
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "support": 0,
+      "precision": null,
+      "recall": null,
+      "false_positive_rate": null,
+      "eligible_for_advisory_experiment": false
+    },
+    {
+      "signal_type": "stagnation",
+      "true_positive": 0,
+      "false_positive": 0,
+      "false_negative": 0,
+      "support": 0,
+      "precision": null,
+      "recall": null,
+      "false_positive_rate": null,
+      "eligible_for_advisory_experiment": false
+    }
+  ],
+  "overall": {
+    "true_positive": 0,
+    "false_positive": 4,
+    "false_negative": 0,
+    "precision": 0.0,
+    "recall": null,
+    "false_positive_rate": 1.0
+  },
+  "eligible_advisory_types": [],
+  "interventions": [],
+  "report_id": "watchdog-calibration-ed32ca55d18abc78",
+  "fingerprint": "ed32ca55d18abc781905a58701680c9bcf7ff6c9222fce3e318f2bda292e2bd9"
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "label_set_id": "labels-evolution-control-001",
+  "report_id": "watchdog-report-1ebf091ad10e24b0",
+  "report_fingerprint": "1ebf091ad10e24b0ae5ac5999cd604d241106ab6088c18f4a55b26849548b514",
+  "labels": [
+    {
+      "signal_id": "signal-001-premature_patching",
+      "verdict": "false_positive",
+      "rationale": "The declared control workflow intentionally tests after implementation, and every roadmap feature, protected, and artifact evaluator passed, so the alert did not identify an actionable failure in this case.",
+      "evidence_refs": [
+        "../../reports/2026-08-16-evolution-live-sentinel.md#trajectory-finding"
+      ]
+    }
+  ],
+  "missed_signals": []
+}

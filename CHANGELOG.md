@@ -30,3 +30,4 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 - Added the first real M07 watchdog calibration dataset with two privacy-safe sentinel cases, contextual false-positive labels, schema checks, and evidence that premature-patching advice remains ineligible.
 - Added the M06j multi-step evolution sentinel with separate paid approval gates, one-cell invocations, explicit 0.75-credit and 450-second per-cell ceilings, and a complete offline control/treatment simulation.
 - Completed the M06j live evolution sentinel: both arms independently verified without regressions, while treatment used more measured credits and wall time and both trajectories reinforced the need for contextual watchdog calibration.
+- Expanded real M07 calibration to four privacy-safe live sentinel cases; all four premature-patching alerts are contextual false positives and the signal remains below the advisory support gate.

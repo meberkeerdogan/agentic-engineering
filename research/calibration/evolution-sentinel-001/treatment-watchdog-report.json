@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "trajectory_id": "trajectory-a-treatment-verified-loop__t-roadmap-evolution__s-0",
+  "task_id": "roadmap-evolution",
+  "trajectory_fingerprint": "4815ca9df2a8c43d628e2d84ef4ada0313c8897839c1623ba49444adac741340",
+  "mode": "observe_only",
+  "config": {
+    "repeat_threshold": 3,
+    "stagnation_threshold": 4,
+    "oscillation_cycles": 2
+  },
+  "event_count": 7,
+  "signal_count": 1,
+  "signals": [
+    {
+      "type": "premature_patching",
+      "category": "blocking_candidate",
+      "start_step": 3,
+      "end_step": 3,
+      "summary": "patching began before a reproduction event",
+      "evidence_refs": [
+        "a-treatment-verified-loop__t-roadmap-evolution__s-0/trajectory-source.json#record-003"
+      ],
+      "id": "signal-001-premature_patching"
+    }
+  ],
+  "interventions": [],
+  "report_id": "watchdog-report-74e993e2f265513d",
+  "fingerprint": "74e993e2f265513d248a6e32d657740d94fc0c2de8c56e70012be8e97eaf200d"
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "label_set_id": "labels-evolution-treatment-001",
+  "report_id": "watchdog-report-74e993e2f265513d",
+  "report_fingerprint": "74e993e2f265513d248a6e32d657740d94fc0c2de8c56e70012be8e97eaf200d",
+  "labels": [
+    {
+      "signal_id": "signal-001-premature_patching",
+      "verdict": "false_positive",
+      "rationale": "The declared verified-loop workflow intentionally tests after implementation, and every roadmap feature, protected, and artifact evaluator passed, so the alert did not identify an actionable failure in this case.",
+      "evidence_refs": [
+        "../../reports/2026-08-16-evolution-live-sentinel.md#trajectory-finding"
+      ]
+    }
+  ],
+  "missed_signals": []
+}
