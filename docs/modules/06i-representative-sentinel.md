@@ -1,6 +1,6 @@
 # M06i: Representative Live Sentinel
 
-**Status:** Implemented and offline-validated
+**Status:** Implemented, live sentinel completed
 
 ## Purpose
 
@@ -38,3 +38,9 @@ Run the same command a second time only after reviewing the first cell's state, 
 - Both cells contain redacted trajectory and source-map evidence.
 - The first cell shows no integrity, privacy, or environment-boundary failure before treatment runs.
 - Results are reported as sentinel evidence only; the full representative matrix remains separately gated.
+
+## Live result
+
+Both cells independently verified with zero regressions and false completion. Control used `0.152644` credits in `82.671` seconds; treatment used `0.176058` credits in `58.078` seconds. Total usage was `0.328702` credits. The treatment was faster but cost more, and one paired task cannot support an efficacy claim.
+
+Both observe-only trajectories signalled patching before reproduction. Because both declared workflows place testing after implementation and both independent audits passed, these cases must be labelled during watchdog calibration rather than treated as automatic failures. See the [representative live sentinel report](../../research/reports/2026-08-16-representative-live-sentinel.md).
