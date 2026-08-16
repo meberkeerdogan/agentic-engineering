@@ -49,3 +49,6 @@ Current examples:
 - [`representative-sentinel-experiment.json`](representative-sentinel-experiment.json): one multi-file task, one seed, and both workflow arms for a safety sentinel rather than an efficacy claim.
 - [`representative-sentinel-batch.json`](representative-sentinel-batch.json): two-cell sentinel with one cell per invocation, a 0.5-credit per-cell ceiling, and a 1-credit total ceiling.
 - [`representative-sentinel-live.json`](representative-sentinel-live.json): paid-run-gated launcher for the representative sentinel.
+- [`evolution-sentinel-experiment.json`](evolution-sentinel-experiment.json): one dependency-aware evolution task, one seed, and both workflow arms for the next safety sentinel.
+- [`evolution-sentinel-batch.json`](evolution-sentinel-batch.json): two-cell evolution budget with one cell per invocation and a 0.75-credit per-cell ceiling.
+- [`evolution-sentinel-live.json`](evolution-sentinel-live.json): separately approval-gated launcher for the evolution sentinel.

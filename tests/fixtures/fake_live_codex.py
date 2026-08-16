@@ -47,6 +47,8 @@ prompt = sys.stdin.read()
 calculator = workspace / "calculator.py"
 inventory = workspace / "inventory.py"
 reporting = workspace / "reporting.py"
+roadmap = workspace / "roadmap.py"
+progress = workspace / "progress.py"
 if calculator.is_file():
     source = calculator.read_text(encoding="utf-8")
     source = source.replace(
@@ -82,6 +84,35 @@ elif inventory.is_file() and reporting.is_file():
     artifact_refs = ["inventory.py", "reporting.py"]
     changed_paths = [inventory, reporting]
     test_command = "python -m unittest -v test_restock.py test_existing.py"
+elif roadmap.is_file() and progress.is_file():
+    with roadmap.open("a", encoding="utf-8") as stream:
+        stream.write(
+            "\n\ndef ready_item_ids(items: list[dict]) -> list[str]:\n"
+            "    completed = set(completed_item_ids(items))\n"
+            "    return sorted(item['id'] for item in items if item['status'] == "
+            "'pending' and set(item['depends_on']) <= completed)\n"
+            "\n\ndef blocking_dependencies(items: list[dict]) -> dict[str, list[str]]:\n"
+            "    completed = set(completed_item_ids(items))\n"
+            "    return {item['id']: sorted(set(item['depends_on']) - completed) "
+            "for item in items if item['status'] == 'pending' and "
+            "set(item['depends_on']) - completed}\n"
+        )
+    with progress.open("a", encoding="utf-8") as stream:
+        stream.write(
+            "\n\ndef build_progress_summary(items: list[dict]) -> dict:\n"
+            "    from roadmap import blocking_dependencies, ready_item_ids\n"
+            "    total = len(items)\n"
+            "    completed = completed_count(items)\n"
+            "    return {'total': total, 'completed': completed, "
+            "'completion_ratio': round(completed / total, 2) if total else 0.0, "
+            "'ready': ready_item_ids(items), "
+            "'blocked': blocking_dependencies(items)}\n"
+        )
+    task_id = "roadmap-evolution"
+    summary = "implemented dependency-aware roadmap progress"
+    artifact_refs = ["roadmap.py", "progress.py"]
+    changed_paths = [roadmap, progress]
+    test_command = "python -m unittest -v test_evolution.py test_existing.py"
 else:
     raise SystemExit("unsupported offline live fixture")
 output_path.write_text(

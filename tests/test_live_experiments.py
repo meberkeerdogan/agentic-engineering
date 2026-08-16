@@ -64,6 +64,9 @@ def representative_project_fixture(tmp_path: Path) -> Path:
         "representative-sentinel-experiment.json",
         "representative-sentinel-batch.json",
         "representative-sentinel-live.json",
+        "evolution-sentinel-experiment.json",
+        "evolution-sentinel-batch.json",
+        "evolution-sentinel-live.json",
     ):
         shutil.copy(ROOT / "examples" / name, project / "examples")
     return project
@@ -73,6 +76,16 @@ def run_representative_offline(project: Path):
     return run_live_experiment(
         project,
         project / "examples" / "representative-sentinel-live.json",
+        command_prefix=(sys.executable, str(FAKE_CODEX)),
+        source_codex_home=project / ".fake-codex-home",
+        preflight_date=date(2026, 8, 16),
+    )
+
+
+def run_evolution_offline(project: Path):
+    return run_live_experiment(
+        project,
+        project / "examples" / "evolution-sentinel-live.json",
         command_prefix=(sys.executable, str(FAKE_CODEX)),
         source_codex_home=project / ".fake-codex-home",
         preflight_date=date(2026, 8, 16),
@@ -169,6 +182,25 @@ def test_representative_sentinel_is_bounded_and_resumable_offline(
     state = json.loads((root / "batch-state.json").read_text("utf-8"))
     assert state["spent_cost"] <= 1
     assert all(cell["observation"]["cost"] <= 0.5 for cell in state["cells"])
+    assert all(cell["observation"]["verified_complete"] for cell in state["cells"])
+    assert all(cell["observation"]["regressions"] == 0 for cell in state["cells"])
+    assert len(list((root / "live-evidence").glob("*/trajectory.json"))) == 2
+
+
+def test_evolution_sentinel_is_bounded_and_resumable_offline(tmp_path: Path) -> None:
+    project = representative_project_fixture(tmp_path)
+
+    first = run_evolution_offline(project)
+    second = run_evolution_offline(project)
+
+    root = project / ".agentic-runs" / "live-batches" / "codex-evolution-sentinel-001"
+    assert first.status == "paused"
+    assert first.completed_count == 1
+    assert second.status == "completed"
+    assert second.completed_count == second.matrix_size == 2
+    state = json.loads((root / "batch-state.json").read_text("utf-8"))
+    assert state["spent_cost"] <= 1.5
+    assert all(cell["observation"]["cost"] <= 0.75 for cell in state["cells"])
     assert all(cell["observation"]["verified_complete"] for cell in state["cells"])
     assert all(cell["observation"]["regressions"] == 0 for cell in state["cells"])
     assert len(list((root / "live-evidence").glob("*/trajectory.json"))) == 2

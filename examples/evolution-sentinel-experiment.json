@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "experiment_id": "exp-evolution-sentinel-001",
+  "title": "Multi-step evolution sentinel",
+  "hypothesis": "The verified loop completes the dependency-aware evolution task without increasing regressions or false completion and stays inside the declared sentinel limits.",
+  "status": "planned",
+  "control": {
+    "id": "control-bounded",
+    "workflow": "bounded-baseline",
+    "config_ref": "workflow-control.md"
+  },
+  "treatments": [
+    {
+      "id": "treatment-verified-loop",
+      "workflow": "verified-loop",
+      "config_ref": "workflow-treatment.md"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "roadmap-evolution",
+      "repository": "examples/task-pack/multi-step-evolution",
+      "spec_ref": "ACTIVE_SPEC.md"
+    }
+  ],
+  "seeds": [0],
+  "metrics": [
+    { "id": "verified-completion", "description": "Required criteria accepted by declared evaluators.", "direction": "higher", "unit": "ratio" },
+    { "id": "regressions", "description": "Previously passing protected checks that now fail.", "direction": "lower", "unit": "count" },
+    { "id": "false-completion", "description": "Runs claimed complete but rejected by independent verification.", "direction": "lower", "unit": "ratio" },
+    { "id": "cost", "description": "Measured subscription-credit estimate derived from documented usage.", "direction": "lower", "unit": "credits" },
+    { "id": "time", "description": "Measured wall-clock duration of model execution.", "direction": "lower", "unit": "seconds" },
+    { "id": "human-interventions", "description": "Human actions needed to finish or recover a run.", "direction": "lower", "unit": "count" }
+  ],
+  "runs": [],
+  "decision": {
+    "adoption_rule": "Treat this as a safety sentinel only: both arms must verify with zero regressions and zero false completions, each cell must stay at or below 0.75 credits and 450 seconds, and no efficacy claim may be made from this two-cell sample.",
+    "outcome": "pending",
+    "reason": "The multi-step evolution sentinel has not been authorized or run."
+  }
+}

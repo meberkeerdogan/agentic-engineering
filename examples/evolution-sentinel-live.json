@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "batch_ref": "examples/evolution-sentinel-batch.json",
+  "rates_ref": "examples/live-pilot-rates.json",
+  "environment_ref": "examples/codex-environment.json",
+  "model": "gpt-5.6-luna",
+  "sandbox": "workspace-write",
+  "approval_mode": "auto-review",
+  "timeout_seconds": 450,
+  "task_bindings": [
+    {
+      "id": "roadmap-evolution",
+      "evidence_contract_ref": "evidence-contract.json"
+    }
+  ]
+}

@@ -28,3 +28,4 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 - Added the M06i representative live sentinel: a two-cell multi-file control/treatment stage with one-cell invocations, explicit credit and time ceilings, and no efficacy claim.
 - Completed the M06i live sentinel: both arms independently verified without regressions; treatment used more measured credits but less wall time, and both observe-only trajectories exposed a watchdog rule requiring calibration.
 - Added the first real M07 watchdog calibration dataset with two privacy-safe sentinel cases, contextual false-positive labels, schema checks, and evidence that premature-patching advice remains ineligible.
+- Added the M06j multi-step evolution sentinel with separate paid approval gates, one-cell invocations, explicit 0.75-credit and 450-second per-cell ceilings, and a complete offline control/treatment simulation.
