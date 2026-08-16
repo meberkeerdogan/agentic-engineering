@@ -31,3 +31,5 @@ Later modules will add workflow state-transition, evaluator, checkpoint, runner,
 `test_advisory_watchdog.py` verifies fail-closed calibration binding, eligible-type filtering, deterministic advice, and permanently empty intervention and blocking surfaces.
 
 `test_dependency_planning.py` verifies deterministic static and adaptive ordering, ready-frontier selection, transitive failure blocking, cycle rejection, and read-only outputs.
+
+`test_phase_memory.py` verifies immutable provenance, safe supersession, deterministic per-phase bounds, phase/task-aware retrieval, and read-only output.

@@ -72,13 +72,16 @@ The multi-step evolution sentinel adds two more contextual false positives. The 
 
 The synthetic fixture proves the mechanism. The combined real calibration currently permits no signal types, so real sentinel reports produce zero advice. M07b is implemented but not promoted as a default behavior.
 
-## Remaining M07 Slices
-
 ## M07c: Dependency Planning Experiment
 
 `dependency_planning` compares a fixed declared topological order with an adaptive, evidence-driven replan. The adaptive strategy removes tasks downstream of a failed dependency and prioritizes the remaining ready frontier. Both outputs are deterministic read-only reports with empty execution and state-mutation arrays; promotion still requires an M06 efficacy comparison.
 
-- M07d: phase-aware memory.
+## M07d: Bounded Phase-Aware Memory
+
+`phase_memory` builds a deterministic read-only view from immutable, evidenced entries. Newer entries may explicitly supersede older facts for the same task; each phase has a fixed capacity; retrieval ranks current-task and current-phase evidence first. Reports expose retained, superseded, and evicted IDs and have structurally empty write and state-mutation arrays. Adoption still requires a separate M06 comparison.
+
+## Remaining M07 Slices
+
 - M07e: complementary agentic property testing.
 
 Each slice will be implemented and promoted independently.

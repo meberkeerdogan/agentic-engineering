@@ -33,3 +33,4 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 - Expanded real M07 calibration to four privacy-safe live sentinel cases; all four premature-patching alerts are contextual false positives and the signal remains below the advisory support gate.
 - Added M07b calibration-gated advisory reports with deterministic safe-boundary messages, fail-closed fingerprint checks, eligible-type filtering, and no intervention or blocking capability.
 - Added M07c static and adaptive dependency-plan primitives with cycle rejection, evidenced runtime states, transitive failure blocking, deterministic ready-frontier prioritization, and no execution side effects.
+- Added M07d bounded phase-aware memory with immutable provenance, safe supersession, deterministic capacity eviction, task/phase-aware retrieval, and no write side effects.

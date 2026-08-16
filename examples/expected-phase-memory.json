@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "memory_id": "memory-roadmap-001",
+  "source_fingerprint": "2d8fa268320fd2259cf4e2aaeae29d6bfbc34b094d0538eb69a9909b6f8ba0bb",
+  "capacity_per_phase": 2,
+  "retained_entry_ids": [
+    "nav-new",
+    "repro-main",
+    "patch-main",
+    "patch-latest"
+  ],
+  "superseded_entry_ids": [
+    "nav-old"
+  ],
+  "evicted_entry_ids": [
+    "patch-old"
+  ],
+  "retrieved_entries": [
+    {
+      "id": "patch-latest",
+      "phase": "patch",
+      "kind": "evidence",
+      "task_id": "roadmap",
+      "summary": "Patch touches roadmap.py only.",
+      "created_step": 7,
+      "evidence_refs": [
+        "evidence/patch-latest.json"
+      ],
+      "supersedes": null
+    },
+    {
+      "id": "patch-main",
+      "phase": "patch",
+      "kind": "decision",
+      "task_id": "roadmap",
+      "summary": "Compute completed dependency IDs once.",
+      "created_step": 6,
+      "evidence_refs": [
+        "evidence/patch-main.json"
+      ],
+      "supersedes": null
+    },
+    {
+      "id": "repro-main",
+      "phase": "reproduce",
+      "kind": "failure",
+      "task_id": "roadmap",
+      "summary": "Dependency readiness test fails.",
+      "created_step": 4,
+      "evidence_refs": [
+        "evidence/repro.json"
+      ],
+      "supersedes": null
+    }
+  ],
+  "writes": [],
+  "state_mutations": [],
+  "report_id": "phase-memory-2c9992ed272ab81a",
+  "fingerprint": "2c9992ed272ab81a0c802cd3584cd39eaac5e23ad925a89a83b49a0b270d7761"
+}

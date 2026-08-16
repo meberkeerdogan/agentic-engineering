@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/phase-memory-report.schema.json",
+  "title": "Bounded Phase Memory View",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "memory_id", "source_fingerprint", "capacity_per_phase", "retained_entry_ids", "superseded_entry_ids", "evicted_entry_ids", "retrieved_entries", "writes", "state_mutations", "report_id", "fingerprint"],
+  "properties": {
+    "version": {"const": 1},
+    "memory_id": {"$ref": "#/$defs/id"},
+    "source_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "capacity_per_phase": {"type": "integer", "minimum": 1},
+    "retained_entry_ids": {"$ref": "#/$defs/ids"},
+    "superseded_entry_ids": {"$ref": "#/$defs/ids"},
+    "evicted_entry_ids": {"$ref": "#/$defs/ids"},
+    "retrieved_entries": {"type": "array", "items": {"type": "object"}},
+    "writes": {"type": "array", "maxItems": 0},
+    "state_mutations": {"type": "array", "maxItems": 0},
+    "report_id": {"$ref": "#/$defs/id"},
+    "fingerprint": {"$ref": "#/$defs/fingerprint"}
+  },
+  "$defs": {"id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"}, "ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}, "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

@@ -34,6 +34,7 @@ Current examples:
 - [`expected-advisory-report.json`](expected-advisory-report.json): deterministic M07b fixture output filtered by synthetic calibration eligibility.
 - [`dependency-plan.json`](dependency-plan.json): dependency graph with evidenced completion and failure states for M07c.
 - [`expected-static-dependency-plan.json`](expected-static-dependency-plan.json) and [`expected-adaptive-dependency-plan.json`](expected-adaptive-dependency-plan.json): golden fixed-order and failure-aware planning views.
+- [`phase-memory.json`](phase-memory.json) and [`expected-phase-memory.json`](expected-phase-memory.json): bounded M07d provenance and retrieval fixture plus golden view.
 - [`fixture-task/`](fixture-task/): a prepared candidate, four-type evidence contract, and deterministic golden evaluation report for M03.
 - [`live-pilot.json`](live-pilot.json): one private Codex control-run configuration for M06c.
 - [`live-pilot-rates.json`](live-pilot-rates.json): dated external rates used to estimate the example run's subscription-credit usage.

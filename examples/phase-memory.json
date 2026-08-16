@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "memory_id": "memory-roadmap-001",
+  "capacity_per_phase": 2,
+  "entries": [
+    {"id": "nav-old", "phase": "navigate", "kind": "artifact", "task_id": "roadmap", "summary": "Roadmap logic is in legacy.py.", "created_step": 1, "evidence_refs": ["evidence/nav-old.json"], "supersedes": null},
+    {"id": "nav-new", "phase": "navigate", "kind": "artifact", "task_id": "roadmap", "summary": "Roadmap logic moved to roadmap.py.", "created_step": 3, "evidence_refs": ["evidence/nav-new.json"], "supersedes": "nav-old"},
+    {"id": "repro-main", "phase": "reproduce", "kind": "failure", "task_id": "roadmap", "summary": "Dependency readiness test fails.", "created_step": 4, "evidence_refs": ["evidence/repro.json"], "supersedes": null},
+    {"id": "patch-old", "phase": "patch", "kind": "decision", "task_id": "other", "summary": "Unrelated patch decision.", "created_step": 5, "evidence_refs": ["evidence/patch-other.json"], "supersedes": null},
+    {"id": "patch-main", "phase": "patch", "kind": "decision", "task_id": "roadmap", "summary": "Compute completed dependency IDs once.", "created_step": 6, "evidence_refs": ["evidence/patch-main.json"], "supersedes": null},
+    {"id": "patch-latest", "phase": "patch", "kind": "evidence", "task_id": "roadmap", "summary": "Patch touches roadmap.py only.", "created_step": 7, "evidence_refs": ["evidence/patch-latest.json"], "supersedes": null}
+  ],
+  "query": {"phase": "patch", "task_id": "roadmap", "kinds": ["decision", "failure", "evidence"], "limit": 3}
+}

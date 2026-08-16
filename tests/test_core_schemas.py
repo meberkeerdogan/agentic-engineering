@@ -23,6 +23,8 @@ SCHEMA_EXAMPLE_PAIRS = [
     ("dependency-plan.schema.json", "dependency-plan.json"),
     ("dependency-plan-report.schema.json", "expected-static-dependency-plan.json"),
     ("dependency-plan-report.schema.json", "expected-adaptive-dependency-plan.json"),
+    ("phase-memory.schema.json", "phase-memory.json"),
+    ("phase-memory-report.schema.json", "expected-phase-memory.json"),
     ("project-preferences.schema.json", "project-preferences.json"),
     ("spec-history.schema.json", "spec-history-direct.json"),
     ("spec-history.schema.json", "spec-history-revised.json"),
