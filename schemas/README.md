@@ -30,6 +30,8 @@ Current schemas:
 - [`property-testing-report.schema.json`](property-testing-report.schema.json): accepted/rejected properties and evidenced counterexamples requiring follow-up.
 - [`paper-reproduction.schema.json`](paper-reproduction.schema.json): paper, claim, lineage, environment, experiment, rubric, and deviation contract.
 - [`paper-reproduction-report.schema.json`](paper-reproduction-report.schema.json): hash-bound claim-level reproduction results with explicit scope.
+- [`multi-agent-run.schema.json`](multi-agent-run.schema.json): dependency DAG, explicit adapters, concurrency, path boundaries, and final validation.
+- [`multi-agent-report.schema.json`](multi-agent-report.schema.json): worktree commits, waves, integration revision, and hashed validation evidence.
 - [`watchdog-calibration-report.schema.json`](watchdog-calibration-report.schema.json): per-signal precision, recall, false-alarm rate, and advisory-experiment eligibility.
 - [`live-pilot.schema.json`](live-pilot.schema.json): one isolated Codex control-cell configuration.
 - [`usage-rates.schema.json`](usage-rates.schema.json): a dated, externally sourced model-usage rate card.

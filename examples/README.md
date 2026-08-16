@@ -57,3 +57,4 @@ Current examples:
 - [`evolution-sentinel-experiment.json`](evolution-sentinel-experiment.json): one dependency-aware evolution task, one seed, and both workflow arms for the next safety sentinel.
 - [`evolution-sentinel-batch.json`](evolution-sentinel-batch.json): two-cell evolution budget with one cell per invocation and a 0.75-credit per-cell ceiling.
 - [`evolution-sentinel-live.json`](evolution-sentinel-live.json): separately approval-gated launcher for the evolution sentinel.
+- [`multi-agent-run.json`](multi-agent-run.json) and [`multi-agent-fixture/`](multi-agent-fixture/): offline M09 dependency-wave and integration fixture.

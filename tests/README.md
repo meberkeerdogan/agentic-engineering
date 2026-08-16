@@ -37,3 +37,5 @@ Later modules will add workflow state-transition, evaluator, checkpoint, runner,
 `test_property_testing.py` verifies independent proposal review, rejection of invented properties, read-only evidence requirements, counterexample follow-up, and no generated-code execution.
 
 `test_paper_reproduction.py` verifies hash-bound paper lineage, contained trusted execution, deterministic observations, rubric scoring, deviations, schema validity, and fail-closed tampering.
+
+`test_multi_agent.py` verifies parallel independent worktrees, dependency commit delivery, declared-path enforcement, clean-source preservation, deterministic integration, final validation, schemas, and cycle rejection.

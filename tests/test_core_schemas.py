@@ -49,6 +49,7 @@ SCHEMA_EXAMPLE_PAIRS = [
     ("experiment-record.schema.json", "evolution-sentinel-experiment.json"),
     ("batch-experiment.schema.json", "evolution-sentinel-batch.json"),
     ("live-experiment.schema.json", "evolution-sentinel-live.json"),
+    ("multi-agent-run.schema.json", "multi-agent-run.json"),
 ]
 
 

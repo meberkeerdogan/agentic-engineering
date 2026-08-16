@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "run_id": "fixture-dag-001",
+  "max_parallelism": 2,
+  "commit_timestamp": "2026-08-16T00:00:00Z",
+  "tasks": [
+    {"id": "alpha", "depends_on": [], "command": ["{python}", "task_alpha.py"], "timeout_seconds": 30, "allowed_paths": ["alpha.txt"], "evidence_refs": ["spec/alpha.json"]},
+    {"id": "beta", "depends_on": [], "command": ["{python}", "task_beta.py"], "timeout_seconds": 30, "allowed_paths": ["beta.txt"], "evidence_refs": ["spec/beta.json"]},
+    {"id": "combine", "depends_on": ["alpha", "beta"], "command": ["{python}", "task_combine.py"], "timeout_seconds": 30, "allowed_paths": ["combined.txt"], "evidence_refs": ["spec/combine.json"]}
+  ],
+  "validation": {"command": ["{python}", "validate.py"], "timeout_seconds": 30}
+}
