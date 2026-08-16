@@ -64,7 +64,7 @@ The [representative sentinel dataset](../../research/calibration/representative-
 
 With two false positives and the predeclared minimum of five labels, `premature_patching` has zero precision on this small dataset and remains ineligible for an advisory experiment. This does not establish its general quality; it establishes that workflow-aware calibration is required before advice.
 
-The multi-step evolution sentinel adds two more contextual false positives. The combined live manifest now contains four fingerprint-bound cases, still below the five-label support threshold, with no eligible advisory signal and no interventions.
+The multi-step evolution sentinel adds two more contextual false positives. The static dependency-planning control adds the fifth `premature_patching` false positive plus one `stagnation` false positive during read-only validation. `premature_patching` now meets the five-label support floor but has zero precision, `stagnation` has only one label, and no advisory signal is eligible.
 
 ## M07b: Calibration-Gated Advice
 

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "label_set_id": "labels-planning-control-001",
+  "report_id": "watchdog-report-2949b0729297b8f9",
+  "report_fingerprint": "2949b0729297b8f996d89857e1cf2fa322244491388e020aaa0b7e16ff7a823a",
+  "labels": [
+    {
+      "signal_id": "signal-001-premature_patching",
+      "verdict": "false_positive",
+      "rationale": "The bound static plan already marks reproduction complete, the selected workflow was isolated, and every roadmap feature, protected, and artifact evaluator passed; this signal did not identify an actionable failure.",
+      "evidence_refs": [
+        "../../reports/2026-08-17-dependency-planning-control.md#trajectory-review"
+      ]
+    },
+    {
+      "signal_id": "signal-002-stagnation",
+      "verdict": "false_positive",
+      "rationale": "The unchanged-state window contains the patch followed by two read-only test runs and a diff inspection, all of which culminated in a passing independent audit; no corrective intervention was warranted.",
+      "evidence_refs": [
+        "../../reports/2026-08-17-dependency-planning-control.md#trajectory-review"
+      ]
+    }
+  ],
+  "missed_signals": []
+}

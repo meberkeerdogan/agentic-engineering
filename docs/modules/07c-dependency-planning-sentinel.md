@@ -1,6 +1,6 @@
 # M07c: Dependency-Planning Safety Sentinel
 
-**Status:** Prepared and offline-validated; authenticated cells not authorized
+**Status:** Static control completed; adaptive treatment not authorized
 
 ## Purpose
 
@@ -34,6 +34,12 @@ Each authenticated invocation requires a new explicit approval naming:
 - the `0.75`-credit and `450`-second cell ceilings.
 
 The control result must be independently reviewed before the treatment cell is authorized. Earlier approvals for other sentinels do not apply.
+
+## Static control result
+
+The static control independently verified with zero regressions, false completion, or human intervention. It used `0.215307` credits in `71.266` seconds. The clean preflight enabled zero plugins and zero MCP servers, and the isolated workspace contained only the selected static planning workflow. Two observe-only watchdog candidates were reviewed as contextual false positives and added to calibration. See the [control evidence report](../../research/reports/2026-08-17-dependency-planning-control.md).
+
+The adaptive treatment remains pending and requires its own explicit approval.
 
 ## Decision gate
 

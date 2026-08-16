@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CALIBRATION_ROOT = ROOT / "research" / "calibration"
 DATASET = CALIBRATION_ROOT / "representative-sentinel-001"
 EVOLUTION_DATASET = CALIBRATION_ROOT / "evolution-sentinel-001"
+PLANNING_DATASET = CALIBRATION_ROOT / "dependency-planning-sentinel-001"
 
 
 def test_real_sentinel_cases_are_complete_private_and_ineligible() -> None:
@@ -93,8 +94,8 @@ def test_combined_live_cases_remain_below_advisory_gate() -> None:
     assert not list(Draft202012Validator(manifest_schema).iter_errors(manifest))
     assert not list(Draft202012Validator(report_schema).iter_errors(expected))
     assert report == expected
-    assert report["case_count"] == 4
-    assert report["overall"]["false_positive"] == 4
+    assert report["case_count"] == 5
+    assert report["overall"]["false_positive"] == 6
     assert report["eligible_advisory_types"] == []
     assert report["interventions"] == []
     premature = next(
@@ -102,9 +103,17 @@ def test_combined_live_cases_remain_below_advisory_gate() -> None:
         for item in report["type_summaries"]
         if item["signal_type"] == "premature_patching"
     )
-    assert premature["support"] == 4
+    assert premature["support"] == 5
     assert premature["precision"] == 0.0
     assert premature["eligible_for_advisory_experiment"] is False
+    stagnation = next(
+        item
+        for item in report["type_summaries"]
+        if item["signal_type"] == "stagnation"
+    )
+    assert stagnation["support"] == 1
+    assert stagnation["precision"] == 0.0
+    assert stagnation["eligible_for_advisory_experiment"] is False
 
 
 def test_evolution_calibration_files_match_public_schemas() -> None:
@@ -117,4 +126,15 @@ def test_evolution_calibration_files_match_public_schemas() -> None:
     for schema_name, evidence_name in pairs:
         schema = json.loads((ROOT / "schemas" / schema_name).read_text("utf-8"))
         evidence = json.loads((EVOLUTION_DATASET / evidence_name).read_text("utf-8"))
+        assert not list(Draft202012Validator(schema).iter_errors(evidence))
+
+
+def test_planning_control_calibration_files_match_public_schemas() -> None:
+    pairs = [
+        ("watchdog-report.schema.json", "control-watchdog-report.json"),
+        ("watchdog-labels.schema.json", "control-labels.json"),
+    ]
+    for schema_name, evidence_name in pairs:
+        schema = json.loads((ROOT / "schemas" / schema_name).read_text("utf-8"))
+        evidence = json.loads((PLANNING_DATASET / evidence_name).read_text("utf-8"))
         assert not list(Draft202012Validator(schema).iter_errors(evidence))

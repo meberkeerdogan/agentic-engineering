@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "trajectory_id": "trajectory-a-control-static__t-roadmap-evolution__s-0",
+  "task_id": "roadmap-evolution",
+  "trajectory_fingerprint": "e9beeddff4526421e5680707c5898858815c85db50f7c6737e2b9bed6ff63d78",
+  "mode": "observe_only",
+  "config": {
+    "repeat_threshold": 3,
+    "stagnation_threshold": 4,
+    "oscillation_cycles": 2
+  },
+  "event_count": 8,
+  "signal_count": 2,
+  "signals": [
+    {
+      "type": "premature_patching",
+      "category": "blocking_candidate",
+      "start_step": 3,
+      "end_step": 3,
+      "summary": "patching began before a reproduction event",
+      "evidence_refs": [
+        "a-control-static__t-roadmap-evolution__s-0/trajectory-source.json#record-003"
+      ],
+      "id": "signal-001-premature_patching"
+    },
+    {
+      "type": "stagnation",
+      "category": "advisory_candidate",
+      "start_step": 3,
+      "end_step": 6,
+      "summary": "external state did not change for 4 events",
+      "evidence_refs": [
+        "a-control-static__t-roadmap-evolution__s-0/trajectory-source.json#record-003",
+        "a-control-static__t-roadmap-evolution__s-0/trajectory-source.json#record-004",
+        "a-control-static__t-roadmap-evolution__s-0/trajectory-source.json#record-005",
+        "a-control-static__t-roadmap-evolution__s-0/trajectory-source.json#record-006"
+      ],
+      "id": "signal-002-stagnation"
+    }
+  ],
+  "interventions": [],
+  "report_id": "watchdog-report-2949b0729297b8f9",
+  "fingerprint": "2949b0729297b8f996d89857e1cf2fa322244491388e020aaa0b7e16ff7a823a"
+}

@@ -22,6 +22,10 @@
     {
       "report": "evolution-sentinel-001/treatment-watchdog-report.json",
       "labels": "evolution-sentinel-001/treatment-labels.json"
+    },
+    {
+      "report": "dependency-planning-sentinel-001/control-watchdog-report.json",
+      "labels": "dependency-planning-sentinel-001/control-labels.json"
     }
   ]
 }

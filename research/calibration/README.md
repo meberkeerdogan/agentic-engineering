@@ -8,4 +8,5 @@ Current datasets:
 
 - [`representative-sentinel-001/`](representative-sentinel-001/): two real multi-file sentinel cases plus their deterministic calibration report. Both `premature_patching` alerts are contextually labelled false positives because the declared workflows test after implementation and independent evaluation passed every required and protected check.
 - [`evolution-sentinel-001/`](evolution-sentinel-001/): two real dependency-aware evolution cases with the same contextual false-positive result.
-- [`live-sentinels-001.json`](live-sentinels-001.json): combined four-case manifest. Four labels remain below the predeclared minimum of five, and zero advisory types are eligible.
+- [`dependency-planning-sentinel-001/`](dependency-planning-sentinel-001/): the static planning control, with contextual false-positive labels for premature patching and a read-only validation window reported as stagnation.
+- [`live-sentinels-001.json`](live-sentinels-001.json): combined five-case manifest. `premature_patching` now reaches the minimum support of five but has zero precision; `stagnation` has one false-positive label. Zero advisory types are eligible.
