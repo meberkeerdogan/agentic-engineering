@@ -58,6 +58,12 @@ uv run python -m agentic_engineering.watchdog_calibration `
 
 The bundled labels are a deterministic fixture, not performance evidence. The default policy requires at least five labels per signal type, so the one-case fixture is ineligible unless its explicit test-only threshold is used.
 
+### First live calibration cases
+
+The [representative sentinel dataset](../../research/calibration/representative-sentinel-001/) adds two real, privacy-safe cases. Both arms triggered `premature_patching`, but both declared workflows intentionally test after implementation and both independent audits passed. Human review therefore labels both alerts false positives for this context.
+
+With two false positives and the predeclared minimum of five labels, `premature_patching` has zero precision on this small dataset and remains ineligible for an advisory experiment. This does not establish its general quality; it establishes that workflow-aware calibration is required before advice.
+
 ## Remaining M07 Slices
 
 - M07b: advisory watchdog tested only with signal types eligible from real calibration data.

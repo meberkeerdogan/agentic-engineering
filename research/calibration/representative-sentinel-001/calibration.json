@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "calibration_id": "calibration-representative-sentinel-001",
+  "policy": {
+    "minimum_labels": 5,
+    "minimum_precision": 0.8,
+    "minimum_recall": 0.8
+  },
+  "cases": [
+    {
+      "report": "control-watchdog-report.json",
+      "labels": "control-labels.json"
+    },
+    {
+      "report": "treatment-watchdog-report.json",
+      "labels": "treatment-labels.json"
+    }
+  ]
+}

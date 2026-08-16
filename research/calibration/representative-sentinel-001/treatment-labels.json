@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "label_set_id": "labels-sentinel-treatment-001",
+  "report_id": "watchdog-report-e8a4d6b741b25026",
+  "report_fingerprint": "e8a4d6b741b25026595670791f95b0f7deb714f37912b007fb4582eba55eafb2",
+  "labels": [
+    {
+      "signal_id": "signal-001-premature_patching",
+      "verdict": "false_positive",
+      "rationale": "The declared verified-loop workflow intentionally tests after implementation, and every required and protected evaluator passed, so the alert did not identify an actionable failure in this case.",
+      "evidence_refs": [
+        "../../reports/2026-08-16-representative-live-sentinel.md#trajectory-finding"
+      ]
+    }
+  ],
+  "missed_signals": []
+}

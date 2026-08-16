@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "label_set_id": "labels-sentinel-control-001",
+  "report_id": "watchdog-report-f4a3fee32cbf59b2",
+  "report_fingerprint": "f4a3fee32cbf59b258e372f876e421dadbc7fe63838822f09712dfb21a292fd8",
+  "labels": [
+    {
+      "signal_id": "signal-001-premature_patching",
+      "verdict": "false_positive",
+      "rationale": "The declared control workflow intentionally tests after implementation, and every required and protected evaluator passed, so the alert did not identify an actionable failure in this case.",
+      "evidence_refs": [
+        "../../reports/2026-08-16-representative-live-sentinel.md#trajectory-finding"
+      ]
+    }
+  ],
+  "missed_signals": []
+}

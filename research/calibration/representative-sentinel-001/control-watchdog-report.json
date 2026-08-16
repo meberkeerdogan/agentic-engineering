@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "trajectory_id": "trajectory-a-control-bounded__t-restock-report__s-0",
+  "task_id": "restock-report",
+  "trajectory_fingerprint": "bdcf93a04b38969f280eaa43de7529ce11411f386022e3656ced38810448f47c",
+  "mode": "observe_only",
+  "config": {
+    "repeat_threshold": 3,
+    "stagnation_threshold": 4,
+    "oscillation_cycles": 2
+  },
+  "event_count": 6,
+  "signal_count": 1,
+  "signals": [
+    {
+      "type": "premature_patching",
+      "category": "blocking_candidate",
+      "start_step": 3,
+      "end_step": 3,
+      "summary": "patching began before a reproduction event",
+      "evidence_refs": [
+        "a-control-bounded__t-restock-report__s-0/trajectory-source.json#record-003"
+      ],
+      "id": "signal-001-premature_patching"
+    }
+  ],
+  "interventions": [],
+  "report_id": "watchdog-report-f4a3fee32cbf59b2",
+  "fingerprint": "f4a3fee32cbf59b258e372f876e421dadbc7fe63838822f09712dfb21a292fd8"
+}
