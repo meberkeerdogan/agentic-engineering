@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import sys
 from collections.abc import Mapping, Sequence
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -20,6 +21,11 @@ from .codex_adapter import (
     CodexExperimentAdapter,
 )
 from .codex_evidence import EvidenceContractEvaluator, JsonlUsageCostMeter, UsageRates
+from .codex_environment import (
+    CodexEnvironmentPolicy,
+    TemporaryCodexHome,
+    run_codex_preflight,
+)
 
 
 class LivePilotError(CodexAdapterError):
@@ -36,6 +42,7 @@ CONFIG_FIELDS = {
     "task",
     "evidence_contract_ref",
     "rates_ref",
+    "environment_ref",
     "model",
     "sandbox",
     "timeout_seconds",
@@ -172,6 +179,8 @@ def run_live_pilot(
     run_id: str,
     *,
     command_prefix: tuple[str, ...] = ("codex",),
+    source_codex_home: Path | None = None,
+    preflight_date: date | None = None,
 ) -> dict[str, Any]:
     """Run exactly one fresh control cell and return its private summary."""
 
@@ -189,6 +198,9 @@ def run_live_pilot(
 
     template = _resolve_inside(project_root, config["template_ref"], "template reference")
     rates_path = _resolve_inside(project_root, config["rates_ref"], "rate-card reference")
+    environment_path = _resolve_inside(
+        project_root, config["environment_ref"], "environment-policy reference"
+    )
     run_root = _resolve_inside(project_root, config["run_root_ref"], "run-root reference")
     if not template.is_dir():
         raise LivePilotError(f"pilot template does not exist: {template}")
@@ -197,6 +209,9 @@ def run_live_pilot(
     if set(rate_card) != RATE_FIELDS or rate_card.get("version") != 1:
         raise LivePilotError("usage rate card must contain exactly the version 1 fields")
     rates = UsageRates.from_mapping(rate_card)
+    environment_policy = CodexEnvironmentPolicy.from_mapping(
+        _load_object(environment_path, "Codex environment policy")
+    )
 
     run_dir = run_root / run_id
     if run_dir.exists():
@@ -216,30 +231,61 @@ def run_live_pilot(
             raise LivePilotError(f"{label} does not exist in the pilot template")
     _initialize_workspace(workspace)
 
-    runner = CodexExecRunner(
-        workspace_root=workspace_root,
-        evidence_root=evidence_root,
-        config=CodexExecConfig(
-            command_prefix=command_prefix,
-            sandbox=config["sandbox"],
-            model=config["model"],
-            timeout_seconds=float(config["timeout_seconds"]),
-        ),
-    )
-    adapter = CodexExperimentAdapter(
-        runner=runner,
-        workspace_resolver=lambda arm, task, seed: workspace,
-        evaluator=EvidenceContractEvaluator(config["evidence_contract_ref"]),
-        cost_meter=JsonlUsageCostMeter(rates),
-    )
-
     status_path = run_dir / "pilot-status.json"
     _write_json(
         status_path,
-        {"version": 1, "pilot_id": config["pilot_id"], "run_id": run_id, "status": "running"},
+        {
+            "version": 1,
+            "pilot_id": config["pilot_id"],
+            "run_id": run_id,
+            "status": "preflighting",
+        },
     )
     try:
-        observation = adapter.run(config["arm"], config["task"], config["seed"])
+        temporary_home = TemporaryCodexHome(source_codex_home)
+        with temporary_home as clean_codex_home:
+            prompt = CodexExperimentAdapter.render_prompt(
+                config["arm"], config["task"], config["seed"]
+            )
+            preflight = run_codex_preflight(
+                policy=environment_policy,
+                command_prefix=command_prefix,
+                source_codex_home=temporary_home.source_home,
+                clean_codex_home=clean_codex_home,
+                workspace=workspace,
+                model=config["model"],
+                rates=rates,
+                prompt=prompt,
+                today=preflight_date,
+            )
+            _write_json(run_dir / "preflight-report.json", preflight)
+            _write_json(
+                status_path,
+                {
+                    "version": 1,
+                    "pilot_id": config["pilot_id"],
+                    "run_id": run_id,
+                    "status": "running",
+                },
+            )
+            runner = CodexExecRunner(
+                workspace_root=workspace_root,
+                evidence_root=evidence_root,
+                config=CodexExecConfig(
+                    command_prefix=command_prefix,
+                    sandbox=config["sandbox"],
+                    model=config["model"],
+                    codex_home=clean_codex_home,
+                    timeout_seconds=float(config["timeout_seconds"]),
+                ),
+            )
+            adapter = CodexExperimentAdapter(
+                runner=runner,
+                workspace_resolver=lambda arm, task, seed: workspace,
+                evaluator=EvidenceContractEvaluator(config["evidence_contract_ref"]),
+                cost_meter=JsonlUsageCostMeter(rates),
+            )
+            observation = adapter.run(config["arm"], config["task"], config["seed"])
     except Exception as error:
         _write_json(
             status_path,
@@ -270,6 +316,10 @@ def run_live_pilot(
         "cost_unit": rates.unit,
         "rate_effective_date": rates.effective_date,
         "rate_source_url": rates.source_url,
+        "preflight_ref": "preflight-report.json",
+        "preflight_prompt_json_bytes": preflight["prompt_json_bytes"],
+        "preflight_enabled_plugin_count": preflight["enabled_plugin_count"],
+        "preflight_enabled_mcp_count": preflight["enabled_mcp_count"],
         "time_seconds": observation.time_seconds,
         "human_interventions": observation.human_interventions,
         "evidence_refs": list(observation.evidence_refs),

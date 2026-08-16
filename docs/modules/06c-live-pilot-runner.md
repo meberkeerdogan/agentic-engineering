@@ -13,6 +13,7 @@ The live pilot runner turns the M06b adapter into one reusable command. It copie
 - Only `read-only` and `workspace-write` Codex sandboxes are accepted.
 - Raw prompts, JSONL, stderr, evaluator output, and usage records stay under ignored `.agentic-runs/` storage.
 - The committed example contains no credentials and the runner reuses the Codex CLI's existing authentication.
+- The [M06d clean-environment preflight](06d-clean-codex-environment.md) must pass before `codex exec` can start.
 - `pilot-summary.json` reports the agent claim separately from independently verified completion.
 - Pricing is an observation aid, not a billing statement. The dated rate card must be checked against its source before later experiments.
 

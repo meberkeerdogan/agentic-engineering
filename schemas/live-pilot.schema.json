@@ -4,7 +4,7 @@
   "title": "Live Pilot Configuration",
   "type": "object",
   "additionalProperties": false,
-  "required": ["version", "pilot_id", "template_ref", "run_root_ref", "arm", "task", "evidence_contract_ref", "rates_ref", "model", "sandbox", "timeout_seconds", "seed"],
+  "required": ["version", "pilot_id", "template_ref", "run_root_ref", "arm", "task", "evidence_contract_ref", "rates_ref", "environment_ref", "model", "sandbox", "timeout_seconds", "seed"],
   "properties": {
     "version": { "const": 1 },
     "pilot_id": { "$ref": "#/$defs/id" },
@@ -32,6 +32,7 @@
     },
     "evidence_contract_ref": { "$ref": "#/$defs/relativePath" },
     "rates_ref": { "$ref": "#/$defs/relativePath" },
+    "environment_ref": { "$ref": "#/$defs/relativePath" },
     "model": { "type": "string", "minLength": 1 },
     "sandbox": { "enum": ["read-only", "workspace-write"] },
     "timeout_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 3600 },

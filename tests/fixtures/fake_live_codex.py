@@ -3,11 +3,38 @@
 from __future__ import annotations
 
 import json
+import os
 import sys
 from pathlib import Path
 
 
 arguments = sys.argv[1:]
+if arguments == ["--version"]:
+    print(f"codex-cli {os.environ.get('FAKE_CODEX_VERSION', '0.147.0')}")
+    raise SystemExit(0)
+if arguments == ["login", "status"]:
+    if os.environ.get("FAKE_CODEX_AUTH", "chatgpt") == "chatgpt":
+        print("Logged in using ChatGPT", file=sys.stderr)
+        raise SystemExit(0)
+    print("Not logged in", file=sys.stderr)
+    raise SystemExit(1)
+if arguments == ["debug", "models"]:
+    model = os.environ.get("FAKE_CODEX_MODEL", "gpt-5.6-luna")
+    print(json.dumps({"models": [{"slug": model}]}))
+    raise SystemExit(0)
+if arguments == ["plugin", "list", "--json"]:
+    print(json.dumps({"installed": [], "available": []}))
+    raise SystemExit(0)
+if arguments == ["mcp", "list", "--json"]:
+    print("[]")
+    raise SystemExit(0)
+if arguments[:2] == ["debug", "prompt-input"]:
+    codex_home = Path(os.environ.get("CODEX_HOME", ""))
+    clean = codex_home.name.startswith("agentic-engineering-")
+    padding = "x" * (100 if clean else 3000)
+    print(json.dumps([{"role": "developer", "content": padding}, {"role": "user", "content": arguments[-1]}]))
+    raise SystemExit(0)
+
 workspace = Path(arguments[arguments.index("-C") + 1])
 output_path = Path(arguments[arguments.index("--output-last-message") + 1])
 prompt = sys.stdin.read()

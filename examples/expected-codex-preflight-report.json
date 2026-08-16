@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "status": "passed",
+  "isolation": "temporary-codex-home",
+  "codex_version": "0.147.0",
+  "authentication": "chatgpt",
+  "model": "gpt-5.6-luna",
+  "model_available": true,
+  "rate_effective_date": "2026-08-16",
+  "rate_age_days": 0,
+  "structured_output_schema": "compatible",
+  "enabled_plugin_count": 0,
+  "enabled_mcp_count": 0,
+  "prompt_item_count": 5,
+  "prompt_json_bytes": 14488,
+  "maximum_prompt_json_bytes": 20000,
+  "baseline_prompt_json_bytes": 41320,
+  "prompt_json_byte_reduction": 26832,
+  "prompt_json_byte_reduction_percent": 64.94,
+  "model_call_performed": false
+}

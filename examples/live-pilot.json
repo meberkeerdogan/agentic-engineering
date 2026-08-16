@@ -15,6 +15,7 @@
   },
   "evidence_contract_ref": "evidence-contract.json",
   "rates_ref": "examples/live-pilot-rates.json",
+  "environment_ref": "examples/codex-environment.json",
   "model": "gpt-5.6-luna",
   "sandbox": "workspace-write",
   "timeout_seconds": 600,

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/codex-environment.schema.json",
+  "title": "Clean Codex Experiment Environment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "isolation", "authentication", "minimum_codex_version", "maximum_rate_age_days", "maximum_prompt_json_bytes", "preflight_timeout_seconds", "measure_baseline_prompt"],
+  "properties": {
+    "version": { "const": 1 },
+    "isolation": { "const": "temporary-codex-home" },
+    "authentication": { "const": "chatgpt" },
+    "minimum_codex_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "maximum_rate_age_days": { "type": "integer", "minimum": 0, "maximum": 365 },
+    "maximum_prompt_json_bytes": { "type": "integer", "minimum": 1 },
+    "preflight_timeout_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 120 },
+    "measure_baseline_prompt": { "type": "boolean" }
+  }
+}

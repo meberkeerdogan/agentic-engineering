@@ -33,4 +33,6 @@ Current examples:
 - [`fixture-task/`](fixture-task/): a prepared candidate, four-type evidence contract, and deterministic golden evaluation report for M03.
 - [`live-pilot.json`](live-pilot.json): one private Codex control-run configuration for M06c.
 - [`live-pilot-rates.json`](live-pilot-rates.json): dated external rates used to estimate the example run's subscription-credit usage.
+- [`codex-environment.json`](codex-environment.json): clean-home and no-credit preflight policy for M06d.
+- [`expected-codex-preflight-report.json`](expected-codex-preflight-report.json): portable shape plus the initial local prompt-footprint measurement.
 - [`live-pilot-template/`](live-pilot-template/): a tiny deterministic median bug, tests, workflow, and independent evidence contract.

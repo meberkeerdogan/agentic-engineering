@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "isolation": "temporary-codex-home",
+  "authentication": "chatgpt",
+  "minimum_codex_version": "0.147.0",
+  "maximum_rate_age_days": 30,
+  "maximum_prompt_json_bytes": 20000,
+  "preflight_timeout_seconds": 60,
+  "measure_baseline_prompt": true
+}

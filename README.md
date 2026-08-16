@@ -108,7 +108,7 @@ Run one fresh, private control pilot with the CLI's existing authentication:
 uv run python -m agentic_engineering.live_pilot examples/live-pilot.json --run-id control-001
 ```
 
-See the [private live pilot runner](docs/modules/06c-live-pilot-runner.md) before running it. Live output is ignored under `.agentic-runs/`, and the dated example rate card should be rechecked before later experiments.
+See the [private live pilot runner](docs/modules/06c-live-pilot-runner.md) and [clean Codex environment](docs/modules/06d-clean-codex-environment.md) before running it. Live output is ignored under `.agentic-runs/`; a no-credit preflight now checks the CLI, login, model, rate freshness, structured-output compatibility, plugin/MCP isolation, and prompt footprint before execution.
 
 ## Contributing
 

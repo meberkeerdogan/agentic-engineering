@@ -48,6 +48,7 @@ class CodexExecConfig:
     sandbox: str = "workspace-write"
     model: str | None = None
     profile: str | None = None
+    codex_home: Path | None = None
     timeout_seconds: float = 1800.0
 
     def __post_init__(self) -> None:
@@ -69,6 +70,11 @@ class CodexExecConfig:
         for label, value in (("model", self.model), ("profile", self.profile)):
             if value is not None and (not isinstance(value, str) or not value):
                 raise CodexAdapterError(f"{label} must be a non-empty string when set")
+        if self.codex_home is not None:
+            if not isinstance(self.codex_home, Path) or not self.codex_home.is_absolute():
+                raise CodexAdapterError("Codex home must be an absolute path when set")
+            if not self.codex_home.is_dir():
+                raise CodexAdapterError("configured Codex home does not exist")
 
 
 @dataclass(frozen=True)
@@ -288,6 +294,7 @@ class CodexExecRunner:
             "sandbox": self.config.sandbox,
             "model": self.config.model,
             "profile": self.config.profile,
+            "isolated_codex_home": self.config.codex_home is not None,
             "timeout_seconds": self.config.timeout_seconds,
             "prompt_sha256": hashlib.sha256(prompt.encode("utf-8")).hexdigest(),
         }
@@ -295,9 +302,13 @@ class CodexExecRunner:
 
         started = self.clock()
         try:
+            environment = os.environ.copy()
+            if self.config.codex_home is not None:
+                environment["CODEX_HOME"] = str(self.config.codex_home)
             completed = subprocess.run(
                 command,
                 cwd=workspace,
+                env=environment,
                 input=prompt,
                 capture_output=True,
                 text=True,
@@ -388,7 +399,7 @@ class CodexExperimentAdapter:
         if not isinstance(arm_id, str) or not isinstance(task_id, str):
             raise CodexAdapterError("arm and task require string IDs")
         workspace = self.workspace_resolver(arm, task, seed)
-        prompt = self._render_prompt(arm, task, seed)
+        prompt = self.render_prompt(arm, task, seed)
         result = self.runner.execute(
             arm_id=arm_id,
             task_id=task_id,
@@ -452,7 +463,7 @@ class CodexExperimentAdapter:
         )
 
     @staticmethod
-    def _render_prompt(
+    def render_prompt(
         arm: Mapping[str, Any], task: Mapping[str, Any], seed: int
     ) -> str:
         return (
