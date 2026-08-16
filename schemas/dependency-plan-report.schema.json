@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/dependency-plan-report.schema.json",
+  "title": "Dependency Planning Experiment Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "plan_id", "strategy", "source_fingerprint", "ordered_task_ids", "ready_task_ids", "blocked_task_ids", "completed_task_ids", "failed_task_ids", "decisions", "executions", "state_mutations", "report_id", "fingerprint"],
+  "properties": {
+    "version": {"const": 1},
+    "plan_id": {"$ref": "#/$defs/id"},
+    "strategy": {"enum": ["static", "adaptive"]},
+    "source_fingerprint": {"$ref": "#/$defs/fingerprint"},
+    "ordered_task_ids": {"$ref": "#/$defs/ids"},
+    "ready_task_ids": {"$ref": "#/$defs/ids"},
+    "blocked_task_ids": {"$ref": "#/$defs/ids"},
+    "completed_task_ids": {"$ref": "#/$defs/ids"},
+    "failed_task_ids": {"$ref": "#/$defs/ids"},
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["task_id", "disposition", "reason"],
+        "properties": {
+          "task_id": {"$ref": "#/$defs/id"},
+          "disposition": {"enum": ["completed", "failed", "blocked", "ready", "waiting"]},
+          "reason": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "executions": {"type": "array", "maxItems": 0},
+    "state_mutations": {"type": "array", "maxItems": 0},
+    "report_id": {"$ref": "#/$defs/id"},
+    "fingerprint": {"$ref": "#/$defs/fingerprint"}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"},
+    "ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+    "fingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

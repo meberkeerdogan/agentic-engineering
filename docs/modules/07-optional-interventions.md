@@ -74,7 +74,10 @@ The synthetic fixture proves the mechanism. The combined real calibration curren
 
 ## Remaining M07 Slices
 
-- M07c: static versus adaptive dependency planning.
+## M07c: Dependency Planning Experiment
+
+`dependency_planning` compares a fixed declared topological order with an adaptive, evidence-driven replan. The adaptive strategy removes tasks downstream of a failed dependency and prioritizes the remaining ready frontier. Both outputs are deterministic read-only reports with empty execution and state-mutation arrays; promotion still requires an M06 efficacy comparison.
+
 - M07d: phase-aware memory.
 - M07e: complementary agentic property testing.
 

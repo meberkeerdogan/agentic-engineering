@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "plan_id": "roadmap-release-001",
+  "tasks": [
+    {"id": "spec", "depends_on": [], "priority": 10, "evidence_refs": ["evidence/spec.json"]},
+    {"id": "backend", "depends_on": ["spec"], "priority": 8, "evidence_refs": ["evidence/backend.json"]},
+    {"id": "docs", "depends_on": ["spec"], "priority": 6, "evidence_refs": ["evidence/docs.json"]},
+    {"id": "integration", "depends_on": ["backend", "docs"], "priority": 9, "evidence_refs": ["evidence/integration.json"]},
+    {"id": "release", "depends_on": ["integration"], "priority": 5, "evidence_refs": ["evidence/release.json"]}
+  ],
+  "runtime_states": [
+    {"id": "spec", "state": "completed", "evidence_refs": ["evidence/spec-pass.json"]},
+    {"id": "backend", "state": "failed", "evidence_refs": ["evidence/backend-fail.json"]}
+  ]
+}

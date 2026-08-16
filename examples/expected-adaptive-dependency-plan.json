@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "plan_id": "roadmap-release-001",
+  "strategy": "adaptive",
+  "source_fingerprint": "db10394a0ef6ee6b2e07ee40959f1672c276e3842035db048dcbec5c449b9791",
+  "ordered_task_ids": [
+    "docs"
+  ],
+  "ready_task_ids": [
+    "docs"
+  ],
+  "blocked_task_ids": [
+    "integration",
+    "release"
+  ],
+  "completed_task_ids": [
+    "spec"
+  ],
+  "failed_task_ids": [
+    "backend"
+  ],
+  "decisions": [
+    {
+      "task_id": "spec",
+      "disposition": "completed",
+      "reason": "runtime evidence marks the task completed"
+    },
+    {
+      "task_id": "backend",
+      "disposition": "failed",
+      "reason": "runtime evidence marks the task failed"
+    },
+    {
+      "task_id": "docs",
+      "disposition": "ready",
+      "reason": "all dependencies have completion evidence"
+    },
+    {
+      "task_id": "integration",
+      "disposition": "blocked",
+      "reason": "a transitive dependency failed"
+    },
+    {
+      "task_id": "release",
+      "disposition": "blocked",
+      "reason": "a transitive dependency failed"
+    }
+  ],
+  "executions": [],
+  "state_mutations": [],
+  "report_id": "dependency-plan-3dbd1aa1cc4d6b63",
+  "fingerprint": "3dbd1aa1cc4d6b63c901562ebd11990e86a630a5614d01efe5b0fb6d16c196e6"
+}
