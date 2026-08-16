@@ -24,3 +24,4 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 - Added the first M07 optional intervention slice: an observe-only trajectory watchdog for repeated actions, stagnation, oscillation, premature patching, and skipped validation, with no advice or blocking side effects.
 - Added watchdog calibration contracts and tooling for complete signal labels, missed-failure accounting, duplicate protection, per-type precision and recall, and evidence-gated advisory experiment eligibility.
 - Added the M06g representative task pack with three task categories, repeated seeds, protected baselines, known passing solutions, deterministic repository fingerprints, and a zero-model-call readiness validator.
+- Added the M06h live trajectory bridge with redacted Codex JSONL provenance, durable workspace fingerprints, executor-claim and independent-audit events, schema validation, and observe-only watchdog compatibility.

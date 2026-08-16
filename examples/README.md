@@ -26,6 +26,7 @@ Current examples:
 - [`experiment-observations.json`](experiment-observations.json): complete replay matrix for the M06 example.
 - [`expected-experiment-report.json`](expected-experiment-report.json): deterministic M06 golden report.
 - [`watchdog-trajectory.json`](watchdog-trajectory.json): M07a trajectory containing repeat, stagnation, oscillation, and phase-order failures.
+- [`trajectory-source.json`](trajectory-source.json): redacted provenance shape connecting normalized trajectory steps to raw Codex JSONL lines.
 - [`expected-watchdog-report.json`](expected-watchdog-report.json): deterministic observe-only M07a report.
 - [`watchdog-labels.json`](watchdog-labels.json): synthetic labels for every signal in the watchdog fixture.
 - [`watchdog-calibration.json`](watchdog-calibration.json): calibration manifest with explicit eligibility thresholds.

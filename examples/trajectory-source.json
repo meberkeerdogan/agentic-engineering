@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "capture_version": 1,
+  "trajectory_id": "trajectory-example-cell",
+  "source": "codex-jsonl-item.completed",
+  "raw_stdout_ref": "example-cell/stdout.txt",
+  "raw_stdout_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "ignored_event_count": 2,
+  "records": [
+    {
+      "id": "record-001",
+      "trajectory_step": 1,
+      "jsonl_line": 3,
+      "event_type": "item.completed",
+      "item_type": "command_execution",
+      "item_id": "command-1",
+      "status": "completed",
+      "action": "run_tests",
+      "target": "test-suite",
+      "exit_code": 1,
+      "changed_paths": []
+    },
+    {
+      "id": "record-002",
+      "trajectory_step": 2,
+      "jsonl_line": 5,
+      "event_type": "item.completed",
+      "item_type": "file_change",
+      "item_id": "change-1",
+      "status": "completed",
+      "action": "edit",
+      "target": "app.py",
+      "exit_code": null,
+      "changed_paths": ["app.py"]
+    }
+  ]
+}

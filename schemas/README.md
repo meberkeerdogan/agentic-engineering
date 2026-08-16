@@ -17,6 +17,7 @@ Current schemas:
 - [`experiment-observations.schema.json`](experiment-observations.schema.json): externally measured replay observations for every declared experiment cell.
 - [`experiment-report.schema.json`](experiment-report.schema.json): deterministic run matrix, arm summaries, and paired treatment/control comparisons.
 - [`trajectory.schema.json`](trajectory.schema.json): ordered, evidenced coding-agent events with external state fingerprints.
+- [`trajectory-source.schema.json`](trajectory-source.schema.json): redacted JSONL provenance for captured live trajectory events.
 - [`watchdog-report.schema.json`](watchdog-report.schema.json): deterministic observe-only signals with explicit thresholds and no interventions.
 - [`watchdog-labels.schema.json`](watchdog-labels.schema.json): complete human labels for detected signals and reviewer-recorded misses.
 - [`watchdog-calibration.schema.json`](watchdog-calibration.schema.json): calibration policy and labelled case references.

@@ -23,3 +23,5 @@ Later modules will add workflow state-transition, evaluator, checkpoint, runner,
 `test_watchdog_calibration.py` verifies complete signal labelling, exact report binding, duplicate-case rejection, false-negative accounting, eligibility thresholds, safe manifest paths, deterministic aggregation, and command-line output.
 
 `test_task_pack.py` verifies representative category coverage, repeated seeds, deterministic offline readiness, expected failing baselines, protected checks, workflow completeness, and zero model execution.
+
+`test_trajectory_capture.py` verifies redacted JSONL normalization, workspace-state fingerprints, evidence provenance, schema validity, deterministic output, path containment, overwrite refusal, and observe-only watchdog compatibility.

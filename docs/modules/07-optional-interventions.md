@@ -42,6 +42,8 @@ uv run python -m agentic_engineering.watchdog `
 
 Collect watchdog reports on control trajectories, label true and false alarms, and use M06 to compare an advisory treatment against observation-only control. Blocking is eligible only if it improves verified completion without unacceptable regressions, false interventions, cost, or time.
 
+The [M06h live capture bridge](06h-live-trajectory-capture.md) now produces the redacted per-cell trajectories needed for this calibration work.
+
 ### Calibration workflow
 
 `watchdog_calibration` binds each label set to the exact fingerprinted watchdog report. Every detected signal must receive exactly one true-positive or false-positive label, while reviewer-found misses are recorded as false negatives. Duplicate cases and duplicate missed windows are rejected so support cannot be inflated.

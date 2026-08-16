@@ -68,6 +68,49 @@ print(
     json.dumps(
         {
             "type": "item.completed",
+            "item": {
+                "id": "command-reproduce",
+                "type": "command_execution",
+                "command": "python -m unittest -v test_calculator.py",
+                "aggregated_output": "simulated initial failure",
+                "exit_code": 1,
+                "status": "failed",
+            },
+        }
+    )
+)
+print(
+    json.dumps(
+        {
+            "type": "item.completed",
+            "item": {
+                "id": "change-calculator",
+                "type": "file_change",
+                "changes": [{"path": str(calculator), "kind": "update"}],
+                "status": "completed",
+            },
+        }
+    )
+)
+print(
+    json.dumps(
+        {
+            "type": "item.completed",
+            "item": {
+                "id": "command-validate",
+                "type": "command_execution",
+                "command": "python -m unittest -v test_calculator.py",
+                "aggregated_output": "simulated passing tests",
+                "exit_code": 0,
+                "status": "completed",
+            },
+        }
+    )
+)
+print(
+    json.dumps(
+        {
+            "type": "item.completed",
             "item": {"type": "agent_message", "text": "fixture complete"},
             "prompt_received": "median-fix" in prompt,
         }

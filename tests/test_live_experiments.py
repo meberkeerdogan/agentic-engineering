@@ -15,6 +15,7 @@ from agentic_engineering.live_experiments import (
     main,
     run_live_experiment,
 )
+from agentic_engineering.watchdog import analyze_trajectory
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -72,6 +73,8 @@ def test_live_experiment_pauses_then_resumes_with_fresh_preflight_per_cell(
     assert len(list((root / "live-workspaces").iterdir())) == 2
     assert len(list((root / "live-preflight").glob("*.json"))) == 2
     assert len(list((root / "live-status").glob("*.json"))) == 2
+    assert len(list((root / "live-evidence").glob("*/trajectory.json"))) == 2
+    assert len(list((root / "live-evidence").glob("*/trajectory-source.json"))) == 2
     assert not list((project / ".fake-codex-home" / "tmp").iterdir())
     state = json.loads((root / "batch-state.json").read_text("utf-8"))
     assert len(state["execution_fingerprint"]) == 64
@@ -80,6 +83,28 @@ def test_live_experiment_pauses_then_resumes_with_fresh_preflight_per_cell(
         any(ref.startswith("live-preflight/") for ref in cell["observation"]["evidence_refs"])
         for cell in state["cells"]
     )
+    assert all(
+        any(ref.endswith("/trajectory.json") for ref in cell["observation"]["evidence_refs"])
+        and any(
+            ref.endswith("/trajectory-source.json")
+            for ref in cell["observation"]["evidence_refs"]
+        )
+        for cell in state["cells"]
+    )
+    for path in (root / "live-evidence").glob("*/trajectory.json"):
+        trajectory = json.loads(path.read_text("utf-8"))
+        assert [event["phase"] for event in trajectory["events"]] == [
+            "reproduce",
+            "patch",
+            "validate",
+            "complete",
+            "validate",
+        ]
+        assert analyze_trajectory(trajectory)["signal_count"] == 0
+    for path in (root / "live-evidence").glob("*/trajectory-source.json"):
+        source = path.read_text("utf-8")
+        assert "python -m unittest" not in source
+        assert "simulated initial failure" not in source
     workspaces = list((root / "live-workspaces").iterdir())
     control_workspace = next(
         workspace for workspace in workspaces if (workspace / "workflow-control.md").is_file()
@@ -162,6 +187,17 @@ def test_changed_codex_version_cannot_be_mixed_into_resumed_batch(
     project = project_fixture(tmp_path)
     run_offline(project)
     monkeypatch.setenv("FAKE_CODEX_VERSION", "0.148.0")
+
+    with pytest.raises(BatchExperimentError, match="execution inputs changed"):
+        run_offline(project)
+
+
+def test_changed_capture_version_cannot_be_mixed_into_resumed_batch(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project = project_fixture(tmp_path)
+    run_offline(project)
+    monkeypatch.setattr(live_module, "TRAJECTORY_CAPTURE_VERSION", 2)
 
     with pytest.raises(BatchExperimentError, match="execution inputs changed"):
         run_offline(project)

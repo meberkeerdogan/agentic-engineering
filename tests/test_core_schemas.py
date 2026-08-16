@@ -14,6 +14,7 @@ SCHEMA_EXAMPLE_PAIRS = [
     ("experiment-observations.schema.json", "experiment-observations.json"),
     ("experiment-report.schema.json", "expected-experiment-report.json"),
     ("trajectory.schema.json", "watchdog-trajectory.json"),
+    ("trajectory-source.schema.json", "trajectory-source.json"),
     ("watchdog-report.schema.json", "expected-watchdog-report.json"),
     ("watchdog-labels.schema.json", "watchdog-labels.json"),
     ("watchdog-calibration.schema.json", "watchdog-calibration.json"),

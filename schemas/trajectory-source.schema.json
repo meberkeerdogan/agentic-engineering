@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/trajectory-source.schema.json",
+  "title": "Redacted Trajectory Source Map",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "capture_version", "trajectory_id", "source", "raw_stdout_ref", "raw_stdout_sha256", "ignored_event_count", "records"],
+  "properties": {
+    "version": { "const": 1 },
+    "capture_version": { "const": 1 },
+    "trajectory_id": { "$ref": "#/$defs/id" },
+    "source": { "const": "codex-jsonl-item.completed" },
+    "raw_stdout_ref": { "type": "string", "minLength": 1 },
+    "raw_stdout_sha256": { "$ref": "#/$defs/sha256" },
+    "ignored_event_count": { "type": "integer", "minimum": 0 },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "trajectory_step", "jsonl_line", "event_type", "item_type", "item_id", "status", "action", "target", "exit_code", "changed_paths"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "trajectory_step": { "type": "integer", "minimum": 1 },
+          "jsonl_line": { "type": "integer", "minimum": 1 },
+          "event_type": { "const": "item.completed" },
+          "item_type": { "enum": ["command_execution", "file_change"] },
+          "item_id": { "type": ["string", "null"] },
+          "status": { "type": ["string", "null"] },
+          "action": { "enum": ["run_command", "run_tests", "inspect_diff", "edit"] },
+          "target": { "type": "string", "minLength": 1 },
+          "exit_code": { "type": ["integer", "null"] },
+          "changed_paths": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

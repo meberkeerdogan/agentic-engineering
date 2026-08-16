@@ -37,6 +37,11 @@ from .codex_environment import (
 )
 from .codex_evidence import EvidenceContractEvaluator, JsonlUsageCostMeter, UsageRates
 from .experiments import RunObservation, validate_experiment_plan
+from .trajectory_capture import (
+    TRAJECTORY_CAPTURE_VERSION,
+    capture_codex_trajectory,
+    workspace_state_fingerprint,
+)
 
 
 class LiveExperimentError(CodexAdapterError):
@@ -365,6 +370,7 @@ class LiveCodexBatchAdapter:
             if not candidate.is_file():
                 raise LiveExperimentError(f"{label} does not exist in the task template")
         _initialize_workspace(workspace)
+        initial_state_fingerprint = workspace_state_fingerprint(workspace)
 
         status_root = _safe_direct_child_directory(self.batch_dir, "live-status")
         preflight_root = _safe_direct_child_directory(self.batch_dir, "live-preflight")
@@ -419,6 +425,26 @@ class LiveCodexBatchAdapter:
                     cost_meter=JsonlUsageCostMeter(self.rates),
                 )
                 observation = adapter.run(arm, task, seed)
+                _, trajectory_refs = capture_codex_trajectory(
+                    cell_id=cell_id,
+                    task_id=task_id,
+                    workspace=workspace,
+                    evidence_dir=evidence_root / cell_id,
+                    initial_state_fingerprint=initial_state_fingerprint,
+                    claimed_complete=observation.claimed_complete,
+                    verified_complete=observation.verified_complete,
+                )
+                observation = RunObservation(
+                    claimed_complete=observation.claimed_complete,
+                    verified_complete=observation.verified_complete,
+                    regressions=observation.regressions,
+                    cost=observation.cost,
+                    time_seconds=observation.time_seconds,
+                    human_interventions=observation.human_interventions,
+                    evidence_refs=tuple(
+                        dict.fromkeys((*observation.evidence_refs, *trajectory_refs))
+                    ),
+                )
         except Exception as error:
             _write_json(
                 status_path,
@@ -561,6 +587,7 @@ def run_live_experiment(
             "templates": template_snapshots,
             "command_prefix": list(command_prefix),
             "executor_version": executor_version,
+            "trajectory_capture_version": TRAJECTORY_CAPTURE_VERSION,
         }
     )
     run_root = _resolve_inside(project_root, batch.run_root_ref, "run-root reference")
