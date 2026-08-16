@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "pilot_id": "codex-control-median",
+  "template_ref": "examples/live-pilot-template",
+  "run_root_ref": ".agentic-runs",
+  "arm": {
+    "id": "control-baseline",
+    "workflow": "bounded-baseline",
+    "config_ref": "workflow.md"
+  },
+  "task": {
+    "id": "median-fix",
+    "repository": "private-template-copy",
+    "spec_ref": "ACTIVE_SPEC.md"
+  },
+  "evidence_contract_ref": "evidence-contract.json",
+  "rates_ref": "examples/live-pilot-rates.json",
+  "model": "gpt-5.6-luna",
+  "sandbox": "workspace-write",
+  "timeout_seconds": 600,
+  "seed": 0
+}

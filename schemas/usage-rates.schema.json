@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/usage-rates.schema.json",
+  "title": "Usage Rate Card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "model", "unit", "effective_date", "source_url", "input_per_million", "cached_input_per_million", "output_per_million"],
+  "properties": {
+    "version": { "const": 1 },
+    "model": { "type": "string", "minLength": 1 },
+    "unit": { "type": "string", "minLength": 1 },
+    "effective_date": { "type": "string", "format": "date" },
+    "source_url": { "type": "string", "format": "uri", "pattern": "^https://" },
+    "input_per_million": { "type": "number", "minimum": 0 },
+    "cached_input_per_million": { "type": "number", "minimum": 0 },
+    "output_per_million": { "type": "number", "minimum": 0 }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "id": "median-pilot-evidence",
+  "work_item_id": "median-fix",
+  "spec_id": "median-active-spec",
+  "criteria": [
+    {
+      "id": "EC-TESTS",
+      "spec_criterion_id": "AC-MEDIAN",
+      "description": "All declared median behaviors pass deterministic tests.",
+      "evaluator_ids": ["median-tests"],
+      "required": true
+    },
+    {
+      "id": "EC-ARTIFACT",
+      "spec_criterion_id": "AC-ARTIFACT",
+      "description": "The implementation remains present and non-empty.",
+      "evaluator_ids": ["calculator-artifact"],
+      "required": true
+    }
+  ],
+  "evaluators": [
+    {
+      "id": "median-tests",
+      "type": "command",
+      "command": ["{python}", "-m", "unittest", "discover", "-v"],
+      "expected_exit_code": 0,
+      "timeout_seconds": 30,
+      "read_only": true
+    },
+    {
+      "id": "calculator-artifact",
+      "type": "artifact",
+      "artifact": "calculator.py",
+      "min_bytes": 80,
+      "read_only": true
+    }
+  ],
+  "baselines": [
+    {
+      "evaluator_id": "median-tests",
+      "result": "fail",
+      "artifact_refs": ["test_calculator.py"]
+    },
+    {
+      "evaluator_id": "calculator-artifact",
+      "result": "pass",
+      "artifact_refs": ["calculator.py"]
+    }
+  ],
+  "regression_policy": {
+    "protected_evaluator_ids": ["calculator-artifact"],
+    "exploration_allowed": false,
+    "restore_best_known_on_failure": true
+  },
+  "evidence_directory": ".agent/evidence/median-fix"
+}

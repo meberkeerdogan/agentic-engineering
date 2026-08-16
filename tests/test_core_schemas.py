@@ -23,6 +23,8 @@ SCHEMA_EXAMPLE_PAIRS = [
     ("spec-history.schema.json", "spec-history-revised.json"),
     ("evidence-contract.schema.json", "fixture-task/evidence-contract.json"),
     ("evaluation-report.schema.json", "fixture-task/expected-evaluation.json"),
+    ("live-pilot.schema.json", "live-pilot.json"),
+    ("usage-rates.schema.json", "live-pilot-rates.json"),
 ]
 
 

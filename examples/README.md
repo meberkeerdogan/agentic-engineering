@@ -31,3 +31,6 @@ Current examples:
 - [`watchdog-calibration.json`](watchdog-calibration.json): calibration manifest with explicit eligibility thresholds.
 - [`expected-watchdog-calibration.json`](expected-watchdog-calibration.json): deterministic calibration-only golden report.
 - [`fixture-task/`](fixture-task/): a prepared candidate, four-type evidence contract, and deterministic golden evaluation report for M03.
+- [`live-pilot.json`](live-pilot.json): one private Codex control-run configuration for M06c.
+- [`live-pilot-rates.json`](live-pilot-rates.json): dated external rates used to estimate the example run's subscription-credit usage.
+- [`live-pilot-template/`](live-pilot-template/): a tiny deterministic median bug, tests, workflow, and independent evidence contract.

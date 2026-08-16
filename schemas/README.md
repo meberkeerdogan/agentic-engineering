@@ -21,5 +21,7 @@ Current schemas:
 - [`watchdog-labels.schema.json`](watchdog-labels.schema.json): complete human labels for detected signals and reviewer-recorded misses.
 - [`watchdog-calibration.schema.json`](watchdog-calibration.schema.json): calibration policy and labelled case references.
 - [`watchdog-calibration-report.schema.json`](watchdog-calibration-report.schema.json): per-signal precision, recall, false-alarm rate, and advisory-experiment eligibility.
+- [`live-pilot.schema.json`](live-pilot.schema.json): one isolated Codex control-cell configuration.
+- [`usage-rates.schema.json`](usage-rates.schema.json): a dated, externally sourced model-usage rate card.
 
 The core schema module and its validation rules are documented in [M01: Core Contracts](../docs/modules/01-core-contracts.md). The experiment schemas are implemented by [M06: Experiment Harness](../docs/modules/06-experiment-harness.md).

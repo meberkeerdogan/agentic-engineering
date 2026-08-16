@@ -102,6 +102,14 @@ uv run python -m agentic_engineering.evaluators examples/fixture-task/evidence-c
 
 The [Codex CLI experiment adapter](docs/modules/06b-codex-cli-adapter.md) connects real, isolated `codex exec` runs to the experiment harness while keeping executor claims separate from independent verification. Its automated tests use an offline double and do not spend API credits.
 
+Run one fresh, private control pilot with the CLI's existing authentication:
+
+```powershell
+uv run python -m agentic_engineering.live_pilot examples/live-pilot.json --run-id control-001
+```
+
+See the [private live pilot runner](docs/modules/06c-live-pilot-runner.md) before running it. Live output is ignored under `.agentic-runs/`, and the dated example rate card should be rechecked before later experiments.
+
 ## Contributing
 
 Contributions are welcome. Before opening a pull request, read [CONTRIBUTING.md](CONTRIBUTING.md).

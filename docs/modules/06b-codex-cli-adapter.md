@@ -44,6 +44,8 @@ Construct `CodexExecRunner` with a workspace root and private evidence root. The
 
 The test suite uses an offline CLI double, so the promotion gate makes no model calls and spends no API credits.
 
+For a reusable one-command control run built on this adapter, see [M06c: Private Live Pilot Runner](06c-live-pilot-runner.md).
+
 ## Promotion Gate
 
 - The prompt travels through stdin and is represented in metadata only by a hash.
