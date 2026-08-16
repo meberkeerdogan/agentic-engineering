@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/advisory-report.schema.json",
+  "title": "Calibration-Gated Advisory Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "mode", "watchdog_report_id", "watchdog_fingerprint", "calibration_report_id", "calibration_fingerprint", "eligible_signal_types", "advice", "interventions", "blocking_actions", "report_id", "fingerprint"],
+  "properties": {
+    "version": { "const": 1 },
+    "mode": { "const": "advisory_experiment_only" },
+    "watchdog_report_id": { "$ref": "#/$defs/id" },
+    "watchdog_fingerprint": { "$ref": "#/$defs/fingerprint" },
+    "calibration_report_id": { "$ref": "#/$defs/id" },
+    "calibration_fingerprint": { "$ref": "#/$defs/fingerprint" },
+    "eligible_signal_types": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/signal_type" } },
+    "advice": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "signal_id", "signal_type", "message", "delivery", "evidence_refs"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "signal_id": { "$ref": "#/$defs/id" },
+          "signal_type": { "$ref": "#/$defs/signal_type" },
+          "message": { "type": "string", "minLength": 1 },
+          "delivery": { "const": "next_safe_boundary" },
+          "evidence_refs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+        }
+      }
+    },
+    "interventions": { "type": "array", "maxItems": 0 },
+    "blocking_actions": { "type": "array", "maxItems": 0 },
+    "report_id": { "$ref": "#/$defs/id" },
+    "fingerprint": { "$ref": "#/$defs/fingerprint" }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+    "fingerprint": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "signal_type": { "enum": ["repeated_action", "stagnation", "action_oscillation", "premature_patching", "skipped_validation"] }
+  }
+}

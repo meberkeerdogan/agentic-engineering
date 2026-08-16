@@ -66,9 +66,14 @@ With two false positives and the predeclared minimum of five labels, `premature_
 
 The multi-step evolution sentinel adds two more contextual false positives. The combined live manifest now contains four fingerprint-bound cases, still below the five-label support threshold, with no eligible advisory signal and no interventions.
 
+## M07b: Calibration-Gated Advice
+
+`advisory_watchdog` converts observe-only signals into deterministic messages only when the exact fingerprinted calibration report marks that signal type eligible. Tampered reports, inconsistent eligibility, and unsupported signals fail closed. Advice is delivered only at a declared safe boundary; the output has structurally empty intervention and blocking arrays.
+
+The synthetic fixture proves the mechanism. The combined real calibration currently permits no signal types, so real sentinel reports produce zero advice. M07b is implemented but not promoted as a default behavior.
+
 ## Remaining M07 Slices
 
-- M07b: advisory watchdog tested only with signal types eligible from real calibration data.
 - M07c: static versus adaptive dependency planning.
 - M07d: phase-aware memory.
 - M07e: complementary agentic property testing.

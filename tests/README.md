@@ -27,3 +27,5 @@ Later modules will add workflow state-transition, evaluator, checkpoint, runner,
 `test_trajectory_capture.py` verifies redacted JSONL normalization, workspace-state fingerprints, evidence provenance, schema validity, deterministic output, path containment, overwrite refusal, and observe-only watchdog compatibility.
 
 `test_live_watchdog_calibration.py` verifies that real sentinel reports and labels remain privacy-safe, schema-valid, fingerprint-bound, calibration-only, and ineligible below the declared support and quality thresholds.
+
+`test_advisory_watchdog.py` verifies fail-closed calibration binding, eligible-type filtering, deterministic advice, and permanently empty intervention and blocking surfaces.

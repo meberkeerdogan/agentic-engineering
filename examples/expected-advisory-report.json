@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "mode": "advisory_experiment_only",
+  "watchdog_report_id": "watchdog-report-842c925bda6437e8",
+  "watchdog_fingerprint": "842c925bda6437e8893e020b47d7bd4ab815f4c9ef732364fac85291f91889f0",
+  "calibration_report_id": "watchdog-calibration-5288b688a018ea77",
+  "calibration_fingerprint": "5288b688a018ea771d3951d2e6ea13f1ee50a82ac53080329b8bd77be624cbb1",
+  "eligible_signal_types": [
+    "premature_patching",
+    "repeated_action",
+    "skipped_validation",
+    "stagnation"
+  ],
+  "advice": [
+    {
+      "id": "advice-001-repeated_action",
+      "signal_id": "signal-001-repeated_action",
+      "signal_type": "repeated_action",
+      "message": "Review whether this repeated action produced new evidence.",
+      "delivery": "next_safe_boundary",
+      "evidence_refs": [
+        "trace/step-1.json",
+        "trace/step-2.json",
+        "trace/step-3.json"
+      ]
+    },
+    {
+      "id": "advice-002-premature_patching",
+      "signal_id": "signal-002-premature_patching",
+      "signal_type": "premature_patching",
+      "message": "Review whether reproduction evidence is required before further patching.",
+      "delivery": "next_safe_boundary",
+      "evidence_refs": [
+        "trace/step-4.json"
+      ]
+    },
+    {
+      "id": "advice-003-stagnation",
+      "signal_id": "signal-004-stagnation",
+      "signal_type": "stagnation",
+      "message": "Review the unchanged-state window before continuing.",
+      "delivery": "next_safe_boundary",
+      "evidence_refs": [
+        "trace/step-4.json",
+        "trace/step-5.json",
+        "trace/step-6.json",
+        "trace/step-7.json"
+      ]
+    },
+    {
+      "id": "advice-004-skipped_validation",
+      "signal_id": "signal-005-skipped_validation",
+      "signal_type": "skipped_validation",
+      "message": "Run or cite the required validation before claiming completion.",
+      "delivery": "next_safe_boundary",
+      "evidence_refs": [
+        "trace/step-7.json",
+        "trace/step-8.json"
+      ]
+    }
+  ],
+  "interventions": [],
+  "blocking_actions": [],
+  "report_id": "advisory-report-5aeb9d1b2057e94a",
+  "fingerprint": "5aeb9d1b2057e94a46c644e4bc21da57a012450b9cdbacd79f7ea106278bd78d"
+}

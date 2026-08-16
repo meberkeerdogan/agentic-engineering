@@ -21,6 +21,7 @@ Current schemas:
 - [`watchdog-report.schema.json`](watchdog-report.schema.json): deterministic observe-only signals with explicit thresholds and no interventions.
 - [`watchdog-labels.schema.json`](watchdog-labels.schema.json): complete human labels for detected signals and reviewer-recorded misses.
 - [`watchdog-calibration.schema.json`](watchdog-calibration.schema.json): calibration policy and labelled case references.
+- [`advisory-report.schema.json`](advisory-report.schema.json): calibration-bound experimental advice with structurally empty intervention and blocking surfaces.
 - [`watchdog-calibration-report.schema.json`](watchdog-calibration-report.schema.json): per-signal precision, recall, false-alarm rate, and advisory-experiment eligibility.
 - [`live-pilot.schema.json`](live-pilot.schema.json): one isolated Codex control-cell configuration.
 - [`usage-rates.schema.json`](usage-rates.schema.json): a dated, externally sourced model-usage rate card.

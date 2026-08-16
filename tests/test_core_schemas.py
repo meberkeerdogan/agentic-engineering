@@ -19,6 +19,7 @@ SCHEMA_EXAMPLE_PAIRS = [
     ("watchdog-labels.schema.json", "watchdog-labels.json"),
     ("watchdog-calibration.schema.json", "watchdog-calibration.json"),
     ("watchdog-calibration-report.schema.json", "expected-watchdog-calibration.json"),
+    ("advisory-report.schema.json", "expected-advisory-report.json"),
     ("project-preferences.schema.json", "project-preferences.json"),
     ("spec-history.schema.json", "spec-history-direct.json"),
     ("spec-history.schema.json", "spec-history-revised.json"),
