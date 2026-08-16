@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/task-pack-readiness.schema.json",
+  "title": "Task Pack Readiness Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "pack_id", "status", "experiment_ref", "experiment_id", "plan_fingerprint", "pack_fingerprint", "distinct_repository_count", "categories", "task_count", "seed_count", "arm_count", "matrix_size", "model_calls_performed", "tasks", "report_id", "fingerprint"],
+  "properties": {
+    "version": { "const": 1 },
+    "pack_id": { "$ref": "#/$defs/id" },
+    "status": { "const": "ready" },
+    "experiment_ref": { "type": "string", "minLength": 1 },
+    "experiment_id": { "$ref": "#/$defs/id" },
+    "plan_fingerprint": { "$ref": "#/$defs/sha256" },
+    "pack_fingerprint": { "$ref": "#/$defs/sha256" },
+    "distinct_repository_count": { "type": "integer", "minimum": 2 },
+    "categories": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": { "enum": ["bounded-bug-fix", "multi-file-feature", "multi-step-evolution"] }
+    },
+    "task_count": { "type": "integer", "minimum": 3 },
+    "seed_count": { "type": "integer", "minimum": 2 },
+    "arm_count": { "type": "integer", "minimum": 2 },
+    "matrix_size": { "type": "integer", "minimum": 12 },
+    "model_calls_performed": { "const": false },
+    "tasks": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "category", "repository", "repository_fingerprint", "repository_entry_count", "baseline_outcome", "failing_evaluator_ids", "protected_regressions"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "category": { "enum": ["bounded-bug-fix", "multi-file-feature", "multi-step-evolution"] },
+          "repository": { "type": "string", "minLength": 1 },
+          "repository_fingerprint": { "$ref": "#/$defs/sha256" },
+          "repository_entry_count": { "type": "integer", "minimum": 1 },
+          "baseline_outcome": { "const": "fail" },
+          "failing_evaluator_ids": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "$ref": "#/$defs/id" }
+          },
+          "protected_regressions": { "type": "array", "maxItems": 0 }
+        }
+      }
+    },
+    "report_id": { "$ref": "#/$defs/id" },
+    "fingerprint": { "$ref": "#/$defs/sha256" }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+  }
+}

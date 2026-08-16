@@ -41,3 +41,7 @@ Current examples:
 - [`live-batch-experiment.json`](live-batch-experiment.json): two-cell budget with one live cell allowed per invocation.
 - [`live-experiment-record.json`](live-experiment-record.json): one-task control versus verified-loop plumbing comparison.
 - [`live-pilot-template/`](live-pilot-template/): a tiny deterministic median bug, tests, workflow, and independent evidence contract.
+- [`evaluation-task-pack.json`](evaluation-task-pack.json): offline readiness requirements and evidence bindings for a representative workflow comparison.
+- [`evaluation-task-pack-experiment.json`](evaluation-task-pack-experiment.json): three tasks, three seeds, two arms, and a predeclared efficacy decision rule.
+- [`expected-task-pack-readiness.json`](expected-task-pack-readiness.json): deterministic proof that the representative matrix passes every offline gate without model execution.
+- [`task-pack/`](task-pack/): deterministic multi-file feature and multi-step evolution repositories; the pack also reuses the median fixture.

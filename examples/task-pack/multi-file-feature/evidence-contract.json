@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "id": "restock-report-evidence",
+  "work_item_id": "restock-report",
+  "spec_id": "restock-report-active-spec",
+  "criteria": [
+    {
+      "id": "EC-RESTOCK",
+      "spec_criterion_id": "AC-RESTOCK",
+      "description": "The multi-file restock behavior passes deterministic tests.",
+      "evaluator_ids": ["restock-tests"],
+      "required": true
+    },
+    {
+      "id": "EC-EXISTING",
+      "spec_criterion_id": "AC-PRESERVE",
+      "description": "Existing inventory behavior remains protected.",
+      "evaluator_ids": ["existing-inventory-tests"],
+      "required": true
+    },
+    {
+      "id": "EC-ARTIFACTS",
+      "spec_criterion_id": "AC-ARTIFACTS",
+      "description": "Both implementation modules remain present.",
+      "evaluator_ids": ["inventory-artifact", "reporting-artifact"],
+      "required": true
+    }
+  ],
+  "evaluators": [
+    {
+      "id": "restock-tests",
+      "type": "command",
+      "command": ["{python}", "-m", "unittest", "-v", "test_restock.py"],
+      "expected_exit_code": 0,
+      "timeout_seconds": 30,
+      "read_only": true
+    },
+    {
+      "id": "existing-inventory-tests",
+      "type": "command",
+      "command": ["{python}", "-m", "unittest", "-v", "test_existing.py"],
+      "expected_exit_code": 0,
+      "timeout_seconds": 30,
+      "read_only": true
+    },
+    {
+      "id": "inventory-artifact",
+      "type": "artifact",
+      "artifact": "inventory.py",
+      "min_bytes": 100,
+      "read_only": true
+    },
+    {
+      "id": "reporting-artifact",
+      "type": "artifact",
+      "artifact": "reporting.py",
+      "min_bytes": 100,
+      "read_only": true
+    }
+  ],
+  "baselines": [
+    { "evaluator_id": "restock-tests", "result": "fail", "artifact_refs": ["test_restock.py"] },
+    { "evaluator_id": "existing-inventory-tests", "result": "pass", "artifact_refs": ["test_existing.py"] },
+    { "evaluator_id": "inventory-artifact", "result": "pass", "artifact_refs": ["inventory.py"] },
+    { "evaluator_id": "reporting-artifact", "result": "pass", "artifact_refs": ["reporting.py"] }
+  ],
+  "regression_policy": {
+    "protected_evaluator_ids": ["existing-inventory-tests", "inventory-artifact", "reporting-artifact"],
+    "exploration_allowed": false,
+    "restore_best_known_on_failure": true
+  },
+  "evidence_directory": ".agent/evidence/restock-report"
+}

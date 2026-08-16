@@ -28,5 +28,7 @@ Current schemas:
 - [`batch-experiment.schema.json`](batch-experiment.schema.json): immutable matrix references, invocation size, and worst-case budgets.
 - [`batch-state.schema.json`](batch-state.schema.json): resumable per-cell progress, observations, failures, and accumulated usage.
 - [`live-experiment.schema.json`](live-experiment.schema.json): model, environment, rate-card, and evidence bindings for a live Codex batch.
+- [`task-pack.schema.json`](task-pack.schema.json): representative task categories, repeated-run requirements, evidence bindings, and expected failing baselines.
+- [`task-pack-readiness.schema.json`](task-pack-readiness.schema.json): fingerprinted proof that a task pack is ready without model execution.
 
 The core schema module and its validation rules are documented in [M01: Core Contracts](../docs/modules/01-core-contracts.md). The experiment schemas are implemented by [M06: Experiment Harness](../docs/modules/06-experiment-harness.md).

@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "id": "roadmap-evolution-evidence",
+  "work_item_id": "roadmap-evolution",
+  "spec_id": "roadmap-evolution-active-spec",
+  "criteria": [
+    {
+      "id": "EC-EVOLUTION",
+      "spec_criterion_id": "AC-EVOLUTION",
+      "description": "Dependency-aware planning and summary behavior pass deterministic tests.",
+      "evaluator_ids": ["roadmap-tests"],
+      "required": true
+    },
+    {
+      "id": "EC-EXISTING",
+      "spec_criterion_id": "AC-PRESERVE",
+      "description": "Existing roadmap behavior remains protected.",
+      "evaluator_ids": ["existing-roadmap-tests"],
+      "required": true
+    },
+    {
+      "id": "EC-ARTIFACTS",
+      "spec_criterion_id": "AC-ARTIFACTS",
+      "description": "Both roadmap modules remain present.",
+      "evaluator_ids": ["roadmap-artifact", "progress-artifact"],
+      "required": true
+    }
+  ],
+  "evaluators": [
+    {
+      "id": "roadmap-tests",
+      "type": "command",
+      "command": ["{python}", "-m", "unittest", "-v", "test_evolution.py"],
+      "expected_exit_code": 0,
+      "timeout_seconds": 30,
+      "read_only": true
+    },
+    {
+      "id": "existing-roadmap-tests",
+      "type": "command",
+      "command": ["{python}", "-m", "unittest", "-v", "test_existing.py"],
+      "expected_exit_code": 0,
+      "timeout_seconds": 30,
+      "read_only": true
+    },
+    {
+      "id": "roadmap-artifact",
+      "type": "artifact",
+      "artifact": "roadmap.py",
+      "min_bytes": 100,
+      "read_only": true
+    },
+    {
+      "id": "progress-artifact",
+      "type": "artifact",
+      "artifact": "progress.py",
+      "min_bytes": 100,
+      "read_only": true
+    }
+  ],
+  "baselines": [
+    { "evaluator_id": "roadmap-tests", "result": "fail", "artifact_refs": ["test_evolution.py"] },
+    { "evaluator_id": "existing-roadmap-tests", "result": "pass", "artifact_refs": ["test_existing.py"] },
+    { "evaluator_id": "roadmap-artifact", "result": "pass", "artifact_refs": ["roadmap.py"] },
+    { "evaluator_id": "progress-artifact", "result": "pass", "artifact_refs": ["progress.py"] }
+  ],
+  "regression_policy": {
+    "protected_evaluator_ids": ["existing-roadmap-tests", "roadmap-artifact", "progress-artifact"],
+    "exploration_allowed": false,
+    "restore_best_known_on_failure": true
+  },
+  "evidence_directory": ".agent/evidence/roadmap-evolution"
+}

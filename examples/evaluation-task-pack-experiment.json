@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "experiment_id": "exp-representative-workflows-001",
+  "title": "Bounded baseline versus verified loop on representative tasks",
+  "hypothesis": "The verified loop improves completion on multi-file and multi-step tasks without increasing regressions or false completion.",
+  "status": "planned",
+  "control": {
+    "id": "control-bounded",
+    "workflow": "bounded-baseline",
+    "config_ref": "workflow-control.md"
+  },
+  "treatments": [
+    {
+      "id": "treatment-verified-loop",
+      "workflow": "verified-loop",
+      "config_ref": "workflow-treatment.md"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "median-fix",
+      "repository": "examples/live-pilot-template",
+      "spec_ref": "ACTIVE_SPEC.md"
+    },
+    {
+      "id": "restock-report",
+      "repository": "examples/task-pack/multi-file-feature",
+      "spec_ref": "ACTIVE_SPEC.md"
+    },
+    {
+      "id": "roadmap-evolution",
+      "repository": "examples/task-pack/multi-step-evolution",
+      "spec_ref": "ACTIVE_SPEC.md"
+    }
+  ],
+  "seeds": [0, 1, 2],
+  "metrics": [
+    { "id": "verified-completion", "description": "Required criteria accepted by declared evaluators.", "direction": "higher", "unit": "ratio" },
+    { "id": "regressions", "description": "Previously passing protected checks that now fail.", "direction": "lower", "unit": "count" },
+    { "id": "false-completion", "description": "Runs claimed complete but rejected by independent verification.", "direction": "lower", "unit": "ratio" },
+    { "id": "cost", "description": "Measured subscription-credit estimate derived from documented usage.", "direction": "lower", "unit": "credits" },
+    { "id": "time", "description": "Measured wall-clock duration of model execution.", "direction": "lower", "unit": "seconds" },
+    { "id": "human-interventions", "description": "Human actions needed to finish or recover a run.", "direction": "lower", "unit": "count" }
+  ],
+  "runs": [],
+  "decision": {
+    "adoption_rule": "Adopt only if the treatment improves verified completion by at least 0.10, does not increase regressions or false completion, and adds no more than 0.10 mean credits or 60 mean seconds per run.",
+    "outcome": "pending",
+    "reason": "The representative comparison has not been authorized or run."
+  }
+}

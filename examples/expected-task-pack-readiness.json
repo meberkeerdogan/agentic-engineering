@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "pack_id": "representative-coding-pack-001",
+  "status": "ready",
+  "experiment_ref": "examples/evaluation-task-pack-experiment.json",
+  "experiment_id": "exp-representative-workflows-001",
+  "plan_fingerprint": "1157452cc3d1e86a4896fbb666f2c750213433f6f86168aaf47813ad44a45711",
+  "pack_fingerprint": "3f4742acf8a40dec742bf60c6b6ab74b8cbd11cd99bb2b8565450cc7254e69df",
+  "distinct_repository_count": 3,
+  "categories": [
+    "bounded-bug-fix",
+    "multi-file-feature",
+    "multi-step-evolution"
+  ],
+  "task_count": 3,
+  "seed_count": 3,
+  "arm_count": 2,
+  "matrix_size": 18,
+  "model_calls_performed": false,
+  "tasks": [
+    {
+      "id": "median-fix",
+      "category": "bounded-bug-fix",
+      "repository": "examples/live-pilot-template",
+      "repository_fingerprint": "e69bf97733fe160d0e90c9ef54b7e2869cf586a01875ca7301f85d170e0f816b",
+      "repository_entry_count": 7,
+      "baseline_outcome": "fail",
+      "failing_evaluator_ids": ["median-tests"],
+      "protected_regressions": []
+    },
+    {
+      "id": "restock-report",
+      "category": "multi-file-feature",
+      "repository": "examples/task-pack/multi-file-feature",
+      "repository_fingerprint": "8bf43caf6ed8c02b97af7e266755f09d161c775c53969e87e9d8144fd8ce1dcb",
+      "repository_entry_count": 8,
+      "baseline_outcome": "fail",
+      "failing_evaluator_ids": ["restock-tests"],
+      "protected_regressions": []
+    },
+    {
+      "id": "roadmap-evolution",
+      "category": "multi-step-evolution",
+      "repository": "examples/task-pack/multi-step-evolution",
+      "repository_fingerprint": "5a81e9e1c9680466415d132d02c98f7d73fdea0bc05a8119c30525af54c8c03e",
+      "repository_entry_count": 8,
+      "baseline_outcome": "fail",
+      "failing_evaluator_ids": ["roadmap-tests"],
+      "protected_regressions": []
+    }
+  ],
+  "report_id": "task-pack-readiness-2501047c98bd1a4c",
+  "fingerprint": "2501047c98bd1a4cd061fc2627e3431b8698ece42d49815b2d34202cbda77531"
+}
