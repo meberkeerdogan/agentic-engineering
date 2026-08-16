@@ -1,6 +1,6 @@
 # M06j: Multi-Step Evolution Sentinel
 
-**Status:** Implemented and offline-validated; paid cells not authorized
+**Status:** Implemented; live sentinel completed
 
 ## Purpose
 
@@ -31,3 +31,9 @@ Each real invocation requires explicit approval describing the task, workflow ar
 - Trajectory source maps contain no copied raw commands, outputs, or agent messages.
 - Observe-only watchdog signals are reviewed and added to calibration before any advisory experiment.
 - Results remain sentinel evidence; repeated seeds are still required for efficacy.
+
+## Live result
+
+Both cells independently verified with zero regressions and false completion. Control used `0.163839` credits in `51.203` seconds; treatment used `0.183771` credits in `75.094` seconds. Total usage was `0.34761` credits. Treatment was both more expensive and slower, and one paired task cannot support an efficacy claim.
+
+Both observe-only trajectories again signalled patching before reproduction even though the declared workflows test after implementation and every independent check passed. The cases belong in calibration, not an intervention path. See the [evolution sentinel report](../../research/reports/2026-08-16-evolution-live-sentinel.md).
