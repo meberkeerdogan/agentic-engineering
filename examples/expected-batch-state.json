@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "batch_id": "verified-runner-batch-001",
+  "status": "paused",
+  "plan_fingerprint": "3f70014ddaf353edf8cd42ab42312ff579501d0de861dd7c72abb3aa434ce426",
+  "config_fingerprint": "ab97e45a3f5c2550bcdb69bda4e3e30be15aff5db468b28f70393ddd4d4f462f",
+  "matrix_size": 4,
+  "completed_count": 2,
+  "spent_cost": 2.2,
+  "spent_time_seconds": 190.0,
+  "human_interventions": 1,
+  "pause_reason": "invocation_run_limit",
+  "report_ref": null,
+  "cells": [
+    {
+      "id": "run-a16-control-baseline-t10-fixture-01-s11",
+      "arm_id": "control-baseline",
+      "task_id": "fixture-01",
+      "seed": 11,
+      "status": "completed",
+      "observation": {
+        "claimed_complete": true,
+        "verified_complete": false,
+        "regressions": 1,
+        "cost": 1.0,
+        "time_seconds": 90.0,
+        "human_interventions": 1,
+        "evidence_refs": ["evidence/control-fixture-01-11.json"]
+      },
+      "failure": null
+    },
+    {
+      "id": "run-a16-control-baseline-t10-fixture-01-s23",
+      "arm_id": "control-baseline",
+      "task_id": "fixture-01",
+      "seed": 23,
+      "status": "completed",
+      "observation": {
+        "claimed_complete": true,
+        "verified_complete": true,
+        "regressions": 0,
+        "cost": 1.2,
+        "time_seconds": 100.0,
+        "human_interventions": 0,
+        "evidence_refs": ["evidence/control-fixture-01-23.json"]
+      },
+      "failure": null
+    },
+    {
+      "id": "run-a25-treatment-verified-runner-t10-fixture-01-s11",
+      "arm_id": "treatment-verified-runner",
+      "task_id": "fixture-01",
+      "seed": 11,
+      "status": "pending",
+      "observation": null,
+      "failure": null
+    },
+    {
+      "id": "run-a25-treatment-verified-runner-t10-fixture-01-s23",
+      "arm_id": "treatment-verified-runner",
+      "task_id": "fixture-01",
+      "seed": 23,
+      "status": "pending",
+      "observation": null,
+      "failure": null
+    }
+  ]
+}

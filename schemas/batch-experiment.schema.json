@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/batch-experiment.schema.json",
+  "title": "Budgeted Experiment Batch",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "batch_id", "experiment_ref", "run_root_ref", "cost_unit", "maximum_runs", "maximum_runs_per_invocation", "maximum_total_cost", "maximum_cost_per_run", "maximum_total_time_seconds", "maximum_time_per_run_seconds", "maximum_human_interventions", "maximum_human_interventions_per_run"],
+  "properties": {
+    "version": { "const": 1 },
+    "batch_id": { "$ref": "#/$defs/id" },
+    "experiment_ref": { "$ref": "#/$defs/relativePath" },
+    "run_root_ref": { "$ref": "#/$defs/relativePath" },
+    "cost_unit": { "type": "string", "minLength": 1 },
+    "maximum_runs": { "type": "integer", "minimum": 1 },
+    "maximum_runs_per_invocation": { "type": "integer", "minimum": 1 },
+    "maximum_total_cost": { "type": "number", "minimum": 0 },
+    "maximum_cost_per_run": { "type": "number", "minimum": 0 },
+    "maximum_total_time_seconds": { "type": "number", "minimum": 0 },
+    "maximum_time_per_run_seconds": { "type": "number", "minimum": 0 },
+    "maximum_human_interventions": { "type": "integer", "minimum": 0 },
+    "maximum_human_interventions_per_run": { "type": "integer", "minimum": 0 }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?![A-Za-z]:)(?![/\\\\])(?!.*(?:^|[/\\\\])\\.\\.(?:[/\\\\]|$)).+"
+    }
+  }
+}

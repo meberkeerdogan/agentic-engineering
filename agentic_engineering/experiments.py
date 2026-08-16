@@ -61,7 +61,7 @@ def _unique_ids(records: Sequence[Mapping[str, Any]], label: str) -> None:
         raise ExperimentError(f"duplicate {label} IDs")
 
 
-def _validate_plan(
+def validate_experiment_plan(
     plan: Mapping[str, Any],
     adapters: Mapping[str, ExperimentAdapter] | None = None,
 ) -> None:
@@ -138,7 +138,7 @@ def _validate_plan(
             )
 
 
-def _validate_observation(observation: RunObservation) -> None:
+def validate_run_observation(observation: RunObservation) -> None:
     if not isinstance(observation, RunObservation):
         raise ExperimentError("adapter returned an invalid observation")
     if not isinstance(observation.claimed_complete, bool) or not isinstance(
@@ -175,8 +175,26 @@ def _delta(treatment: float, control: float) -> float:
     return 0.0 if value == 0 else value
 
 
-def _run_id(arm_id: str, task_id: str, seed: int) -> str:
+def experiment_run_id(arm_id: str, task_id: str, seed: int) -> str:
     return f"run-a{len(arm_id)}-{arm_id}-t{len(task_id)}-{task_id}-s{seed}"
+
+
+def experiment_plan_fingerprint(plan: Mapping[str, Any]) -> str:
+    """Fingerprint the immutable planned matrix using canonical JSON."""
+
+    return hashlib.sha256(_canonical_json(plan).encode("utf-8")).hexdigest()
+
+
+def experiment_cells(
+    plan: Mapping[str, Any],
+) -> list[tuple[Mapping[str, Any], Mapping[str, Any], int]]:
+    """Return the declared matrix in its deterministic execution order."""
+
+    validate_experiment_plan(plan)
+    arms = sorted([plan["control"], *plan["treatments"]], key=lambda arm: arm["id"])
+    tasks = sorted(plan["tasks"], key=lambda task: task["id"])
+    seeds = sorted(plan["seeds"])
+    return [(arm, task, seed) for arm in arms for task in tasks for seed in seeds]
 
 
 def _arm_summary(arm_id: str, runs: Sequence[Mapping[str, Any]]) -> dict[str, Any]:
@@ -248,38 +266,35 @@ def run_experiment(
 ) -> dict[str, Any]:
     """Run the complete declared matrix and return a deterministic report."""
 
-    _validate_plan(plan, adapters)
+    validate_experiment_plan(plan, adapters)
     arms = sorted([plan["control"], *plan["treatments"]], key=lambda arm: arm["id"])
-    tasks = sorted(plan["tasks"], key=lambda task: task["id"])
     seeds = sorted(plan["seeds"])
     runs: list[dict[str, Any]] = []
 
-    for arm in arms:
-        for task in tasks:
-            for seed in seeds:
-                observation = adapters[arm["id"]].run(arm, task, seed)
-                _validate_observation(observation)
-                false_completion = bool(
-                    observation.claimed_complete and not observation.verified_complete
-                )
-                runs.append(
-                    {
-                        "id": _run_id(arm["id"], task["id"], seed),
-                        "arm_id": arm["id"],
-                        "task_id": task["id"],
-                        "seed": seed,
-                        "claimed_complete": observation.claimed_complete,
-                        "results": {
-                            "verified-completion": float(observation.verified_complete),
-                            "regressions": observation.regressions,
-                            "false-completion": float(false_completion),
-                            "cost": float(observation.cost),
-                            "time": float(observation.time_seconds),
-                            "human-interventions": observation.human_interventions,
-                        },
-                        "evidence_refs": list(observation.evidence_refs),
-                    }
-                )
+    for arm, task, seed in experiment_cells(plan):
+        observation = adapters[arm["id"]].run(arm, task, seed)
+        validate_run_observation(observation)
+        false_completion = bool(
+            observation.claimed_complete and not observation.verified_complete
+        )
+        runs.append(
+            {
+                "id": experiment_run_id(arm["id"], task["id"], seed),
+                "arm_id": arm["id"],
+                "task_id": task["id"],
+                "seed": seed,
+                "claimed_complete": observation.claimed_complete,
+                "results": {
+                    "verified-completion": float(observation.verified_complete),
+                    "regressions": observation.regressions,
+                    "false-completion": float(false_completion),
+                    "cost": float(observation.cost),
+                    "time": float(observation.time_seconds),
+                    "human-interventions": observation.human_interventions,
+                },
+                "evidence_refs": list(observation.evidence_refs),
+            }
+        )
 
     arm_summaries = [_arm_summary(arm["id"], runs) for arm in arms]
     summary_by_id = {summary["arm_id"]: summary for summary in arm_summaries}
@@ -291,9 +306,7 @@ def run_experiment(
     report: dict[str, Any] = {
         "version": 1,
         "experiment_id": plan["experiment_id"],
-        "plan_fingerprint": hashlib.sha256(
-            _canonical_json(plan).encode("utf-8")
-        ).hexdigest(),
+        "plan_fingerprint": experiment_plan_fingerprint(plan),
         "adoption_rule": plan["decision"]["adoption_rule"],
         "control_arm_id": control_id,
         "seeds": seeds,
@@ -330,7 +343,7 @@ def replay_adapters(
 ) -> dict[str, ReplayAdapter]:
     """Validate a replay matrix and build one adapter per declared arm."""
 
-    _validate_plan(plan)
+    validate_experiment_plan(plan)
     records = replay.get("observations")
     if not isinstance(records, list):
         raise ExperimentError("replay observations must be a list")
@@ -363,7 +376,7 @@ def replay_adapters(
             )
         except (KeyError, TypeError) as error:
             raise ExperimentError(f"invalid replay observation: {key}") from error
-        _validate_observation(observation)
+        validate_run_observation(observation)
         observations[key] = observation
 
     arm_ids = [plan["control"]["id"], *[arm["id"] for arm in plan["treatments"]]]

@@ -25,5 +25,7 @@ Current schemas:
 - [`usage-rates.schema.json`](usage-rates.schema.json): a dated, externally sourced model-usage rate card.
 - [`codex-environment.schema.json`](codex-environment.schema.json): clean-home isolation and no-credit preflight policy.
 - [`codex-preflight-report.schema.json`](codex-preflight-report.schema.json): redacted evidence that a live Codex environment passed its gates.
+- [`batch-experiment.schema.json`](batch-experiment.schema.json): immutable matrix references, invocation size, and worst-case budgets.
+- [`batch-state.schema.json`](batch-state.schema.json): resumable per-cell progress, observations, failures, and accumulated usage.
 
 The core schema module and its validation rules are documented in [M01: Core Contracts](../docs/modules/01-core-contracts.md). The experiment schemas are implemented by [M06: Experiment Harness](../docs/modules/06-experiment-harness.md).

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/batch-state.schema.json",
+  "title": "Resumable Experiment Batch State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "batch_id", "status", "plan_fingerprint", "config_fingerprint", "matrix_size", "completed_count", "spent_cost", "spent_time_seconds", "human_interventions", "pause_reason", "report_ref", "cells"],
+  "properties": {
+    "version": { "const": 1 },
+    "batch_id": { "$ref": "#/$defs/id" },
+    "status": { "enum": ["planned", "running", "paused", "completed", "failed"] },
+    "plan_fingerprint": { "$ref": "#/$defs/fingerprint" },
+    "config_fingerprint": { "$ref": "#/$defs/fingerprint" },
+    "matrix_size": { "type": "integer", "minimum": 1 },
+    "completed_count": { "type": "integer", "minimum": 0 },
+    "spent_cost": { "type": "number", "minimum": 0 },
+    "spent_time_seconds": { "type": "number", "minimum": 0 },
+    "human_interventions": { "type": "integer", "minimum": 0 },
+    "pause_reason": { "enum": [null, "invocation_run_limit"] },
+    "report_ref": { "enum": [null, "experiment-report.json"] },
+    "cells": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/cell" } }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+    "fingerprint": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "cell": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "arm_id", "task_id", "seed", "status", "observation", "failure"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "arm_id": { "$ref": "#/$defs/id" },
+        "task_id": { "$ref": "#/$defs/id" },
+        "seed": { "type": "integer", "minimum": 0 },
+        "status": { "enum": ["pending", "running", "completed", "failed"] },
+        "observation": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/observation" }] },
+        "failure": { "type": ["string", "null"] }
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claimed_complete", "verified_complete", "regressions", "cost", "time_seconds", "human_interventions", "evidence_refs"],
+      "properties": {
+        "claimed_complete": { "type": "boolean" },
+        "verified_complete": { "type": "boolean" },
+        "regressions": { "type": "integer", "minimum": 0 },
+        "cost": { "type": "number", "minimum": 0 },
+        "time_seconds": { "type": "number", "minimum": 0 },
+        "human_interventions": { "type": "integer", "minimum": 0 },
+        "evidence_refs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+      }
+    }
+  }
+}

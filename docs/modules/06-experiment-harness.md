@@ -39,6 +39,8 @@ The report contains:
 
 The replay adapter and example observation file make the harness testable without invoking an external coding agent.
 
+For longer matrices, the [M06e resumable batch runner](06e-resumable-batch-runner.md) stores each validated observation atomically, enforces declared budgets, and feeds the complete stored matrix back through this same deterministic report builder.
+
 ## Run the Example
 
 ```powershell

@@ -110,6 +110,14 @@ uv run python -m agentic_engineering.live_pilot examples/live-pilot.json --run-i
 
 See the [private live pilot runner](docs/modules/06c-live-pilot-runner.md) and [clean Codex environment](docs/modules/06d-clean-codex-environment.md) before running it. Live output is ignored under `.agentic-runs/`; a no-credit preflight now checks the CLI, login, model, rate freshness, structured-output compatibility, plugin/MCP isolation, and prompt footprint before execution.
 
+Run the offline resumable batch example twice to pause and then complete its four-cell matrix:
+
+```powershell
+uv run python -m agentic_engineering.batch_experiments examples/batch-experiment.json examples/experiment-observations.json
+```
+
+The [M06e batch runner](docs/modules/06e-resumable-batch-runner.md) enforces worst-case budgets, locks concurrent execution, preserves completed cells, and generates the normal deterministic experiment report. The replay example makes no model calls.
+
 ## Contributing
 
 Contributions are welcome. Before opening a pull request, read [CONTRIBUTING.md](CONTRIBUTING.md).

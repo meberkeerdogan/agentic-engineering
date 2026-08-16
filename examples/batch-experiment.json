@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "batch_id": "verified-runner-batch-001",
+  "experiment_ref": "examples/experiment-record.json",
+  "run_root_ref": ".agentic-runs/batches",
+  "cost_unit": "USD",
+  "maximum_runs": 4,
+  "maximum_runs_per_invocation": 2,
+  "maximum_total_cost": 8,
+  "maximum_cost_per_run": 2,
+  "maximum_total_time_seconds": 600,
+  "maximum_time_per_run_seconds": 150,
+  "maximum_human_interventions": 4,
+  "maximum_human_interventions_per_run": 1
+}

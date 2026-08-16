@@ -35,4 +35,6 @@ Current examples:
 - [`live-pilot-rates.json`](live-pilot-rates.json): dated external rates used to estimate the example run's subscription-credit usage.
 - [`codex-environment.json`](codex-environment.json): clean-home and no-credit preflight policy for M06d.
 - [`expected-codex-preflight-report.json`](expected-codex-preflight-report.json): portable shape plus the initial local prompt-footprint measurement.
+- [`batch-experiment.json`](batch-experiment.json): a four-cell batch with two cells allowed per invocation.
+- [`expected-batch-state.json`](expected-batch-state.json): golden paused state after the first two cells.
 - [`live-pilot-template/`](live-pilot-template/): a tiny deterministic median bug, tests, workflow, and independent evidence contract.
