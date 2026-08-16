@@ -39,4 +39,4 @@ uv run python -m agentic_engineering.planning_campaign `
 
 ## Next gate
 
-Before a live run, create a separately reviewed batch and launcher with explicit per-cell and total credit/time ceilings. Start with one matched control/treatment sentinel, inspect its independent evaluations and trajectories, then decide whether to authorize the remaining repeated-seed matrix. Preparing this campaign grants no such approval.
+The [two-cell dependency-planning safety sentinel](07c-dependency-planning-sentinel.md) is now prepared with explicit per-cell and total credit/time ceilings. Its authenticated cells still require separate approvals. Review both independent evaluations and trajectories before deciding whether to budget or authorize the remaining repeated-seed matrix.

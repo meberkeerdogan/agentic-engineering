@@ -39,3 +39,4 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 - Added M09 isolated multi-agent orchestration with dependency waves, concurrent worktrees, dependency commit delivery, declared-path enforcement, deterministic commits, topological integration, and final validation.
 - Completed the nine-module implementation sequence and reconciled the roadmap, architecture, and user documentation with the remaining experiment-based promotion gates.
 - Added an offline M07c evidence campaign with an isolated static/adaptive planning factor, three dependency graph shapes, three repeated seeds, deterministic readiness evidence, and no paid-run authorization.
+- Added a separately approval-gated M07c safety sentinel with one diamond-graph task, one seed, two workflow arms, one cell per invocation, and explicit 0.75-credit/450-second per-cell ceilings.

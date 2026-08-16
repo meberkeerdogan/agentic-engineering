@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "experiment_id": "exp-planning-sentinel-001",
+  "title": "Dependency-planning safety sentinel",
+  "hypothesis": "Static and adaptive dependency-planning workflows can complete one diamond-shaped evolution task inside the declared safety limits without regressions or false completion.",
+  "status": "planned",
+  "control": {
+    "id": "control-static",
+    "workflow": "verified-loop-static-dependency-plan",
+    "config_ref": "workflow-static-plan.md"
+  },
+  "treatments": [
+    {
+      "id": "treatment-adaptive",
+      "workflow": "verified-loop-adaptive-dependency-plan",
+      "config_ref": "workflow-adaptive-plan.md"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "roadmap-evolution",
+      "repository": "examples/task-pack/multi-step-evolution",
+      "spec_ref": "ACTIVE_SPEC.md"
+    }
+  ],
+  "seeds": [0],
+  "metrics": [
+    {"id": "verified-completion", "description": "Required criteria accepted by declared evaluators.", "direction": "higher", "unit": "ratio"},
+    {"id": "regressions", "description": "Previously passing protected checks that now fail.", "direction": "lower", "unit": "count"},
+    {"id": "false-completion", "description": "Runs claimed complete but rejected by independent verification.", "direction": "lower", "unit": "ratio"},
+    {"id": "cost", "description": "Measured subscription-credit estimate derived from documented usage.", "direction": "lower", "unit": "credits"},
+    {"id": "time", "description": "Measured wall-clock duration of model execution.", "direction": "lower", "unit": "seconds"},
+    {"id": "human-interventions", "description": "Human actions needed to finish or recover a run.", "direction": "lower", "unit": "count"}
+  ],
+  "runs": [],
+  "decision": {
+    "adoption_rule": "Treat this as a safety sentinel only: both arms must independently verify with zero regressions and zero false completions, each cell must stay at or below 0.75 credits and 450 seconds, no human intervention is permitted, and no efficacy claim may be made from two cells.",
+    "outcome": "pending",
+    "reason": "The launcher is prepared offline, but neither authenticated cell is authorized or run."
+  }
+}

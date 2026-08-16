@@ -54,6 +54,9 @@ SCHEMA_EXAMPLE_PAIRS = [
     ("experiment-record.schema.json", "dependency-planning-experiment.json"),
     ("task-pack.schema.json", "dependency-planning-task-pack.json"),
     ("planning-campaign-readiness.schema.json", "expected-planning-campaign-readiness.json"),
+    ("experiment-record.schema.json", "dependency-planning-sentinel-experiment.json"),
+    ("batch-experiment.schema.json", "dependency-planning-sentinel-batch.json"),
+    ("live-experiment.schema.json", "dependency-planning-sentinel-live.json"),
 ]
 
 

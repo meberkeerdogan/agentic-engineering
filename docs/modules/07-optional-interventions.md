@@ -74,7 +74,7 @@ The synthetic fixture proves the mechanism. The combined real calibration curren
 
 ## M07c: Dependency Planning Experiment
 
-`dependency_planning` compares a fixed declared topological order with an adaptive, evidence-driven replan. The adaptive strategy removes tasks downstream of a failed dependency and prioritizes the remaining ready frontier. Both outputs are deterministic read-only reports with empty execution and state-mutation arrays. The [offline M07c evidence campaign](07c-dependency-planning-campaign.md) now prepares an isolated 18-cell M06 comparison, but no live cells are authorized or run.
+`dependency_planning` compares a fixed declared topological order with an adaptive, evidence-driven replan. The adaptive strategy removes tasks downstream of a failed dependency and prioritizes the remaining ready frontier. Both outputs are deterministic read-only reports with empty execution and state-mutation arrays. The [offline M07c evidence campaign](07c-dependency-planning-campaign.md) prepares an isolated 18-cell M06 comparison, and its [two-cell safety sentinel](07c-dependency-planning-sentinel.md) is budgeted and offline-validated. No authenticated planning cell is authorized or run.
 
 ## M07d: Bounded Phase-Aware Memory
 
