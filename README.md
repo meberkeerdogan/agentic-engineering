@@ -100,6 +100,8 @@ Run the deterministic single-pass evaluation fixture:
 uv run python -m agentic_engineering.evaluators examples/fixture-task/evidence-contract.json --root examples/fixture-task
 ```
 
+The [Codex CLI experiment adapter](docs/modules/06b-codex-cli-adapter.md) connects real, isolated `codex exec` runs to the experiment harness while keeping executor claims separate from independent verification. Its automated tests use an offline double and do not spend API credits.
+
 ## Contributing
 
 Contributions are welcome. Before opening a pull request, read [CONTRIBUTING.md](CONTRIBUTING.md).

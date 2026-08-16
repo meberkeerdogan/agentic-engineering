@@ -36,7 +36,7 @@ paper -> reproduce -> ablate -> measure -> extract primitive
 8. **Observe-first watchdog:** collect repeated-action, skipped-validation, and stagnation events before enabling advice or blocking.
 9. **Paper reproduction toolkit:** extract claims and rubrics, follow paper lineage and reference code, reconstruct environments, run experiments, and record deviations.
 10. **Isolated multi-agent runner:** only after the single-agent system works, parallelize independent tasks in isolated Git worktrees and integrate them with tests.
-11. **Evaluation harness:** run repeatable control/treatment comparisons across repositories and record completion, regressions, false completion, cost, time, and human intervention.
+11. **Evaluation harness and live adapters:** run repeatable control/treatment comparisons across repositories and record completion, regressions, false completion, cost, time, and human intervention. Live adapters execute agents in isolated workspaces while independent evaluators retain verification authority.
 
 ## Research Decisions
 
