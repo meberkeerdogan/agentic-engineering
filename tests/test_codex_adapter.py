@@ -103,8 +103,10 @@ def test_exec_uses_stdin_safe_sandbox_and_structured_output(tmp_path: Path) -> N
         "prompt_in_argv": False,
         "schema_exists": True,
         "json_mode": True,
+        "auto_review": False,
     }
     assert request["sandbox"] == "workspace-write"
+    assert request["approval_mode"] == "none"
     assert "prompt" not in request
     assert len(result.evidence_refs) == 6
 
@@ -179,6 +181,34 @@ def test_executor_claim_cannot_verify_its_own_work(tmp_path: Path) -> None:
 def test_unrestricted_sandbox_is_refused() -> None:
     with pytest.raises(CodexAdapterError, match="unrestricted modes are refused"):
         CodexExecConfig(sandbox="danger-full-access")
+
+
+def test_auto_review_is_explicit_and_requires_workspace_write(tmp_path: Path) -> None:
+    workspace_root = tmp_path / "workspaces"
+    workspace = workspace_root / "fixture"
+    workspace.mkdir(parents=True)
+    selected_runner = CodexExecRunner(
+        workspace_root,
+        tmp_path / "evidence",
+        CodexExecConfig(
+            command_prefix=(sys.executable, str(FAKE_CODEX)),
+            approve_for_me=True,
+        ),
+    )
+
+    result = selected_runner.execute(
+        arm_id="control",
+        task_id="fixture-task",
+        seed=0,
+        workspace=workspace,
+        prompt="bounded agentic-engineering task",
+    )
+
+    assert json.loads(result.stdout)["auto_review"] is True
+    request = json.loads((result.evidence_dir / "request.json").read_text("utf-8"))
+    assert request["approval_mode"] == "auto-review"
+    with pytest.raises(CodexAdapterError, match="requires the workspace-write"):
+        CodexExecConfig(sandbox="read-only", approve_for_me=True)
 
 
 def test_workspace_must_stay_inside_declared_root(tmp_path: Path) -> None:

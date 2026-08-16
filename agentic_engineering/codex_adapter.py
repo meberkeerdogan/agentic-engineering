@@ -49,6 +49,7 @@ class CodexExecConfig:
     model: str | None = None
     profile: str | None = None
     codex_home: Path | None = None
+    approve_for_me: bool = False
     timeout_seconds: float = 1800.0
 
     def __post_init__(self) -> None:
@@ -59,6 +60,12 @@ class CodexExecConfig:
         if self.sandbox not in SAFE_SANDBOXES:
             raise CodexAdapterError(
                 "sandbox must be read-only or workspace-write; unrestricted modes are refused"
+            )
+        if not isinstance(self.approve_for_me, bool):
+            raise CodexAdapterError("approve_for_me must be a boolean")
+        if self.approve_for_me and self.sandbox != "workspace-write":
+            raise CodexAdapterError(
+                "approve_for_me requires the workspace-write sandbox"
             )
         if (
             isinstance(self.timeout_seconds, bool)
@@ -160,6 +167,37 @@ def resolve_command_prefix(
         if resolved:
             return (resolved, *command_prefix[1:])
     return command_prefix
+
+
+def require_approve_for_me_support(
+    command_prefix: tuple[str, ...],
+    *,
+    cwd: Path,
+    timeout_seconds: float,
+) -> None:
+    """Fail before model execution when the CLI cannot route approvals to auto-review."""
+
+    try:
+        completed = subprocess.run(
+            [*resolve_command_prefix(command_prefix), "exec", "--help"],
+            cwd=cwd,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            shell=False,
+            timeout=timeout_seconds,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired) as error:
+        raise CodexAdapterError(
+            "could not inspect Codex auto-review support"
+        ) from error
+    help_text = completed.stdout + completed.stderr
+    if completed.returncode != 0 or "--approve-for-me" not in help_text:
+        raise CodexAdapterError(
+            "installed Codex CLI does not support --approve-for-me"
+        )
 
 
 def _resolve_inside(root: Path, candidate: Path, label: str) -> Path:
@@ -272,13 +310,19 @@ class CodexExecRunner:
             "--json",
             "--sandbox",
             self.config.sandbox,
-            "-C",
-            str(workspace),
-            "--output-schema",
-            str(schema_path),
-            "--output-last-message",
-            str(final_path),
         ]
+        if self.config.approve_for_me:
+            command.append("--approve-for-me")
+        command.extend(
+            [
+                "-C",
+                str(workspace),
+                "--output-schema",
+                str(schema_path),
+                "--output-last-message",
+                str(final_path),
+            ]
+        )
         if self.config.model:
             command.extend(["--model", self.config.model])
         if self.config.profile:
@@ -292,6 +336,9 @@ class CodexExecRunner:
             "seed": seed,
             "workspace": str(workspace),
             "sandbox": self.config.sandbox,
+            "approval_mode": (
+                "auto-review" if self.config.approve_for_me else "none"
+            ),
             "model": self.config.model,
             "profile": self.config.profile,
             "isolated_codex_home": self.config.codex_home is not None,

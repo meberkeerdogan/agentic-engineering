@@ -18,6 +18,7 @@
   "environment_ref": "examples/codex-environment.json",
   "model": "gpt-5.6-luna",
   "sandbox": "workspace-write",
+  "approval_mode": "auto-review",
   "timeout_seconds": 600,
   "seed": 0
 }

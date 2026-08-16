@@ -19,6 +19,7 @@ from .codex_adapter import (
     CodexExecConfig,
     CodexExecRunner,
     CodexExperimentAdapter,
+    require_approve_for_me_support,
 )
 from .codex_evidence import EvidenceContractEvaluator, JsonlUsageCostMeter, UsageRates
 from .codex_environment import (
@@ -45,6 +46,7 @@ CONFIG_FIELDS = {
     "environment_ref",
     "model",
     "sandbox",
+    "approval_mode",
     "timeout_seconds",
     "seed",
 }
@@ -124,6 +126,15 @@ def _validate_config(config: Mapping[str, Any]) -> None:
             raise LivePilotError(f"{label} must be a non-empty string")
     if config["sandbox"] not in SAFE_SANDBOXES:
         raise LivePilotError("pilot sandbox must be read-only or workspace-write")
+    if config["approval_mode"] not in {"none", "auto-review"}:
+        raise LivePilotError("pilot approval mode must be none or auto-review")
+    if (
+        config["sandbox"] == "workspace-write"
+        and config["approval_mode"] != "auto-review"
+    ):
+        raise LivePilotError("workspace-write pilots require auto-review")
+    if config["sandbox"] == "read-only" and config["approval_mode"] != "none":
+        raise LivePilotError("read-only pilots cannot enable auto-review")
     timeout = config["timeout_seconds"]
     if isinstance(timeout, bool) or not isinstance(timeout, (int, float)) or timeout <= 0:
         raise LivePilotError("pilot timeout must be a positive number")
@@ -212,6 +223,12 @@ def run_live_pilot(
     environment_policy = CodexEnvironmentPolicy.from_mapping(
         _load_object(environment_path, "Codex environment policy")
     )
+    if config["approval_mode"] == "auto-review":
+        require_approve_for_me_support(
+            command_prefix,
+            cwd=project_root,
+            timeout_seconds=environment_policy.preflight_timeout_seconds,
+        )
 
     run_dir = run_root / run_id
     if run_dir.exists():
@@ -276,6 +293,7 @@ def run_live_pilot(
                     sandbox=config["sandbox"],
                     model=config["model"],
                     codex_home=clean_codex_home,
+                    approve_for_me=config["approval_mode"] == "auto-review",
                     timeout_seconds=float(config["timeout_seconds"]),
                 ),
             )
@@ -309,6 +327,7 @@ def run_live_pilot(
         "seed": config["seed"],
         "model": config["model"],
         "sandbox": config["sandbox"],
+        "approval_mode": config["approval_mode"],
         "claimed_complete": observation.claimed_complete,
         "verified_complete": observation.verified_complete,
         "regressions": observation.regressions,

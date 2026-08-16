@@ -26,6 +26,7 @@ from .codex_adapter import (
     CodexExecConfig,
     CodexExecRunner,
     CodexExperimentAdapter,
+    require_approve_for_me_support,
     resolve_command_prefix,
 )
 from .codex_environment import (
@@ -49,6 +50,7 @@ CONFIG_FIELDS = {
     "environment_ref",
     "model",
     "sandbox",
+    "approval_mode",
     "timeout_seconds",
     "task_bindings",
 }
@@ -224,6 +226,7 @@ class LiveExperimentConfig:
     environment_ref: str
     model: str
     sandbox: str
+    approval_mode: str
     timeout_seconds: float
     task_bindings: Mapping[str, str]
 
@@ -238,6 +241,17 @@ class LiveExperimentConfig:
                 raise LiveExperimentError(f"{field} must be a non-empty string")
         if value.get("sandbox") not in SAFE_SANDBOXES:
             raise LiveExperimentError("live experiment sandbox must be safe")
+        if value.get("approval_mode") not in {"none", "auto-review"}:
+            raise LiveExperimentError(
+                "live experiment approval mode must be none or auto-review"
+            )
+        if (
+            value["sandbox"] == "workspace-write"
+            and value["approval_mode"] != "auto-review"
+        ):
+            raise LiveExperimentError("workspace-write experiments require auto-review")
+        if value["sandbox"] == "read-only" and value["approval_mode"] != "none":
+            raise LiveExperimentError("read-only experiments cannot enable auto-review")
         timeout = value.get("timeout_seconds")
         if (
             isinstance(timeout, bool)
@@ -268,6 +282,7 @@ class LiveExperimentConfig:
             environment_ref=value["environment_ref"],
             model=value["model"],
             sandbox=value["sandbox"],
+            approval_mode=value["approval_mode"],
             timeout_seconds=float(timeout),
             task_bindings=bindings,
         )
@@ -391,6 +406,7 @@ class LiveCodexBatchAdapter:
                         sandbox=self.config.sandbox,
                         model=self.config.model,
                         codex_home=clean_codex_home,
+                        approve_for_me=self.config.approval_mode == "auto-review",
                         timeout_seconds=self.config.timeout_seconds,
                     ),
                 )
@@ -488,6 +504,12 @@ def run_live_experiment(
     executor_version = _probe_executor_version(
         command_prefix, project_root, environment_policy.preflight_timeout_seconds
     )
+    if config.approval_mode == "auto-review":
+        require_approve_for_me_support(
+            command_prefix,
+            cwd=project_root,
+            timeout_seconds=environment_policy.preflight_timeout_seconds,
+        )
     if rates.model != config.model:
         raise LiveExperimentError("rate-card model does not match live experiment model")
     if rates.unit != batch.cost_unit:

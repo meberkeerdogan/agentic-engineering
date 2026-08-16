@@ -11,6 +11,7 @@ The live pilot runner turns the M06b adapter into one reusable command. It copie
 - Every run ID is path-safe and immutable; an existing run is never overwritten.
 - Templates, rate cards, and configuration must resolve inside the project root.
 - Only `read-only` and `workspace-write` Codex sandboxes are accepted.
+- Writable pilots require the explicit `auto-review` approval mode so non-interactive edits and checks can proceed inside the same sandbox boundary.
 - Raw prompts, JSONL, stderr, evaluator output, and usage records stay under ignored `.agentic-runs/` storage.
 - The committed example contains no credentials and the runner reuses the Codex CLI's existing authentication.
 - The [M06d clean-environment preflight](06d-clean-codex-environment.md) must pass before `codex exec` can start.

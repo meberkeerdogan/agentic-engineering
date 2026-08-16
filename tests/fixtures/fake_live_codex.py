@@ -12,6 +12,12 @@ arguments = sys.argv[1:]
 if arguments == ["--version"]:
     print(f"codex-cli {os.environ.get('FAKE_CODEX_VERSION', '0.147.0')}")
     raise SystemExit(0)
+if arguments == ["exec", "--help"]:
+    help_text = "Usage: codex exec [OPTIONS]"
+    if os.environ.get("FAKE_CODEX_AUTO_REVIEW", "supported") == "supported":
+        help_text += "\n\n  --approve-for-me"
+    print(help_text)
+    raise SystemExit(0)
 if arguments == ["login", "status"]:
     if os.environ.get("FAKE_CODEX_AUTH", "chatgpt") == "chatgpt":
         print("Logged in using ChatGPT", file=sys.stderr)

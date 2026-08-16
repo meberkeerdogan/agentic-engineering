@@ -13,6 +13,7 @@ The invocation is based on the official [Codex CLI command reference](https://de
 - The trusted host supplies an isolated workspace, an independent evaluator, and an external cost meter.
 - The prompt is sent through standard input instead of the process argument list.
 - Each run uses `--ephemeral`, a declared `read-only` or `workspace-write` sandbox, and a JSON output schema.
+- Writable non-interactive runs must explicitly opt into CLI auto-review with `--approve-for-me`; this routes approval decisions to a reviewer without expanding the `workspace-write` sandbox.
 - The provider-facing schema uses the supported structured-output subset; stricter checks such as unique artifact references are enforced again by the trusted local parser.
 - `danger-full-access` and bypass flags are refused.
 - JSONL standard output, standard error, request and process metadata, output schema, and final response are preserved per experiment cell.
@@ -52,7 +53,7 @@ For a reusable one-command control run built on this adapter, see [M06c: Private
 
 - The prompt travels through stdin and is represented in metadata only by a hash.
 - Workspaces cannot escape the configured root.
-- Unsafe sandbox modes fail before execution.
+- Unsafe sandbox modes and auto-review outside `workspace-write` fail before execution.
 - Structured claims cannot mark their own run verified.
 - Failed and malformed runs preserve evidence and fail closed.
 - Cost must come from an explicit finite, non-negative measurement.

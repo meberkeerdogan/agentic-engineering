@@ -4,7 +4,7 @@
   "title": "Live Codex Experiment Launcher",
   "type": "object",
   "additionalProperties": false,
-  "required": ["version", "batch_ref", "rates_ref", "environment_ref", "model", "sandbox", "timeout_seconds", "task_bindings"],
+  "required": ["version", "batch_ref", "rates_ref", "environment_ref", "model", "sandbox", "approval_mode", "timeout_seconds", "task_bindings"],
   "properties": {
     "version": { "const": 1 },
     "batch_ref": { "$ref": "#/$defs/relativePath" },
@@ -12,6 +12,7 @@
     "environment_ref": { "$ref": "#/$defs/relativePath" },
     "model": { "type": "string", "minLength": 1 },
     "sandbox": { "enum": ["read-only", "workspace-write"] },
+    "approval_mode": { "enum": ["none", "auto-review"] },
     "timeout_seconds": { "type": "number", "exclusiveMinimum": 0, "maximum": 3600 },
     "task_bindings": {
       "type": "array",

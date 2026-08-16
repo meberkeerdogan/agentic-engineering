@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "batch_id": "codex-workflow-comparison-001",
+  "batch_id": "codex-workflow-comparison-002",
   "experiment_ref": "examples/live-experiment-record.json",
   "run_root_ref": ".agentic-runs/live-batches",
   "cost_unit": "credits",

@@ -26,6 +26,7 @@ print(
             "prompt_in_argv": any("bounded agentic-engineering" in item for item in arguments),
             "schema_exists": schema_path.is_file(),
             "json_mode": "--json" in arguments,
+            "auto_review": "--approve-for-me" in arguments,
         }
     )
 )

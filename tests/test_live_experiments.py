@@ -8,6 +8,7 @@ import pytest
 
 import agentic_engineering.live_experiments as live_module
 from agentic_engineering.batch_experiments import BatchExperimentError
+from agentic_engineering.codex_adapter import CodexAdapterError
 from agentic_engineering.codex_environment import CodexEnvironmentError
 from agentic_engineering.live_experiments import (
     LiveExperimentError,
@@ -52,7 +53,7 @@ def run_offline(project: Path):
 
 
 def batch_dir(project: Path) -> Path:
-    return project / ".agentic-runs" / "live-batches" / "codex-workflow-comparison-001"
+    return project / ".agentic-runs" / "live-batches" / "codex-workflow-comparison-002"
 
 
 def test_live_experiment_pauses_then_resumes_with_fresh_preflight_per_cell(
@@ -186,6 +187,18 @@ def test_preflight_failure_blocks_model_execution_and_persists_only_type(
     }
     state_text = (root / "batch-state.json").read_text("utf-8")
     assert "absent from the Codex catalog" not in state_text
+
+
+def test_missing_auto_review_support_blocks_batch_before_model_execution(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    project = project_fixture(tmp_path)
+    monkeypatch.setenv("FAKE_CODEX_AUTO_REVIEW", "missing")
+
+    with pytest.raises(CodexAdapterError, match="does not support --approve-for-me"):
+        run_offline(project)
+
+    assert not batch_dir(project).exists()
 
 
 def test_live_timeout_must_fit_inside_batch_ceiling(tmp_path: Path) -> None:
