@@ -6,7 +6,9 @@ The project is not limited to loops, playbooks, workflows, or skills. Those are 
 
 ## Project Status
 
-Agentic Engineering is in early project setup. The current focus is identifying high-value agent-engineering problems, testing different solutions, and establishing shared foundations without prematurely locking the project to one runtime or abstraction.
+The first nine implementation modules are complete and covered by offline tests. They provide active specifications, evidence contracts, verified state, single-agent orchestration, experiment infrastructure, optional interventions, paper reproduction, and isolated multi-agent integration.
+
+Implementation does not imply that every mechanism is enabled by default. Watchdog advice, adaptive planning, phase memory, property evidence, and multi-agent execution remain promotion-gated until controlled comparisons show that they beat the simpler verified baseline on their declared targets.
 
 ## Why Agentic Engineering
 
@@ -35,26 +37,27 @@ These are initial building blocks, not a closed product taxonomy:
 - **Harness**: Runtime infrastructure that controls agent context, actions, state, verification, and recovery.
 - **Experiment**: A reproducible comparison used to determine whether an agent-engineering intervention improves outcomes.
 
-See [docs/vision.md](docs/vision.md) and [docs/architecture.md](docs/architecture.md) for the starting design notes.
+See [docs/vision.md](docs/vision.md) and [docs/architecture.md](docs/architecture.md) for the project vision and architecture notes.
 
-The planned delivery sequence and the research decisions behind it are in the [implementation plan](docs/implementation-plan.md).
-The work is split into promotion-gated units in the [module dependency map](docs/modules/README.md).
+The delivered sequence and the research decisions behind it are in the [implementation plan](docs/implementation-plan.md).
+The work and its remaining evidence gates are summarized in the [module dependency map](docs/modules/README.md).
 
 ## Repository Layout
 
 ```text
 .
 |-- .github/              GitHub workflows, issue templates, and PR template
+|-- agentic_engineering/  Executable Python modules and CLIs
 |-- docs/                 Product, architecture, and decision records
-|-- examples/             Example playbooks, workflows, and skill sketches
+|-- examples/             Schema-valid fixtures and runnable examples
 |-- playbooks/            Reusable agent playbooks
 |-- research/             Reviewed papers, source provenance, and evidence reports
-|-- runners/              Future runner prototypes
+|-- runners/              Adapter and runner support assets
 |-- scripts/              Developer automation helpers
-|-- schemas/              Future shared schemas
+|-- schemas/              Versioned JSON contracts and reports
 |-- skills/               Reusable coding-agent skills
-|-- src/                  Future implementation code
-|-- tests/                Future automated tests
+|-- src/                  Package support files
+|-- tests/                Offline contract, safety, and integration tests
 |-- workflows/            Reusable workflow definitions
 |-- CHANGELOG.md          Release notes
 |-- CONTRIBUTING.md       Contribution guide
@@ -125,6 +128,14 @@ uv run python -m agentic_engineering.live_experiments examples/live-experiment.j
 ```
 
 The [M06f live experiment bridge](docs/modules/06f-live-codex-experiments.md) creates a fresh repository per cell, preflights immediately before every model call, binds all execution inputs against resume-time drift, and independently evaluates the result. The command can consume Codex credits; its automated tests cannot.
+
+The remaining offline modules are documented with runnable fixtures:
+
+- [M07 optional interventions](docs/modules/07-optional-interventions.md): observe-first monitoring, calibration-gated advice, dependency planning, bounded phase memory, and independently reviewed property evidence.
+- [M08 paper reproduction](docs/modules/08-paper-reproduction.md): hash-bound, claim-scoped reproduction with explicit deviations.
+- [M09 isolated multi-agent orchestration](docs/modules/09-isolated-multi-agent.md): dependency-safe worktrees and separately validated integration.
+
+These offline fixtures make no paid model calls. M07 and M09 are experimental mechanisms, not default recommendations.
 
 ## Contributing
 

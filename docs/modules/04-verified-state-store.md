@@ -47,7 +47,7 @@ The caller then records a complete evaluation report from M03. Timestamps are ex
 
 ## Trust and Concurrency
 
-The store validates report fingerprints and evidence consistency, but a hash chain is tamper-evident rather than an authentication signature. M05 will separate the executor from the auditor that creates reports. This implementation is intentionally single-writer; multi-process locking belongs in the later isolated orchestration module.
+The store validates report fingerprints and evidence consistency, but a hash chain is tamper-evident rather than an authentication signature. M05 separates the executor from the auditor that creates reports. The store remains intentionally single-writer; M09 provides isolated worktrees and integration rather than shared multi-process mutation.
 
 ## Promotion Gate
 

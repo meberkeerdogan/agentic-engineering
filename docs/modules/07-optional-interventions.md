@@ -84,8 +84,15 @@ The synthetic fixture proves the mechanism. The combined real calibration curren
 
 `property_testing` accepts agent-proposed properties only after an independent auditor binds them to specification evidence. Rejected or unreviewed proposals cannot contribute results. Accepted properties require externally supplied read-only evidence, while counterexamples and invalid properties become explicit follow-up. The tool never executes generated test code or mutates state.
 
+## Run the Experimental Fixtures
+
+```powershell
+uv run python -m agentic_engineering.advisory_watchdog examples/expected-watchdog-report.json examples/expected-watchdog-calibration.json --output advisory-report.json
+uv run python -m agentic_engineering.dependency_planning examples/dependency-plan.json --strategy adaptive --output dependency-plan-report.json
+uv run python -m agentic_engineering.phase_memory examples/phase-memory.json --output phase-memory-report.json
+uv run python -m agentic_engineering.property_testing examples/property-testing.json --output property-testing-report.json
+```
+
 ## Promotion State
 
 All M07 mechanisms are implemented as separately measurable primitives. None is a default intervention: real watchdog calibration permits no advice, while planning, memory, and property evidence still require their own M06 control/treatment results.
-
-Each slice will be implemented and promoted independently.

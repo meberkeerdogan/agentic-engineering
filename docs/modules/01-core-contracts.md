@@ -4,7 +4,7 @@
 
 ## Why This Module Exists
 
-The repository currently has one project-preferences schema but no shared format for the active specification, acceptance evidence, verified run state, or experiments. Every later runner would otherwise invent incompatible data structures.
+The repository began with one project-preferences schema but no shared format for the active specification, acceptance evidence, verified run state, or experiments. M01 established those formats so later runners do not invent incompatible data structures.
 
 ## Deliverables
 

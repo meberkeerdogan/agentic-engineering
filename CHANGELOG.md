@@ -37,3 +37,4 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 - Added M07e independently reviewed property-test evidence with specification-bound proposals, rejection of invented properties, read-only external results, and explicit counterexample follow-up.
 - Added M08 paper reproduction tooling with hash-bound lineage, locked environment declarations, trusted local experiment execution, rubric scoring, explicit deviations, and a scoped Progress Mirage claim reproduction.
 - Added M09 isolated multi-agent orchestration with dependency waves, concurrent worktrees, dependency commit delivery, declared-path enforcement, deterministic commits, topological integration, and final validation.
+- Completed the nine-module implementation sequence and reconciled the roadmap, architecture, and user documentation with the remaining experiment-based promotion gates.

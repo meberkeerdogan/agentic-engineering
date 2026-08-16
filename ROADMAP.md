@@ -1,51 +1,33 @@
 # Roadmap
 
-This roadmap is intentionally lightweight while the project is forming. It covers agent-engineering improvements broadly; playbooks, workflows, and skills are possible outputs rather than the limits of the project.
+This roadmap covers agent-engineering improvements broadly; playbooks, workflows, and skills are possible outputs rather than the limits of the project. The first implementation sequence is complete. Remaining work is evidence-driven promotion and extension, not unfinished core modules.
 
 See [docs/implementation-plan.md](docs/implementation-plan.md) for the complete workflow, research choices, and delivery order.
 See [docs/modules/README.md](docs/modules/README.md) for the module dependency map and promotion gates.
 
 ## Phase 0: Foundation
 
-- Define core playbook, workflow, and skill vocabulary.
-- Define the broader agent-engineering problem taxonomy and evaluation principles.
-- Set up repository, license, and contribution process.
-- Collect agent failure cases and candidate interventions from real coding-agent use.
-- Select the first intervention to prototype based on expected value and measurability.
+- **Complete:** vocabulary, project scope, governance, failure taxonomy, and initial research priorities.
 
 ## Phase 1: Evidence and Definitions
 
-- Establish baseline tasks, outcome measures, and experiment records.
-- Define active-specification, evidence-contract, verified-state, and experiment-record schemas.
-- Draft a portable playbook format.
-- Draft a lightweight skill format.
-- Create examples for planning, implementation, review, and handoff.
-- Define how playbooks and skills declare tools, inputs, outputs, and verification.
-- Document safe defaults for risky actions.
+- **Complete:** baseline records, active-specification, evidence-contract, verified-state, experiment schemas, examples, playbooks, skills, and safe execution boundaries.
 
 ## Phase 2: First Working Intervention
 
-- Build the smallest useful solution for the selected agent-engineering problem; this may be a runner, evaluator, harness, skill, or another form.
-- Implement the simple baseline, then the verified single-agent manager-executor-auditor runner.
-- Add structured logging.
-- Add checkpoint and evaluator hooks.
-- Compare it against a baseline on a small demo project and a realistic project.
+- **Complete:** deterministic evaluators, append-only verified state, manager-executor-auditor runner, structured evidence, checkpoints, and the M06 control/treatment harness.
+- **Evidence continues:** add more representative repositories, repeated seeds, and external replications before making broad efficacy claims.
 
 ## Phase 3: Integrations
 
-- Experiment with adaptive planning, memory, observe-first monitoring, and paper reproduction.
-- Add isolated multi-agent execution only after it beats the verified single-agent baseline.
-- Explore adapters for popular coding-agent environments.
-- Add examples for CI, local development, and review workflows.
-- Publish contributor-friendly docs, starter templates, and skill examples.
+- **Implemented experimentally:** adaptive dependency planning, bounded phase memory, observe-first monitoring, calibration-gated advice, independently reviewed property evidence, paper reproduction, and isolated multi-agent worktree integration.
+- **Promotion-gated:** optional interventions and multi-agent execution stay off by default until they outperform the verified single-agent baseline without unacceptable regressions.
+- **Next:** broaden agent adapters, CI examples, benchmark repositories, contributor templates, and independently reproducible experiments.
 
-## Open Questions
+## Continuing Questions
 
-- What should the first runtime be?
-- Which problem should the first implementation solve?
-- What external evidence will demonstrate that it improves agent outcomes?
-- Should playbook definitions be YAML, JSON, Markdown, code, or a hybrid?
-- Should skills use the same format as playbooks or their own manifest?
-- Which coding-agent tools should be supported first?
-- How much state should a workflow persist between runs?
-- What should be standardized, and what should stay tool-specific?
+- Which tasks and repositories best predict long-horizon production performance?
+- Which experimental interventions earn default promotion, and for which task classes?
+- Which coding-agent adapters should follow the existing Codex CLI adapter?
+- What should be standardized across agents, and what should remain tool-specific?
+- How much retained state improves outcomes without creating stale or misleading context?

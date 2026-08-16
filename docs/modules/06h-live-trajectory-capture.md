@@ -45,4 +45,4 @@ Capture version `1` is included in the live execution fingerprint. An in-progres
 - Live experiment tests prove every completed cell carries trajectory evidence.
 - The full test suite makes no model calls.
 
-M06h only collects calibration data. M07 remains observe-only, and advisory behavior still requires labelled real trajectories and a separate controlled experiment.
+M06h only collects calibration data and remains observe-only. M07b can construct calibration-gated advice, but the real sentinel calibration currently permits no signals; default advisory behavior still requires a separate controlled experiment.

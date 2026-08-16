@@ -21,6 +21,17 @@ The source worktree remains clean and unchanged. Reports contain commit IDs, cha
 
 The fixture runs `alpha` and `beta` in parallel, supplies both commits to dependent task `combine`, integrates all three commits, and validates the combined artifact. It proves orchestration and isolation, not superiority over the single-agent baseline.
 
+## Run
+
+Point the manifest at trusted task adapters inside a clean target repository. The run root must be a new directory outside that repository.
+
+```powershell
+uv run python -m agentic_engineering.multi_agent path\to\multi-agent-run.json `
+  --repository path\to\clean-repository `
+  --run-root path\outside\repository\run-001 `
+  --output multi-agent-report.json
+```
+
 ## Promotion gate
 
 Implementation is complete when isolation, dependency delivery, path constraints, integration, final validation, and reporting pass offline. Default use still requires an M06 comparison against the verified single-agent runner on tasks with genuinely independent work; no performance advantage is claimed yet.

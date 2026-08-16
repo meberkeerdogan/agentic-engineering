@@ -1,6 +1,6 @@
 # Architecture Notes
 
-This document captures the starting architecture direction. It is expected to change as the project moves from concept to prototypes. No single package boundary or solution form below defines the scope of the project.
+This document captures the architecture shared by the implemented modules. No single package boundary or solution form below defines the scope of the project.
 
 ## Architecture Principle
 
@@ -66,7 +66,7 @@ Context is the information a playbook depends on. It can include repository file
 
 A handoff is the structured output of a workflow. It should let a person or another agent continue without reconstructing the whole run.
 
-## Candidate Package Boundaries
+## Package Boundaries
 
 - **Evaluation and benchmarks**: Define external success criteria, fixtures, metrics, and reproducible comparisons.
 - **Harness and state**: Manage execution state, context boundaries, evidence, retries, recovery, and audit history.
@@ -79,16 +79,15 @@ A handoff is the structured output of a workflow. It should let a person or anot
 - **Research and experiments**: Reproduce relevant findings and test new interventions against baselines.
 - **Examples**: Demonstrate practical playbooks and skills for common workflows.
 
-## First Implementation Questions
+## Continuing Architecture Questions
 
 - Should playbook files be written in YAML, JSON, Markdown, code, or a hybrid?
 - Should skills share the same schema system as playbooks?
-- Should the runner be a CLI, library, or both?
-- Which state should be persisted between steps?
-- How should human approval be represented?
-- What is the minimum useful evaluator interface?
-- Which agent-engineering failures deserve intervention first, and at which layer?
-- How will each proposed improvement be measured against a baseline?
+- Which additional agent adapters should expose both CLI and library surfaces?
+- Which state should persist beyond a run without becoming stale context?
+- How should portable workflows represent human approval across runtimes?
+- Which agent-engineering failures deserve the next bounded intervention?
+- Which benchmark mix best demonstrates improvement over the verified baseline?
 
 ## Decision Records
 

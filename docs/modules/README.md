@@ -1,6 +1,6 @@
 # Implementation Modules
 
-Agentic Engineering is delivered as independent modules. A module is promoted only when its acceptance tests pass and its output is useful without unfinished later modules.
+Agentic Engineering was delivered as independent modules. All nine modules pass their offline implementation gates. Efficacy promotion is separate: experimental behavior becomes a default only after it beats the simpler baseline without unacceptable regressions.
 
 ## Dependency Map
 
@@ -16,7 +16,7 @@ M01 Core contracts
        -> M09 Isolated multi-agent runner
 ```
 
-## Module Backlog
+## Module Status
 
 | Module | Outcome | Promotion gate |
 | --- | --- | --- |
@@ -32,4 +32,4 @@ M01 Core contracts
 
 ## Execution Rule
 
-Only one module is active at a time. Work on the next module begins after the current module passes its promotion gate. Later module specifications are intentionally brief until measurements from their dependencies are available.
+The sequential implementation phase is complete. Future work should use the M06 harness to evaluate one bounded intervention at a time, preserve the verified single-agent baseline, and record evidence before changing defaults.
