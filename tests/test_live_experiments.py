@@ -73,6 +73,9 @@ def representative_project_fixture(tmp_path: Path) -> Path:
         "phase-memory-sentinel-experiment.json",
         "phase-memory-sentinel-batch.json",
         "phase-memory-sentinel-live.json",
+        "phase-memory-experiment.json",
+        "phase-memory-live-batch.json",
+        "phase-memory-live.json",
     ):
         shutil.copy(ROOT / "examples" / name, project / "examples")
     return project
@@ -112,6 +115,16 @@ def run_phase_memory_offline(project: Path):
     return run_live_experiment(
         project,
         project / "examples" / "phase-memory-sentinel-live.json",
+        command_prefix=(sys.executable, str(FAKE_CODEX)),
+        source_codex_home=project / ".fake-codex-home",
+        preflight_date=date(2026, 8, 16),
+    )
+
+
+def run_phase_memory_campaign_offline(project: Path):
+    return run_live_experiment(
+        project,
+        project / "examples" / "phase-memory-live.json",
         command_prefix=(sys.executable, str(FAKE_CODEX)),
         source_codex_home=project / ".fake-codex-home",
         preflight_date=date(2026, 8, 16),
@@ -315,6 +328,55 @@ def test_phase_memory_sentinel_is_bounded_and_isolates_policy(
         "control-no-memory",
         "treatment-phase-memory",
     }
+
+
+def test_phase_memory_campaign_is_budgeted_resumable_and_isolates_policy(
+    tmp_path: Path,
+) -> None:
+    project = representative_project_fixture(tmp_path)
+
+    outcomes = [run_phase_memory_campaign_offline(project) for _ in range(18)]
+
+    root = project / ".agentic-runs" / "live-batches" / "codex-memory-campaign-001"
+    assert outcomes[0].status == "paused"
+    assert outcomes[0].completed_count == 1
+    assert outcomes[-1].status == "completed"
+    assert outcomes[-1].completed_count == outcomes[-1].matrix_size == 18
+    assert [outcome.completed_count for outcome in outcomes] == list(range(1, 19))
+    state = json.loads((root / "batch-state.json").read_text("utf-8"))
+    assert state["spent_cost"] <= 9.0
+    assert state["spent_time_seconds"] <= 5400
+    assert state["human_interventions"] == 0
+    assert all(cell["observation"]["cost"] <= 0.5 for cell in state["cells"])
+    assert all(cell["observation"]["time_seconds"] <= 300 for cell in state["cells"])
+    assert all(cell["observation"]["verified_complete"] for cell in state["cells"])
+    assert all(cell["observation"]["regressions"] == 0 for cell in state["cells"])
+    assert len(list((root / "live-preflight").glob("*.json"))) == 18
+    workspaces = list((root / "live-workspaces").iterdir())
+    assert len(workspaces) == 18
+    control_workspaces = [
+        workspace
+        for workspace in workspaces
+        if (workspace / "workflow-no-memory.md").is_file()
+    ]
+    memory_workspaces = [
+        workspace
+        for workspace in workspaces
+        if (workspace / "workflow-phase-memory.md").is_file()
+    ]
+    assert len(control_workspaces) == len(memory_workspaces) == 9
+    assert all(
+        not (workspace / "workflow-phase-memory.md").exists()
+        for workspace in control_workspaces
+    )
+    assert all(
+        not (workspace / "workflow-no-memory.md").exists()
+        for workspace in memory_workspaces
+    )
+    report = json.loads(outcomes[-1].report_path.read_text("utf-8"))
+    assert report["matrix_complete"] is True
+    assert report["run_count"] == 18
+    assert report["comparisons"][0]["paired_runs"] == 9
 
 
 def test_completed_live_experiment_does_not_execute_cells_again(tmp_path: Path) -> None:

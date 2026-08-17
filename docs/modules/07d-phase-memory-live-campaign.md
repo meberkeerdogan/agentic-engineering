@@ -1,0 +1,47 @@
+# M07d: Budgeted Phase-Memory Live Campaign
+
+**Status:** Offline-validated; no authenticated campaign cell authorized
+
+## Purpose
+
+This launcher turns the prepared 18-cell memory experiment into a resumable live campaign without authorizing any model call. It compares canonical rereading with bounded phase-aware memory across three task types and three seeds.
+
+Only one cell may run per invocation. A completed cell is durably recorded before the launcher pauses, so later approvals resume the exact fingerprinted matrix without repeating earlier work.
+
+## Budget
+
+The two-cell memory sentinel averaged about `0.223` credits and `75.9` seconds per run. A direct 18-cell projection is approximately `4.02` credits and `22.8` minutes. Earlier valid task sentinels ranged from roughly `0.140` to `0.258` credits and `42.7` to `82.7` seconds per cell.
+
+The campaign uses wider hard ceilings:
+
+| Boundary | Per cell | Complete 18-cell matrix |
+| --- | ---: | ---: |
+| Credits | 0.5 | 9.0 |
+| Model time | 300 seconds | 5,400 seconds (90 minutes) |
+| Human interventions | 0 | 0 |
+
+The total ceiling reserves the complete matrix, as required by the batch runner. It is not a spending target. The expected usage remains around four credits if the sentinel behavior generalizes.
+
+## Offline validation
+
+The local Codex test double completes all 18 cells through 18 resumable invocations. Tests verify:
+
+- exactly one new cell per invocation;
+- all three tasks, three seeds, and two workflow arms;
+- independent verified completion with zero regressions;
+- per-cell and total credit/time limits;
+- fresh preflight evidence for every cell;
+- nine isolated control workspaces and nine isolated memory workspaces;
+- removal of the unselected workflow from every workspace;
+- a complete report containing nine paired comparisons;
+- zero authenticated model calls and zero credits.
+
+## Live boundary
+
+The launcher is [`examples/phase-memory-live.json`](../../examples/phase-memory-live.json), backed by [`examples/phase-memory-live-batch.json`](../../examples/phase-memory-live-batch.json).
+
+Committing these files does not authorize execution. Before each live invocation, approval must identify the next declared task, workflow arm, authenticated Codex service, `0.5`-credit ceiling, and `300`-second ceiling. The launcher cannot run a second cell in the same invocation.
+
+## Decision rule
+
+Bounded memory is promoted only if the complete repeated evidence satisfies the predeclared experiment rule: improved verified completion on memory-pressure tasks, no loss on the low-pressure control, no memory-attributable errors or additional regressions, and acceptable cost, time, and intervention results.

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "batch_id": "codex-memory-campaign-001",
+  "experiment_ref": "examples/phase-memory-experiment.json",
+  "run_root_ref": ".agentic-runs/live-batches",
+  "cost_unit": "credits",
+  "maximum_runs": 18,
+  "maximum_runs_per_invocation": 1,
+  "maximum_total_cost": 9.0,
+  "maximum_cost_per_run": 0.5,
+  "maximum_total_time_seconds": 5400,
+  "maximum_time_per_run_seconds": 300,
+  "maximum_human_interventions": 0,
+  "maximum_human_interventions_per_run": 0
+}
