@@ -39,4 +39,6 @@ uv run python -m agentic_engineering.planning_campaign `
 
 ## Next gate
 
-The [two-cell dependency-planning safety sentinel](07c-dependency-planning-sentinel.md) is now prepared with explicit per-cell and total credit/time ceilings. Its authenticated cells still require separate approvals. Review both independent evaluations and trajectories before deciding whether to budget or authorize the remaining repeated-seed matrix.
+The [two-cell dependency-planning safety sentinel](07c-dependency-planning-sentinel.md) completed within its hard limits. Both arms independently verified, but the adaptive treatment produced no completion gain and used more credits and wall time. Adaptive planning therefore remains unpromoted.
+
+Do not launch this repeated-seed matrix automatically. It still requires a separate maximum budget and explicit approval, and should be considered only if its expected information gain justifies expanding a treatment that showed no advantage in the sentinel.
