@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "memory_id": "memory-restock-001",
+  "capacity_per_phase": 3,
+  "entries": [
+    {"id": "restock-obsolete", "phase": "patch", "kind": "decision", "task_id": "restock", "summary": "Put SKU normalization inside reporting.py.", "created_step": 1, "evidence_refs": ["reporting.py"], "supersedes": null},
+    {"id": "restock-failure", "phase": "reproduce", "kind": "failure", "task_id": "restock", "summary": "The restock tests require shared low-stock selection behavior.", "created_step": 2, "evidence_refs": ["test_restock.py"], "supersedes": null},
+    {"id": "restock-current", "phase": "patch", "kind": "decision", "task_id": "restock", "summary": "Keep SKU normalization and threshold validation in inventory.py and format only in reporting.py.", "created_step": 4, "evidence_refs": ["inventory.py", "reporting.py"], "supersedes": "restock-obsolete"},
+    {"id": "restock-evidence", "phase": "patch", "kind": "evidence", "task_id": "restock", "summary": "Existing inventory value and formatting behavior is protected.", "created_step": 5, "evidence_refs": ["test_existing.py"], "supersedes": null}
+  ],
+  "query": {"phase": "patch", "task_id": "restock", "kinds": ["decision", "failure", "artifact", "evidence"], "limit": 3}
+}

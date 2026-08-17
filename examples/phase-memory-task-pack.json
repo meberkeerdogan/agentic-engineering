@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "pack_id": "phase-memory-pack-001",
+  "title": "Bounded phase-memory efficacy comparison pack",
+  "experiment_ref": "examples/phase-memory-experiment.json",
+  "requirements": {
+    "minimum_distinct_repositories": 3,
+    "minimum_seeds": 3,
+    "required_categories": [
+      "bounded-bug-fix",
+      "multi-file-feature",
+      "multi-step-evolution"
+    ]
+  },
+  "task_bindings": [
+    {
+      "id": "median-fix",
+      "category": "bounded-bug-fix",
+      "evidence_contract_ref": "evidence-contract.json",
+      "expected_baseline_outcome": "fail",
+      "expected_failing_evaluator_ids": ["median-tests"]
+    },
+    {
+      "id": "restock-report",
+      "category": "multi-file-feature",
+      "evidence_contract_ref": "evidence-contract.json",
+      "expected_baseline_outcome": "fail",
+      "expected_failing_evaluator_ids": ["restock-tests"]
+    },
+    {
+      "id": "roadmap-evolution",
+      "category": "multi-step-evolution",
+      "evidence_contract_ref": "evidence-contract.json",
+      "expected_baseline_outcome": "fail",
+      "expected_failing_evaluator_ids": ["roadmap-tests"]
+    }
+  ]
+}

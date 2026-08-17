@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/memory-campaign.schema.json",
+  "title": "Phase-Memory Evidence Campaign",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "campaign_id", "title", "task_pack_ref", "control_arm_id", "treatment_arm_id", "control_workflow_ref", "memory_workflow_ref", "requirements", "task_memories", "model_execution_allowed"],
+  "properties": {
+    "version": {"const": 1},
+    "campaign_id": {"$ref": "#/$defs/id"},
+    "title": {"type": "string", "minLength": 1},
+    "task_pack_ref": {"$ref": "#/$defs/path"},
+    "control_arm_id": {"$ref": "#/$defs/id"},
+    "treatment_arm_id": {"$ref": "#/$defs/id"},
+    "control_workflow_ref": {"$ref": "#/$defs/path"},
+    "memory_workflow_ref": {"$ref": "#/$defs/path"},
+    "requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum_tasks", "minimum_distinct_repositories", "minimum_seeds", "required_pressure_shapes", "minimum_pressure_tasks", "minimum_negative_controls"],
+      "properties": {
+        "minimum_tasks": {"type": "integer", "minimum": 3},
+        "minimum_distinct_repositories": {"type": "integer", "minimum": 3},
+        "minimum_seeds": {"type": "integer", "minimum": 3},
+        "required_pressure_shapes": {"type": "array", "minItems": 3, "maxItems": 3, "uniqueItems": true, "items": {"enum": ["low", "supersession", "eviction"]}},
+        "minimum_pressure_tasks": {"type": "integer", "minimum": 2},
+        "minimum_negative_controls": {"type": "integer", "minimum": 1}
+      }
+    },
+    "task_memories": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "pressure_shape", "memory_ref", "expected_retrieved_entry_ids", "expected_superseded_entry_ids", "expected_evicted_entry_ids"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "pressure_shape": {"enum": ["low", "supersession", "eviction"]},
+          "memory_ref": {"$ref": "#/$defs/path"},
+          "expected_retrieved_entry_ids": {"$ref": "#/$defs/nonEmptyIds"},
+          "expected_superseded_entry_ids": {"$ref": "#/$defs/ids"},
+          "expected_evicted_entry_ids": {"$ref": "#/$defs/ids"}
+        }
+      }
+    },
+    "model_execution_allowed": {"const": false}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"},
+    "path": {"type": "string", "minLength": 1, "pattern": "^(?![A-Za-z]:)(?![/\\\\])(?!.*(?:^|[/\\\\])\\.\\.(?:[/\\\\]|$)).+"},
+    "ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+    "nonEmptyIds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}
+  }
+}

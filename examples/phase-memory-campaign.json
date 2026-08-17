@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "campaign_id": "phase-memory-campaign-001",
+  "title": "M07d bounded phase-memory evidence campaign",
+  "task_pack_ref": "examples/phase-memory-task-pack.json",
+  "control_arm_id": "control-no-memory",
+  "treatment_arm_id": "treatment-phase-memory",
+  "control_workflow_ref": "workflow-no-memory.md",
+  "memory_workflow_ref": "workflow-phase-memory.md",
+  "requirements": {
+    "minimum_tasks": 3,
+    "minimum_distinct_repositories": 3,
+    "minimum_seeds": 3,
+    "required_pressure_shapes": ["low", "supersession", "eviction"],
+    "minimum_pressure_tasks": 2,
+    "minimum_negative_controls": 1
+  },
+  "task_memories": [
+    {
+      "id": "median-fix",
+      "pressure_shape": "low",
+      "memory_ref": "phase-memory.json",
+      "expected_retrieved_entry_ids": ["median-decision", "median-failure"],
+      "expected_superseded_entry_ids": [],
+      "expected_evicted_entry_ids": []
+    },
+    {
+      "id": "restock-report",
+      "pressure_shape": "supersession",
+      "memory_ref": "phase-memory.json",
+      "expected_retrieved_entry_ids": ["restock-evidence", "restock-current", "restock-failure"],
+      "expected_superseded_entry_ids": ["restock-obsolete"],
+      "expected_evicted_entry_ids": []
+    },
+    {
+      "id": "roadmap-evolution",
+      "pressure_shape": "eviction",
+      "memory_ref": "phase-memory.json",
+      "expected_retrieved_entry_ids": ["roadmap-current", "roadmap-evidence", "roadmap-failure"],
+      "expected_superseded_entry_ids": [],
+      "expected_evicted_entry_ids": ["roadmap-distractor"]
+    }
+  ],
+  "model_execution_allowed": false
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "experiment_id": "exp-phase-memory-001",
+  "title": "Canonical rereading versus bounded phase-aware memory",
+  "hypothesis": "Bounded phase-aware retrieval improves verified completion on tasks with superseded or capacity-evicted context without harming a low-pressure negative control or increasing memory errors, regressions, false completion, cost, time, or human intervention beyond the declared limits.",
+  "status": "planned",
+  "control": {
+    "id": "control-no-memory",
+    "workflow": "verified-loop-canonical-rereading",
+    "config_ref": "workflow-no-memory.md"
+  },
+  "treatments": [
+    {
+      "id": "treatment-phase-memory",
+      "workflow": "verified-loop-bounded-phase-memory",
+      "config_ref": "workflow-phase-memory.md"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "median-fix",
+      "repository": "examples/live-pilot-template",
+      "spec_ref": "ACTIVE_SPEC.md"
+    },
+    {
+      "id": "restock-report",
+      "repository": "examples/task-pack/multi-file-feature",
+      "spec_ref": "ACTIVE_SPEC.md"
+    },
+    {
+      "id": "roadmap-evolution",
+      "repository": "examples/task-pack/multi-step-evolution",
+      "spec_ref": "ACTIVE_SPEC.md"
+    }
+  ],
+  "seeds": [0, 1, 2],
+  "metrics": [
+    {"id": "verified-completion", "description": "Required criteria accepted by declared evaluators.", "direction": "higher", "unit": "ratio"},
+    {"id": "regressions", "description": "Previously passing protected checks that now fail.", "direction": "lower", "unit": "count"},
+    {"id": "false-completion", "description": "Runs claimed complete but rejected by independent verification.", "direction": "lower", "unit": "ratio"},
+    {"id": "cost", "description": "Measured subscription-credit estimate derived from documented usage.", "direction": "lower", "unit": "credits"},
+    {"id": "time", "description": "Measured wall-clock duration of model execution.", "direction": "lower", "unit": "seconds"},
+    {"id": "human-interventions", "description": "Human actions needed to finish or recover a run.", "direction": "lower", "unit": "count"}
+  ],
+  "runs": [],
+  "decision": {
+    "adoption_rule": "Adopt only if bounded memory improves mean verified completion by at least 0.10 across the supersession and eviction tasks, causes no verified-completion loss on the low-pressure negative control, introduces no memory-attributable error under trajectory review and no increase in regressions or false completion, and adds no more than 0.10 mean credits, 60 mean seconds, or any human intervention per run.",
+    "outcome": "pending",
+    "reason": "Offline readiness does not authorize model execution; live cells require a separately reviewed budget and explicit approval."
+  }
+}

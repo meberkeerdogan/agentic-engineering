@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "memory_id": "memory-median-001",
+  "capacity_per_phase": 3,
+  "entries": [
+    {"id": "median-spec", "phase": "navigate", "kind": "artifact", "task_id": "median", "summary": "The active contract limits the change to even-length median behavior.", "created_step": 1, "evidence_refs": ["ACTIVE_SPEC.md"], "supersedes": null},
+    {"id": "median-failure", "phase": "reproduce", "kind": "failure", "task_id": "median", "summary": "The declared median tests expose the even-length defect.", "created_step": 2, "evidence_refs": ["test_calculator.py"], "supersedes": null},
+    {"id": "median-decision", "phase": "patch", "kind": "decision", "task_id": "median", "summary": "Average the two middle sorted values without mutating the input.", "created_step": 3, "evidence_refs": ["calculator.py"], "supersedes": null}
+  ],
+  "query": {"phase": "patch", "task_id": "median", "kinds": ["decision", "failure", "artifact", "evidence"], "limit": 3}
+}

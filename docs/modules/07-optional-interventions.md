@@ -78,7 +78,9 @@ The synthetic fixture proves the mechanism. The combined real calibration curren
 
 ## M07d: Bounded Phase-Aware Memory
 
-`phase_memory` builds a deterministic read-only view from immutable, evidenced entries. Newer entries may explicitly supersede older facts for the same task; each phase has a fixed capacity; retrieval ranks current-task and current-phase evidence first. Reports expose retained, superseded, and evicted IDs and have structurally empty write and state-mutation arrays. Adoption still requires a separate M06 comparison.
+`phase_memory` builds a deterministic read-only view from immutable, evidenced entries. Newer entries may explicitly supersede older facts for the same task; each phase has a fixed capacity; retrieval ranks current-task and current-phase evidence first. Reports expose retained, superseded, and evicted IDs and have structurally empty write and state-mutation arrays.
+
+The [offline M07d evidence campaign](07d-phase-memory-campaign.md) now prepares an isolated 18-cell M06 comparison with one low-pressure negative control, one supersession case, and one eviction case. Both arms receive the same immutable ledger and canonical evidence; only the treatment applies bounded retrieval. No authenticated memory cell is authorized or run.
 
 ## M07e: Independently Reviewed Property Evidence
 

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "memory_id": "memory-roadmap-campaign-001",
+  "capacity_per_phase": 2,
+  "entries": [
+    {"id": "roadmap-failure", "phase": "reproduce", "kind": "failure", "task_id": "roadmap", "summary": "The evolution tests require readiness, blocking, and progress summary behavior.", "created_step": 3, "evidence_refs": ["test_evolution.py"], "supersedes": null},
+    {"id": "roadmap-distractor", "phase": "patch", "kind": "decision", "task_id": "other", "summary": "An unrelated task considered changing completed-count behavior.", "created_step": 4, "evidence_refs": ["test_existing.py"], "supersedes": null},
+    {"id": "roadmap-evidence", "phase": "patch", "kind": "evidence", "task_id": "roadmap", "summary": "Existing listing and completed-count behavior must remain unchanged.", "created_step": 5, "evidence_refs": ["test_existing.py"], "supersedes": null},
+    {"id": "roadmap-current", "phase": "patch", "kind": "decision", "task_id": "roadmap", "summary": "Compute readiness and blocking in roadmap.py, then compose the summary in progress.py.", "created_step": 6, "evidence_refs": ["roadmap.py", "progress.py"], "supersedes": null}
+  ],
+  "query": {"phase": "patch", "task_id": "roadmap", "kinds": ["decision", "failure", "artifact", "evidence"], "limit": 3}
+}

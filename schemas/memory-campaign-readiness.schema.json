@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/memory-campaign-readiness.schema.json",
+  "title": "Phase-Memory Campaign Readiness Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "campaign_id", "status", "campaign_fingerprint", "task_pack_readiness_fingerprint", "experiment_id", "experiment_plan_fingerprint", "shared_workflow_core_fingerprint", "control_policy_fingerprint", "memory_policy_fingerprint", "task_count", "seed_count", "arm_count", "matrix_size", "pressure_task_count", "negative_control_count", "model_calls_performed", "paid_execution_authorized", "tasks", "report_id", "fingerprint"],
+  "properties": {
+    "version": {"const": 1},
+    "campaign_id": {"$ref": "#/$defs/id"},
+    "status": {"const": "ready_for_separate_approval"},
+    "campaign_fingerprint": {"$ref": "#/$defs/hash"},
+    "task_pack_readiness_fingerprint": {"$ref": "#/$defs/hash"},
+    "experiment_id": {"$ref": "#/$defs/id"},
+    "experiment_plan_fingerprint": {"$ref": "#/$defs/hash"},
+    "shared_workflow_core_fingerprint": {"$ref": "#/$defs/hash"},
+    "control_policy_fingerprint": {"$ref": "#/$defs/hash"},
+    "memory_policy_fingerprint": {"$ref": "#/$defs/hash"},
+    "task_count": {"type": "integer", "minimum": 3},
+    "seed_count": {"type": "integer", "minimum": 3},
+    "arm_count": {"const": 2},
+    "matrix_size": {"type": "integer", "minimum": 18},
+    "pressure_task_count": {"type": "integer", "minimum": 2},
+    "negative_control_count": {"type": "integer", "minimum": 1},
+    "model_calls_performed": {"const": false},
+    "paid_execution_authorized": {"const": false},
+    "tasks": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "pressure_shape", "repository", "memory_source_fingerprint", "memory_report_fingerprint", "retrieved_entry_ids", "superseded_entry_ids", "evicted_entry_ids", "current_task_retrieval_count"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "pressure_shape": {"enum": ["low", "supersession", "eviction"]},
+          "repository": {"type": "string", "minLength": 1},
+          "memory_source_fingerprint": {"$ref": "#/$defs/hash"},
+          "memory_report_fingerprint": {"$ref": "#/$defs/hash"},
+          "retrieved_entry_ids": {"$ref": "#/$defs/nonEmptyIds"},
+          "superseded_entry_ids": {"$ref": "#/$defs/ids"},
+          "evicted_entry_ids": {"$ref": "#/$defs/ids"},
+          "current_task_retrieval_count": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "report_id": {"$ref": "#/$defs/id"},
+    "fingerprint": {"$ref": "#/$defs/hash"}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"},
+    "hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "ids": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+    "nonEmptyIds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}}
+  }
+}

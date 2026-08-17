@@ -44,5 +44,7 @@ Current schemas:
 - [`task-pack-readiness.schema.json`](task-pack-readiness.schema.json): fingerprinted proof that a task pack is ready without model execution.
 - [`planning-campaign.schema.json`](planning-campaign.schema.json): M07c task-pack binding, graph-shape coverage, isolated workflow factor, and expected planning behavior.
 - [`planning-campaign-readiness.schema.json`](planning-campaign-readiness.schema.json): fingerprinted static/adaptive campaign readiness with explicit zero-execution authorization.
+- [`memory-campaign.schema.json`](memory-campaign.schema.json): M07d task-pack binding, memory-pressure coverage, isolated workflow factor, and expected bounded retrieval behavior.
+- [`memory-campaign-readiness.schema.json`](memory-campaign-readiness.schema.json): fingerprinted canonical-rereading/bounded-memory campaign readiness with explicit zero-execution authorization.
 
 The core schema module and its validation rules are documented in [M01: Core Contracts](../docs/modules/01-core-contracts.md). The experiment schemas are implemented by [M06: Experiment Harness](../docs/modules/06-experiment-harness.md).
