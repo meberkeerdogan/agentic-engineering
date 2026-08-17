@@ -7,8 +7,9 @@
     "minimum_precision": 0.8,
     "minimum_recall": 0.8
   },
-  "case_count": 6,
+  "case_count": 7,
   "case_fingerprints": [
+    "347b546936cdb9726c46b4acf7aa4923898079cfc6132d41f872e638d57cb186",
     "3908cdc1efdee570b3961a70637496abf2b35a78e9c80f34e4655aece58917d5",
     "539d7bf724265cfb513e035522cd90a6f1bc47aef2ee53ceb564be0276ce7dfc",
     "7b3bcc161d28a2ce7ca4dca28cf3a6e577fbc3048aedadf9442a3a7bff2b7773",
@@ -42,12 +43,12 @@
     {
       "signal_type": "repeated_action",
       "true_positive": 0,
-      "false_positive": 0,
+      "false_positive": 1,
       "false_negative": 0,
-      "support": 0,
-      "precision": null,
+      "support": 1,
+      "precision": 0.0,
       "recall": null,
-      "false_positive_rate": null,
+      "false_positive_rate": 1.0,
       "eligible_for_advisory_experiment": false
     },
     {
@@ -64,9 +65,9 @@
     {
       "signal_type": "stagnation",
       "true_positive": 0,
-      "false_positive": 2,
+      "false_positive": 3,
       "false_negative": 0,
-      "support": 2,
+      "support": 3,
       "precision": 0.0,
       "recall": null,
       "false_positive_rate": 1.0,
@@ -75,7 +76,7 @@
   ],
   "overall": {
     "true_positive": 0,
-    "false_positive": 8,
+    "false_positive": 10,
     "false_negative": 0,
     "precision": 0.0,
     "recall": null,
@@ -83,6 +84,6 @@
   },
   "eligible_advisory_types": [],
   "interventions": [],
-  "report_id": "watchdog-calibration-5b5a1970b3837058",
-  "fingerprint": "5b5a1970b3837058785a478346b779fa7110f5dc307d1f489eeb8f7bfcc1310a"
+  "report_id": "watchdog-calibration-160340ac878a47ad",
+  "fingerprint": "160340ac878a47ad4bddd113a3c17cca582376b2603c24838247fc6b50a8373d"
 }

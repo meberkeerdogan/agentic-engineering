@@ -40,4 +40,6 @@ uv run python -m agentic_engineering.memory_campaign `
 
 ## Next gate
 
-The [two-cell phase-memory safety sentinel](07d-phase-memory-sentinel.md) is prepared with one cell per invocation, hard credit/time ceilings, independent evaluation, and isolated workflows. Each authenticated cell still requires separate explicit approval. Review both trajectories for memory-attributable errors before considering the 18-cell campaign.
+The [two-cell phase-memory safety sentinel](07d-phase-memory-sentinel.md) completed within its hard limits. Both arms independently verified without memory-attributable errors. Bounded memory was cheaper and faster in the single pair, but completion was identical and two cells cannot establish efficacy.
+
+The 18-cell campaign still requires a separate maximum budget and explicit approval. Its expected information gain should be weighed against the maximum spend before authorization.

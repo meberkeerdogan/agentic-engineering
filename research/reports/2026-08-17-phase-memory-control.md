@@ -35,7 +35,7 @@ The privacy-safe trajectory contains eight events: navigation, explicit reproduc
 
 ## Decision
 
-The canonical-rereading control satisfies the sentinel's technical and budget gates. It does not establish that bounded phase memory is useful. The treatment remains pending and requires a new explicit approval for the authenticated Codex service with the same `0.75`-credit and `450`-second ceilings.
+The canonical-rereading control satisfies the sentinel's technical and budget gates. The separately approved treatment subsequently completed; see the [complete pair report](2026-08-17-phase-memory-live-sentinel.md). This control alone does not establish that bounded phase memory is useful.
 
 ## Evidence fingerprints
 

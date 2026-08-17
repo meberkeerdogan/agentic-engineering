@@ -1,6 +1,6 @@
 # M07d: Phase-Memory Safety Sentinel
 
-**Status:** Canonical-rereading control completed; memory treatment not authorized
+**Status:** Completed; safety gate passed
 
 ## Purpose
 
@@ -35,13 +35,13 @@ Each authenticated invocation requires a new explicit approval naming:
 
 The control result and its trajectory must be reviewed before the treatment is authorized. Earlier approvals do not apply.
 
-## Control result
+## Live result
 
-The canonical-rereading control independently verified with zero regressions, false completion, or human intervention. It used `0.227309` credits in `79.625` seconds. The clean preflight enabled zero plugins and zero MCP servers, the treatment workflow was absent from the isolated workspace, and the immutable memory-ledger hash matched the source fixture.
+Both cells independently verified with zero regressions, false completion, or human intervention. The canonical-rereading control used `0.227309` credits in `79.625` seconds; bounded memory used `0.219144` credits in `72.125` seconds. In this single pair, bounded memory was `3.59%` cheaper and `9.42%` faster with no completion difference.
 
-The eight-event privacy-safe trajectory reproduced the failure before patching, validated afterward, passed its independent audit, and produced zero observe-only watchdog signals. See the [control evidence report](../../research/reports/2026-08-17-phase-memory-control.md).
+Clean preflights enabled zero plugins and zero MCP servers, each workspace retained only its selected workflow, and both immutable memory-ledger hashes matched the source. Trajectory review found no memory-attributable error. Two treatment watchdog alerts were contextual false positives from distinct read-only evidence-gathering commands and produced no intervention.
 
-The bounded phase-memory treatment remains pending and requires its own explicit approval.
+See the [complete sentinel report](../../research/reports/2026-08-17-phase-memory-live-sentinel.md) and the earlier [control report](../../research/reports/2026-08-17-phase-memory-control.md). This is a safety pass, not proof that bounded memory is better. Default promotion still requires repeated evidence.
 
 ## Decision gate
 

@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "trajectory_id": "trajectory-a-treatment-phase-memory__t-roadmap-evolution__s-0",
+  "task_id": "roadmap-evolution",
+  "trajectory_fingerprint": "6eb21b1bf3e6b3017d06d6da1fb5793f08a9234179a03ef2432783a52a4838cd",
+  "mode": "observe_only",
+  "config": {
+    "repeat_threshold": 3,
+    "stagnation_threshold": 4,
+    "oscillation_cycles": 2
+  },
+  "event_count": 10,
+  "signal_count": 2,
+  "signals": [
+    {
+      "type": "repeated_action",
+      "category": "advisory_candidate",
+      "start_step": 1,
+      "end_step": 3,
+      "summary": "action run_command repeated on repository",
+      "evidence_refs": [
+        "a-treatment-phase-memory__t-roadmap-evolution__s-0/trajectory-source.json#record-001",
+        "a-treatment-phase-memory__t-roadmap-evolution__s-0/trajectory-source.json#record-002",
+        "a-treatment-phase-memory__t-roadmap-evolution__s-0/trajectory-source.json#record-003"
+      ],
+      "id": "signal-001-repeated_action"
+    },
+    {
+      "type": "stagnation",
+      "category": "advisory_candidate",
+      "start_step": 1,
+      "end_step": 4,
+      "summary": "external state did not change for 4 events",
+      "evidence_refs": [
+        "a-treatment-phase-memory__t-roadmap-evolution__s-0/trajectory-source.json#record-001",
+        "a-treatment-phase-memory__t-roadmap-evolution__s-0/trajectory-source.json#record-002",
+        "a-treatment-phase-memory__t-roadmap-evolution__s-0/trajectory-source.json#record-003",
+        "a-treatment-phase-memory__t-roadmap-evolution__s-0/trajectory-source.json#record-004"
+      ],
+      "id": "signal-002-stagnation"
+    }
+  ],
+  "interventions": [],
+  "report_id": "watchdog-report-5cf9bf46064b7155",
+  "fingerprint": "5cf9bf46064b7155325679d2ea5bee17d3b8801f6970fc121aa9d5b606172efb"
+}

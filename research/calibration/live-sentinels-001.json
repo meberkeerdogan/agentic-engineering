@@ -30,6 +30,10 @@
     {
       "report": "dependency-planning-sentinel-001/treatment-watchdog-report.json",
       "labels": "dependency-planning-sentinel-001/treatment-labels.json"
+    },
+    {
+      "report": "phase-memory-sentinel-001/treatment-watchdog-report.json",
+      "labels": "phase-memory-sentinel-001/treatment-labels.json"
     }
   ]
 }

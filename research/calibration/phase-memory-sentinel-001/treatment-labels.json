@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "label_set_id": "labels-memory-treatment-001",
+  "report_id": "watchdog-report-5cf9bf46064b7155",
+  "report_fingerprint": "5cf9bf46064b7155325679d2ea5bee17d3b8801f6970fc121aa9d5b606172efb",
+  "labels": [
+    {
+      "signal_id": "signal-001-repeated_action",
+      "verdict": "false_positive",
+      "rationale": "The three commands were distinct read-only navigation steps for the specification and selected workflow, the immutable memory ledger, and the evidence contract; canonical source inspection and independent evaluation then passed without a memory-attributable error.",
+      "evidence_refs": [
+        "../../reports/2026-08-17-phase-memory-live-sentinel.md#trajectory-review"
+      ]
+    },
+    {
+      "signal_id": "signal-002-stagnation",
+      "verdict": "false_positive",
+      "rationale": "The unchanged-state window was expected read-only evidence collection and diff inspection before explicit reproduction, followed by a valid patch, passing validation, and a successful independent audit.",
+      "evidence_refs": [
+        "../../reports/2026-08-17-phase-memory-live-sentinel.md#trajectory-review"
+      ]
+    }
+  ],
+  "missed_signals": []
+}
