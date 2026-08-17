@@ -3,7 +3,7 @@
   "campaign_id": "dependency-planning-campaign-001",
   "status": "ready_for_separate_approval",
   "campaign_fingerprint": "f59c7cf1c4ca974e0eaa97aef496dd63ba21ad19f19dc5c3f08fba8acf2e9d4e",
-  "task_pack_readiness_fingerprint": "0f717f0f796acfffd00321e89f322a937e0a38b225b45fe34aac6763a2e87863",
+  "task_pack_readiness_fingerprint": "5059e69b9c6f7429dceeebd785d4b4339c2f56155912e4bdb312202bf02ac75c",
   "experiment_id": "exp-dependency-planning-001",
   "experiment_plan_fingerprint": "d9aeb3f13bf0ada361f58ea6bff0559d960d3e9b77ff798075f6e1d9d2fda923",
   "shared_workflow_core_fingerprint": "9759fe67dc5261dc820cd96743f9b01ce68797a508c43e501ab4f5ef7d6aa101",
@@ -58,6 +58,6 @@
       "plan_divergence": true
     }
   ],
-  "report_id": "planning-campaign-readiness-68bdbd2b9e470be8",
-  "fingerprint": "68bdbd2b9e470be8d42a5c7af9fcf7f3c310a3364c71e5694ee5f6b7a5bbf400"
+  "report_id": "planning-campaign-readiness-e50a97a48432a62e",
+  "fingerprint": "e50a97a48432a62ed145a7d30184cceb44eec7b927fa0efef99362360ec1f7d9"
 }

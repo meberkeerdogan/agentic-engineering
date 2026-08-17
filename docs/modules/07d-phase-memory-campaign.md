@@ -40,4 +40,4 @@ uv run python -m agentic_engineering.memory_campaign `
 
 ## Next gate
 
-Prepare a two-cell safety sentinel on the roadmap evolution task with one cell per invocation, hard credit/time ceilings, independent evaluation, isolated workflows, and separate explicit approval for each authenticated cell. Review both trajectories for memory-attributable errors before considering the 18-cell campaign.
+The [two-cell phase-memory safety sentinel](07d-phase-memory-sentinel.md) is prepared with one cell per invocation, hard credit/time ceilings, independent evaluation, and isolated workflows. Each authenticated cell still requires separate explicit approval. Review both trajectories for memory-attributable errors before considering the 18-cell campaign.

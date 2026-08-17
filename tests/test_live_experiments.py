@@ -70,6 +70,9 @@ def representative_project_fixture(tmp_path: Path) -> Path:
         "dependency-planning-sentinel-experiment.json",
         "dependency-planning-sentinel-batch.json",
         "dependency-planning-sentinel-live.json",
+        "phase-memory-sentinel-experiment.json",
+        "phase-memory-sentinel-batch.json",
+        "phase-memory-sentinel-live.json",
     ):
         shutil.copy(ROOT / "examples" / name, project / "examples")
     return project
@@ -99,6 +102,16 @@ def run_dependency_planning_offline(project: Path):
     return run_live_experiment(
         project,
         project / "examples" / "dependency-planning-sentinel-live.json",
+        command_prefix=(sys.executable, str(FAKE_CODEX)),
+        source_codex_home=project / ".fake-codex-home",
+        preflight_date=date(2026, 8, 16),
+    )
+
+
+def run_phase_memory_offline(project: Path):
+    return run_live_experiment(
+        project,
+        project / "examples" / "phase-memory-sentinel-live.json",
         command_prefix=(sys.executable, str(FAKE_CODEX)),
         source_codex_home=project / ".fake-codex-home",
         preflight_date=date(2026, 8, 16),
@@ -260,6 +273,47 @@ def test_dependency_planning_sentinel_is_bounded_and_isolates_policy(
     assert {run["arm_id"] for run in report["runs"]} == {
         "control-static",
         "treatment-adaptive",
+    }
+
+
+def test_phase_memory_sentinel_is_bounded_and_isolates_policy(
+    tmp_path: Path,
+) -> None:
+    project = representative_project_fixture(tmp_path)
+
+    first = run_phase_memory_offline(project)
+    second = run_phase_memory_offline(project)
+
+    root = project / ".agentic-runs" / "live-batches" / "codex-memory-sentinel-001"
+    assert first.status == "paused"
+    assert first.completed_count == 1
+    assert second.status == "completed"
+    assert second.completed_count == second.matrix_size == 2
+    state = json.loads((root / "batch-state.json").read_text("utf-8"))
+    assert state["spent_cost"] <= 1.5
+    assert all(cell["observation"]["cost"] <= 0.75 for cell in state["cells"])
+    assert all(cell["observation"]["verified_complete"] for cell in state["cells"])
+    assert all(cell["observation"]["regressions"] == 0 for cell in state["cells"])
+    assert all(cell["observation"]["human_interventions"] == 0 for cell in state["cells"])
+    workspaces = list((root / "live-workspaces").iterdir())
+    control_workspace = next(
+        workspace
+        for workspace in workspaces
+        if (workspace / "workflow-no-memory.md").is_file()
+    )
+    memory_workspace = next(
+        workspace
+        for workspace in workspaces
+        if (workspace / "workflow-phase-memory.md").is_file()
+    )
+    assert (control_workspace / "phase-memory.json").is_file()
+    assert (memory_workspace / "phase-memory.json").is_file()
+    assert not (control_workspace / "workflow-phase-memory.md").exists()
+    assert not (memory_workspace / "workflow-no-memory.md").exists()
+    report = json.loads(second.report_path.read_text("utf-8"))
+    assert {run["arm_id"] for run in report["runs"]} == {
+        "control-no-memory",
+        "treatment-phase-memory",
     }
 
 
