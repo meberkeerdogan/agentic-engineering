@@ -1,6 +1,6 @@
 # M07d: Phase-Memory Safety Sentinel
 
-**Status:** Offline-ready; no authenticated cell authorized
+**Status:** Canonical-rereading control completed; memory treatment not authorized
 
 ## Purpose
 
@@ -34,6 +34,14 @@ Each authenticated invocation requires a new explicit approval naming:
 - the `0.75`-credit and `450`-second cell ceilings.
 
 The control result and its trajectory must be reviewed before the treatment is authorized. Earlier approvals do not apply.
+
+## Control result
+
+The canonical-rereading control independently verified with zero regressions, false completion, or human intervention. It used `0.227309` credits in `79.625` seconds. The clean preflight enabled zero plugins and zero MCP servers, the treatment workflow was absent from the isolated workspace, and the immutable memory-ledger hash matched the source fixture.
+
+The eight-event privacy-safe trajectory reproduced the failure before patching, validated afterward, passed its independent audit, and produced zero observe-only watchdog signals. See the [control evidence report](../../research/reports/2026-08-17-phase-memory-control.md).
+
+The bounded phase-memory treatment remains pending and requires its own explicit approval.
 
 ## Decision gate
 
