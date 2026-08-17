@@ -64,7 +64,7 @@ The [representative sentinel dataset](../../research/calibration/representative-
 
 With two false positives and the predeclared minimum of five labels, `premature_patching` has zero precision on this small dataset and remains ineligible for an advisory experiment. This does not establish its general quality; it establishes that workflow-aware calibration is required before advice.
 
-The multi-step evolution sentinel adds two more contextual false positives. The static dependency-planning control adds the fifth `premature_patching` false positive plus one `stagnation` false positive during read-only validation. `premature_patching` now meets the five-label support floor but has zero precision, `stagnation` has only one label, and no advisory signal is eligible.
+The multi-step evolution sentinel adds two more contextual false positives. The completed dependency-planning pair adds two `premature_patching` and two `stagnation` false positives during valid implementation and read-only validation. Across six live cases, `premature_patching` has six labels and zero precision, `stagnation` has two labels and zero precision, and no advisory signal is eligible.
 
 ## M07b: Calibration-Gated Advice
 
@@ -74,7 +74,7 @@ The synthetic fixture proves the mechanism. The combined real calibration curren
 
 ## M07c: Dependency Planning Experiment
 
-`dependency_planning` compares a fixed declared topological order with an adaptive, evidence-driven replan. The adaptive strategy removes tasks downstream of a failed dependency and prioritizes the remaining ready frontier. Both outputs are deterministic read-only reports with empty execution and state-mutation arrays. The [offline M07c evidence campaign](07c-dependency-planning-campaign.md) prepares an isolated 18-cell M06 comparison, and its [two-cell safety sentinel](07c-dependency-planning-sentinel.md) is budgeted and offline-validated. No authenticated planning cell is authorized or run.
+`dependency_planning` compares a fixed declared topological order with an adaptive, evidence-driven replan. The adaptive strategy removes tasks downstream of a failed dependency and prioritizes the remaining ready frontier. Both outputs are deterministic read-only reports with empty execution and state-mutation arrays. The [two-cell safety sentinel](07c-dependency-planning-sentinel.md) passed its live safety gate, but adaptive planning produced no completion gain and cost more. The isolated [18-cell efficacy campaign](07c-dependency-planning-campaign.md) remains separately budgeted and approval-gated.
 
 ## M07d: Bounded Phase-Aware Memory
 

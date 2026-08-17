@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "label_set_id": "labels-planning-treatment-001",
+  "report_id": "watchdog-report-11c4cf0608b56a40",
+  "report_fingerprint": "11c4cf0608b56a40811ca6fb40052fecc40151468c35419f755dfcf0601437f5",
+  "labels": [
+    {
+      "signal_id": "signal-001-premature_patching",
+      "verdict": "false_positive",
+      "rationale": "The bound adaptive plan already marks reproduction complete, the selected workflow was isolated, and every roadmap feature, protected, and artifact evaluator passed; this signal did not identify an actionable failure.",
+      "evidence_refs": [
+        "../../reports/2026-08-17-dependency-planning-live-sentinel.md#trajectory-review"
+      ]
+    },
+    {
+      "signal_id": "signal-002-stagnation",
+      "verdict": "false_positive",
+      "rationale": "The unchanged-state window contains the patch followed by two read-only test runs and a diff inspection, all of which culminated in a passing independent audit; no corrective intervention was warranted.",
+      "evidence_refs": [
+        "../../reports/2026-08-17-dependency-planning-live-sentinel.md#trajectory-review"
+      ]
+    }
+  ],
+  "missed_signals": []
+}

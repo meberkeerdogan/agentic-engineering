@@ -1,6 +1,6 @@
 # M07c: Dependency-Planning Safety Sentinel
 
-**Status:** Static control completed; adaptive treatment not authorized
+**Status:** Completed; safety gate passed
 
 ## Purpose
 
@@ -35,11 +35,13 @@ Each authenticated invocation requires a new explicit approval naming:
 
 The control result must be independently reviewed before the treatment cell is authorized. Earlier approvals for other sentinels do not apply.
 
-## Static control result
+## Live result
 
-The static control independently verified with zero regressions, false completion, or human intervention. It used `0.215307` credits in `71.266` seconds. The clean preflight enabled zero plugins and zero MCP servers, and the isolated workspace contained only the selected static planning workflow. Two observe-only watchdog candidates were reviewed as contextual false positives and added to calibration. See the [control evidence report](../../research/reports/2026-08-17-dependency-planning-control.md).
+Both cells independently verified with zero regressions, false completion, or human intervention. The static control used `0.215307` credits in `71.266` seconds; the adaptive treatment used `0.257792` credits in `73.657` seconds. The adaptive arm therefore cost `19.73%` more and took `3.36%` longer, with no completion improvement.
 
-The adaptive treatment remains pending and requires its own explicit approval.
+Clean preflights enabled zero plugins and zero MCP servers, and each isolated workspace retained only its selected planning workflow. Four observe-only watchdog candidates were reviewed as contextual false positives and added to calibration. See the [complete sentinel evidence report](../../research/reports/2026-08-17-dependency-planning-live-sentinel.md) and the earlier [control report](../../research/reports/2026-08-17-dependency-planning-control.md).
+
+This is a safety pass, not evidence that adaptive planning is better. Adaptive planning is not promoted, and the 18-cell efficacy campaign remains separately budgeted and approval-gated.
 
 ## Decision gate
 

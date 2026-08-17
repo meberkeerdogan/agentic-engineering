@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "trajectory_id": "trajectory-a-treatment-adaptive__t-roadmap-evolution__s-0",
+  "task_id": "roadmap-evolution",
+  "trajectory_fingerprint": "7f911b2509fd54bbc01f16c455e005c71bcd90f6c96b5dc11c7aee5122426af8",
+  "mode": "observe_only",
+  "config": {
+    "repeat_threshold": 3,
+    "stagnation_threshold": 4,
+    "oscillation_cycles": 2
+  },
+  "event_count": 8,
+  "signal_count": 2,
+  "signals": [
+    {
+      "type": "premature_patching",
+      "category": "blocking_candidate",
+      "start_step": 3,
+      "end_step": 3,
+      "summary": "patching began before a reproduction event",
+      "evidence_refs": [
+        "a-treatment-adaptive__t-roadmap-evolution__s-0/trajectory-source.json#record-003"
+      ],
+      "id": "signal-001-premature_patching"
+    },
+    {
+      "type": "stagnation",
+      "category": "advisory_candidate",
+      "start_step": 3,
+      "end_step": 6,
+      "summary": "external state did not change for 4 events",
+      "evidence_refs": [
+        "a-treatment-adaptive__t-roadmap-evolution__s-0/trajectory-source.json#record-003",
+        "a-treatment-adaptive__t-roadmap-evolution__s-0/trajectory-source.json#record-004",
+        "a-treatment-adaptive__t-roadmap-evolution__s-0/trajectory-source.json#record-005",
+        "a-treatment-adaptive__t-roadmap-evolution__s-0/trajectory-source.json#record-006"
+      ],
+      "id": "signal-002-stagnation"
+    }
+  ],
+  "interventions": [],
+  "report_id": "watchdog-report-11c4cf0608b56a40",
+  "fingerprint": "11c4cf0608b56a40811ca6fb40052fecc40151468c35419f755dfcf0601437f5"
+}

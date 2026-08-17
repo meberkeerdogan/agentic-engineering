@@ -41,3 +41,4 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 - Added an offline M07c evidence campaign with an isolated static/adaptive planning factor, three dependency graph shapes, three repeated seeds, deterministic readiness evidence, and no paid-run authorization.
 - Added a separately approval-gated M07c safety sentinel with one diamond-graph task, one seed, two workflow arms, one cell per invocation, and explicit 0.75-credit/450-second per-cell ceilings.
 - Completed and independently verified the M07c static control cell within budget, recorded its privacy-safe trajectory review, and kept the adaptive treatment separately approval-gated.
+- Completed the M07c dependency-planning safety sentinel: both arms independently verified without regressions, while the adaptive treatment produced no completion gain and used more measured credits and wall time.

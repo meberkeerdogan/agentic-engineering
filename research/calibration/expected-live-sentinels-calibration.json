@@ -7,10 +7,11 @@
     "minimum_precision": 0.8,
     "minimum_recall": 0.8
   },
-  "case_count": 5,
+  "case_count": 6,
   "case_fingerprints": [
     "3908cdc1efdee570b3961a70637496abf2b35a78e9c80f34e4655aece58917d5",
     "539d7bf724265cfb513e035522cd90a6f1bc47aef2ee53ceb564be0276ce7dfc",
+    "7b3bcc161d28a2ce7ca4dca28cf3a6e577fbc3048aedadf9442a3a7bff2b7773",
     "c1e2784319a3acad765bfb9f48a80bab183293a9b95bec03d96bd353d4f5b30f",
     "d91a2bd1bc29a19899a9eb58678b43c92dc23f59e3b95ed84274df7ef7345f5b",
     "dde76945ad19f6d4c9524f50ca8144275cf08c2291de86995747940515cf9ac0"
@@ -30,9 +31,9 @@
     {
       "signal_type": "premature_patching",
       "true_positive": 0,
-      "false_positive": 5,
+      "false_positive": 6,
       "false_negative": 0,
-      "support": 5,
+      "support": 6,
       "precision": 0.0,
       "recall": null,
       "false_positive_rate": 1.0,
@@ -63,9 +64,9 @@
     {
       "signal_type": "stagnation",
       "true_positive": 0,
-      "false_positive": 1,
+      "false_positive": 2,
       "false_negative": 0,
-      "support": 1,
+      "support": 2,
       "precision": 0.0,
       "recall": null,
       "false_positive_rate": 1.0,
@@ -74,7 +75,7 @@
   ],
   "overall": {
     "true_positive": 0,
-    "false_positive": 6,
+    "false_positive": 8,
     "false_negative": 0,
     "precision": 0.0,
     "recall": null,
@@ -82,6 +83,6 @@
   },
   "eligible_advisory_types": [],
   "interventions": [],
-  "report_id": "watchdog-calibration-a83239b573626abc",
-  "fingerprint": "a83239b573626abc6bcb8d1ffd8d66095a2d0d149da1c658515554ae1426a147"
+  "report_id": "watchdog-calibration-5b5a1970b3837058",
+  "fingerprint": "5b5a1970b3837058785a478346b779fa7110f5dc307d1f489eeb8f7bfcc1310a"
 }

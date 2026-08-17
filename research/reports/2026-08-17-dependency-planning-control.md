@@ -40,7 +40,7 @@ The watchdog made no intervention. Adding this case brings `premature_patching` 
 
 ## Decision
 
-The control satisfies the sentinel's technical and budget gates. The adaptive treatment may be considered only after a separate explicit approval for its authenticated cell and the same `0.75`-credit and `450`-second ceilings. No adaptive-planning advantage can be claimed from this control result.
+The control satisfies the sentinel's technical and budget gates. The separately approved adaptive cell subsequently completed; see the [complete pair report](2026-08-17-dependency-planning-live-sentinel.md). No adaptive-planning advantage can be claimed from this control result.
 
 ## Evidence
 
