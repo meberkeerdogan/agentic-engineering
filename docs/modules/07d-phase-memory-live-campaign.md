@@ -1,6 +1,6 @@
 # M07d: Budgeted Phase-Memory Live Campaign
 
-**Status:** Offline-validated; no authenticated campaign cell authorized
+**Status:** In progress; 1 of 18 authenticated cells completed
 
 ## Purpose
 
@@ -41,6 +41,12 @@ The local Codex test double completes all 18 cells through 18 resumable invocati
 The launcher is [`examples/phase-memory-live.json`](../../examples/phase-memory-live.json), backed by [`examples/phase-memory-live-batch.json`](../../examples/phase-memory-live-batch.json).
 
 Committing these files does not authorize execution. Before each live invocation, approval must identify the next declared task, workflow arm, authenticated Codex service, `0.5`-credit ceiling, and `300`-second ceiling. The launcher cannot run a second cell in the same invocation.
+
+## Live progress
+
+Cell 01, the canonical-rereading `median-fix` control at seed `0`, independently verified with zero regressions, false completion, watchdog signals, or human intervention. It used `0.179618` credits in `59.063` seconds. Workflow isolation and the immutable ledger hash both passed. See the [cell evidence report](../../research/reports/2026-08-17-phase-memory-campaign-cell-01.md).
+
+The campaign is paused at `1 / 18`. The next declared cell is the canonical-rereading `median-fix` control at seed `1`; it is not authorized.
 
 ## Decision rule
 

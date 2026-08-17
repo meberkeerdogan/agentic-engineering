@@ -42,4 +42,4 @@ uv run python -m agentic_engineering.memory_campaign `
 
 The [two-cell phase-memory safety sentinel](07d-phase-memory-sentinel.md) completed within its hard limits. Both arms independently verified without memory-attributable errors. Bounded memory was cheaper and faster in the single pair, but completion was identical and two cells cannot establish efficacy.
 
-The [budgeted live campaign](07d-phase-memory-live-campaign.md) is now prepared with a projected usage of about `4.02` credits and `22.8` minutes, hard ceilings of `9.0` credits and `90` minutes, and one cell per invocation. No authenticated cell is authorized. Its expected information gain should be weighed against the maximum spend before execution.
+The [budgeted live campaign](07d-phase-memory-live-campaign.md) has started with one independently verified control cell. It remains limited to one cell per invocation, with hard ceilings of `9.0` credits and `90` minutes for the complete matrix. Seventeen cells remain separately approval-gated.
