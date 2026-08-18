@@ -1,6 +1,6 @@
 # M07d: Budgeted Phase-Memory Live Campaign
 
-**Status:** In progress; 5 of 18 authenticated cells completed
+**Status:** In progress; 6 of 18 authenticated cells completed
 
 ## Purpose
 
@@ -54,7 +54,9 @@ Cell 04, the canonical-rereading `restock-report` control at seed `0`, independe
 
 Cell 05, the same control at seed `1`, independently verified the same seven tests with no regressions, false completion, watchdog signals, or intervention. It used `0.266027` credits in `85.140` seconds. See the [cell evidence report](../../research/reports/2026-08-18-phase-memory-campaign-cell-05.md).
 
-The campaign is paused at `5 / 18`. The next declared cell is the canonical-rereading `restock-report` control at seed `2`; it is not authorized.
+Cell 06, the same control at seed `2`, independently verified the same seven tests with no regressions, false completion, or intervention. It used `0.239883` credits in `75.297` seconds. Two observe-only stagnation alerts were contextual false positives during normal investigation and validation. This completes the three-seed restock control block at a mean `0.239873` credits and `75.193` seconds. See the [cell evidence report](../../research/reports/2026-08-19-phase-memory-campaign-cell-06.md).
+
+The campaign is paused at `6 / 18`. The next declared cell is the canonical-rereading `roadmap-evolution` control at seed `0`; it is not authorized.
 
 ## Decision rule
 
