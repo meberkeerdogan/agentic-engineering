@@ -9,6 +9,8 @@
 
 ## Learning reports
 
+Keep progress reports short and easy to read back to back. Use plain language, preserve only the context needed to follow the sequence, and avoid repeating details already recorded in linked files.
+
 After each meaningful stage, include a brief **What you should learn from this stage** section in the progress report. Explain unfamiliar ideas in plain English before naming the technical term. Cover:
 
 1. the main engineering concepts;
