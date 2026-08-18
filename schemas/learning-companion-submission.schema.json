@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/learning-companion-submission.schema.json",
+  "title": "Learning Companion Submission",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["plain_english_summary", "concepts", "approach", "interpretation", "exercise", "review_questions", "focus_refs", "failed_experiment_lessons", "learning_path_proposal"],
+  "properties": {
+    "plain_english_summary": {"$ref": "#/$defs/text"},
+    "concepts": {"type": "array", "minItems": 1, "maxItems": 5, "items": {"type": "object", "additionalProperties": false, "required": ["plain_english", "technical_term"], "properties": {"plain_english": {"$ref": "#/$defs/text"}, "technical_term": {"$ref": "#/$defs/text"}}}},
+    "approach": {"type": "object", "additionalProperties": false, "required": ["selected", "rationale", "alternatives"], "properties": {"selected": {"$ref": "#/$defs/text"}, "rationale": {"$ref": "#/$defs/text"}, "alternatives": {"type": "array", "minItems": 1, "maxItems": 4, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}}}},
+    "interpretation": {"type": "object", "additionalProperties": false, "required": ["supported", "not_supported"], "properties": {"supported": {"type": "array", "minItems": 1, "maxItems": 4, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}}, "not_supported": {"type": "array", "minItems": 1, "maxItems": 4, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}}}},
+    "exercise": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/text"}]},
+    "review_questions": {"type": "array", "maxItems": 5, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "focus_refs": {"$ref": "#/$defs/refs"},
+    "failed_experiment_lessons": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["experiment_id", "lesson", "evidence_refs"], "properties": {"experiment_id": {"$ref": "#/$defs/id"}, "lesson": {"$ref": "#/$defs/text"}, "evidence_refs": {"$ref": "#/$defs/refs"}}}},
+    "learning_path_proposal": {"oneOf": [{"type": "null"}, {"type": "object", "additionalProperties": false, "required": ["completed_topics", "current_topics", "exercises", "suggested_next_topics"], "properties": {"completed_topics": {"$ref": "#/$defs/texts"}, "current_topics": {"$ref": "#/$defs/texts"}, "exercises": {"$ref": "#/$defs/texts"}, "suggested_next_topics": {"$ref": "#/$defs/texts"}}}]}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"},
+    "text": {"type": "string", "minLength": 1},
+    "safeRef": {"type": "string", "minLength": 1, "pattern": "^(?![A-Za-z]:)(?![/\\\\])(?!.*(?:^|[/\\\\])\\.\\.(?:[/\\\\]|$)).+$"},
+    "texts": {"type": "array", "maxItems": 5, "uniqueItems": true, "items": {"$ref": "#/$defs/text"}},
+    "refs": {"type": "array", "minItems": 1, "maxItems": 4, "uniqueItems": true, "items": {"$ref": "#/$defs/safeRef"}}
+  }
+}

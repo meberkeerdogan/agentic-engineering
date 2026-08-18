@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "milestone_id": "phase-memory-control-block",
+  "title": "Complete the low-pressure phase-memory control block",
+  "outcome": "verified",
+  "learner": {
+    "level": "beginner",
+    "goals": [
+      "Understand evidence-driven agent engineering",
+      "Learn how to interpret controlled experiments"
+    ]
+  },
+  "verified_facts": [
+    {
+      "id": "campaign-progress",
+      "statement": "Three of eighteen campaign cells are complete and the batch is paused.",
+      "evidence_refs": ["research/reports/2026-08-18-phase-memory-campaign-cell-03.md"]
+    },
+    {
+      "id": "control-results",
+      "statement": "All three median control seeds independently verified with no regressions, false completions, watchdog signals, or interventions.",
+      "evidence_refs": [
+        "docs/modules/07d-phase-memory-live-campaign.md",
+        "research/reports/2026-08-18-phase-memory-campaign-cell-03.md"
+      ]
+    },
+    {
+      "id": "control-cost",
+      "statement": "The three control cells used 0.529814 credits and 179.923 seconds in total.",
+      "evidence_refs": ["research/reports/2026-08-18-phase-memory-campaign-cell-03.md"]
+    },
+    {
+      "id": "learning-boundary",
+      "statement": "Control-only evidence cannot establish whether bounded phase memory improves outcomes.",
+      "evidence_refs": ["LEARNING_PATH.md"]
+    }
+  ],
+  "decisions": [
+    {
+      "id": "learning-sidecar",
+      "selected": "Use a fresh proposal-only learning companion with bounded milestone evidence.",
+      "rationale": "This keeps engineering context focused while preventing the teaching agent from changing or verifying engineering work.",
+      "alternatives": [
+        "Teach inside the main engineering agent context.",
+        "Generate lessons only from Git history after the work."
+      ],
+      "evidence_refs": ["AGENTS.md", "LEARNING_PATH.md"]
+    }
+  ],
+  "failed_experiments": [
+    {
+      "id": "adaptive-planning-sentinel",
+      "outcome": "inconclusive",
+      "lesson": "Adaptive planning produced no completion gain and cost more in its sentinel, so it was not promoted.",
+      "evidence_refs": ["research/reports/2026-08-17-dependency-planning-live-sentinel.md"]
+    },
+    {
+      "id": "watchdog-false-positives",
+      "outcome": "failed",
+      "lesson": "Early watchdog alerts described valid evidence gathering as suspicious behavior and therefore could not support advice.",
+      "evidence_refs": ["research/reports/2026-08-17-phase-memory-live-sentinel.md"]
+    }
+  ],
+  "focus_refs": [
+    "research/reports/2026-08-18-phase-memory-campaign-cell-03.md",
+    "docs/modules/07d-phase-memory-live-campaign.md",
+    "AGENTS.md",
+    "LEARNING_PATH.md"
+  ],
+  "learning_path_ref": "LEARNING_PATH.md",
+  "companion_policy": {
+    "enabled": true,
+    "proposal_only": true,
+    "cadence": "meaningful_milestones",
+    "update_learning_path": true,
+    "include_exercise": true,
+    "include_review_questions": true,
+    "maximum_focus_refs": 4
+  }
+}

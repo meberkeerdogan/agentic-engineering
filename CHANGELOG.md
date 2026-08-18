@@ -51,3 +51,4 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 - Continued the M07d live efficacy campaign with a second independently verified median control cell, confirmed clean isolation and a zero-signal trajectory, and paused at 2 of 18 cells with the remaining 16 separately approval-gated.
 - Completed all three low-pressure median control seeds in the M07d live efficacy campaign with independent verification, clean isolation, and zero regressions, false completions, watchdog signals, or interventions; paused at 3 of 18 cells.
 - Added durable learner-oriented agent guidance and a concise project learning path covering completed topics, current experiments, exercises, and suggested next concepts.
+- Added M10's optional Learning Companion contracts and runner: fresh agent instances, bounded milestone evidence, preserved failed experiments, proposal-only lessons, deterministic reports, and no engineering verification or mutation authority.

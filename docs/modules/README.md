@@ -1,6 +1,6 @@
 # Implementation Modules
 
-Agentic Engineering was delivered as independent modules. All nine modules pass their offline implementation gates. Efficacy promotion is separate: experimental behavior becomes a default only after it beats the simpler baseline without unacceptable regressions.
+Agentic Engineering was delivered as nine independent core modules. All nine pass their offline implementation gates. M10 is an optional later extension. Efficacy promotion is separate: experimental behavior becomes a default only after it beats the simpler baseline without unacceptable regressions.
 
 ## Dependency Map
 
@@ -14,6 +14,7 @@ M01 Core contracts
        -> M07 Optional interventions
        -> M08 Paper reproduction toolkit
        -> M09 Isolated multi-agent runner
+       -> M10 Optional Learning Companion
 ```
 
 ## Module Status
@@ -29,6 +30,7 @@ M01 Core contracts
 | [M07 Optional interventions](07-optional-interventions.md) + [phase-memory evidence campaign](07d-phase-memory-campaign.md) + [memory safety sentinel](07d-phase-memory-sentinel.md) + [budgeted live campaign](07d-phase-memory-live-campaign.md) | Adaptive planning, memory, property testing, and observe-first watchdog; bounded memory passed its safety gate and has an offline-validated 18-cell live boundary | Each intervention beats the baseline on its declared target without unacceptable regressions |
 | [M08 Paper reproduction toolkit](08-paper-reproduction.md) | Paper, lineage, environment, rubric, experiment, and deviation workflow | One selected paper claim is reproduced with traceable evidence and explicit scope limits |
 | [M09 Isolated multi-agent runner](09-isolated-multi-agent.md) | Dependency-safe worktree delegation and integration | Isolation and integration pass offline; default promotion still requires beating the verified single-agent runner |
+| [M10 Optional Learning Companion](10-learning-companion.md) | Fresh proposal-only teaching agent over bounded milestone evidence | Runtime adapters must preserve evidence binding and improve learning value enough to justify context, cost, and time |
 
 ## Execution Rule
 

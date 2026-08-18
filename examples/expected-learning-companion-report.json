@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "milestone_id": "phase-memory-control-block",
+  "source_fingerprint": "5d11f8ed9c5d2f37dc97b7705104249f80bdabdeb7e51baeb4cc5845df1be8cf",
+  "status": "proposed",
+  "learner_level": "beginner",
+  "agent_invoked": true,
+  "lesson": {
+    "plain_english_summary": "The normal workflow succeeded three times on the small median task, so we now have a stable baseline. We still need matching phase-memory runs before comparing the methods.",
+    "concepts": [
+      {
+        "plain_english": "A result counts only when separate checks accept it.",
+        "technical_term": "independent verification"
+      },
+      {
+        "plain_english": "Repeating the same comparison reduces the chance that one lucky or unlucky run controls the conclusion.",
+        "technical_term": "repeated seeds"
+      },
+      {
+        "plain_english": "The teaching process observes verified work without controlling it.",
+        "technical_term": "proposal-only sidecar"
+      }
+    ],
+    "approach": {
+      "selected": "Use a fresh proposal-only learning companion with bounded milestone evidence.",
+      "rationale": "A separate fresh agent can focus on teaching while the engineering agent keeps a small task context, and proposal-only output preserves the verification boundary.",
+      "alternatives": [
+        "Teach inside the main engineering agent context.",
+        "Generate lessons only from Git history after the work."
+      ]
+    },
+    "interpretation": {
+      "supported": [
+        "The canonical-rereading workflow is stable on the low-pressure median task.",
+        "The campaign can pause and resume without repeating completed cells."
+      ],
+      "not_supported": [
+        "Bounded phase memory improves verified completion.",
+        "The current result generalizes to larger tasks."
+      ]
+    },
+    "exercise": "Calculate the mean cost and time of the three completed control cells, then explain why the means cannot yet be compared with phase memory.",
+    "review_questions": [
+      "Why is an agent's completion claim not sufficient evidence?",
+      "What does repeating seeds protect the experiment from?",
+      "Why can a proposal-only companion teach without changing engineering truth?"
+    ],
+    "focus_refs": [
+      "research/reports/2026-08-18-phase-memory-campaign-cell-03.md",
+      "docs/modules/07d-phase-memory-live-campaign.md",
+      "LEARNING_PATH.md"
+    ],
+    "failed_experiment_lessons": [
+      {
+        "experiment_id": "adaptive-planning-sentinel",
+        "lesson": "A more sophisticated plan is not automatically better; keep it experimental when it adds cost without improving completion.",
+        "evidence_refs": [
+          "research/reports/2026-08-17-dependency-planning-live-sentinel.md"
+        ]
+      },
+      {
+        "experiment_id": "watchdog-false-positives",
+        "lesson": "Monitoring signals need real labels before they can safely become advice.",
+        "evidence_refs": [
+          "research/reports/2026-08-17-phase-memory-live-sentinel.md"
+        ]
+      }
+    ]
+  },
+  "learning_path_proposal": {
+    "completed_topics": [
+      "Proposal-only learning companion boundary"
+    ],
+    "current_topics": [
+      "Control evidence versus treatment evidence"
+    ],
+    "exercises": [
+      "Compare paired control and treatment metrics once both exist"
+    ],
+    "suggested_next_topics": [
+      "Evidence-bound agent adapters",
+      "Learning-report quality evaluation"
+    ]
+  },
+  "engineering_state_mutations": [],
+  "verification_claims": [],
+  "report_id": "learning-companion-ea97c74bc6c1335d",
+  "fingerprint": "ea97c74bc6c1335d993a9eee46d99e48c346b796aafe78a28cc0b375dbebef06"
+}

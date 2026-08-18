@@ -6,7 +6,7 @@ The project is not limited to loops, playbooks, workflows, or skills. Those are 
 
 ## Project Status
 
-The first nine implementation modules are complete and covered by offline tests. They provide active specifications, evidence contracts, verified state, single-agent orchestration, experiment infrastructure, optional interventions, paper reproduction, and isolated multi-agent integration.
+The first nine implementation modules are complete and covered by offline tests. They provide active specifications, evidence contracts, verified state, single-agent orchestration, experiment infrastructure, optional interventions, paper reproduction, and isolated multi-agent integration. M10 adds an optional proposal-only Learning Companion that teaches from bounded milestone evidence without entering the engineering verification path.
 
 Implementation does not imply that every mechanism is enabled by default. Watchdog advice, adaptive planning, phase memory, property evidence, and multi-agent execution remain promotion-gated until controlled comparisons show that they beat the simpler verified baseline on their declared targets.
 
@@ -138,8 +138,9 @@ The remaining offline modules are documented with runnable fixtures:
 - [M07 optional interventions](docs/modules/07-optional-interventions.md): observe-first monitoring, calibration-gated advice, dependency planning, bounded phase memory, and independently reviewed property evidence.
 - [M08 paper reproduction](docs/modules/08-paper-reproduction.md): hash-bound, claim-scoped reproduction with explicit deviations.
 - [M09 isolated multi-agent orchestration](docs/modules/09-isolated-multi-agent.md): dependency-safe worktrees and separately validated integration.
+- [M10 optional Learning Companion](docs/modules/10-learning-companion.md): fresh teaching-agent proposals bound to verified facts, focused files, decisions, and preserved failed experiments.
 
-These offline fixtures make no paid model calls. M07 and M09 are experimental mechanisms, not default recommendations.
+These offline fixtures make no paid model calls. M07, M09, and live Learning Companion adapters are experimental mechanisms, not default recommendations.
 
 ## Contributing
 

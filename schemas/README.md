@@ -46,5 +46,8 @@ Current schemas:
 - [`planning-campaign-readiness.schema.json`](planning-campaign-readiness.schema.json): fingerprinted static/adaptive campaign readiness with explicit zero-execution authorization.
 - [`memory-campaign.schema.json`](memory-campaign.schema.json): M07d task-pack binding, memory-pressure coverage, isolated workflow factor, and expected bounded retrieval behavior.
 - [`memory-campaign-readiness.schema.json`](memory-campaign-readiness.schema.json): fingerprinted canonical-rereading/bounded-memory campaign readiness with explicit zero-execution authorization.
+- [`learning-milestone.schema.json`](learning-milestone.schema.json): bounded verified facts, decisions, failed experiments, learner goals, and focus references for one meaningful stage.
+- [`learning-companion-submission.schema.json`](learning-companion-submission.schema.json): structured lesson, interpretation, exercise, review questions, and learning-path proposal from a teaching agent.
+- [`learning-companion-report.schema.json`](learning-companion-report.schema.json): fingerprint-bound proposal with structurally empty engineering mutation and verification surfaces.
 
 The core schema module and its validation rules are documented in [M01: Core Contracts](../docs/modules/01-core-contracts.md). The experiment schemas are implemented by [M06: Experiment Harness](../docs/modules/06-experiment-harness.md).

@@ -37,6 +37,7 @@ paper -> reproduce -> ablate -> measure -> extract primitive
 9. **Paper reproduction toolkit:** extract claims and rubrics, follow paper lineage and reference code, reconstruct environments, run experiments, and record deviations.
 10. **Isolated multi-agent runner:** only after the single-agent system works, parallelize independent tasks in isolated Git worktrees and integrate them with tests.
 11. **Evaluation harness and live adapters:** run repeatable control/treatment comparisons across repositories and record completion, regressions, false completion, cost, time, and human intervention. Live adapters execute agents in isolated workspaces while independent evaluators retain verification authority.
+12. **Optional Learning Companion:** give a fresh teaching agent one bounded, fingerprinted milestone packet and accept only proposal-only lessons with no engineering verification or mutation authority.
 
 ## Research Decisions
 
@@ -71,6 +72,6 @@ paper -> reproduce -> ablate -> measure -> extract primitive
 
 ## Delivery Order
 
-Implementation was delivered as nine promotion-gated modules. See the [module dependency map](modules/README.md) for the delivery order, current status, and remaining efficacy gates.
+Implementation was delivered as nine promotion-gated core modules. M10 is a later optional extension and does not change their order or the active experiment sequence. See the [module dependency map](modules/README.md) for the delivery order, current status, and remaining efficacy gates.
 
 All nine modules now pass their offline implementation gates. Experimental mechanisms are intentionally not promoted to default behavior merely because their code and contracts are complete.

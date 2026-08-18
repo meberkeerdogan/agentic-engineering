@@ -18,3 +18,5 @@ After each meaningful stage, include a brief **What you should learn from this s
 5. a few questions the learner should be able to answer.
 
 Point to a small set of files, functions, diagrams, or results rather than the whole repository. Keep [LEARNING_PATH.md](LEARNING_PATH.md) concise and update it only after meaningful milestones, not routine edits or individual troubleshooting steps.
+
+When an enabled, verified learning-milestone packet exists, prefer the optional `LearningCompanionRunner` so a fresh teaching agent drafts the lesson from bounded evidence. Treat its output as a proposal: review it before updating `LEARNING_PATH.md`, and never let it verify or mutate engineering work. Use the inline learning report as the fallback when no companion adapter is configured.

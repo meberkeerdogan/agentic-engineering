@@ -17,6 +17,7 @@ This file is a short map of what the project has taught, what is being tested no
 - Controlled and resumable experiments with isolated workspaces, hard budgets, repeated seeds, and external evaluation.
 - Failed or inconclusive interventions as useful evidence: adaptive planning did not beat its sentinel control; early watchdog alerts were contextual false positives; the two-cell phase-memory sentinel established safety but not efficacy.
 - Phase-memory live campaign low-pressure control block: all three `median-fix` seeds passed with zero regressions, false completions, watchdog signals, or human interventions. The campaign is at `3 / 18`; review [cell 03](research/reports/2026-08-18-phase-memory-campaign-cell-03.md).
+- Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
 
@@ -32,6 +33,7 @@ Read the three `phase-memory-campaign-cell-0*.md` reports in `research/reports/`
 2. Eviction pressure through the multi-step `roadmap-evolution` task.
 3. Paired control/treatment comparisons, effect size, and uncertainty.
 4. Applying the predeclared promotion rule without changing it after seeing results.
+5. Connecting a runtime-specific teaching-agent adapter and evaluating lesson quality, context saved, cost, and time.
 
 ## Milestone report checklist
 

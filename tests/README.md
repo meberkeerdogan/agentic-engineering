@@ -1,6 +1,6 @@
 # Tests
 
-The offline suite validates all nine modules, their schemas and examples, safety boundaries, deterministic reports, and integration fixtures.
+The offline suite validates all nine core modules plus the optional M10 extension, their schemas and examples, safety boundaries, deterministic reports, and integration fixtures.
 
 ```powershell
 uv run --group test pytest
@@ -41,3 +41,5 @@ uv run --group test pytest
 `test_paper_reproduction.py` verifies hash-bound paper lineage, contained trusted execution, deterministic observations, rubric scoring, deviations, schema validity, and fail-closed tampering.
 
 `test_multi_agent.py` verifies parallel independent worktrees, dependency commit delivery, declared-path enforcement, clean-source preservation, deterministic integration, final validation, schemas, and cycle rejection.
+
+`test_learning_companion.py` verifies bounded milestone prompts, fresh companion instances, disabled no-agent behavior, evidence-bound focus files, preservation of failed experiments, deterministic proposal reports, empty engineering-authority surfaces, and the CLI.
