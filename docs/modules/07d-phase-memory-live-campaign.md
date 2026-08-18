@@ -1,6 +1,6 @@
 # M07d: Budgeted Phase-Memory Live Campaign
 
-**Status:** In progress; 1 of 18 authenticated cells completed
+**Status:** In progress; 2 of 18 authenticated cells completed
 
 ## Purpose
 
@@ -46,7 +46,9 @@ Committing these files does not authorize execution. Before each live invocation
 
 Cell 01, the canonical-rereading `median-fix` control at seed `0`, independently verified with zero regressions, false completion, watchdog signals, or human intervention. It used `0.179618` credits in `59.063` seconds. Workflow isolation and the immutable ledger hash both passed. See the [cell evidence report](../../research/reports/2026-08-17-phase-memory-campaign-cell-01.md).
 
-The campaign is paused at `1 / 18`. The next declared cell is the canonical-rereading `median-fix` control at seed `1`; it is not authorized.
+Cell 02, the same control at seed `1`, also independently verified with zero regressions, false completion, watchdog signals, or human intervention. It used `0.153771` credits in `47.594` seconds, and its workflow and ledger isolation checks passed. See the [cell evidence report](../../research/reports/2026-08-18-phase-memory-campaign-cell-02.md).
+
+The campaign is paused at `2 / 18`. The next declared cell is the canonical-rereading `median-fix` control at seed `2`; it is not authorized.
 
 ## Decision rule
 
