@@ -41,6 +41,7 @@ See [docs/vision.md](docs/vision.md) and [docs/architecture.md](docs/architectur
 
 The delivered sequence and the research decisions behind it are in the [implementation plan](docs/implementation-plan.md).
 The work and its remaining evidence gates are summarized in the [module dependency map](docs/modules/README.md).
+The concise [learning path](LEARNING_PATH.md) tracks completed concepts, the current experiment, exercises, and suggested next topics.
 
 ## Repository Layout
 
@@ -59,8 +60,10 @@ The work and its remaining evidence gates are summarized in the [module dependen
 |-- src/                  Package support files
 |-- tests/                Offline contract, safety, and integration tests
 |-- workflows/            Reusable workflow definitions
+|-- AGENTS.md             Durable agent working and learning-report guidance
 |-- CHANGELOG.md          Release notes
 |-- CONTRIBUTING.md       Contribution guide
+|-- LEARNING_PATH.md      Concise learner progress and exercise tracker
 |-- LICENSE               Project license
 |-- ROADMAP.md            Early roadmap
 |-- SECURITY.md           Security policy
@@ -70,12 +73,13 @@ The work and its remaining evidence gates are summarized in the [module dependen
 
 For now, start by reading:
 
-1. [docs/vision.md](docs/vision.md)
-2. [docs/architecture.md](docs/architecture.md)
-3. [docs/implementation-plan.md](docs/implementation-plan.md)
-4. [ROADMAP.md](ROADMAP.md)
-5. [research/README.md](research/README.md)
-6. [CONTRIBUTING.md](CONTRIBUTING.md)
+1. [LEARNING_PATH.md](LEARNING_PATH.md)
+2. [docs/vision.md](docs/vision.md)
+3. [docs/architecture.md](docs/architecture.md)
+4. [docs/implementation-plan.md](docs/implementation-plan.md)
+5. [ROADMAP.md](ROADMAP.md)
+6. [research/README.md](research/README.md)
+7. [CONTRIBUTING.md](CONTRIBUTING.md)
 
 The first working definition is the [project onboarding playbook](playbooks/project-onboarding.md). It uses the [`create-agents-md` skill](skills/create-agents-md/SKILL.md) to inspect a repository, ask a small set of preference questions, and draft a practical `AGENTS.md`.
 

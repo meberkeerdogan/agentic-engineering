@@ -1,0 +1,38 @@
+# Learning Path
+
+This file is a short map of what the project has taught, what is being tested now, and what to study next. Update it only after meaningful milestones.
+
+## Key vocabulary
+
+- **Verified completion:** independent checks accept the result; the agent's own completion claim is not enough.
+- **Control:** the simpler existing workflow used as the comparison baseline.
+- **Treatment:** the new method being tested against the control.
+- **Promotion gate:** evidence required before an experimental method becomes a default.
+- **Negative result:** an experiment that did not show an improvement. It is preserved because it prevents unsupported decisions and guides the next experiment.
+
+## Completed topics
+
+- Agentic engineering as a complete system around an agent, not only a prompt, loop, or skill. Review [the implementation plan](docs/implementation-plan.md).
+- Active specifications, evidence contracts, verified state, fresh executors, and independent auditors. Review the focused [module map](docs/modules/README.md).
+- Controlled and resumable experiments with isolated workspaces, hard budgets, repeated seeds, and external evaluation.
+- Failed or inconclusive interventions as useful evidence: adaptive planning did not beat its sentinel control; early watchdog alerts were contextual false positives; the two-cell phase-memory sentinel established safety but not efficacy.
+- Phase-memory live campaign low-pressure control block: all three `median-fix` seeds passed with zero regressions, false completions, watchdog signals, or human interventions. The campaign is at `3 / 18`; review [cell 03](research/reports/2026-08-18-phase-memory-campaign-cell-03.md).
+
+## Current topic
+
+Determine whether bounded phase-aware memory improves results on tasks containing outdated or capacity-limited context, compared with repeatedly reading the canonical files. The current evidence contains only control runs, so it cannot yet answer that question.
+
+## Current exercise
+
+Read the three `phase-memory-campaign-cell-0*.md` reports in `research/reports/`. Calculate the mean control cost and time, then write one sentence explaining why three successful control seeds still do not prove that phase memory helps.
+
+## Suggested next topics
+
+1. Supersession pressure through the multi-file `restock-report` task.
+2. Eviction pressure through the multi-step `roadmap-evolution` task.
+3. Paired control/treatment comparisons, effect size, and uncertainty.
+4. Applying the predeclared promotion rule without changing it after seeing results.
+
+## Milestone report checklist
+
+Every meaningful-stage report should explain the concepts, selected approach and alternatives, result interpretation, one exercise, and review questions. Keep the review surface focused and preserve lessons from failed experiments.
