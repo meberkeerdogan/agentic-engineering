@@ -22,3 +22,9 @@ After each meaningful stage, include a brief **What you should learn from this s
 Point to a small set of files, functions, diagrams, or results rather than the whole repository. Keep [LEARNING_PATH.md](LEARNING_PATH.md) concise and update it only after meaningful milestones, not routine edits or individual troubleshooting steps.
 
 When an enabled, verified learning-milestone packet exists, prefer the optional `LearningCompanionRunner` so a fresh teaching agent drafts the lesson from bounded evidence. Treat its output as a proposal: review it before updating `LEARNING_PATH.md`, and never let it verify or mutate engineering work. Use the inline learning report as the fallback when no companion adapter is configured.
+
+## Research records
+
+Treat the repository as both a product codebase and a research notebook. For every controlled experiment or important reproduction, preserve the question, predeclared method, model and environment, task and seed, budgets, positive or negative result, interpretation, limitations, decisions, and evidence fingerprints. Link the focused report from [research/PAPER_TRAIL.md](research/PAPER_TRAIL.md).
+
+Keep raw evidence privacy-safe and retain failed or inconclusive runs. Do not rewrite earlier findings after later results arrive; append a correction or updated interpretation so the history remains suitable for audit, reproduction, and a future research paper.

@@ -54,3 +54,4 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 - Continued the M07d supersession-pressure control block with a second verified `restock-report` seed, a zero-signal trajectory, and no regressions, false completion, or intervention; paused at 5 of 18 cells.
 - Added durable learner-oriented agent guidance and a concise project learning path covering completed topics, current experiments, exercises, and suggested next concepts.
 - Added M10's optional Learning Companion contracts and runner: fresh agent instances, bounded milestone evidence, preserved failed experiments, proposal-only lessons, deterministic reports, and no engineering verification or mutation authority.
+- Added a durable future-paper evidence trail and research-record policy linking product development, controlled experiments, negative findings, limitations, and reproducible artifacts.

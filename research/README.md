@@ -5,6 +5,7 @@ This directory keeps the evidence used to design and evaluate Agentic Engineerin
 ## Start Here
 
 - [Critical review: Long-Horizon Agent Reliability](reports/2026-08-14-long-horizon-reliability-review.md)
+- [Future-paper evidence trail](PAPER_TRAIL.md)
 - [Live Codex workflow pilot](reports/2026-08-16-live-codex-workflow-pilot.md)
 - [Representative live sentinel](reports/2026-08-16-representative-live-sentinel.md)
 - [Multi-step evolution live sentinel](reports/2026-08-16-evolution-live-sentinel.md)
