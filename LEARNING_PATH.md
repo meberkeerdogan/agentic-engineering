@@ -16,7 +16,7 @@ This file is a short map of what the project has taught, what is being tested no
 - Active specifications, evidence contracts, verified state, fresh executors, and independent auditors. Review the focused [module map](docs/modules/README.md).
 - Controlled and resumable experiments with isolated workspaces, hard budgets, repeated seeds, and external evaluation.
 - Failed or inconclusive interventions as useful evidence: adaptive planning did not beat its sentinel control; early watchdog alerts were contextual false positives; the two-cell phase-memory sentinel established safety but not efficacy.
-- Phase-memory live campaign control evidence: all three `median-fix` seeds and the first `restock-report` seed passed with zero regressions, false completions, or human interventions. The campaign is at `4 / 18`; review [cell 04](research/reports/2026-08-18-phase-memory-campaign-cell-04.md). Its stagnation alert was a false positive caused by normal inspection before editing.
+- Phase-memory live campaign control evidence: all three `median-fix` seeds and the first two `restock-report` seeds passed with zero regressions, false completions, or human interventions. The campaign is at `5 / 18`; compare [cell 04](research/reports/2026-08-18-phase-memory-campaign-cell-04.md) with [cell 05](research/reports/2026-08-18-phase-memory-campaign-cell-05.md). Only the first restock trajectory crossed the watchdog threshold.
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
@@ -25,7 +25,7 @@ Determine whether bounded phase-aware memory improves results on tasks containin
 
 ## Current exercise
 
-Read [cell 04](research/reports/2026-08-18-phase-memory-campaign-cell-04.md) and its nine-event trajectory summary. Explain why four unchanged repository states can mean useful investigation rather than agent stagnation.
+Compare the trajectory summaries in [cell 04](research/reports/2026-08-18-phase-memory-campaign-cell-04.md) and [cell 05](research/reports/2026-08-18-phase-memory-campaign-cell-05.md). Identify the extra unchanged event that caused only seed `0` to cross the stagnation threshold.
 
 ## Suggested next topics
 
