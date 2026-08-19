@@ -16,18 +16,18 @@ This file is a short map of what the project has taught, what is being tested no
 - Active specifications, evidence contracts, verified state, fresh executors, and independent auditors. Review the focused [module map](docs/modules/README.md).
 - Controlled and resumable experiments with isolated workspaces, hard budgets, repeated seeds, and external evaluation.
 - Failed or inconclusive interventions as useful evidence: adaptive planning did not beat its sentinel control; early watchdog alerts were contextual false positives; the two-cell phase-memory sentinel established safety but not efficacy.
-- Phase-memory live campaign evidence: all nine controls and the first two bounded-memory treatments passed with zero regressions, false completions, or human interventions. The campaign is at `11 / 18`; review the second paired result in [cell 11](research/reports/2026-08-19-phase-memory-campaign-cell-11.md). Across two median pairs, treatment quality is equal, cost is `12.87%` higher, and time is `4.95%` higher.
+- Phase-memory live campaign evidence: all nine controls and all three low-pressure bounded-memory treatments passed with zero regressions, false completions, or human interventions. The campaign is at `12 / 18`; review the complete median comparison in [cell 12](research/reports/2026-08-19-phase-memory-campaign-cell-12.md). Treatment quality was equal, total cost was `20.18%` higher, and total time was `3.74%` lower.
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
 
-Run the remaining seven bounded phase-memory treatment cells and compare each task and seed with the complete canonical-rereading baseline.
+Run the six supersession- and eviction-pressure treatment cells and compare each task and seed with the complete canonical-rereading baseline.
 
 ## Current exercise
 
-Why can phase memory be safe but still undesirable on the simple median task?
+Should phase memory become the default for simple tasks based on the completed median block?
 
-**Answer:** safety means it did not cause wrong results or regressions. Desirability also considers efficiency. Across the first two median pairs, treatment produced the same quality while using more credits and time, so its extra memory work may be unnecessary on this simple task.
+**Answer:** no. It was safe and slightly faster overall, but completion was unchanged and measured credit cost was `20.18%` higher. The evidence supports keeping simple tasks on the cheaper baseline unless the pressure-task results show a benefit that justifies selective use.
 
 ## Suggested next topics
 
