@@ -16,7 +16,7 @@ This file is a short map of what the project has taught, what is being tested no
 - Active specifications, evidence contracts, verified state, fresh executors, and independent auditors. Review the focused [module map](docs/modules/README.md).
 - Controlled and resumable experiments with isolated workspaces, hard budgets, repeated seeds, and external evaluation.
 - Failed or inconclusive interventions as useful evidence: adaptive planning did not beat its sentinel control; early watchdog alerts were contextual false positives; the two-cell phase-memory sentinel established safety but not efficacy.
-- Phase-memory live campaign control evidence: all three `median-fix` and all three `restock-report` seeds passed with zero regressions, false completions, or human interventions. The campaign is at `6 / 18`; review the completed restock block in [cell 06](research/reports/2026-08-19-phase-memory-campaign-cell-06.md). Its three trajectories produced three contextual false-positive stagnation alerts in total.
+- Phase-memory live campaign control evidence: all six `median-fix` and `restock-report` controls plus the first `roadmap-evolution` control passed with zero regressions, false completions, or human interventions. The campaign is at `7 / 18`; review the new eviction-pressure baseline in [cell 07](research/reports/2026-08-19-phase-memory-campaign-cell-07.md).
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
@@ -25,9 +25,9 @@ Determine whether bounded phase-aware memory improves results on tasks containin
 
 ## Current exercise
 
-Calculate the mean measured cost of the three restock control seeds from cells 04-06, then explain why the three watchdog alerts do not mean the runs failed.
+Explain why the roadmap control can succeed without using bounded phase memory even though the task was selected to test memory eviction.
 
-**Answer:** `(0.213710 + 0.266027 + 0.239883) / 3 = 0.239873` credits. All alerts described useful investigation or validation, while independent evaluation accepted every run with zero regressions, so they were false alarms rather than task failures.
+**Answer:** the control repeatedly reads the complete canonical project files, so it still has access to the required facts. The later treatment will test whether a smaller filtered memory view can preserve the important facts while removing a distractor; only the paired comparison can show whether that helps.
 
 ## Suggested next topics
 
