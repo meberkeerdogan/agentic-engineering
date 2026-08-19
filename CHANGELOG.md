@@ -56,6 +56,7 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 - Started the M07d eviction-pressure roadmap control block with an independently verified seed, preserved a contextual watchdog false positive, and paused at 7 of 18 cells with no regressions, false completion, or intervention.
 - Continued the M07d eviction-pressure roadmap control block with a second independently verified seed, a zero-signal trajectory, and no regressions, false completion, or intervention; paused at 8 of 18 cells.
 - Completed all nine M07d canonical-rereading controls with independent verification, zero regressions, false completion, or intervention, and a documented `1.932357`-credit baseline; paused before the nine bounded-memory treatments.
+- Started the M07d bounded-memory treatment half with a verified low-pressure pair: equal task quality, `6.77%` higher treatment cost, `2.99%` lower treatment time, and no memory-attributable error.
 - Added durable learner-oriented agent guidance and a concise project learning path covering completed topics, current experiments, exercises, and suggested next concepts.
 - Added M10's optional Learning Companion contracts and runner: fresh agent instances, bounded milestone evidence, preserved failed experiments, proposal-only lessons, deterministic reports, and no engineering verification or mutation authority.
 - Added a durable future-paper evidence trail and research-record policy linking product development, controlled experiments, negative findings, limitations, and reproducible artifacts.

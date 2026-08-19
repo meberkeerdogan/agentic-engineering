@@ -1,6 +1,6 @@
 # M07d: Budgeted Phase-Memory Live Campaign
 
-**Status:** In progress; 9 of 18 authenticated cells completed
+**Status:** In progress; 10 of 18 authenticated cells completed
 
 ## Purpose
 
@@ -62,7 +62,9 @@ Cell 08, the same control at seed `1`, independently verified the same six tests
 
 Cell 09, the same control at seed `2`, independently verified the same six tests with no regressions, false completion, watchdog signals, or intervention. It used `0.230847` credits in `78.266` seconds. This completes all nine controls with a 100% verified completion rate, zero regressions, and `1.932357` total measured credits. See the [cell evidence report](../../research/reports/2026-08-19-phase-memory-campaign-cell-09.md).
 
-The campaign is paused at `9 / 18`. The next declared cell is the bounded phase-memory `median-fix` treatment at seed `0`; it is not authorized.
+Cell 10, the bounded phase-memory `median-fix` treatment at seed `0`, independently verified all four tests with no regressions, false completion, watchdog signals, intervention, or memory-attributable error. It used `0.191772` credits in `57.297` seconds. Against its paired control, quality was equal, cost was `6.77%` higher, and time was `2.99%` lower. See the [cell evidence report](../../research/reports/2026-08-19-phase-memory-campaign-cell-10.md).
+
+The campaign is paused at `10 / 18`. The next declared cell is the bounded phase-memory `median-fix` treatment at seed `1`; it is not authorized.
 
 ## Decision rule
 
