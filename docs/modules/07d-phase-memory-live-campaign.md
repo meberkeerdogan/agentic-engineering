@@ -1,6 +1,6 @@
 # M07d: Budgeted Phase-Memory Live Campaign
 
-**Status:** In progress; 8 of 18 authenticated cells completed
+**Status:** In progress; 9 of 18 authenticated cells completed
 
 ## Purpose
 
@@ -60,7 +60,9 @@ Cell 07, the canonical-rereading `roadmap-evolution` control at seed `0`, indepe
 
 Cell 08, the same control at seed `1`, independently verified the same six tests with no regressions, false completion, watchdog signals, or intervention. It used `0.202453` credits in `55.734` seconds. See the [cell evidence report](../../research/reports/2026-08-19-phase-memory-campaign-cell-08.md).
 
-The campaign is paused at `8 / 18`. The next declared cell is the canonical-rereading `roadmap-evolution` control at seed `2`; it is not authorized.
+Cell 09, the same control at seed `2`, independently verified the same six tests with no regressions, false completion, watchdog signals, or intervention. It used `0.230847` credits in `78.266` seconds. This completes all nine controls with a 100% verified completion rate, zero regressions, and `1.932357` total measured credits. See the [cell evidence report](../../research/reports/2026-08-19-phase-memory-campaign-cell-09.md).
+
+The campaign is paused at `9 / 18`. The next declared cell is the bounded phase-memory `median-fix` treatment at seed `0`; it is not authorized.
 
 ## Decision rule
 
