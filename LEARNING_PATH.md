@@ -16,23 +16,23 @@ This file is a short map of what the project has taught, what is being tested no
 - Active specifications, evidence contracts, verified state, fresh executors, and independent auditors. Review the focused [module map](docs/modules/README.md).
 - Controlled and resumable experiments with isolated workspaces, hard budgets, repeated seeds, and external evaluation.
 - Failed or inconclusive interventions as useful evidence: adaptive planning did not beat its sentinel control; early watchdog alerts were contextual false positives; the two-cell phase-memory sentinel established safety but not efficacy.
-- Phase-memory live campaign evidence: all nine controls, all three low-pressure treatments, and two supersession-pressure treatments passed with zero regressions, false completions, or human interventions. The campaign is at `14 / 18`; review the second pair and two-pair aggregate in [cell 14](research/reports/2026-08-19-phase-memory-campaign-cell-14.md). Both treatments excluded the obsolete decision; across two pairs, treatment cost `1.91%` more and took `17.23%` less time.
+- Phase-memory live campaign evidence: all nine controls, all three low-pressure treatments, and the complete three-seed supersession block passed with zero regressions, false completions, or human interventions. The campaign is at `15 / 18`; review the complete restock comparison in [cell 15](research/reports/2026-08-19-phase-memory-campaign-cell-15.md). Memory reliably excluded the obsolete decision; treatment quality was equal, cost was `0.14%` higher, and time was `11.36%` lower.
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
 
-Complete the final supersession-pressure seed and three eviction-pressure treatment cells, then compare each task block with the canonical-rereading baseline.
+Run the three eviction-pressure roadmap treatments, then apply the predeclared promotion rule to the complete campaign.
 
 ## Current exercise
 
-Why should we not judge phase memory from either restock seed by itself?
+What did the completed restock block prove, and what did it not prove?
 
-**Answer:** the first treatment cost `36.71%` more, while the second cost `26.05%` less, even though both produced equal quality. Individual agent runs vary. Repeated seeds and their aggregate reduce the risk of mistaking normal variation for an effect of the workflow.
+**Answer:** it proved that bounded memory consistently filtered the obsolete decision without causing errors and was faster overall at almost identical cost. It did not prove a completion benefit because all controls also passed. Correct mechanism behavior is not the same as improved task outcomes.
 
 ## Suggested next topics
 
-1. Complete and aggregate supersession pressure through the multi-file `restock-report` task.
-2. Eviction pressure through the multi-step `roadmap-evolution` task.
+1. Eviction pressure through the multi-step `roadmap-evolution` task.
+2. Compare supersession and eviction results against the low-pressure block.
 3. Paired control/treatment comparisons, effect size, and uncertainty.
 4. Applying the predeclared promotion rule without changing it after seeing results.
 5. Connecting a runtime-specific teaching-agent adapter and evaluating lesson quality, context saved, cost, and time.

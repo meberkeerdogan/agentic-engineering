@@ -1,6 +1,6 @@
 # M07d: Budgeted Phase-Memory Live Campaign
 
-**Status:** In progress; 14 of 18 authenticated cells completed
+**Status:** In progress; 15 of 18 authenticated cells completed
 
 ## Purpose
 
@@ -72,7 +72,9 @@ Cell 13, the bounded phase-memory `restock-report` treatment at seed `0`, indepe
 
 Cell 14, the same treatment at seed `1`, independently verified the same seven tests with no regressions, false completion, watchdog signals, intervention, or memory-attributable error. It again excluded the obsolete decision. Against its paired control, quality was equal, cost was `26.05%` lower, and time was `33.84%` lower. Across two restock pairs, treatment cost is `1.91%` higher and time is `17.23%` lower, showing substantial seed-level variability. See the [cell evidence report](../../research/reports/2026-08-19-phase-memory-campaign-cell-14.md).
 
-The campaign is paused at `14 / 18`. The next declared cell is the bounded phase-memory `restock-report` treatment at seed `2`; it is not authorized.
+Cell 15, the same treatment at seed `2`, independently verified the same seven tests with no regressions, false completion, intervention, or memory-attributable error. It again followed the current decision and excluded the obsolete one. Across the complete three-seed restock block, treatment quality was equal, total cost was `0.14%` higher, and total time was `11.36%` lower. One observe-only stagnation alert was a contextual false positive during normal validation and diff inspection. See the [cell evidence report](../../research/reports/2026-08-19-phase-memory-campaign-cell-15.md).
+
+The campaign is paused at `15 / 18`. The next declared cell is the bounded phase-memory `roadmap-evolution` treatment at seed `0`; it is not authorized.
 
 ## Decision rule
 
