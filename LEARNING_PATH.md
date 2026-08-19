@@ -16,22 +16,22 @@ This file is a short map of what the project has taught, what is being tested no
 - Active specifications, evidence contracts, verified state, fresh executors, and independent auditors. Review the focused [module map](docs/modules/README.md).
 - Controlled and resumable experiments with isolated workspaces, hard budgets, repeated seeds, and external evaluation.
 - Failed or inconclusive interventions as useful evidence: adaptive planning did not beat its sentinel control; early watchdog alerts were contextual false positives; the two-cell phase-memory sentinel established safety but not efficacy.
-- Phase-memory live campaign evidence: all nine controls and all three low-pressure bounded-memory treatments passed with zero regressions, false completions, or human interventions. The campaign is at `12 / 18`; review the complete median comparison in [cell 12](research/reports/2026-08-19-phase-memory-campaign-cell-12.md). Treatment quality was equal, total cost was `20.18%` higher, and total time was `3.74%` lower.
+- Phase-memory live campaign evidence: all nine controls, all three low-pressure treatments, and the first supersession-pressure treatment passed with zero regressions, false completions, or human interventions. The campaign is at `13 / 18`; review the first supersession pair in [cell 13](research/reports/2026-08-19-phase-memory-campaign-cell-13.md). Memory correctly excluded the obsolete decision, but both arms passed and treatment cost `36.71%` more and took `4.48%` longer.
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
 
-Run the six supersession- and eviction-pressure treatment cells and compare each task and seed with the complete canonical-rereading baseline.
+Complete the remaining two supersession-pressure and three eviction-pressure treatment cells, then compare each task block with the canonical-rereading baseline.
 
 ## Current exercise
 
-Should phase memory become the default for simple tasks based on the completed median block?
+Did phase memory work correctly in the first supersession pair, and does equal success prove that it added value?
 
-**Answer:** no. It was safe and slightly faster overall, but completion was unchanged and measured credit cost was `20.18%` higher. The evidence supports keeping simple tasks on the cheaper baseline unless the pressure-task results show a benefit that justifies selective use.
+**Answer:** it worked correctly because it excluded the obsolete instruction and used the current decision. Equal success does not prove added value: the control also passed, while treatment cost more and took longer. We need the remaining repeated seeds before judging the supersession block.
 
 ## Suggested next topics
 
-1. Supersession pressure through the multi-file `restock-report` task.
+1. Complete and aggregate supersession pressure through the multi-file `restock-report` task.
 2. Eviction pressure through the multi-step `roadmap-evolution` task.
 3. Paired control/treatment comparisons, effect size, and uncertainty.
 4. Applying the predeclared promotion rule without changing it after seeing results.
