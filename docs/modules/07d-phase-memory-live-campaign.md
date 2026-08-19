@@ -1,6 +1,6 @@
 # M07d: Budgeted Phase-Memory Live Campaign
 
-**Status:** In progress; 7 of 18 authenticated cells completed
+**Status:** In progress; 8 of 18 authenticated cells completed
 
 ## Purpose
 
@@ -58,7 +58,9 @@ Cell 06, the same control at seed `2`, independently verified the same seven tes
 
 Cell 07, the canonical-rereading `roadmap-evolution` control at seed `0`, independently verified all six tests with no regressions or false completion. It used `0.249623` credits in `79.750` seconds. One observe-only stagnation alert was a contextual false positive caused by normal pre-edit investigation. See the [cell evidence report](../../research/reports/2026-08-19-phase-memory-campaign-cell-07.md).
 
-The campaign is paused at `7 / 18`. The next declared cell is the canonical-rereading `roadmap-evolution` control at seed `1`; it is not authorized.
+Cell 08, the same control at seed `1`, independently verified the same six tests with no regressions, false completion, watchdog signals, or intervention. It used `0.202453` credits in `55.734` seconds. See the [cell evidence report](../../research/reports/2026-08-19-phase-memory-campaign-cell-08.md).
+
+The campaign is paused at `8 / 18`. The next declared cell is the canonical-rereading `roadmap-evolution` control at seed `2`; it is not authorized.
 
 ## Decision rule
 
