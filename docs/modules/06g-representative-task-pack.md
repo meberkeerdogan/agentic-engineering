@@ -2,6 +2,8 @@
 
 **Status:** Implemented
 
+**Evidence boundary:** This is a plumbing and safety pack, not a convincing long-task efficacy benchmark. The starting repositories contain only 8-12 lines of source code, and the completed live comparisons reached a ceiling. The full [long-task research review](../../research/reviews/long-task/SYNTHESIS.md) and [harder test design](../../research/reviews/long-task/HARDER_TEST_DESIGN.md) define its replacement.
+
 ## Purpose
 
 The first live comparison proved that the execution plumbing works, but one easy task and one seed cannot measure workflow efficacy. M06g prepares a larger comparison without spending credits.
@@ -51,3 +53,5 @@ uv run python -m agentic_engineering.task_pack `
 - The complete repository test suite remains offline.
 
 M06g does not authorize the 18 live cells. A later paid batch must first declare worst-case credit and time budgets and requires explicit user approval.
+
+Do not rerun this pack to claim long-task efficacy. Keep it as a fast integration check while the Level 1 multi-target and Level 2 continuous-evolution tasks are implemented offline.

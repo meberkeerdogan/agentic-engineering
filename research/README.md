@@ -16,6 +16,8 @@ This directory keeps the evidence used to design and evaluate Agentic Engineerin
 - [Progress Mirage claim-level reproduction](reproductions/progress-mirage-claim/reproduction.json)
 - [Core verification/specification deep review](reviews/core-workflow/SYNTHESIS.md)
 - [Memory and context deep review](reviews/memory/SYNTHESIS.md)
+- [Long-task evaluation deep review](reviews/long-task/SYNTHESIS.md)
+- [Harder long-task test design](reviews/long-task/HARDER_TEST_DESIGN.md)
 - [Source index](sources.md)
 - [PDF integrity and extraction manifest](papers/manifest.json)
 

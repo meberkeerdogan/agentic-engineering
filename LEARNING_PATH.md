@@ -21,24 +21,25 @@ This file is a short map of what the project has taught, what is being tested no
 - Core verification/specification review: LongHorizon-Harness supports separated execution and audit but has task-dependent cost and no clean component ablation; Progress Mirage supports matching evaluator access to where truth lives; SpecPath demonstrates path sensitivity but does not validate its proposed contract ledger. Review the [focused synthesis](research/reviews/core-workflow/SYNTHESIS.md).
 - Core baseline/decomposition review: Agentless establishes that complex agents must beat a cheap fixed pipeline; RSTD shows selective retry can reduce injected-failure recovery cost, while decomposition adds normal overhead and did not improve correctness in its two cases.
 - Memory review and implementation audit: Prometheus caches repository evidence, ContextBench shows that broad retrieval can add noise, and PMCoder couples episodic recall with planning and recovery. Our bounded phase ledger is a safer project-memory adaptation, not a reproduction. Its `9/9` versus `9/9` campaign remains a useful negative result.
+- Long-task evaluation review: release-sized and continuous benchmarks show that partial progress is common, regressions accumulate, and isolated successes often fail to compose. Our three small tasks are valid safety fixtures but too easy for efficacy claims. Review the [synthesis](research/reviews/long-task/SYNTHESIS.md) and [harder test design](research/reviews/long-task/HARDER_TEST_DESIGN.md).
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
 
-Turn the completed core modules into one simple `v0.1` product workflow. Long-task paper review remains the next research stage, but it does not block product use.
+Implement the offline Level 1 multi-target and Level 2 continuous-evolution test ladder. This is the last evidence prerequisite before deciding whether the core is ready to enter `v0.1` publishing work.
 
 ## Current exercise
 
-What is the difference between a completed engine and a usable product?
+Why should the same milestone be tested both alone and after earlier agent work?
 
-**Answer:** the engine contains the working parts, tests, and internal commands. A usable product gives a new user one clear setup, one supported command, understandable output, and an example that works from a fresh checkout.
+**Answer:** the isolated run shows whether the milestone is solvable. The continuous run shows whether mistakes from earlier work make it fail. The gap measures error accumulation instead of confusing it with task difficulty.
 
 ## Suggested next topics
 
-1. Freeze the supported `v0.1` workflow and user journey.
-2. Add one simple product command and end-to-end example.
-3. Resume long-task benchmark research as a separate track.
-4. Add retrieval-quality instrumentation only before another memory experiment.
+1. Add target-level partial scoring with strict regression handling.
+2. Build and validate the two offline harder-task levels.
+3. Reassess product readiness, then freeze the `v0.1` workflow and user journey.
+4. Keep additional research methods in the post-release backlog.
 
 ## Milestone report checklist
 

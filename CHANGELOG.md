@@ -8,12 +8,14 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 
 ### Changed
 
+- Reclassified the existing representative task pack as a small integration and safety fixture rather than long-task efficacy evidence, and corrected the stored SWE-EVO v6 headline/table conflict.
 - Added a finite `v0.1` product finish line, made remaining research reviews non-blocking, and required plain-English communication across project reports and user-facing documentation.
 - Reclassified bounded phase memory as a project-memory adaptation rather than a Prometheus or PMCoder reproduction, and updated the completed campaign boundary after full paper review.
 - Narrowed core-workflow claims to distinguish tested paper results from project adaptations, documented the current command-auditor sandbox gap, and corrected the LongHorizon Opus subset result to `20.6% -> 35.3%` binary completion.
 
 ### Added
 
+- Added replication-grade dossiers for SWE-EVO, RoadmapBench, SWE-Milestone, and NL2Repo-Bench, plus a synthesis and bounded harder-test ladder for multi-target and continuous evolution.
 - Added replication-grade Prometheus, ContextBench, and PMCoder dossiers plus a memory implementation audit and a harder, retrieval-aware follow-up experiment design.
 - Added replication-grade dossiers for LongHorizon-Harness, Progress Mirage, and SpecPath, plus a cross-paper implementation audit and bounded core-workflow evaluation design.
 - Completed the core-workflow research gate with Agentless and Runtime-Structured Task Decomposition dossiers, establishing a simpler-baseline requirement and limiting selective-retry claims to observed failure economics.

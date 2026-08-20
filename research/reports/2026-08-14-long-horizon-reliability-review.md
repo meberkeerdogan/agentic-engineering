@@ -43,6 +43,8 @@ This should first be implemented as an observable manual protocol and experiment
 
 #### SWE-EVO
 
+**2026-08-20 full-review correction:** the stored arXiv v6 artifact is internally inconsistent. Its abstract, conclusion, and discussion call GPT-5.4 at `25%` the best result, but Table 2 reports `39.58%` for GLM-4.7 and `37.50%` for GLM-5 under SWE-agent. Treat `25%` as the paper's stated headline, not the largest value in its own table. See the [replication-grade dossier](../reviews/long-task/swe-evo.md).
+
 [SWE-EVO](../papers/2512.18470-swe-evo.pdf) contains 48 release-scale tasks averaging 21 files and 874 tests. Its reported best result is 25%, and GPT-5.2 falls from 72.8% on SWE-bench Verified to 22.92% on SWE-EVO. Its Fix Rate metric exposes partial progress while assigning zero when regressions remain.
 
 What this establishes: isolated issue-resolution results do not transfer cleanly to coordinated software evolution.
