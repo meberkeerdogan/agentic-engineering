@@ -6,6 +6,8 @@
 
 This campaign tests one question: does adaptive, evidence-driven dependency planning improve verified coding outcomes compared with a fixed topological plan when the rest of the workflow is unchanged?
 
+This is not Runtime-Structured Task Decomposition. The [RSTD dossier](../../research/reviews/core-workflow/runtime-structured-decomposition.md) studies executed typed LLM subtasks and selective retry after a failed subtask. M07c only computes work ordering from declared dependencies and runtime evidence. Its completed sentinel therefore cannot support RSTD retry-cost claims.
+
 The prepared M06 matrix has two arms, three task types, and three repeated seed labels, for 18 cells:
 
 - a chain-shaped median fix, used as a negative control where both planners produce the same order;

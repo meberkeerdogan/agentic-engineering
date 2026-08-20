@@ -19,24 +19,25 @@ This file is a short map of what the project has taught, what is being tested no
 - Phase-memory live campaign evidence: all 18 cells independently verified with zero regressions, false completions, memory-attributable errors, or human interventions. Review the [final report](research/reports/2026-08-20-phase-memory-campaign-cell-18.md). Memory behaved correctly, but both arms completed `9 / 9`; treatment cost `5.51%` more and took `6.93%` less time overall. The required completion improvement was absent, so default promotion was rejected.
 - Deep-paper research gate: every workflow section now requires full primary-paper dossiers, cross-paper synthesis, explicit transfer decisions, and a predeclared evaluation. Completed sections with only design-level summaries are tracked for retrospective repair in the [section audit](research/WORKFLOW_SECTION_AUDIT.md).
 - Core verification/specification review: LongHorizon-Harness supports separated execution and audit but has task-dependent cost and no clean component ablation; Progress Mirage supports matching evaluator access to where truth lives; SpecPath demonstrates path sensitivity but does not validate its proposed contract ledger. Review the [focused synthesis](research/reviews/core-workflow/SYNTHESIS.md).
+- Core baseline/decomposition review: Agentless establishes that complex agents must beat a cheap fixed pipeline; RSTD shows selective retry can reduce injected-failure recovery cost, while decomposition adds normal overhead and did not improve correctness in its two cases.
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
 
-Finish the remaining core baseline/decomposition papers, then repair memory and long-task evaluation in sequence.
+Audit the completed phase-memory implementation and campaign against full memory-paper methods, then repair long-task evaluation.
 
 ## Current exercise
 
-Why is the current active-spec compiler an adaptation rather than a SpecPath reproduction?
+Why should decomposition remain optional instead of becoming the default workflow?
 
-**Answer:** SpecPath tests agents reading natural-language histories across 1,470 planned executions. Our compiler receives already-structured revision operations and deterministically compiles them. It implements a proposed ledger idea, but it neither performs the paper's inference task nor reproduces its benchmark.
+**Answer:** the RSTD paper shows cheaper retry after an injected failure, but normal decomposed runs used much more time and tokens, natural failures were rare, and every condition was equally correct. We should add decomposition only when measured failure/retry savings outweigh its normal overhead.
 
 ## Suggested next topics
 
-1. Core baseline and decomposition dossiers: Agentless and Runtime-Structured Task Decomposition.
-2. Memory dossiers and retrospective phase-memory alignment audit.
-3. Long-task benchmark validity and harder task design.
-4. Ceiling effects and predeclared efficiency hypotheses.
+1. Memory dossiers and retrospective phase-memory alignment audit.
+2. Long-task benchmark validity and harder task design.
+3. Ceiling effects and predeclared efficiency hypotheses.
+4. Technical enforcement of read-only evaluation.
 
 ## Milestone report checklist
 

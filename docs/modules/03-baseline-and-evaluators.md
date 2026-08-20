@@ -6,7 +6,7 @@
 
 Later agent workflows need a control condition and evidence that does not depend on the agent judging its own work. This module runs a prepared candidate through declared evaluators exactly once. It makes no agent calls, generates no repair, and performs no retry loop.
 
-This is an agentless-style control harness, not a reproduction of the complete Agentless paper. Repair generation and agent adapters belong in later experiments.
+This is an agentless-style control harness, not a reproduction of the complete Agentless paper. The [detailed dossier](../../research/reviews/core-workflow/agentless.md) confirms that the paper includes hierarchical localization, candidate-patch sampling, generated reproduction tests, and patch selection that M03 does not implement. Repair generation and agent adapters belong in later experiments.
 
 ## Evaluators
 

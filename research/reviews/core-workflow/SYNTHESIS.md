@@ -4,7 +4,7 @@
 
 Should Agentic Engineering keep its active-specification, evidence-based acceptance, verified-state, fresh-executor, and independent-auditor boundaries—and what claims or experiments must be narrowed after reading the primary papers in full?
 
-The simpler baseline is a single agent that rereads canonical requirements, edits the repository, runs its own checks, and reports completion. The reviewed treatment adds explicit contract state, separates execution claims from acceptance, and uses a fresh execution/audit boundary.
+The simpler baseline is a fixed Agentless-style localization/repair/validation pipeline or a single agent that rereads canonical requirements, edits the repository, and runs declared checks. The reviewed treatment adds explicit contract state, separates execution claims from acceptance, and uses fresh execution/audit boundaries with optional selective retry.
 
 ## What the papers agree on
 
@@ -12,6 +12,7 @@ The simpler baseline is a single agent that rereads canonical requirements, edit
 2. **Truth must be checked where it lives.** Local tests and artifacts are enough for bounded, visible specifications. External product outcomes require independent world access. A stronger transcript-only judge cannot recover a hidden signal.
 3. **Pairing matters.** Average success can look unchanged while the particular runs that succeed change. Our experiments should compare matched tasks and seeds and preserve per-run evidence, not only arm averages.
 4. **The harness is part of capability.** LongHorizon-Harness can materially raise completion with the same model, but its cost and benefit depend on task type and executor capability.
+5. **Complexity needs a baseline.** Agentless is competitive on issue-sized Python repair with a fixed pipeline. RSTD shows that static decomposition can cost more than monolithic execution and that selective retry pays only when failure occurs often enough.
 
 ## Important disagreements and limits
 
@@ -19,6 +20,8 @@ The simpler baseline is a single agent that rereads canonical requirements, edit
 - Positive-only outcome gates preserve the best measured state by definition, but can reject neutral maintenance and temporary regressions. Agentic Engineering therefore protects declared baselines while allowing a contract to define which temporary changes are acceptable.
 - Read-only auditing in the paper is monitored against mutation. Our evaluator schema requires `read_only: true`, but command evaluators are not OS-sandboxed and could mutate state. The current label expresses intent, not a complete technical guarantee.
 - Freshness in our runner is a distinct executor object. It does not prove a fresh model process or enforce raw-context disposal in every adapter.
+- Agentless's generated tests improve aggregate patch selection, but fewer than half of base-reproducing tests also recognize the ground-truth fix. Generated evidence must remain reviewable rather than authoritative by default.
+- RSTD reports equal correctness and lower retry tokens only under injected failure. Normal decomposed execution uses roughly three times the monolithic tokens in its two cases. Expected total cost depends on real failure frequency.
 
 ## Implementation alignment audit
 
@@ -29,6 +32,8 @@ The simpler baseline is a single agent that rereads canonical requirements, edit
 | `state_store.py` | Append-only hash-chained history; only clean evaluation evidence verifies work | Best-known revision is recorded but automatic workspace rollback/preservation is outside this store | Keep; test end-to-end preservation in long tasks |
 | `runner.py` | Executor cannot self-verify; fresh executor objects; separate audit request | Deterministic manager, predeclared items, one execute-audit attempt at a time, no paper-style LLM replanning | Keep as a smaller verified baseline, not a LongHorizon reproduction |
 | Progress Mirage fixture | Reproduces one deterministic claim/audit disagreement with source hashes and deviations | No agent loop, evaluator-arm comparison, oracle isolation, or effect-size reproduction | Keep labeled `supported_in_fixture` only |
+| M03 baseline/evaluators | Provides a cheap deterministic acceptance baseline | Does not implement Agentless localization, repair sampling, or test generation | Keep labeled agentless-style, not an Agentless reproduction |
+| Dependency planning | Validated state and dependency-aware work ordering | No RSTD judgment operators, runtime execution, or selective subtask retry | Keep as a separate planning experiment |
 
 ## Corrections made
 
@@ -36,13 +41,17 @@ The simpler baseline is a single agent that rereads canonical requirements, edit
 - Do not call Progress Mirage fully preregistered: the pilot used hypotheses recorded before measurement but did not complete its prescribed commit-hash freeze and disclosed amendments.
 - Do not infer that a contract ledger has been validated by SpecPath. It is a proposed design requiring a controlled follow-up.
 - Do not describe out-of-band zero mirage or monotonic deployment as discovered effects; both follow from the positive-delta gate definition.
+- Do not call Agentless the best overall SWE-bench Lite system in its table; it is the best listed open-source system at `32.0%`.
+- Do not claim that decomposition improves correctness from RSTD; all conditions were `100%` correct in two small cases, and its retry result used simulated failure.
 
 ## Transfer decisions
 
 - **Adopt:** evidence, not executor narrative, controls completion.
 - **Adopt:** explicit requirement identity and supersession for structured project state.
+- **Adopt:** a cheap fixed or single-agent control before testing orchestration complexity.
 - **Adapt:** manager-executor-auditor separation as a deterministic verified baseline.
 - **Adapt:** select evaluator location by the claim: artifact-local checks for bounded code, independent world-state access for external outcomes.
+- **Adapt:** retry only a rejected declared work item; add finer decomposition only after observing recurring local failures.
 - **Reproduce later:** SpecPath-style path invariance and a matched long-horizon runner comparison.
 - **Defer:** LLM manager replanning, automatic repeated MEA rounds, and positive-only real-world gates.
 - **Reject as defaults:** universal multi-role overhead, transcript-only acceptance for external goals, and claims that structured compilation already solves natural-language contract resolution.
@@ -61,4 +70,4 @@ The review does not authorize a new paid experiment. Before a core-workflow effi
 
 ## Gate status and remaining work
 
-This verification/specification subsection is complete. The whole core-workflow gate remains **partial** until Agentless and Runtime-Structured Task Decomposition receive dossiers and are synthesized as simpler-baseline and decomposition evidence.
+The core-workflow retrospective research gate is **complete** for the five selected primary papers. Implementation remains experimental where noted: passing the research gate means the evidence and deviations are understood, not that every intervention has earned default promotion.

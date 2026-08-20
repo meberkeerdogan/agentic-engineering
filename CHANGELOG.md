@@ -13,6 +13,7 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 ### Added
 
 - Added replication-grade dossiers for LongHorizon-Harness, Progress Mirage, and SpecPath, plus a cross-paper implementation audit and bounded core-workflow evaluation design.
+- Completed the core-workflow research gate with Agentless and Runtime-Structured Task Decomposition dossiers, establishing a simpler-baseline requirement and limiting selective-retry claims to observed failure economics.
 - Added a mandatory deep-paper Workflow Research Gate, a replication-grade paper dossier template, and a retrospective audit that sequences research repair for every implemented workflow section.
 - Initial open-source repository scaffold.
 - Umbrella structure for playbooks, workflows, skills, schemas, and runners.
