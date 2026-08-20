@@ -26,21 +26,22 @@ This file is a short map of what the project has taught, what is being tested no
 - Level 1 task validation: a 749-line project now has five named upgrade targets, visible checks, hidden checks, and an external oracle. The untouched project scores `0/5` without regressions; the oracle scores `5/5`. Review [M06k](docs/modules/06k-long-task-level-1.md).
 - Level 2 continuous validation: five milestone oracles now pass both alone and in one persistent repository, while intentionally omitting Milestone 1 creates a later protected regression. Review [M06l](docs/modules/06l-long-task-level-2.md).
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
+- `v0.1` feature freeze: the supported product is now the verified single-agent workflow. Technically working but unproven interventions remain explicit experiments rather than hidden defaults. Review the [product scope](docs/v0.1-product-scope.md) and [frozen workflow](workflows/verified-single-agent-v0.1.md).
 
 ## Current topic
 
-Turn the verified core into the finite `v0.1` user path: one default workflow, one simple command, one realistic example, short setup guidance, and a fresh-checkout acceptance test.
+Expose the frozen verified single-agent workflow through one simple product command without enabling optional research interventions.
 
 ## Current exercise
 
-Why should the same milestone be tested both alone and after earlier agent work?
+Why can a technically correct feature still remain outside the product default?
 
-**Answer:** the isolated run shows whether the milestone is solvable. The continuous run shows whether mistakes from earlier work make it fail. The gap measures error accumulation instead of confusing it with task difficulty.
+**Answer:** correctness shows that the feature behaves as designed. Promotion needs separate evidence that users gain enough completion, reliability, cost, or time benefit to justify the added complexity.
 
 ## Suggested next topics
 
-1. Freeze the supported `v0.1` workflow and user journey.
-2. Add one simple command and realistic end-to-end example.
+1. Add one simple command for the frozen workflow.
+2. Add a realistic end-to-end example.
 3. Add setup guidance and run a fresh-checkout acceptance test.
 4. Keep held-out agent evaluations and new methods in the post-release research backlog.
 

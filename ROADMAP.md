@@ -9,7 +9,7 @@ See [docs/modules/README.md](docs/modules/README.md) for the module dependency m
 
 The core modules are complete. `v0.1` is ready when these five product tasks are complete:
 
-1. Choose and freeze one supported default workflow: active specification, bounded execution, independent checks, and verified state.
+1. **Complete:** choose and freeze one supported default workflow: active specification, bounded execution, independent checks, and verified state. See the [workflow](workflows/verified-single-agent-v0.1.md) and [product scope](docs/v0.1-product-scope.md).
 2. Provide one simple command that sets up and runs that workflow without requiring users to understand the internal modules.
 3. Provide one realistic end-to-end example showing the input, run, evidence, and final result.
 4. Add short installation, configuration, troubleshooting, and output-reading guidance.
@@ -18,6 +18,8 @@ The core modules are complete. `v0.1` is ready when these five product tasks are
 This is the release boundary. Optional memory, adaptive planning, watchdog advice, property generation, multi-agent execution, extra adapters, and further paper reproductions do not block `v0.1`.
 
 **2026-08-20 readiness decision:** the long-task research gate, regression-safe target scoring, Level 1 multi-target fixture, and Level 2 continuous-evolution fixture are complete. The product is ready to enter the five-task `v0.1` packaging stage above. It is not published yet. Additional held-out tasks and paid agent comparisons remain necessary before broad efficacy claims, but they do not block publishing the toolkit with clear experimental claims.
+
+**2026-08-20 feature-freeze decision:** the supported `v0.1` product is now fixed to the verified single-agent workflow and its testing infrastructure. Optional interventions remain available for explicit research use but are disabled in the product default. The next release task is the one-command run path, not another mechanism.
 
 ## Phase 0: Foundation
 
