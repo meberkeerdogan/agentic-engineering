@@ -8,7 +8,7 @@ An intervention should not become a default because one run looked good. This mo
 
 The design follows the project research review:
 
-- [Progress Mirage](../../research/papers/2607.25152-progress-mirage.pdf) motivates deriving false completion from an agent claim plus external verification instead of trusting self-reported progress.
+- [Progress Mirage](../../research/papers/2607.25152-progress-mirage.pdf) motivates deriving false completion from an agent claim plus external verification instead of trusting self-reported progress. The [detailed dossier](../../research/reviews/core-workflow/progress-mirage.md) limits this transfer: deterministic artifact checks are sufficient when truth is locally visible, while external objectives need independent world access.
 - [Evaluating AGENTS.md](../../research/papers/2602.11988-evaluating-agents-md.pdf) motivates measuring cost alongside success because an intervention can increase work without improving outcomes.
 - [SWE-EVO](../../research/papers/2512.18470-swe-evo.pdf), [RoadmapBench](../../research/papers/2605.15846-roadmapbench.pdf), and [SWE-Milestone](../../research/papers/2603.13428-swe-milestone.pdf) motivate multi-task, repeated evaluation with regression-sensitive measures.
 

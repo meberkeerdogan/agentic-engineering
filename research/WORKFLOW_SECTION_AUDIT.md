@@ -4,7 +4,7 @@ This audit tracks whether each product section has replication-grade paper revie
 
 | Workflow section | Priority papers | Current evidence | Gate status | Next record |
 | --- | --- | --- | --- | --- |
-| Core verified workflow | LongHorizon-Harness, Progress Mirage, SpecPath, Agentless, Runtime-Structured Task Decomposition | Broad critical review and one scoped Progress Mirage reproduction | Retrospective review in progress | Core-workflow paper dossiers and synthesis |
+| Core verified workflow | LongHorizon-Harness, Progress Mirage, SpecPath, Agentless, Runtime-Structured Task Decomposition | [Verification/specification dossiers and synthesis](reviews/core-workflow/SYNTHESIS.md); scoped Progress Mirage fixture | Partial gate passed: verification/specification complete | Agentless and Runtime-Structured Task Decomposition dossiers, then full core synthesis |
 | Memory and context | Prometheus, ContextBench, PMCoder | Design summaries plus completed adapted phase-memory campaign | Retrospective required - highest priority | Memory dossiers, implementation-alignment audit, revised experiment |
 | Long-task evaluation | SWE-EVO, RoadmapBench, SWE-Milestone, NL2Repo-Bench | Benchmark summaries and representative fixtures | Retrospective required | Benchmark dossiers and task-validity synthesis |
 | Planning and monitoring | CodePlan, From Plan to Action, LivePlan, PMCoder | Implemented experiments, sentinel results, and watchdog calibration | Retrospective required | Planning and monitoring dossiers plus alignment audit |

@@ -6,8 +6,13 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 
 ## [Unreleased]
 
+### Changed
+
+- Narrowed core-workflow claims to distinguish tested paper results from project adaptations, documented the current command-auditor sandbox gap, and corrected the LongHorizon Opus subset result to `20.6% -> 35.3%` binary completion.
+
 ### Added
 
+- Added replication-grade dossiers for LongHorizon-Harness, Progress Mirage, and SpecPath, plus a cross-paper implementation audit and bounded core-workflow evaluation design.
 - Added a mandatory deep-paper Workflow Research Gate, a replication-grade paper dossier template, and a retrospective audit that sequences research repair for every implemented workflow section.
 - Initial open-source repository scaffold.
 - Umbrella structure for playbooks, workflows, skills, schemas, and runners.

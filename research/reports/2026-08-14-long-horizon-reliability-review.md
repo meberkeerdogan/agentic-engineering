@@ -89,7 +89,7 @@ Limits: the evaluation is Python-focused, and task resolution does not capture e
 
 #### Progress Mirage
 
-[Progress Mirage](../papers/2607.25152-progress-mirage.pdf) is a preregistered preliminary pilot using one open-ended conversion task family, one agent, one stronger judge, three repetitions per condition, and six cycles per repetition. Across 54 cycles, the agent claimed improvement every time, while 56% of changes had zero or negative externally measured improvement. A stronger in-band judge still accepted 40% of regressions and rejected 37.5% of true improvements. In the authors' channel-manipulation experiment, the out-of-band gate produced zero mirage by construction. On a bounded artifact-verifiable task, the stronger judge also reached zero mirage.
+[Progress Mirage](../papers/2607.25152-progress-mirage.pdf) is a preliminary pilot whose hypotheses were recorded before measurement but whose prescribed commit-hash freeze was not completed. It uses one open-ended conversion task family, one agent, one stronger judge, three repetitions per condition, and six cycles per repetition. Across 54 cycles, the agent claimed improvement every time, while 56% of changes had zero or negative externally measured improvement. A stronger in-band judge still accepted 40% of regressions and rejected 37.5% of true improvements. In the authors' channel-manipulation experiment, the out-of-band gate produced zero mirage by construction. On a bounded artifact-verifiable task, the stronger judge also reached zero mirage.
 
 The correct boundary is important: an out-of-band evaluator is structurally valuable when success lives outside the agent's transcript or visible artifact. It is not automatically necessary when deterministic artifact checks already expose completion.
 
@@ -109,11 +109,13 @@ Limits: most reports were not manually reviewed, expected behavior can be ambigu
 
 [LongHorizon-Harness](../papers/2608.01964-longhorizon-harness.pdf) uses a manager-executor-auditor loop. The manager owns structured task state without environment access; a fresh, budgeted executor is the only modifying role; and a fresh, read-only auditor verifies the environment. Only audit evidence updates state. The same underlying model may fill all roles, so independence comes mainly from context and permissions.
 
-The paper reports substantial gains: Qwen 3.7-Plus rises from 51.8 to 80.7 on WeaveBench, from 69.7 to 77.2 on Terminal-Bench 2.1, and from 2.8 to 8.3 on OSWorld; Claude Opus 4.7 rises from 20.0 to 34.3 on an OSWorld subset. Token use increases 2.3x on WeaveBench and 3.6x on OSWorld, but falls 24% on Terminal-Bench. The auditor is the main overhead.
+The paper reports substantial gains: Qwen 3.7-Plus rises from 51.8 to 80.7 on WeaveBench, from 69.7 to 77.2 on Terminal-Bench 2.1, and from 2.8 to 8.3 on OSWorld; Claude Opus 4.7 rises from 20.6 to 35.3 binary completion on a 34-task OSWorld subset, with partial score rising from 55.8 to 66.9. Token use increases 2.3x on WeaveBench and 3.6x on OSWorld, but falls 24% on Terminal-Bench. The auditor is the main overhead.
 
 Project interpretation: this is the strongest architecture candidate for a first reproduction. Its value is likely highest when state management, drift, and recovery—not missing primitive coding skill—are the bottleneck.
 
 Limits: this is a version-one preprint without a clear limitations section or clean component ablation. The benchmarks mix GUI and terminal tasks rather than long-term repository evolution. The full architecture should therefore be reproduced before being made a default.
+
+The later replication-grade review narrows these claims further and records implementation differences in the [core-workflow synthesis](../reviews/core-workflow/SYNTHESIS.md).
 
 #### LivePlan
 

@@ -6,6 +6,8 @@
 
 Long projects accumulate corrections, replacements, and scope changes. Sending the entire conversation back to an agent makes obsolete instructions look current. This module compiles an ordered revision history into one deterministic active specification.
 
+The detailed [SpecPath dossier](../../research/reviews/core-workflow/specpath.md) supports testing path sensitivity, but its proposed explicit contract ledger was not evaluated as an intervention. M02 is therefore an **adaptation**: it compiles trusted structured operations and does not claim to infer the active contract from natural-language conversation. See the [core synthesis](../../research/reviews/core-workflow/SYNTHESIS.md).
+
 ## Inputs and Outputs
 
 - `schemas/spec-history.schema.json` defines a base active specification plus ordered revision operations.
@@ -27,6 +29,8 @@ Use `--behavior-only` to emit only the current behavioral contract or `--fingerp
 ## Promotion Gate
 
 The direct and revised example histories must compile to identical active behavior and the same behavior fingerprint, even though the revised artifact retains its superseded requirement lineage.
+
+This local equivalence fixture is not a SpecPath reproduction. A future efficacy test must hold repository, verifier, agent, budget, and final contract fixed across direct, duplicate, split, override, and cancellation histories, then report direct competence and paired path violations separately.
 
 ## Test Command
 
