@@ -1,0 +1,21 @@
+diff --git a/fulfillment/reporting.py b/fulfillment/reporting.py
+--- a/fulfillment/reporting.py
++++ b/fulfillment/reporting.py
+@@ -10 +10 @@
+-from .orders import allocation_quantities, unallocated_quantities
++from .orders import allocation_quantities, requested_quantities, unallocated_quantities
+@@ -72 +72,13 @@
+-    raise NotImplementedError("multi-target upgrade: exception reporting")
++    requested = requested_quantities(order)
++    allocated = allocation_quantities(allocations)
++    missing = unallocated_quantities(order, allocations)
++    return [
++        {
++            "type": "unallocated",
++            "sku": sku,
++            "requested": requested[sku],
++            "allocated": allocated.get(sku, 0),
++            "missing": missing[sku],
++        }
++        for sku in sorted(missing)
++    ]

@@ -1,0 +1,90 @@
+{
+  "version": 1,
+  "chain_id": "fulfillment-evolution-001",
+  "title": "Persistent fulfillment service evolution",
+  "base_repository_ref": "examples/long-task/multi-target-upgrade",
+  "base_excluded_paths": ["ACTIVE_SPEC.md", "workflow-control.md"],
+  "workflow_ref": "examples/long-task/continuous-evolution/workflow-control.md",
+  "evaluator_overlay_ref": "examples/long-task/evaluators/multi-target-upgrade/evaluator_tests",
+  "milestones": [
+    {
+      "id": "m01-ranked-sources",
+      "title": "Rank warehouse sources",
+      "depends_on": [],
+      "spec_ref": "examples/long-task/continuous-evolution/specs/m01-ranked-sources.md",
+      "oracle_patch_ref": "examples/long-task/oracles/continuous-evolution/m01-ranked-sources.patch",
+      "target_id": "ranked-sources",
+      "target_test": "evaluator_tests.test_targets.RankedSourcesTests",
+      "protected_tests": [
+        "tests.test_existing",
+        "evaluator_tests.test_protected"
+      ]
+    },
+    {
+      "id": "m02-exception-report",
+      "title": "Report allocation exceptions",
+      "depends_on": [],
+      "spec_ref": "examples/long-task/continuous-evolution/specs/m02-exception-report.md",
+      "oracle_patch_ref": "examples/long-task/oracles/continuous-evolution/m02-exception-report.patch",
+      "target_id": "exception-report",
+      "target_test": "evaluator_tests.test_targets.ExceptionReportTests",
+      "protected_tests": [
+        "tests.test_existing",
+        "evaluator_tests.test_protected",
+        "evaluator_tests.test_targets.RankedSourcesTests"
+      ]
+    },
+    {
+      "id": "m03-split-allocation",
+      "title": "Allocate orders across warehouses",
+      "depends_on": ["m01-ranked-sources"],
+      "spec_ref": "examples/long-task/continuous-evolution/specs/m03-split-allocation.md",
+      "oracle_patch_ref": "examples/long-task/oracles/continuous-evolution/m03-split-allocation.patch",
+      "target_id": "split-allocation",
+      "target_test": "evaluator_tests.test_targets.SplitAllocationTests",
+      "protected_tests": [
+        "tests.test_existing",
+        "evaluator_tests.test_protected",
+        "evaluator_tests.test_targets.RankedSourcesTests",
+        "evaluator_tests.test_targets.ExceptionReportTests"
+      ]
+    },
+    {
+      "id": "m04-shipping-quotes",
+      "title": "Quote split shipments",
+      "depends_on": [],
+      "spec_ref": "examples/long-task/continuous-evolution/specs/m04-shipping-quotes.md",
+      "oracle_patch_ref": "examples/long-task/oracles/continuous-evolution/m04-shipping-quotes.patch",
+      "target_id": "shipping-quotes",
+      "target_test": "evaluator_tests.test_targets.ShippingQuoteTests",
+      "protected_tests": [
+        "tests.test_existing",
+        "evaluator_tests.test_protected",
+        "evaluator_tests.test_targets.RankedSourcesTests",
+        "evaluator_tests.test_targets.ExceptionReportTests",
+        "evaluator_tests.test_targets.SplitAllocationTests"
+      ]
+    },
+    {
+      "id": "m05-integrated-plan",
+      "title": "Build the integrated fulfillment plan",
+      "depends_on": [
+        "m02-exception-report",
+        "m03-split-allocation",
+        "m04-shipping-quotes"
+      ],
+      "spec_ref": "examples/long-task/continuous-evolution/specs/m05-integrated-plan.md",
+      "oracle_patch_ref": "examples/long-task/oracles/continuous-evolution/m05-integrated-plan.patch",
+      "target_id": "integrated-plan",
+      "target_test": "evaluator_tests.test_targets.IntegratedPlanTests",
+      "protected_tests": [
+        "tests.test_existing",
+        "evaluator_tests.test_protected",
+        "evaluator_tests.test_targets.RankedSourcesTests",
+        "evaluator_tests.test_targets.ExceptionReportTests",
+        "evaluator_tests.test_targets.SplitAllocationTests",
+        "evaluator_tests.test_targets.ShippingQuoteTests"
+      ]
+    }
+  ]
+}

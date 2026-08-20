@@ -1,0 +1,38 @@
+diff --git a/fulfillment/orders.py b/fulfillment/orders.py
+--- a/fulfillment/orders.py
++++ b/fulfillment/orders.py
+@@ -100 +100,33 @@
+-    raise NotImplementedError("multi-target upgrade: split order allocation")
++    checked = validate_order(order, catalog)
++    shortages = {
++        line.sku: line.quantity - inventory.total_available(line.sku)
++        for line in checked.lines
++        if inventory.total_available(line.sku) < line.quantity
++    }
++    if shortages:
++        detail = ", ".join(
++            f"{sku}={quantity}" for sku, quantity in sorted(shortages.items())
++        )
++        raise InsufficientStockError(f"order cannot be fully allocated: {detail}")
++
++    planned: list[Allocation] = []
++    for line in checked.lines:
++        remaining = line.quantity
++        for warehouse in inventory.ranked_sources(
++            line.sku, checked.destination_zone
++        ):
++            quantity = min(
++                remaining,
++                inventory.available(warehouse.warehouse_id, line.sku),
++            )
++            if quantity:
++                planned.append(Allocation(warehouse.warehouse_id, line.sku, quantity))
++                remaining -= quantity
++            if not remaining:
++                break
++
++    for allocation in planned:
++        inventory.reserve(
++            allocation.warehouse_id, allocation.sku, allocation.quantity
++        )
++    return tuple(planned)

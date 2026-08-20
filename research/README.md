@@ -19,6 +19,7 @@ This directory keeps the evidence used to design and evaluate Agentic Engineerin
 - [Long-task evaluation deep review](reviews/long-task/SYNTHESIS.md)
 - [Harder long-task test design](reviews/long-task/HARDER_TEST_DESIGN.md)
 - [Offline Level 1 multi-target fixture](../examples/long-task/README.md)
+- [Offline Level 2 continuous-evolution fixture](../docs/modules/06l-long-task-level-2.md)
 - [Source index](sources.md)
 - [PDF integrity and extraction manifest](papers/manifest.json)
 

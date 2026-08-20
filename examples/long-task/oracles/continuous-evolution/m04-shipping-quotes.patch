@@ -1,0 +1,23 @@
+diff --git a/fulfillment/shipping.py b/fulfillment/shipping.py
+--- a/fulfillment/shipping.py
++++ b/fulfillment/shipping.py
+@@ -86 +86,18 @@
+-    raise NotImplementedError("multi-target upgrade: split shipping quotes")
++    records = tuple(allocations)
++    if not records:
++        return ()
++    grouped = allocations_by_warehouse(records)
++    quotes = []
++    for warehouse_id in sorted(grouped):
++        warehouse = inventory.warehouse(warehouse_id)
++        weight = shipment_weight(grouped[warehouse_id], catalog)
++        quotes.append(
++            ShippingQuote(
++                warehouse_id,
++                weight,
++                quote_one_shipment(
++                    warehouse.zone, destination_zone, weight
++                ),
++            )
++        )
++    return tuple(quotes)

@@ -36,6 +36,10 @@ SCHEMA_EXAMPLE_PAIRS = [
         "long-task/evaluators/multi-target-upgrade/evidence-contract.json",
     ),
     ("evaluation-report.schema.json", "fixture-task/expected-evaluation.json"),
+    (
+        "milestone-chain.schema.json",
+        "long-task/continuous-evolution/milestone-chain.json",
+    ),
     ("live-pilot.schema.json", "live-pilot.json"),
     ("usage-rates.schema.json", "live-pilot-rates.json"),
     ("codex-environment.schema.json", "codex-environment.json"),

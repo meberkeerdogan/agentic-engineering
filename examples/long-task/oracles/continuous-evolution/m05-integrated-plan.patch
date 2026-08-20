@@ -1,0 +1,14 @@
+diff --git a/fulfillment/service.py b/fulfillment/service.py
+--- a/fulfillment/service.py
++++ b/fulfillment/service.py
+@@ -61 +61,9 @@
+-        raise NotImplementedError("multi-target upgrade: integrated plan")
++        checked = validate_order(order, self.catalog)
++        allocations = allocate_order(checked, self.catalog, self.inventory)
++        quotes = quote_allocations(
++            allocations,
++            checked.destination_zone,
++            self.catalog,
++            self.inventory,
++        )
++        return {"status": "ready", **build_plan_sections(checked, allocations, quotes)}

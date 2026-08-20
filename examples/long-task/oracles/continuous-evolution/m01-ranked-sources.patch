@@ -1,0 +1,22 @@
+diff --git a/fulfillment/inventory.py b/fulfillment/inventory.py
+--- a/fulfillment/inventory.py
++++ b/fulfillment/inventory.py
+@@ -101 +101,17 @@
+-        raise NotImplementedError("multi-target upgrade: ranked warehouse sources")
++        normalized_sku = normalize_sku(sku)
++        destination = normalize_identifier(destination_zone, "destination zone").casefold()
++        stocked = [
++            warehouse
++            for warehouse in self._warehouses.values()
++            if self.available(warehouse.warehouse_id, normalized_sku) > 0
++        ]
++        return tuple(
++            sorted(
++                stocked,
++                key=lambda warehouse: (
++                    warehouse.zone.casefold() != destination,
++                    warehouse.priority,
++                    warehouse.warehouse_id,
++                ),
++            )
++        )

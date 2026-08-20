@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/milestone-chain.schema.json",
+  "title": "Persistent Milestone Chain",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "chain_id", "title", "base_repository_ref", "base_excluded_paths", "workflow_ref", "evaluator_overlay_ref", "milestones"],
+  "properties": {
+    "version": { "const": 1 },
+    "chain_id": { "$ref": "#/$defs/id" },
+    "title": { "type": "string", "minLength": 1 },
+    "base_repository_ref": { "$ref": "#/$defs/relativePath" },
+    "base_excluded_paths": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/relativePath" }
+    },
+    "workflow_ref": { "$ref": "#/$defs/relativePath" },
+    "evaluator_overlay_ref": { "$ref": "#/$defs/relativePath" },
+    "milestones": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "depends_on", "spec_ref", "oracle_patch_ref", "target_id", "target_test", "protected_tests"],
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "title": { "type": "string", "minLength": 1 },
+          "depends_on": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "$ref": "#/$defs/id" }
+          },
+          "spec_ref": { "$ref": "#/$defs/relativePath" },
+          "oracle_patch_ref": { "$ref": "#/$defs/relativePath" },
+          "target_id": { "$ref": "#/$defs/id" },
+          "target_test": { "$ref": "#/$defs/testName" },
+          "protected_tests": {
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "items": { "$ref": "#/$defs/testName" }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?![A-Za-z]:)(?![/\\\\])(?!.*(?:^|[/\\\\])\\.\\.(?:[/\\\\]|$)).+"
+    },
+    "testName": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_.]*$" }
+  }
+}
