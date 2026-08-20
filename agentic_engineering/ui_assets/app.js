@@ -50,8 +50,8 @@ function renderResult(summary) {
   status.textContent = summary.status || "unknown";
   status.classList.toggle("verified", summary.verified_complete === true);
   byId("result-verified").textContent = summary.verified_complete ? "Yes" : "No";
-  byId("result-regressions").textContent = Array.isArray(summary.regressions)
-    ? String(summary.regressions.length)
+  byId("result-regressions").textContent = Number.isInteger(summary.regressions)
+    ? String(summary.regressions)
     : "—";
   byId("result-cost").textContent = formatCost(summary);
   byId("result-time").textContent = summary.time_seconds === undefined

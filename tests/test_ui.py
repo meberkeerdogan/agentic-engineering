@@ -151,5 +151,6 @@ def test_ui_javascript_uses_safe_text_rendering() -> None:
 
     assert "textContent" in script
     assert "replaceChildren" in script
+    assert "Number.isInteger(summary.regressions)" in script
     assert "innerHTML" not in script
     assert "insertAdjacentHTML" not in script
