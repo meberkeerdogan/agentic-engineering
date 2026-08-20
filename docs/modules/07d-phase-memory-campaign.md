@@ -1,6 +1,6 @@
 # M07d: Phase-Memory Evidence Campaign
 
-**Status:** Offline-ready and budgeted; no model execution authorized
+**Status:** Complete; default promotion rejected
 
 ## Purpose
 
@@ -13,6 +13,8 @@ The prepared M06 matrix has two arms, three task categories, and three repeated 
 - a multi-step roadmap evolution whose phase capacity evicts an unrelated distractor.
 
 This design tests retrieval policy rather than giving the treatment extra facts. Every retrieved summary remains subordinate to its referenced canonical file.
+
+This is a project-memory adaptation, not a reproduction of Prometheus or PMCoder. It does not implement repository knowledge-graph retrieval, automatic episodic capture, live phase detection, memory-driven replanning, or execution-grounded recovery. The detailed [memory-paper synthesis](../../research/reviews/memory/SYNTHESIS.md) audits those differences.
 
 ## Offline readiness boundary
 

@@ -5,7 +5,7 @@ This audit tracks whether each product section has replication-grade paper revie
 | Workflow section | Priority papers | Current evidence | Gate status | Next record |
 | --- | --- | --- | --- | --- |
 | Core verified workflow | LongHorizon-Harness, Progress Mirage, SpecPath, Agentless, Runtime-Structured Task Decomposition | [Five paper dossiers and full synthesis](reviews/core-workflow/SYNTHESIS.md); implementation-alignment audit; scoped Progress Mirage fixture | Retrospective gate passed | Run the predeclared harder matched evaluation before any default promotion |
-| Memory and context | Prometheus, ContextBench, PMCoder | Design summaries plus completed adapted phase-memory campaign | Retrospective required - highest priority | Memory dossiers, implementation-alignment audit, revised experiment |
+| Memory and context | Prometheus, ContextBench, PMCoder | Full dossiers and [synthesis](reviews/memory/SYNTHESIS.md); implementation audit; preserved 18-cell negative result | Retrospective gate passed | Add retrieval-quality instrumentation and harder non-ceiling tasks before another live run |
 | Long-task evaluation | SWE-EVO, RoadmapBench, SWE-Milestone, NL2Repo-Bench | Benchmark summaries and representative fixtures | Retrospective required | Benchmark dossiers and task-validity synthesis |
 | Planning and monitoring | CodePlan, From Plan to Action, LivePlan, PMCoder | Implemented experiments, sentinel results, and watchdog calibration | Retrospective required | Planning and monitoring dossiers plus alignment audit |
 | Testing and evidence | Agentic Property-Based Testing, TICoder, Progress Mirage | Offline property-evidence mechanism and external-verification design | Retrospective required | Testing dossiers and live evaluation design |

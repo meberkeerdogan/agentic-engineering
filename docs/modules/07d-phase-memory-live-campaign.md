@@ -86,6 +86,8 @@ All 18 cells independently verified. Both arms completed `9 / 9` tasks with zero
 
 The campaign is complete. Its deterministic report fingerprint is `82270bdbe8cf04b2af576cd6026f640ad4a3a737e03dc161aec3bdbcd2dff553`.
 
+The retrospective [memory-paper review](../../research/reviews/memory/SYNTHESIS.md) confirms that this was a bounded project-memory adaptation and safety/overhead experiment, not a reproduction of Prometheus or PMCoder. It did not measure ContextBench-style retrieval precision, recall, redundancy, or evidence drop, and it did not implement PMCoder's bidirectional plan-memory coupling. Those measurements and harder non-ceiling tasks are required before another efficacy campaign.
+
 ## Decision rule
 
 Bounded memory is promoted only if the complete repeated evidence satisfies the predeclared experiment rule: improved verified completion on memory-pressure tasks, no loss on the low-pressure control, no memory-attributable errors or additional regressions, and acceptable cost, time, and intervention results.

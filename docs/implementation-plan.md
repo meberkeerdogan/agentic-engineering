@@ -59,7 +59,7 @@ Every new workflow section must pass the [Workflow Research Gate](../research/WO
 ### Implemented experimentally, not defaults yet
 
 - **CodePlan:** informed the dependency-planning experiment; efficacy still needs broader tasks.
-- **PMCoder:** informed bounded phase-aware memory; plan-memory coupling remains promotion-gated.
+- **PMCoder:** provides repeated evidence for bidirectional plan-memory coupling, but our bounded project ledger is a smaller adaptation and did not reproduce that mechanism. Automatic episodic capture and coupling remain future experiments.
 - **LivePlan:** informed the observe-first taxonomy; real calibration currently permits no advice signals.
 - **Agentic Property-Based Testing:** informed independently reviewed property evidence; generated proposals never establish correctness by themselves.
 - **CAID:** informed isolated worktree orchestration; default use still requires a comparison with the verified single-agent runner.
@@ -67,8 +67,8 @@ Every new workflow section must pass the [Workflow Research Gate](../research/WO
 
 ### Not planned now
 
-- **Prometheus:** a repository knowledge graph is expensive and has not yet been shown to be our bottleneck.
-- **ContextBench:** useful as an evaluation reference, not a component to implement.
+- **Prometheus:** memory-first repository context reuse is relevant, but a knowledge graph and embedding store remain deferred until repeated navigation is measured as a bottleneck.
+- **ContextBench:** its retrieval precision, recall, redundancy, and evidence-drop metrics should shape the next memory evaluation; it is an evaluation reference, not a component to copy.
 - **TICoder:** overlaps with the evidence-contract and planning experiments; defer until those are measured.
 - **SWE-agent interface reproduction:** useful historical evidence, but existing coding tools already provide a baseline interface.
 - **Live-SWE-agent:** runtime self-modification expands the safety and evaluation surface too early.

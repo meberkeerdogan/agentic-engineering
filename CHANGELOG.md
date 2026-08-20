@@ -8,10 +8,12 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 
 ### Changed
 
+- Reclassified bounded phase memory as a project-memory adaptation rather than a Prometheus or PMCoder reproduction, and updated the completed campaign boundary after full paper review.
 - Narrowed core-workflow claims to distinguish tested paper results from project adaptations, documented the current command-auditor sandbox gap, and corrected the LongHorizon Opus subset result to `20.6% -> 35.3%` binary completion.
 
 ### Added
 
+- Added replication-grade Prometheus, ContextBench, and PMCoder dossiers plus a memory implementation audit and a harder, retrieval-aware follow-up experiment design.
 - Added replication-grade dossiers for LongHorizon-Harness, Progress Mirage, and SpecPath, plus a cross-paper implementation audit and bounded core-workflow evaluation design.
 - Completed the core-workflow research gate with Agentless and Runtime-Structured Task Decomposition dossiers, establishing a simpler-baseline requirement and limiting selective-retry claims to observed failure economics.
 - Added a mandatory deep-paper Workflow Research Gate, a replication-grade paper dossier template, and a retrospective audit that sequences research repair for every implemented workflow section.

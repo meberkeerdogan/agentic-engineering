@@ -20,22 +20,23 @@ This file is a short map of what the project has taught, what is being tested no
 - Deep-paper research gate: every workflow section now requires full primary-paper dossiers, cross-paper synthesis, explicit transfer decisions, and a predeclared evaluation. Completed sections with only design-level summaries are tracked for retrospective repair in the [section audit](research/WORKFLOW_SECTION_AUDIT.md).
 - Core verification/specification review: LongHorizon-Harness supports separated execution and audit but has task-dependent cost and no clean component ablation; Progress Mirage supports matching evaluator access to where truth lives; SpecPath demonstrates path sensitivity but does not validate its proposed contract ledger. Review the [focused synthesis](research/reviews/core-workflow/SYNTHESIS.md).
 - Core baseline/decomposition review: Agentless establishes that complex agents must beat a cheap fixed pipeline; RSTD shows selective retry can reduce injected-failure recovery cost, while decomposition adds normal overhead and did not improve correctness in its two cases.
+- Memory review and implementation audit: Prometheus caches repository evidence, ContextBench shows that broad retrieval can add noise, and PMCoder couples episodic recall with planning and recovery. Our bounded phase ledger is a safer project-memory adaptation, not a reproduction. Its `9/9` versus `9/9` campaign remains a useful negative result.
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
 
-Audit the completed phase-memory implementation and campaign against full memory-paper methods, then repair long-task evaluation.
+Repair long-task evaluation by reading SWE-EVO, RoadmapBench, SWE-Milestone, and NL2Repo-Bench in depth before changing benchmark code.
 
 ## Current exercise
 
-Why should decomposition remain optional instead of becoming the default workflow?
+Why should we not rerun the same 18-cell phase-memory campaign?
 
-**Answer:** the RSTD paper shows cheaper retry after an injected failure, but normal decomposed runs used much more time and tokens, natural failures were rare, and every condition was equally correct. We should add decomposition only when measured failure/retry savings outweigh its normal overhead.
+**Answer:** both arms already completed every task, so the experiment cannot reveal a completion improvement. The next run needs harder tasks and retrieval-quality measurements; otherwise we would mostly pay to confirm the same ceiling.
 
 ## Suggested next topics
 
-1. Memory dossiers and retrospective phase-memory alignment audit.
-2. Long-task benchmark validity and harder task design.
+1. Long-task benchmark validity and harder task design.
+2. Retrieval-quality instrumentation for future memory experiments.
 3. Ceiling effects and predeclared efficiency hypotheses.
 4. Technical enforcement of read-only evaluation.
 

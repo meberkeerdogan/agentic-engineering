@@ -15,6 +15,7 @@ This directory keeps the evidence used to design and evaluate Agentic Engineerin
 - [Watchdog calibration evidence](calibration/README.md)
 - [Progress Mirage claim-level reproduction](reproductions/progress-mirage-claim/reproduction.json)
 - [Core verification/specification deep review](reviews/core-workflow/SYNTHESIS.md)
+- [Memory and context deep review](reviews/memory/SYNTHESIS.md)
 - [Source index](sources.md)
 - [PDF integrity and extraction manifest](papers/manifest.json)
 
