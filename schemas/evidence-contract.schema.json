@@ -21,6 +21,7 @@
           "id": { "$ref": "#/$defs/id" },
           "spec_criterion_id": { "$ref": "#/$defs/id" },
           "description": { "type": "string", "minLength": 1 },
+          "target_id": { "$ref": "#/$defs/id" },
           "evaluator_ids": {
             "type": "array",
             "minItems": 1,

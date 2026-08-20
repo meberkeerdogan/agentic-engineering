@@ -19,6 +19,8 @@ This is an agentless-style control harness, not a reproduction of the complete A
 
 All four implementations return the same deterministic result shape. Required criterion results and protected baseline regressions are then derived into an `evaluation-report` document. Wall-clock times and absolute machine paths are deliberately excluded from the report fingerprint.
 
+For harder tasks, criteria may declare a `target_id`. The report then groups required criteria by target and adds two partial scores. `target_completion` shows the fraction of targets that passed. `strict_target_completion` shows the same value only when no protected behavior regressed; otherwise it is zero. Contracts without target groups keep their original report shape and fingerprint.
+
 ## Example
 
 ```powershell
@@ -35,7 +37,7 @@ Artifact paths are constrained to the evaluation root, and commands use argument
 
 ## Promotion Gate
 
-The fixture must produce exactly `examples/fixture-task/expected-evaluation.json`. All four evaluator types must pass, repeated runs must match, and a failing protected command must be reported as both failed evidence and a regression.
+The fixture must produce exactly `examples/fixture-task/expected-evaluation.json`. All four evaluator types must pass, repeated runs must match, and a failing protected command must be reported as both failed evidence and a regression. Grouped-target tests must preserve raw partial progress while setting the strict score to zero after a regression.
 
 ## Test Command
 

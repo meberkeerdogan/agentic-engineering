@@ -22,11 +22,12 @@ This file is a short map of what the project has taught, what is being tested no
 - Core baseline/decomposition review: Agentless establishes that complex agents must beat a cheap fixed pipeline; RSTD shows selective retry can reduce injected-failure recovery cost, while decomposition adds normal overhead and did not improve correctness in its two cases.
 - Memory review and implementation audit: Prometheus caches repository evidence, ContextBench shows that broad retrieval can add noise, and PMCoder couples episodic recall with planning and recovery. Our bounded phase ledger is a safer project-memory adaptation, not a reproduction. Its `9/9` versus `9/9` campaign remains a useful negative result.
 - Long-task evaluation review: release-sized and continuous benchmarks show that partial progress is common, regressions accumulate, and isolated successes often fail to compose. Our three small tasks are valid safety fixtures but too easy for efficacy claims. Review the [synthesis](research/reviews/long-task/SYNTHESIS.md) and [harder test design](research/reviews/long-task/HARDER_TEST_DESIGN.md).
+- Regression-safe target scoring: harder evidence contracts can group criteria by target. Reports preserve the raw fraction completed, while the strict score becomes zero if protected old behavior breaks. Review `run_single_pass_baseline` in [evaluators.py](agentic_engineering/evaluators.py).
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
 
-Implement the offline Level 1 multi-target and Level 2 continuous-evolution test ladder. This is the last evidence prerequisite before deciding whether the core is ready to enter `v0.1` publishing work.
+Build the offline Level 1 multi-target fixture using the new grouped-target and regression-safe partial scores.
 
 ## Current exercise
 

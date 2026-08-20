@@ -15,6 +15,7 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 
 ### Added
 
+- Added optional target grouping to evidence criteria, with deterministic target results and regression-safe partial scores for harder task evaluation.
 - Added replication-grade dossiers for SWE-EVO, RoadmapBench, SWE-Milestone, and NL2Repo-Bench, plus a synthesis and bounded harder-test ladder for multi-target and continuous evolution.
 - Added replication-grade Prometheus, ContextBench, and PMCoder dossiers plus a memory implementation audit and a harder, retrieval-aware follow-up experiment design.
 - Added replication-grade dossiers for LongHorizon-Harness, Progress Mirage, and SpecPath, plus a cross-paper implementation audit and bounded core-workflow evaluation design.

@@ -384,6 +384,13 @@ def _validate_contract(contract: Mapping[str, Any], root: Path) -> None:
         if not isinstance(criterion_id, str) or not criterion_id:
             raise EvaluationError("criterion ID must be a non-empty string")
         criterion_ids.append(criterion_id)
+        target_id = criterion.get("target_id")
+        if target_id is not None and (
+            not isinstance(target_id, str) or not target_id
+        ):
+            raise EvaluationError(
+                f"criterion {criterion_id} target ID must be a non-empty string"
+            )
         evaluator_refs = criterion.get("evaluator_ids")
         if not isinstance(evaluator_refs, list) or not evaluator_refs:
             raise EvaluationError(f"criterion {criterion_id} has no evaluators")
@@ -395,6 +402,21 @@ def _validate_contract(contract: Mapping[str, Any], root: Path) -> None:
             )
     if len(criterion_ids) != len(set(criterion_ids)):
         raise EvaluationError("evidence contract contains duplicate criterion IDs")
+    target_ids = {
+        criterion["target_id"]
+        for criterion in criteria
+        if isinstance(criterion.get("target_id"), str)
+        and criterion["target_id"]
+    }
+    for target_id in sorted(target_ids):
+        if not any(
+            criterion.get("target_id") == target_id
+            and criterion.get("required") is True
+            for criterion in criteria
+        ):
+            raise EvaluationError(
+                f"target {target_id} must contain at least one required criterion"
+            )
 
     baselines = contract.get("baselines", [])
     if not isinstance(baselines, list):
@@ -448,14 +470,15 @@ def run_single_pass_baseline(
             outcome = "error"
         elif "fail" in outcomes or not outcomes:
             outcome = "fail"
-        criterion_results.append(
-            {
-                "criterion_id": criterion["id"],
-                "required": criterion["required"],
-                "outcome": outcome,
-                "evaluator_ids": sorted(evaluator_ids),
-            }
-        )
+        criterion_result = {
+            "criterion_id": criterion["id"],
+            "required": criterion["required"],
+            "outcome": outcome,
+            "evaluator_ids": sorted(evaluator_ids),
+        }
+        if criterion.get("target_id"):
+            criterion_result["target_id"] = criterion["target_id"]
+        criterion_results.append(criterion_result)
     criterion_results.sort(key=lambda item: item["criterion_id"])
 
     baseline_by_id = {
@@ -482,6 +505,35 @@ def run_single_pass_baseline(
     if any(item["outcome"] == "error" for item in required_results):
         overall = "error"
 
+    target_results = []
+    target_ids = sorted(
+        {
+            item["target_id"]
+            for item in criterion_results
+            if "target_id" in item
+        }
+    )
+    for target_id in target_ids:
+        target_criteria = [
+            item
+            for item in criterion_results
+            if item.get("target_id") == target_id and item["required"]
+        ]
+        target_outcome = "pass"
+        if any(item["outcome"] == "error" for item in target_criteria):
+            target_outcome = "error"
+        elif any(item["outcome"] != "pass" for item in target_criteria):
+            target_outcome = "fail"
+        target_results.append(
+            {
+                "target_id": target_id,
+                "outcome": target_outcome,
+                "criterion_ids": sorted(
+                    item["criterion_id"] for item in target_criteria
+                ),
+            }
+        )
+
     payload = {
         "version": 1,
         "contract_id": contract["id"],
@@ -492,6 +544,18 @@ def run_single_pass_baseline(
         "evaluator_results": evaluator_results,
         "regressions": regressions,
     }
+    if target_results:
+        targets_passed = sum(
+            item["outcome"] == "pass" for item in target_results
+        )
+        target_completion = targets_passed / len(target_results)
+        payload["target_results"] = target_results
+        payload["scores"] = {
+            "targets_passed": targets_passed,
+            "targets_total": len(target_results),
+            "target_completion": target_completion,
+            "strict_target_completion": 0.0 if regressions else target_completion,
+        }
     fingerprint = hashlib.sha256(_canonical_json(payload).encode("utf-8")).hexdigest()
     return {
         **payload,

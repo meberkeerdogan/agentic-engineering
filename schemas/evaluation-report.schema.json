@@ -4,6 +4,10 @@
   "title": "Deterministic Evaluation Report",
   "type": "object",
   "additionalProperties": false,
+  "dependentRequired": {
+    "target_results": ["scores"],
+    "scores": ["target_results"]
+  },
   "required": [
     "version",
     "contract_id",
@@ -30,6 +34,7 @@
         "required": ["criterion_id", "required", "outcome", "evaluator_ids"],
         "properties": {
           "criterion_id": { "$ref": "#/$defs/id" },
+          "target_id": { "$ref": "#/$defs/id" },
           "required": { "type": "boolean" },
           "outcome": { "enum": ["pass", "fail", "error"] },
           "evaluator_ids": {
@@ -38,6 +43,35 @@
             "uniqueItems": true
           }
         }
+      }
+    },
+    "target_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["target_id", "outcome", "criterion_ids"],
+        "properties": {
+          "target_id": { "$ref": "#/$defs/id" },
+          "outcome": { "enum": ["pass", "fail", "error"] },
+          "criterion_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "$ref": "#/$defs/id" },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["targets_passed", "targets_total", "target_completion", "strict_target_completion"],
+      "properties": {
+        "targets_passed": { "type": "integer", "minimum": 0 },
+        "targets_total": { "type": "integer", "minimum": 1 },
+        "target_completion": { "type": "number", "minimum": 0, "maximum": 1 },
+        "strict_target_completion": { "type": "number", "minimum": 0, "maximum": 1 }
       }
     },
     "evaluator_results": {
@@ -72,4 +106,3 @@
     "id": { "type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$" }
   }
 }
-

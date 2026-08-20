@@ -3,6 +3,7 @@ from copy import deepcopy
 from pathlib import Path
 
 import pytest
+from jsonschema import Draft202012Validator
 from test_core_schemas import load_json
 
 from agentic_engineering.evaluators import (
@@ -52,6 +53,82 @@ def test_failed_protected_command_is_a_regression() -> None:
     )
     assert result["outcome"] == "fail"
     assert result["details"]["exit_code"] == 2
+
+
+def test_target_results_report_partial_progress() -> None:
+    contract = fixture_contract()
+    contract["criteria"][0]["target_id"] = "target-a"
+    contract["criteria"][1]["target_id"] = "target-a"
+    contract["criteria"][2]["target_id"] = "target-b"
+    next(
+        baseline
+        for baseline in contract["baselines"]
+        if baseline["evaluator_id"] == "fixture-rubric"
+    )["result"] = "fail"
+    evaluator(contract, "fixture-rubric")["rubric"][1]["expected"] = 4
+
+    report = run_single_pass_baseline(contract, FIXTURE_ROOT)
+
+    assert report["outcome"] == "fail"
+    assert report["target_results"] == [
+        {
+            "target_id": "target-a",
+            "outcome": "pass",
+            "criterion_ids": ["EC-ARTIFACT", "EC-COMMAND"],
+        },
+        {
+            "target_id": "target-b",
+            "outcome": "fail",
+            "criterion_ids": ["EC-RUBRIC"],
+        },
+    ]
+    assert report["scores"] == {
+        "targets_passed": 1,
+        "targets_total": 2,
+        "target_completion": 0.5,
+        "strict_target_completion": 0.5,
+    }
+    Draft202012Validator(
+        load_json("schemas/evidence-contract.schema.json")
+    ).validate(contract)
+    Draft202012Validator(
+        load_json("schemas/evaluation-report.schema.json")
+    ).validate(report)
+
+
+def test_target_score_becomes_zero_when_protected_behavior_regresses() -> None:
+    contract = fixture_contract()
+    contract["criteria"][0]["target_id"] = "target-a"
+    contract["criteria"][1]["target_id"] = "target-a"
+    contract["criteria"][2]["target_id"] = "target-b"
+    evaluator(contract, "fixture-command")["command"] = [
+        "{python}",
+        "-c",
+        "raise SystemExit(2)",
+    ]
+
+    report = run_single_pass_baseline(contract, FIXTURE_ROOT)
+
+    assert report["scores"]["target_completion"] == 0.5
+    assert report["scores"]["strict_target_completion"] == 0.0
+    assert report["regressions"] == ["fixture-command"]
+
+
+def test_target_must_have_a_required_criterion() -> None:
+    contract = fixture_contract()
+    contract["criteria"][0]["target_id"] = "optional-only"
+    contract["criteria"][0]["required"] = False
+
+    with pytest.raises(EvaluationError, match="at least one required criterion"):
+        run_single_pass_baseline(contract, FIXTURE_ROOT)
+
+
+def test_target_id_must_be_a_non_empty_string() -> None:
+    contract = fixture_contract()
+    contract["criteria"][0]["target_id"] = ""
+
+    with pytest.raises(EvaluationError, match="target ID must be"):
+        run_single_pass_baseline(contract, FIXTURE_ROOT)
 
 
 def test_artifact_evaluator_rejects_paths_outside_root() -> None:
