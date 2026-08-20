@@ -28,22 +28,23 @@ This file is a short map of what the project has taught, what is being tested no
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 - `v0.1` feature freeze: the supported product is now the verified single-agent workflow. Technically working but unproven interventions remain explicit experiments rather than hidden defaults. Review the [product scope](docs/v0.1-product-scope.md) and [frozen workflow](workflows/verified-single-agent-v0.1.md).
 - Product boundary and interface: one deep Python function now powers both the command line and a local browser UI. The UI improves usability without duplicating verification logic or enabling experimental features. Review [product.py](agentic_engineering/product.py), [ui.py](agentic_engineering/ui.py), and the [Getting Started guide](docs/getting-started.md).
+- Clean-checkout acceptance: install, command discovery, package building, focused product tests, and the full test suite now pass without relying on the development checkout. Review the [acceptance record](docs/release-acceptance-v0.1.md).
 
 ## Current topic
 
-Run the supported product from a clean checkout and fix only problems that block first use or trustworthy output.
+Prepare the public `v0.1.0` version, tag, and release notes without expanding the frozen feature set.
 
 ## Current exercise
 
-Why should the command line and UI call the same workflow function?
+Why did the clean-checkout acceptance use an offline Codex double instead of spending credits on another agent run?
 
-**Answer:** one shared function keeps safety checks, evidence, and results consistent. Two separate implementations could drift and make the UI appear successful when the command line would reject the same run.
+**Answer:** release acceptance checks whether installation, packaging, safety boundaries, and deterministic workflow wiring work from a clean source copy. Live agent quality is variable and belongs in separately budgeted experiments; it should not make packaging acceptance flaky or costly.
 
 ## Suggested next topics
 
-1. Run the fresh-checkout acceptance test and fix release blockers.
-2. Prepare the `v0.1.0` tag, package, and release notes.
-3. Test the prepared-project setup with a user who did not build the system.
+1. Bump the package to `0.1.0`, review release notes, tag, and publish.
+2. Test the prepared-project setup with a user who did not build the system.
+3. Design a setup wizard only after observing first-user friction.
 4. Keep held-out agent evaluations and new methods in the post-release research backlog.
 
 ## Milestone report checklist

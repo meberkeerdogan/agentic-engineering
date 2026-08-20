@@ -13,7 +13,7 @@ The core modules are complete. `v0.1` is ready when these five product tasks are
 2. **Complete:** provide one simple command and local UI that run the shared workflow without requiring users to understand the internal modules. See the [Getting Started guide](docs/getting-started.md).
 3. **Complete:** provide one realistic end-to-end example showing the input, run, evidence, and final result. See [`product-run.json`](examples/product-run.json) and the [illustrative result](examples/expected-product-summary.json).
 4. **Complete:** add short installation, configuration, troubleshooting, and output-reading guidance.
-5. Run a clean user acceptance test from a fresh checkout, fix release-blocking problems, tag `v0.1.0`, and publish it.
+5. **Acceptance complete; publication pending:** the committed source was installed and built in a clean temporary checkout, `73` focused acceptance tests passed, and the full suite passed `304 / 304`. See the [acceptance record](docs/release-acceptance-v0.1.md). The version bump, `v0.1.0` tag, and publication remain explicit release actions.
 
 This is the release boundary. Optional memory, adaptive planning, watchdog advice, property generation, multi-agent execution, extra adapters, and further paper reproductions do not block `v0.1`.
 

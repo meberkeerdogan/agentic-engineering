@@ -8,7 +8,7 @@ The project is not limited to loops, playbooks, workflows, or skills. Those are 
 
 The research and engineering modules are complete and covered by offline tests. The frozen `v0.1` product path now combines active specifications, isolated single-agent execution, independent checks, regression-safe evaluation, and verified state behind one command and a local browser UI.
 
-The toolkit is usable from source but is not published as `v0.1.0` yet. The remaining release work is a clean-checkout acceptance pass, any release-blocking fixes it finds, and the final tag/package publication. New research methods and unfinished retrospective paper reviews are post-release work, not release blockers. See the finite [product finish line](ROADMAP.md#v01-product-finish-line).
+The toolkit is usable from source and has passed its [clean-checkout acceptance](docs/release-acceptance-v0.1.md), but it is not published as `v0.1.0` yet. The remaining release work is the version bump, final release-note review, tag, and package publication. New research methods and unfinished retrospective paper reviews are post-release work, not release blockers. See the finite [product finish line](ROADMAP.md#v01-product-finish-line).
 
 Implementation does not imply that every mechanism is enabled by default. Watchdog advice, adaptive planning, phase memory, property evidence, and multi-agent execution remain promotion-gated until controlled comparisons show that they beat the simpler verified baseline on their declared targets.
 
