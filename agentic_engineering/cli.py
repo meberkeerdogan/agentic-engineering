@@ -33,12 +33,18 @@ def _parser() -> argparse.ArgumentParser:
     compile_parser.add_argument("--output", "-o", type=Path)
     compile_parser.add_argument("--behavior-only", action="store_true")
     compile_parser.add_argument("--fingerprint", action="store_true")
+
+    ui = subparsers.add_parser("ui", help="open the local verified workflow UI")
+    ui.add_argument("--project-root", type=Path, default=Path.cwd())
+    ui.add_argument("--host", default="127.0.0.1")
+    ui.add_argument("--port", type=int, default=8765)
+    ui.add_argument("--no-open", action="store_true")
     return parser
 
 
 def main(argv: Sequence[str] | None = None) -> int:
     arguments = list(sys.argv[1:] if argv is None else argv)
-    if arguments and arguments[0] not in {"run", "compile", "-h", "--help"}:
+    if arguments and arguments[0] not in {"run", "compile", "ui", "-h", "--help"}:
         return active_spec_main(arguments)
     parsed = _parser().parse_args(arguments)
     if parsed.command == "compile":
@@ -50,6 +56,15 @@ def main(argv: Sequence[str] | None = None) -> int:
         if parsed.fingerprint:
             forwarded.append("--fingerprint")
         return active_spec_main(forwarded)
+    if parsed.command == "ui":
+        from .ui import serve_ui
+
+        return serve_ui(
+            parsed.project_root,
+            host=parsed.host,
+            port=parsed.port,
+            open_browser=not parsed.no_open,
+        )
     try:
         summary = run_verified_workflow(
             parsed.project_root,

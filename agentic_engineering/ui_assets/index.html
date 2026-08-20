@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Agentic Engineering</title>
+    <link rel="stylesheet" href="/assets/app.css">
+    <script src="/assets/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Agentic Engineering home">
+        <span class="brand-mark" aria-hidden="true">AE</span>
+        <span>Agentic Engineering</span>
+      </a>
+      <span class="local-badge">Local only</span>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">Verified workflow · v0.1</p>
+        <h1 id="page-title">Run a coding agent with evidence, not guesswork.</h1>
+        <p class="lede">
+          One supported workflow turns a specification into an isolated agent run,
+          checks the result independently, and keeps the evidence.
+        </p>
+      </section>
+
+      <div class="layout">
+        <section class="panel run-panel" aria-labelledby="run-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="step">01 · Start</p>
+              <h2 id="run-heading">New verified run</h2>
+            </div>
+            <span id="workflow-id" class="workflow-id">Loading…</span>
+          </div>
+
+          <form id="run-form">
+            <label for="config">Run configuration</label>
+            <input id="config" name="config" required autocomplete="off">
+            <p class="hint">A JSON file inside this project.</p>
+
+            <label for="run-id">Run ID</label>
+            <input id="run-id" name="run_id" required maxlength="80" pattern="[A-Za-z0-9_-]+" autocomplete="off">
+            <p class="hint">Letters, numbers, dashes, and underscores.</p>
+
+            <label class="confirmation" for="confirm-paid-run">
+              <input id="confirm-paid-run" name="confirm_paid_run" type="checkbox" required>
+              <span>
+                <strong>I confirm this authenticated run may spend credits.</strong>
+                The workflow will contact the configured Codex service.
+              </span>
+            </label>
+
+            <button id="run-button" type="submit">Run verified workflow</button>
+          </form>
+
+          <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+        </section>
+
+        <aside class="panel context-panel" aria-labelledby="context-heading">
+          <p class="step">Project</p>
+          <h2 id="context-heading">Current context</h2>
+          <dl>
+            <div>
+              <dt>Project</dt>
+              <dd id="project-name">Loading…</dd>
+            </div>
+            <div>
+              <dt>Location</dt>
+              <dd id="project-root" class="path">Loading…</dd>
+            </div>
+            <div>
+              <dt>Feature policy</dt>
+              <dd>Experimental features stay off</dd>
+            </div>
+          </dl>
+          <p class="privacy-note">This page listens only on your computer. It has no analytics and loads no remote assets.</p>
+        </aside>
+      </div>
+
+      <section id="result-panel" class="panel result-panel" aria-labelledby="result-heading" hidden>
+        <div class="panel-heading">
+          <div>
+            <p class="step">02 · Evidence</p>
+            <h2 id="result-heading">Run result</h2>
+          </div>
+          <span id="result-status" class="status">Unknown</span>
+        </div>
+        <div class="metrics">
+          <div><span>Verified</span><strong id="result-verified">—</strong></div>
+          <div><span>Regressions</span><strong id="result-regressions">—</strong></div>
+          <div><span>Cost</span><strong id="result-cost">—</strong></div>
+          <div><span>Time</span><strong id="result-time">—</strong></div>
+        </div>
+        <dl class="result-details">
+          <div><dt>Run ID</dt><dd id="result-run-id">—</dd></div>
+          <div><dt>Workspace revision</dt><dd id="result-revision" class="path">—</dd></div>
+          <div><dt>Evaluation</dt><dd id="result-evaluation" class="path">—</dd></div>
+          <div><dt>Verified state</dt><dd id="result-state" class="path">—</dd></div>
+        </dl>
+      </section>
+
+      <section class="recent" aria-labelledby="recent-heading">
+        <div class="section-heading">
+          <p class="step">History</p>
+          <h2 id="recent-heading">Recent runs</h2>
+        </div>
+        <div id="recent-runs" class="run-list">
+          <p class="empty">No completed runs found yet.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Agentic Engineering</span>
+      <span>Evidence remains in the project run directory.</span>
+    </footer>
+  </body>
+</html>
