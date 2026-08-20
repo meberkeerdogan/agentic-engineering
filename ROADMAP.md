@@ -17,6 +17,8 @@ The core modules are complete. `v0.1` is ready when these five product tasks are
 
 This is the release boundary. Optional memory, adaptive planning, watchdog advice, property generation, multi-agent execution, extra adapters, and further paper reproductions do not block `v0.1`.
 
+**2026-08-20 readiness decision:** the long-task research gate, regression-safe target scoring, Level 1 multi-target fixture, and Level 2 continuous-evolution fixture are complete. The product is ready to enter the five-task `v0.1` packaging stage above. It is not published yet. Additional held-out tasks and paid agent comparisons remain necessary before broad efficacy claims, but they do not block publishing the toolkit with clear experimental claims.
+
 ## Phase 0: Foundation
 
 - **Complete:** vocabulary, project scope, governance, failure taxonomy, and initial research priorities.
@@ -38,7 +40,7 @@ This is the release boundary. Optional memory, adaptive planning, watchdog advic
 
 ## Research Backlog
 
-The remaining deep paper reviews, harder long-task benchmarks, and new methods continue as separate bounded research stages after—or alongside without delaying—the product finish line. Each stage may improve a later release, but no stage creates an automatic obligation to implement the next paper.
+The remaining deep paper reviews, held-out long-task evaluations, external benchmark slices, and new methods continue as separate bounded research stages after—or alongside without delaying—the product finish line. Each stage may improve a later release, but no stage creates an automatic obligation to implement the next paper.
 
 ## Continuing Questions
 

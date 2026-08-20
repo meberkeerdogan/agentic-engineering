@@ -29,7 +29,7 @@ This file is a short map of what the project has taught, what is being tested no
 
 ## Current topic
 
-Add held-out long-task variants and run the complete offline acceptance gate before deciding whether a live sentinel is justified.
+Turn the verified core into the finite `v0.1` user path: one default workflow, one simple command, one realistic example, short setup guidance, and a fresh-checkout acceptance test.
 
 ## Current exercise
 
@@ -39,10 +39,10 @@ Why should the same milestone be tested both alone and after earlier agent work?
 
 ## Suggested next topics
 
-1. Add held-out variants and run offline acceptance checks.
-2. Run one low-cost sentinel only if the offline tasks stay valid.
-3. Reassess product readiness, then freeze the `v0.1` workflow and user journey.
-4. Keep additional research methods in the post-release backlog.
+1. Freeze the supported `v0.1` workflow and user journey.
+2. Add one simple command and realistic end-to-end example.
+3. Add setup guidance and run a fresh-checkout acceptance test.
+4. Keep held-out agent evaluations and new methods in the post-release research backlog.
 
 ## Milestone report checklist
 

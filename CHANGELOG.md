@@ -8,6 +8,7 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 
 ### Changed
 
+- Completed the offline long-task evidence ladder and moved held-out agent efficacy experiments behind the finite `v0.1` product finish line.
 - Reclassified the existing representative task pack as a small integration and safety fixture rather than long-task efficacy evidence, and corrected the stored SWE-EVO v6 headline/table conflict.
 - Added a finite `v0.1` product finish line, made remaining research reviews non-blocking, and required plain-English communication across project reports and user-facing documentation.
 - Reclassified bounded phase memory as a project-memory adaptation rather than a Prometheus or PMCoder reproduction, and updated the completed campaign boundary after full paper review.

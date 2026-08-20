@@ -92,3 +92,9 @@ Do not promote a workflow from activity or one favorable run. A treatment must i
 6. Only if the sentinel produces useful variation, predeclare and run a repeated efficacy comparison.
 
 This order has a stopping rule: if offline tasks are invalid, or the sentinel produces another complete ceiling or complete floor, repair the task design before spending on a full matrix.
+
+## Implementation status and release decision
+
+As of 2026-08-20, steps 1-3 are complete and pass the full offline suite. Level 1 starts at `0/5` targets with no protected regression and reaches `5/5` with its oracle. Level 2 has five milestones whose isolated and continuous oracle paths match; intentionally omitting the first milestone creates a later protected regression.
+
+Steps 4-6 remain required before claiming that a workflow improves long-task agent performance. They do not block `v0.1` packaging because the release is an experimental workflow toolkit, not a proven efficacy claim. Product work now returns to the finite finish line in [ROADMAP.md](../../../ROADMAP.md).
