@@ -55,6 +55,6 @@ uv run python -m agentic_engineering.learning_companion `
 
 ## Sequence protection and next gate
 
-M10 is not connected to the active 18-cell phase-memory campaign. Its experiment definition, prompts, batch order, and private resumable state remain unchanged.
+M10 was not connected to the completed 18-cell phase-memory campaign. Its experiment definition, prompts, batch order, and private resumable state remained unchanged.
 
 A runtime-specific companion adapter can be added later. Before default enablement, it should be compared with inline teaching for lesson accuracy, learner usefulness, context saved, cost, and time. Authenticated companion calls require their own explicit budget approval.

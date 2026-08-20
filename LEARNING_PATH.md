@@ -16,26 +16,25 @@ This file is a short map of what the project has taught, what is being tested no
 - Active specifications, evidence contracts, verified state, fresh executors, and independent auditors. Review the focused [module map](docs/modules/README.md).
 - Controlled and resumable experiments with isolated workspaces, hard budgets, repeated seeds, and external evaluation.
 - Failed or inconclusive interventions as useful evidence: adaptive planning did not beat its sentinel control; early watchdog alerts were contextual false positives; the two-cell phase-memory sentinel established safety but not efficacy.
-- Phase-memory live campaign evidence: 17 of 18 cells passed with zero regressions, false completions, or human interventions. Both eviction treatments removed the unrelated distractor. Review [cell 17](research/reports/2026-08-20-phase-memory-campaign-cell-17.md): seed `0` favored treatment, seed `1` favored control, and their aggregate is nearly equal in cost and time.
+- Phase-memory live campaign evidence: all 18 cells independently verified with zero regressions, false completions, memory-attributable errors, or human interventions. Review the [final report](research/reports/2026-08-20-phase-memory-campaign-cell-18.md). Memory behaved correctly, but both arms completed `9 / 9`; treatment cost `5.51%` more and took `6.93%` less time overall. The required completion improvement was absent, so default promotion was rejected.
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
 
-Run the final eviction-pressure roadmap treatment, aggregate all 18 cells, and apply the predeclared promotion rule.
+Interpret the completed null result and design a harder replication where the baseline does not already achieve perfect completion.
 
 ## Current exercise
 
-Why did the second roadmap result change our interpretation of the first?
+Should bounded phase memory become the default after this campaign?
 
-**Answer:** seed `0` made treatment look cheaper and faster, while seed `1` made it look more expensive and slower. Both had equal quality and correct eviction. Combining them leaves almost no efficiency difference, demonstrating that a single favorable run can be ordinary variation rather than a workflow effect.
+**Answer:** no. It was safe, correctly filtered memory, and ran faster overall, but it did not improve verified completion over the simpler baseline and cost more overall. The predeclared rule required a completion gain, so changing the rule after seeing the results would be research bias.
 
 ## Suggested next topics
 
-1. Eviction pressure through the multi-step `roadmap-evolution` task.
-2. Compare supersession and eviction results against the low-pressure block.
-3. Paired control/treatment comparisons, effect size, and uncertainty.
-4. Applying the predeclared promotion rule without changing it after seeing results.
-5. Connecting a runtime-specific teaching-agent adapter and evaluating lesson quality, context saved, cost, and time.
+1. Ceiling effects: why a perfect baseline prevents measuring completion improvement.
+2. Design harder, longer memory-pressure tasks across more repositories and models.
+3. Predeclare an efficiency hypothesis and increase repeated-run support.
+4. Connect a runtime-specific teaching-agent adapter and evaluate lesson quality, context saved, cost, and time.
 
 ## Milestone report checklist
 

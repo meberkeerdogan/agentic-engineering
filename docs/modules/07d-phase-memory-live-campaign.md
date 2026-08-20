@@ -1,6 +1,6 @@
 # M07d: Budgeted Phase-Memory Live Campaign
 
-**Status:** In progress; 17 of 18 authenticated cells completed
+**Status:** Complete; 18 of 18 authenticated cells independently verified, default promotion rejected
 
 ## Purpose
 
@@ -78,8 +78,16 @@ Cell 16, the bounded phase-memory `roadmap-evolution` treatment at seed `0`, ind
 
 Cell 17, the same treatment at seed `1`, independently verified the same six tests with no regressions, false completion, watchdog signals, intervention, or memory-attributable error. It again evicted the distractor. Against its paired control, quality was equal, cost was `15.35%` higher, and time was `18.67%` higher. Across two roadmap pairs, treatment cost is `0.22%` lower and time is `1.65%` lower, showing opposite seed-level directions. See the [cell evidence report](../../research/reports/2026-08-20-phase-memory-campaign-cell-17.md).
 
-The campaign is paused at `17 / 18`. The final declared cell is the bounded phase-memory `roadmap-evolution` treatment at seed `2`; it is not authorized.
+Cell 18, the same treatment at seed `2`, independently verified all six tests with no regressions, false completion, watchdog signals, intervention, or memory-attributable error. It explicitly excluded the distractor. Across the complete roadmap block, treatment quality was equal, total cost was `0.22%` lower, and total time was `4.93%` lower. See the [final cell and campaign report](../../research/reports/2026-08-20-phase-memory-campaign-cell-18.md).
+
+## Final result
+
+All 18 cells independently verified. Both arms completed `9 / 9` tasks with zero regressions, false completions, or interventions. Across all tasks, treatment used `5.51%` more credits and `6.93%` less time. Across the six supersession and eviction pairs alone, cost was effectively equal and treatment time was `8.23%` lower, but completion remained equal.
+
+The campaign is complete. Its deterministic report fingerprint is `82270bdbe8cf04b2af576cd6026f640ad4a3a737e03dc161aec3bdbcd2dff553`.
 
 ## Decision rule
 
 Bounded memory is promoted only if the complete repeated evidence satisfies the predeclared experiment rule: improved verified completion on memory-pressure tasks, no loss on the low-pressure control, no memory-attributable errors or additional regressions, and acceptable cost, time, and intervention results.
+
+The safety and overhead conditions passed, but the required completion improvement was `0.00` instead of at least `0.10`. Bounded phase memory therefore remains optional and experimental rather than becoming the default.

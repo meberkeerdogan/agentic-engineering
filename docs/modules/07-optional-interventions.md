@@ -80,7 +80,7 @@ The synthetic fixture proves the mechanism. The combined real calibration curren
 
 `phase_memory` builds a deterministic read-only view from immutable, evidenced entries. Newer entries may explicitly supersede older facts for the same task; each phase has a fixed capacity; retrieval ranks current-task and current-phase evidence first. Reports expose retained, superseded, and evicted IDs and have structurally empty write and state-mutation arrays.
 
-The [offline M07d evidence campaign](07d-phase-memory-campaign.md) prepares an isolated 18-cell M06 comparison with one low-pressure negative control, one supersession case, and one eviction case. Both arms receive the same immutable ledger and canonical evidence; only the treatment applies bounded retrieval. Its [two-cell safety sentinel](07d-phase-memory-sentinel.md) passed live safety checks; bounded memory was cheaper and faster in the single pair, but completion was identical and no efficacy claim is made. The [live campaign](07d-phase-memory-live-campaign.md) is paused at `17 / 18`. Both eviction treatments correctly removed the distractor and verified, but opposite seed-level efficiency results leave the two-pair aggregate nearly equal. One cell remains.
+The [offline M07d evidence campaign](07d-phase-memory-campaign.md) prepared an isolated 18-cell M06 comparison with one low-pressure negative control, one supersession case, and one eviction case. Its [live campaign](07d-phase-memory-live-campaign.md) is complete: both arms verified `9 / 9` tasks with zero regressions, false completions, or interventions. Memory applied supersession and eviction correctly and treatment was faster overall, but it did not improve completion and cost more overall. The predeclared promotion rule therefore keeps phase memory optional and experimental.
 
 ## M07e: Independently Reviewed Property Evidence
 
@@ -97,4 +97,4 @@ uv run python -m agentic_engineering.property_testing examples/property-testing.
 
 ## Promotion State
 
-All M07 mechanisms are implemented as separately measurable primitives. None is a default intervention: real watchdog calibration permits no advice, while planning, memory, and property evidence still require their own M06 control/treatment results.
+All M07 mechanisms are implemented as separately measurable primitives. None is a default intervention: real watchdog calibration permits no advice, dependency planning did not beat its sentinel baseline, the completed phase-memory campaign produced no completion gain, and property evidence still requires its own M06 control/treatment results.
