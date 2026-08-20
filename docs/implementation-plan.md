@@ -20,9 +20,13 @@ current user intent
 The project will also use a research lifecycle:
 
 ```text
-paper -> reproduce -> ablate -> measure -> extract primitive
+section question -> deep primary-paper review -> cross-paper synthesis
+      -> transfer decision -> predeclared reproduction or adaptation
+      -> reproduce -> ablate -> measure -> extract primitive
       -> compose workflow -> benchmark again -> publish evidence
 ```
+
+Every new workflow section must pass the [Workflow Research Gate](../research/WORKFLOW_RESEARCH_GATE.md) before implementation or promotion. Sections completed before that rule are tracked in the [retrospective audit](../research/WORKFLOW_SECTION_AUDIT.md) and are repaired one bounded section at a time without rewriting historical results.
 
 ## Implemented System
 

@@ -5,6 +5,8 @@ This directory keeps the evidence used to design and evaluate Agentic Engineerin
 ## Start Here
 
 - [Critical review: Long-Horizon Agent Reliability](reports/2026-08-14-long-horizon-reliability-review.md)
+- [Workflow Research Gate](WORKFLOW_RESEARCH_GATE.md)
+- [Workflow section audit](WORKFLOW_SECTION_AUDIT.md)
 - [Future-paper evidence trail](PAPER_TRAIL.md)
 - [Final 18-cell phase-memory campaign](reports/2026-08-20-phase-memory-campaign-cell-18.md)
 - [Live Codex workflow pilot](reports/2026-08-16-live-codex-workflow-pilot.md)
@@ -63,6 +65,8 @@ Pass an optional output directory after `research/papers` when you also want to 
 ## Corpus Policy
 
 - Prefer primary papers and official technical sources.
+- Complete the Workflow Research Gate before implementing or promoting a research-backed section.
+- Read selected papers at replication depth and preserve a dossier using [`reviews/TEMPLATE.md`](reviews/TEMPLATE.md); an abstract or design summary is insufficient.
 - Record the exact downloaded artifact and checksum.
 - Distinguish paper results from project design inferences.
 - Record limitations, negative results, and transfer risks.

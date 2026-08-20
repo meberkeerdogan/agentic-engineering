@@ -8,6 +8,7 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 
 ### Added
 
+- Added a mandatory deep-paper Workflow Research Gate, a replication-grade paper dossier template, and a retrospective audit that sequences research repair for every implemented workflow section.
 - Initial open-source repository scaffold.
 - Umbrella structure for playbooks, workflows, skills, schemas, and runners.
 - Project onboarding playbook and `create-agents-md` skill.

@@ -17,24 +17,25 @@ This file is a short map of what the project has taught, what is being tested no
 - Controlled and resumable experiments with isolated workspaces, hard budgets, repeated seeds, and external evaluation.
 - Failed or inconclusive interventions as useful evidence: adaptive planning did not beat its sentinel control; early watchdog alerts were contextual false positives; the two-cell phase-memory sentinel established safety but not efficacy.
 - Phase-memory live campaign evidence: all 18 cells independently verified with zero regressions, false completions, memory-attributable errors, or human interventions. Review the [final report](research/reports/2026-08-20-phase-memory-campaign-cell-18.md). Memory behaved correctly, but both arms completed `9 / 9`; treatment cost `5.51%` more and took `6.93%` less time overall. The required completion improvement was absent, so default promotion was rejected.
+- Deep-paper research gate: every workflow section now requires full primary-paper dossiers, cross-paper synthesis, explicit transfer decisions, and a predeclared evaluation. Completed sections with only design-level summaries are tracked for retrospective repair in the [section audit](research/WORKFLOW_SECTION_AUDIT.md).
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
 
-Interpret the completed null result and design a harder replication where the baseline does not already achieve perfect completion.
+Complete the replication-grade review of the core verified workflow before expanding it, then repair memory and long-task evaluation in sequence.
 
 ## Current exercise
 
-Should bounded phase memory become the default after this campaign?
+What is the difference between citing a paper and passing the research gate?
 
-**Answer:** no. It was safe, correctly filtered memory, and ran faster overall, but it did not improve verified completion over the simpler baseline and cost more overall. The predeclared rule required a completion gain, so changing the rule after seeing the results would be research bias.
+**Answer:** a citation shows where an idea came from. Passing the gate requires understanding the exact method, sample, metrics, negative evidence, and limitations; comparing multiple papers; documenting how our design differs; and defining a falsifiable experiment before implementation or promotion.
 
 ## Suggested next topics
 
-1. Ceiling effects: why a perfect baseline prevents measuring completion improvement.
-2. Design harder, longer memory-pressure tasks across more repositories and models.
-3. Predeclare an efficiency hypothesis and increase repeated-run support.
-4. Connect a runtime-specific teaching-agent adapter and evaluate lesson quality, context saved, cost, and time.
+1. Core-workflow dossiers: LongHorizon-Harness, Progress Mirage, and SpecPath.
+2. Memory dossiers and retrospective phase-memory alignment audit.
+3. Long-task benchmark validity and harder task design.
+4. Ceiling effects and predeclared efficiency hypotheses.
 
 ## Milestone report checklist
 
