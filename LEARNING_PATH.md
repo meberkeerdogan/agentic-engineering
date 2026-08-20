@@ -16,18 +16,18 @@ This file is a short map of what the project has taught, what is being tested no
 - Active specifications, evidence contracts, verified state, fresh executors, and independent auditors. Review the focused [module map](docs/modules/README.md).
 - Controlled and resumable experiments with isolated workspaces, hard budgets, repeated seeds, and external evaluation.
 - Failed or inconclusive interventions as useful evidence: adaptive planning did not beat its sentinel control; early watchdog alerts were contextual false positives; the two-cell phase-memory sentinel established safety but not efficacy.
-- Phase-memory live campaign evidence: all nine controls, all three low-pressure treatments, and the complete three-seed supersession block passed with zero regressions, false completions, or human interventions. The campaign is at `15 / 18`; review the complete restock comparison in [cell 15](research/reports/2026-08-19-phase-memory-campaign-cell-15.md). Memory reliably excluded the obsolete decision; treatment quality was equal, cost was `0.14%` higher, and time was `11.36%` lower.
+- Phase-memory live campaign evidence: all nine controls, both completed treatment blocks, and the first eviction-pressure treatment passed with zero regressions, false completions, or human interventions. The campaign is at `16 / 18`; review the first eviction pair in [cell 16](research/reports/2026-08-20-phase-memory-campaign-cell-16.md). Memory removed the unrelated distractor; treatment quality was equal, cost was `12.85%` lower, and time was `15.85%` lower.
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
 
-Run the three eviction-pressure roadmap treatments, then apply the predeclared promotion rule to the complete campaign.
+Run the remaining two eviction-pressure roadmap treatments, then apply the predeclared promotion rule to the complete campaign.
 
 ## Current exercise
 
-What did the completed restock block prove, and what did it not prove?
+What does eviction mean in phase memory, and what did the first roadmap pair show?
 
-**Answer:** it proved that bounded memory consistently filtered the obsolete decision without causing errors and was faster overall at almost identical cost. It did not prove a completion benefit because all controls also passed. Correct mechanism behavior is not the same as improved task outcomes.
+**Answer:** eviction removes a lower-priority entry when a phase exceeds its fixed capacity. Here it removed an unrelated task decision while retaining current roadmap evidence. The treatment passed more cheaply and quickly, but the control also passed, so two more seeds are needed before interpreting the block.
 
 ## Suggested next topics
 
