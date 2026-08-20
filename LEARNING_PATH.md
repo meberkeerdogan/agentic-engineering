@@ -27,22 +27,23 @@ This file is a short map of what the project has taught, what is being tested no
 - Level 2 continuous validation: five milestone oracles now pass both alone and in one persistent repository, while intentionally omitting Milestone 1 creates a later protected regression. Review [M06l](docs/modules/06l-long-task-level-2.md).
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 - `v0.1` feature freeze: the supported product is now the verified single-agent workflow. Technically working but unproven interventions remain explicit experiments rather than hidden defaults. Review the [product scope](docs/v0.1-product-scope.md) and [frozen workflow](workflows/verified-single-agent-v0.1.md).
+- Product boundary and interface: one deep Python function now powers both the command line and a local browser UI. The UI improves usability without duplicating verification logic or enabling experimental features. Review [product.py](agentic_engineering/product.py), [ui.py](agentic_engineering/ui.py), and the [Getting Started guide](docs/getting-started.md).
 
 ## Current topic
 
-Expose the frozen verified single-agent workflow through one simple product command without enabling optional research interventions.
+Run the supported product from a clean checkout and fix only problems that block first use or trustworthy output.
 
 ## Current exercise
 
-Why can a technically correct feature still remain outside the product default?
+Why should the command line and UI call the same workflow function?
 
-**Answer:** correctness shows that the feature behaves as designed. Promotion needs separate evidence that users gain enough completion, reliability, cost, or time benefit to justify the added complexity.
+**Answer:** one shared function keeps safety checks, evidence, and results consistent. Two separate implementations could drift and make the UI appear successful when the command line would reject the same run.
 
 ## Suggested next topics
 
-1. Add one simple command for the frozen workflow.
-2. Add a realistic end-to-end example.
-3. Add setup guidance and run a fresh-checkout acceptance test.
+1. Run the fresh-checkout acceptance test and fix release blockers.
+2. Prepare the `v0.1.0` tag, package, and release notes.
+3. Test the prepared-project setup with a user who did not build the system.
 4. Keep held-out agent evaluations and new methods in the post-release research backlog.
 
 ## Milestone report checklist

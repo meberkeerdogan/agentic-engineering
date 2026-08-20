@@ -16,6 +16,7 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 
 ### Added
 
+- Added one supported `agentic-engineering run` interface and a local, loopback-only browser UI over the frozen verified workflow, with paid-run confirmation, isolated execution, independent evaluation, structured result display, packaging tests, and a focused setup guide.
 - Added a deterministic five-milestone continuous-evolution validator with isolated-versus-persistent oracle checks and an inherited-failure omission probe.
 - Added a validated Level 1 fulfillment upgrade fixture with five targets, hidden target and regression checks, and a known-good oracle patch.
 - Added optional target grouping to evidence criteria, with deterministic target results and regression-safe partial scores for harder task evaluation.

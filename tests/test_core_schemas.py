@@ -42,6 +42,7 @@ SCHEMA_EXAMPLE_PAIRS = [
     ),
     ("live-pilot.schema.json", "live-pilot.json"),
     ("product-run.schema.json", "product-run.json"),
+    ("product-summary.schema.json", "expected-product-summary.json"),
     ("usage-rates.schema.json", "live-pilot-rates.json"),
     ("codex-environment.schema.json", "codex-environment.json"),
     ("codex-preflight-report.schema.json", "expected-codex-preflight-report.json"),

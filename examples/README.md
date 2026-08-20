@@ -38,6 +38,8 @@ Current examples:
 - [`property-testing.json`](property-testing.json) and [`expected-property-testing.json`](expected-property-testing.json): independently reviewed M07e property evidence and counterexample summary.
 - [`fixture-task/`](fixture-task/): a prepared candidate, four-type evidence contract, and deterministic golden evaluation report for M03.
 - [`live-pilot.json`](live-pilot.json): one private Codex control-run configuration for M06c.
+- [`product-run.json`](product-run.json): the supported `v0.1` input used by both the command line and local UI.
+- [`expected-product-summary.json`](expected-product-summary.json): an illustrative, schema-checked successful result shape; its cost and time are examples, not benchmark findings.
 - [`live-pilot-rates.json`](live-pilot-rates.json): dated external rates used to estimate the example run's subscription-credit usage.
 - [`codex-environment.json`](codex-environment.json): clean-home and no-credit preflight policy for M06d.
 - [`expected-codex-preflight-report.json`](expected-codex-preflight-report.json): portable shape plus the initial local prompt-footprint measurement.

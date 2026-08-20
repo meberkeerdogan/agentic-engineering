@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "workflow_id": "verified-single-agent-v0.1",
+  "run_id": "product-001",
+  "status": "verified",
+  "task_id": "median-fix",
+  "spec_id": "median-active-spec",
+  "claimed_complete": true,
+  "verified_complete": true,
+  "regressions": 0,
+  "scores": null,
+  "measured_cost": 0.08,
+  "cost_unit": "credits",
+  "time_seconds": 42.5,
+  "workspace_revision": "git-0123456789abcdef0123456789abcdef01234567",
+  "active_spec_ref": "active-spec.json",
+  "evaluation_ref": "evidence/evaluation-report.json",
+  "state_ref": "verified-state.json",
+  "state_log_ref": "verified-state.jsonl",
+  "pilot_summary_ref": "pilot-summary.json",
+  "evidence_refs": [
+    "evaluation-report.json",
+    "final-message.json",
+    "usage.jsonl"
+  ]
+}

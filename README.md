@@ -6,9 +6,9 @@ The project is not limited to loops, playbooks, workflows, or skills. Those are 
 
 ## Project Status
 
-The first nine implementation modules are complete and covered by offline tests. They provide active specifications, evidence contracts, verified state, single-agent orchestration, experiment infrastructure, optional interventions, paper reproduction, and isolated multi-agent integration. M10 adds an optional proposal-only Learning Companion that teaches from bounded milestone evidence without entering the engineering verification path.
+The research and engineering modules are complete and covered by offline tests. The frozen `v0.1` product path now combines active specifications, isolated single-agent execution, independent checks, regression-safe evaluation, and verified state behind one command and a local browser UI.
 
-The core engine is implemented, but the public `v0.1` product experience is not finished yet. The [supported product scope](docs/v0.1-product-scope.md) and [default workflow](workflows/verified-single-agent-v0.1.md) are now frozen. The next work is deliberately small: expose that workflow through a simple command, document setup, provide one realistic example, run a user acceptance test, and publish the first release. New research methods and unfinished retrospective paper reviews are useful follow-up work, not release blockers. See the finite [product finish line](ROADMAP.md#v01-product-finish-line).
+The toolkit is usable from source but is not published as `v0.1.0` yet. The remaining release work is a clean-checkout acceptance pass, any release-blocking fixes it finds, and the final tag/package publication. New research methods and unfinished retrospective paper reviews are post-release work, not release blockers. See the finite [product finish line](ROADMAP.md#v01-product-finish-line).
 
 Implementation does not imply that every mechanism is enabled by default. Watchdog advice, adaptive planning, phase memory, property evidence, and multi-agent execution remain promotion-gated until controlled comparisons show that they beat the simpler verified baseline on their declared targets.
 
@@ -73,7 +73,26 @@ The concise [learning path](LEARNING_PATH.md) tracks completed concepts, the cur
 
 ## Getting Started
 
-For now, start by reading:
+Install with Python 3.11+, Git, and [`uv`](https://docs.astral.sh/uv/), then open the local interface:
+
+```powershell
+uv sync --group test
+uv run agentic-engineering ui
+```
+
+The UI opens only on this computer and uses the same verified workflow as the command line. A live run uses the authenticated Codex CLI and may spend credits, so it requires an explicit confirmation. Follow the short [Getting Started guide](docs/getting-started.md) before the first run.
+
+Run the included configuration directly with:
+
+```powershell
+uv run agentic-engineering run examples/product-run.json --run-id product-001 --confirm-paid-run
+```
+
+The current release expects a prepared project template with a specification and trusted evidence contract; it does not yet turn an arbitrary repository into a configured run automatically.
+
+## Project and Research Guides
+
+For deeper context, read:
 
 1. [LEARNING_PATH.md](LEARNING_PATH.md)
 2. [docs/vision.md](docs/vision.md)
