@@ -1,7 +1,9 @@
 # v0.1 Release Acceptance
 
-**Date:** 2026-08-21  
-**Accepted commit:** `ae3cc33`  
+**Date:** 2026-08-21
+
+**Accepted commit:** `ae3cc33`
+
 **Result:** Pass for a source-distributed experimental `v0.1`
 
 ## Clean-copy check
