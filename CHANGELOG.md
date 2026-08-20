@@ -8,6 +8,7 @@ This project follows the spirit of [Keep a Changelog](https://keepachangelog.com
 
 ### Changed
 
+- Added a finite `v0.1` product finish line, made remaining research reviews non-blocking, and required plain-English communication across project reports and user-facing documentation.
 - Reclassified bounded phase memory as a project-memory adaptation rather than a Prometheus or PMCoder reproduction, and updated the completed campaign boundary after full paper review.
 - Narrowed core-workflow claims to distinguish tested paper results from project adaptations, documented the current command-auditor sandbox gap, and corrected the LongHorizon Opus subset result to `20.6% -> 35.3%` binary completion.
 

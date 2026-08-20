@@ -8,6 +8,8 @@ The project is not limited to loops, playbooks, workflows, or skills. Those are 
 
 The first nine implementation modules are complete and covered by offline tests. They provide active specifications, evidence contracts, verified state, single-agent orchestration, experiment infrastructure, optional interventions, paper reproduction, and isolated multi-agent integration. M10 adds an optional proposal-only Learning Companion that teaches from bounded milestone evidence without entering the engineering verification path.
 
+The core engine is implemented, but the public `v0.1` product experience is not finished yet. The next work is deliberately small: expose one supported end-to-end workflow through a simple command, document setup, provide one realistic example, run a user acceptance test, and publish the first release. New research methods and unfinished retrospective paper reviews are useful follow-up work, not release blockers. See the finite [product finish line](ROADMAP.md#v01-product-finish-line).
+
 Implementation does not imply that every mechanism is enabled by default. Watchdog advice, adaptive planning, phase memory, property evidence, and multi-agent execution remain promotion-gated until controlled comparisons show that they beat the simpler verified baseline on their declared targets.
 
 ## Why Agentic Engineering

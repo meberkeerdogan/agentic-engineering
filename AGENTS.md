@@ -7,6 +7,23 @@
 - Treat implementation and controlled experiments as one evidence-driven process. Preserve unsuccessful experiments and explain what they ruled out or taught us.
 - Commit and push each meaningful, verified stage as a focused change.
 
+## Project-wide communication
+
+- Use plain English in progress reports and user-facing documentation across the project.
+- Explain an unfamiliar idea in ordinary language before introducing its technical name.
+- Prefer short sentences, concrete examples, and a clear statement of what changed, why it matters, and what comes next.
+- Keep exact technical terms where they are needed for code, schemas, commands, and research accuracy, but explain their practical meaning nearby.
+- Do not make the user reconstruct the project state from old reports. Summaries should clearly separate what works now, what remains for the next release, and what is optional future research.
+
+## Finite product boundary
+
+- Treat the implemented core as a product to package and use, not as an endless invitation to add mechanisms.
+- The next release target is the finite `v0.1` finish line in [ROADMAP.md](ROADMAP.md). Prioritize its user-facing run path, setup, example, documentation, and final acceptance test over new experimental modules.
+- Remaining retrospective paper reviews and new research ideas are a research backlog. They do not block `v0.1` unless they reveal a concrete correctness or safety problem in its supported path.
+- Do not implement a newly discovered method merely because a paper reports a benefit. Record it, compare it with the current product need, and schedule it only if it addresses a measured problem.
+- Keep optional interventions off by default until they pass their own evidence gates. A failed promotion test closes that experiment for the current release; it does not automatically create another required implementation cycle.
+- When the `v0.1` finish line passes, declare the release usable and stop expanding its scope. Continue research afterward as separately chosen, bounded projects.
+
 ## Learning reports
 
 Keep progress reports short and easy to read back to back. Use plain language, preserve only the context needed to follow the sequence, and avoid repeating details already recorded in linked files.

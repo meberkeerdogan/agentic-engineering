@@ -25,20 +25,20 @@ This file is a short map of what the project has taught, what is being tested no
 
 ## Current topic
 
-Repair long-task evaluation by reading SWE-EVO, RoadmapBench, SWE-Milestone, and NL2Repo-Bench in depth before changing benchmark code.
+Turn the completed core modules into one simple `v0.1` product workflow. Long-task paper review remains the next research stage, but it does not block product use.
 
 ## Current exercise
 
-Why should we not rerun the same 18-cell phase-memory campaign?
+What is the difference between a completed engine and a usable product?
 
-**Answer:** both arms already completed every task, so the experiment cannot reveal a completion improvement. The next run needs harder tasks and retrieval-quality measurements; otherwise we would mostly pay to confirm the same ceiling.
+**Answer:** the engine contains the working parts, tests, and internal commands. A usable product gives a new user one clear setup, one supported command, understandable output, and an example that works from a fresh checkout.
 
 ## Suggested next topics
 
-1. Long-task benchmark validity and harder task design.
-2. Retrieval-quality instrumentation for future memory experiments.
-3. Ceiling effects and predeclared efficiency hypotheses.
-4. Technical enforcement of read-only evaluation.
+1. Freeze the supported `v0.1` workflow and user journey.
+2. Add one simple product command and end-to-end example.
+3. Resume long-task benchmark research as a separate track.
+4. Add retrieval-quality instrumentation only before another memory experiment.
 
 ## Milestone report checklist
 

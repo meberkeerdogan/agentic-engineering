@@ -2,6 +2,8 @@
 
 This audit tracks whether each product section has replication-grade paper review, not merely citations or design-level summaries. `Retrospective required` means implementation already exists but the new research gate was not completed first.
 
+These retrospective reviews improve research quality, but they are not `v0.1` release blockers unless a review finds a concrete correctness or safety problem in the supported product path.
+
 | Workflow section | Priority papers | Current evidence | Gate status | Next record |
 | --- | --- | --- | --- | --- |
 | Core verified workflow | LongHorizon-Harness, Progress Mirage, SpecPath, Agentless, Runtime-Structured Task Decomposition | [Five paper dossiers and full synthesis](reviews/core-workflow/SYNTHESIS.md); implementation-alignment audit; scoped Progress Mirage fixture | Retrospective gate passed | Run the predeclared harder matched evaluation before any default promotion |
