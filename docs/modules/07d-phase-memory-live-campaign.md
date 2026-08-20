@@ -1,6 +1,6 @@
 # M07d: Budgeted Phase-Memory Live Campaign
 
-**Status:** In progress; 16 of 18 authenticated cells completed
+**Status:** In progress; 17 of 18 authenticated cells completed
 
 ## Purpose
 
@@ -76,7 +76,9 @@ Cell 15, the same treatment at seed `2`, independently verified the same seven t
 
 Cell 16, the bounded phase-memory `roadmap-evolution` treatment at seed `0`, independently verified all six tests with no regressions, false completion, watchdog signals, intervention, or memory-attributable error. It correctly evicted the unrelated distractor and retained the roadmap evidence. Against its paired control, quality was equal, cost was `12.85%` lower, and time was `15.85%` lower. See the [cell evidence report](../../research/reports/2026-08-20-phase-memory-campaign-cell-16.md).
 
-The campaign is paused at `16 / 18`. The next declared cell is the bounded phase-memory `roadmap-evolution` treatment at seed `1`; it is not authorized.
+Cell 17, the same treatment at seed `1`, independently verified the same six tests with no regressions, false completion, watchdog signals, intervention, or memory-attributable error. It again evicted the distractor. Against its paired control, quality was equal, cost was `15.35%` higher, and time was `18.67%` higher. Across two roadmap pairs, treatment cost is `0.22%` lower and time is `1.65%` lower, showing opposite seed-level directions. See the [cell evidence report](../../research/reports/2026-08-20-phase-memory-campaign-cell-17.md).
+
+The campaign is paused at `17 / 18`. The final declared cell is the bounded phase-memory `roadmap-evolution` treatment at seed `2`; it is not authorized.
 
 ## Decision rule
 

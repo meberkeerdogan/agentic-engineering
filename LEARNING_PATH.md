@@ -16,18 +16,18 @@ This file is a short map of what the project has taught, what is being tested no
 - Active specifications, evidence contracts, verified state, fresh executors, and independent auditors. Review the focused [module map](docs/modules/README.md).
 - Controlled and resumable experiments with isolated workspaces, hard budgets, repeated seeds, and external evaluation.
 - Failed or inconclusive interventions as useful evidence: adaptive planning did not beat its sentinel control; early watchdog alerts were contextual false positives; the two-cell phase-memory sentinel established safety but not efficacy.
-- Phase-memory live campaign evidence: all nine controls, both completed treatment blocks, and the first eviction-pressure treatment passed with zero regressions, false completions, or human interventions. The campaign is at `16 / 18`; review the first eviction pair in [cell 16](research/reports/2026-08-20-phase-memory-campaign-cell-16.md). Memory removed the unrelated distractor; treatment quality was equal, cost was `12.85%` lower, and time was `15.85%` lower.
+- Phase-memory live campaign evidence: 17 of 18 cells passed with zero regressions, false completions, or human interventions. Both eviction treatments removed the unrelated distractor. Review [cell 17](research/reports/2026-08-20-phase-memory-campaign-cell-17.md): seed `0` favored treatment, seed `1` favored control, and their aggregate is nearly equal in cost and time.
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
 
-Run the remaining two eviction-pressure roadmap treatments, then apply the predeclared promotion rule to the complete campaign.
+Run the final eviction-pressure roadmap treatment, aggregate all 18 cells, and apply the predeclared promotion rule.
 
 ## Current exercise
 
-What does eviction mean in phase memory, and what did the first roadmap pair show?
+Why did the second roadmap result change our interpretation of the first?
 
-**Answer:** eviction removes a lower-priority entry when a phase exceeds its fixed capacity. Here it removed an unrelated task decision while retaining current roadmap evidence. The treatment passed more cheaply and quickly, but the control also passed, so two more seeds are needed before interpreting the block.
+**Answer:** seed `0` made treatment look cheaper and faster, while seed `1` made it look more expensive and slower. Both had equal quality and correct eviction. Combining them leaves almost no efficiency difference, demonstrating that a single favorable run can be ordinary variation rather than a workflow effect.
 
 ## Suggested next topics
 
