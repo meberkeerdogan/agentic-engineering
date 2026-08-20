@@ -4,11 +4,11 @@
   "scope": "claim_level",
   "paper_id": "2607.25152",
   "claim_id": "self-report-can-diverge",
-  "source_fingerprint": "6ae123f93e9b1badfb06ebb6636fd13dd410efc59b2650c6775d2522dcd8bd8b",
+  "source_fingerprint": "fe1fcf0f3d69f52c2242dc6d26674817186b9101883954cfca3e761aab8caa89",
   "artifact_hashes": [
     {
       "ref": "pyproject.toml",
-      "sha256": "f1069271f0c266ac153f8aba2628b6dc8828cffe2e52fefe097f3ca665e24aa6"
+      "sha256": "53eafd81b819ae0a856318e46f9d003045037592903c3443fead88e41fce5bfc"
     },
     {
       "ref": "research/papers/2607.25152-progress-mirage.pdf",
@@ -98,6 +98,6 @@
     }
   ],
   "model_calls_performed": false,
-  "report_id": "reproduction-6aae685d8197ce3b",
-  "fingerprint": "6aae685d8197ce3b2766375e4c5e2c090621a1e17f74b23b0bd236e048166f70"
+  "report_id": "reproduction-e68860025d5e3c01",
+  "fingerprint": "e68860025d5e3c0165bd31c48f6f7f472f9443b420b26a820a5476e092620242"
 }

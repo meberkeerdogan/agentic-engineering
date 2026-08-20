@@ -34,6 +34,8 @@ Current schemas:
 - [`multi-agent-report.schema.json`](multi-agent-report.schema.json): worktree commits, waves, integration revision, and hashed validation evidence.
 - [`watchdog-calibration-report.schema.json`](watchdog-calibration-report.schema.json): per-signal precision, recall, false-alarm rate, and advisory-experiment eligibility.
 - [`live-pilot.schema.json`](live-pilot.schema.json): one isolated Codex control-cell configuration.
+- [`product-run.schema.json`](product-run.schema.json): the frozen verified workflow's one-command configuration.
+- [`product-summary.schema.json`](product-summary.schema.json): inspectable status, cost, evidence, revision, and verified-state references from one product run.
 - [`usage-rates.schema.json`](usage-rates.schema.json): a dated, externally sourced model-usage rate card.
 - [`codex-environment.schema.json`](codex-environment.schema.json): clean-home isolation and no-credit preflight policy.
 - [`codex-preflight-report.schema.json`](codex-preflight-report.schema.json): redacted evidence that a live Codex environment passed its gates.

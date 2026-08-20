@@ -14,7 +14,7 @@
     {"id": "fixture-command", "kind": "derived_fixture", "ref": "research/reproductions/progress-mirage-claim/experiment.py", "relationship": "Local deterministic operationalization of claim-versus-verification divergence.", "sha256": "972909c8f3986480b927cb54ae6f13ad19633d4823128679ef6a049c8ff03486"},
     {"id": "fixture-claim", "kind": "derived_fixture", "ref": "research/reproductions/progress-mirage-claim/claimed-complete.json", "relationship": "Synthetic executor self-report input.", "sha256": "cf7bd95c97b30ec299582c37e87add0a9e0edf7e86907f3eb69d5658bedbbe44"},
     {"id": "fixture-audit", "kind": "derived_fixture", "ref": "research/reproductions/progress-mirage-claim/independent-evaluation.json", "relationship": "Synthetic externally grounded audit input.", "sha256": "1eb7ee5bac6152730d556cd7d483594133adc6224156e02b445438d378b3ca56"},
-    {"id": "environment-lock", "kind": "environment_lock", "ref": "pyproject.toml", "relationship": "Project runtime and dependency declaration.", "sha256": "f1069271f0c266ac153f8aba2628b6dc8828cffe2e52fefe097f3ca665e24aa6"}
+    {"id": "environment-lock", "kind": "environment_lock", "ref": "pyproject.toml", "relationship": "Project runtime and dependency declaration.", "sha256": "53eafd81b819ae0a856318e46f9d003045037592903c3443fead88e41fce5bfc"}
   ],
   "environment": {
     "runtime": "Python >=3.11",

@@ -3,7 +3,7 @@
   "campaign_id": "dependency-planning-campaign-001",
   "status": "ready_for_separate_approval",
   "campaign_fingerprint": "f59c7cf1c4ca974e0eaa97aef496dd63ba21ad19f19dc5c3f08fba8acf2e9d4e",
-  "task_pack_readiness_fingerprint": "5059e69b9c6f7429dceeebd785d4b4339c2f56155912e4bdb312202bf02ac75c",
+  "task_pack_readiness_fingerprint": "b76db70a3da00255dc65601e2dae628684f853fc48beda2ed2da03dd235287ab",
   "experiment_id": "exp-dependency-planning-001",
   "experiment_plan_fingerprint": "d9aeb3f13bf0ada361f58ea6bff0559d960d3e9b77ff798075f6e1d9d2fda923",
   "shared_workflow_core_fingerprint": "9759fe67dc5261dc820cd96743f9b01ce68797a508c43e501ab4f5ef7d6aa101",
@@ -25,9 +25,21 @@
       "plan_source_fingerprint": "8fc0326292e77143ba5fd4bf5751e8a3ac6f1f9294f7f688c91e02abb525db75",
       "static_report_fingerprint": "5198878fe9cd3bee1489c0610479dfa4fdd70165aebf5858a2c8a25c37f8cd7b",
       "adaptive_report_fingerprint": "f25777f69ac1dc4cf98723a9d713b54e72364ddadc9c15cb5866ff6c423a7fbd",
-      "static_order": ["locate", "patch", "validate", "audit"],
-      "adaptive_order": ["locate", "patch", "validate", "audit"],
-      "ready_task_ids": ["locate"],
+      "static_order": [
+        "locate",
+        "patch",
+        "validate",
+        "audit"
+      ],
+      "adaptive_order": [
+        "locate",
+        "patch",
+        "validate",
+        "audit"
+      ],
+      "ready_task_ids": [
+        "locate"
+      ],
       "blocked_task_ids": [],
       "plan_divergence": false
     },
@@ -38,9 +50,22 @@
       "plan_source_fingerprint": "b8f030e338f98f668fd6310265fed52c23cea357e1ee36895e01d900509a89ac",
       "static_report_fingerprint": "3dc2217d2ea085ee9e215ce96a240b807903f69bcfbbeb31e035a7e29b9c3c61",
       "adaptive_report_fingerprint": "7e7ea6cbab33ee2dd947db44d56288a9cedc5912e49aac9fcc756f3fefb0ea26",
-      "static_order": ["inventory", "report", "tests", "audit"],
-      "adaptive_order": ["report", "inventory", "tests", "audit"],
-      "ready_task_ids": ["report", "inventory"],
+      "static_order": [
+        "inventory",
+        "report",
+        "tests",
+        "audit"
+      ],
+      "adaptive_order": [
+        "report",
+        "inventory",
+        "tests",
+        "audit"
+      ],
+      "ready_task_ids": [
+        "report",
+        "inventory"
+      ],
       "blocked_task_ids": [],
       "plan_divergence": true
     },
@@ -51,13 +76,26 @@
       "plan_source_fingerprint": "6e272a2a998da98425f1bfd6a98fc2a4ea7c074b793aabbb91975e9140d895cd",
       "static_report_fingerprint": "db6d1a244f3512fa1a28b370de559b37d6215baba6020ec2b6bd5ca6a3a2356e",
       "adaptive_report_fingerprint": "743b3f0e68f9eeb58460179d186b44ed4b6ad7ed0c92a8044af7b5cf360ab06b",
-      "static_order": ["readiness", "blocking", "summary", "validate"],
-      "adaptive_order": ["blocking", "readiness", "summary", "validate"],
-      "ready_task_ids": ["blocking", "readiness"],
+      "static_order": [
+        "readiness",
+        "blocking",
+        "summary",
+        "validate"
+      ],
+      "adaptive_order": [
+        "blocking",
+        "readiness",
+        "summary",
+        "validate"
+      ],
+      "ready_task_ids": [
+        "blocking",
+        "readiness"
+      ],
       "blocked_task_ids": [],
       "plan_divergence": true
     }
   ],
-  "report_id": "planning-campaign-readiness-e50a97a48432a62e",
-  "fingerprint": "e50a97a48432a62ed145a7d30184cceb44eec7b927fa0efef99362360ec1f7d9"
+  "report_id": "planning-campaign-readiness-297a629fd15919f9",
+  "fingerprint": "297a629fd15919f95828f34c9d766b0aac6536f4ed3222da77c74bfbb5997c9e"
 }

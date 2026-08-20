@@ -5,6 +5,9 @@ description = "Research-informed infrastructure for reliable agentic software en
 requires-python = ">=3.11"
 dependencies = []
 
+[project.scripts]
+agentic-engineering = "agentic_engineering.cli:main"
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agentic-engineering.dev/schemas/product-run.schema.json",
+  "title": "Verified Product Run",
+  "allOf": [
+    { "$ref": "https://agentic-engineering.dev/schemas/live-pilot.schema.json" },
+    {
+      "type": "object",
+      "required": ["spec_history_ref"],
+      "properties": {
+        "arm": {
+          "type": "object",
+          "properties": {
+            "workflow": { "const": "verified-single-agent-v0.1" }
+          }
+        }
+      }
+    }
+  ]
+}

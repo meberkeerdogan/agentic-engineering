@@ -1,6 +1,5 @@
-"""Command-line entry point for Agentic Engineering utilities."""
+"""Command-line entry point for Agentic Engineering."""
 
-from .active_spec import main
+from .cli import main
 
 raise SystemExit(main())
-

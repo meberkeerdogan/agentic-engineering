@@ -41,6 +41,7 @@ SCHEMA_EXAMPLE_PAIRS = [
         "long-task/continuous-evolution/milestone-chain.json",
     ),
     ("live-pilot.schema.json", "live-pilot.json"),
+    ("product-run.schema.json", "product-run.json"),
     ("usage-rates.schema.json", "live-pilot-rates.json"),
     ("codex-environment.schema.json", "codex-environment.json"),
     ("codex-preflight-report.schema.json", "expected-codex-preflight-report.json"),

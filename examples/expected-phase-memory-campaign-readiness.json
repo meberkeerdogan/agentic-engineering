@@ -3,7 +3,7 @@
   "campaign_id": "phase-memory-campaign-001",
   "status": "ready_for_separate_approval",
   "campaign_fingerprint": "9f04a6a6cd7c42c84f59190de741e3f643b3faf850a172f747c7a6063b614f65",
-  "task_pack_readiness_fingerprint": "a20b2866ad2a839d26d0578af2200aa42b94dde22ff1d648dfb6fa86b999d15a",
+  "task_pack_readiness_fingerprint": "24d71f43b56a521ea4ce7e46734b52c948aca31ed2f0fe27a518c24b78d5d9b7",
   "experiment_id": "exp-phase-memory-001",
   "experiment_plan_fingerprint": "6367dd78e47b2880239bb4b143484c3a028f5e5e151e7bbb528f4e1c4e43076f",
   "shared_workflow_core_fingerprint": "33b68ca5d867b8e11f2ec41a4e2006717de957db36a30424f84e12434df191a3",
@@ -24,7 +24,10 @@
       "repository": "examples/live-pilot-template",
       "memory_source_fingerprint": "43abab3376500e832b1d4e0fddb8b05ec1c2cabeba84a9d33a06aaae709550eb",
       "memory_report_fingerprint": "88a62fe80b0eebdfd04d287df62cf37ee89aa7cea28889333bfe9e38ecd0548b",
-      "retrieved_entry_ids": ["median-decision", "median-failure"],
+      "retrieved_entry_ids": [
+        "median-decision",
+        "median-failure"
+      ],
       "superseded_entry_ids": [],
       "evicted_entry_ids": [],
       "current_task_retrieval_count": 2
@@ -35,8 +38,14 @@
       "repository": "examples/task-pack/multi-file-feature",
       "memory_source_fingerprint": "51304e4fa569b159099561db4849711bcfdd5750ae8c299fbfd686930310d7b7",
       "memory_report_fingerprint": "c0b4912053392dd5b71eccd61766bc1237d16138b7a0f5369f51562bff2c97ac",
-      "retrieved_entry_ids": ["restock-evidence", "restock-current", "restock-failure"],
-      "superseded_entry_ids": ["restock-obsolete"],
+      "retrieved_entry_ids": [
+        "restock-evidence",
+        "restock-current",
+        "restock-failure"
+      ],
+      "superseded_entry_ids": [
+        "restock-obsolete"
+      ],
       "evicted_entry_ids": [],
       "current_task_retrieval_count": 3
     },
@@ -46,12 +55,18 @@
       "repository": "examples/task-pack/multi-step-evolution",
       "memory_source_fingerprint": "bc64580ba115040ac47ee4bd27fc0d700d17247a5ccb889227878de66c684b55",
       "memory_report_fingerprint": "22acaeeb9261e0aa466de960fbf7d1e0f6ad1985471100e4d297a90fdd459594",
-      "retrieved_entry_ids": ["roadmap-current", "roadmap-evidence", "roadmap-failure"],
+      "retrieved_entry_ids": [
+        "roadmap-current",
+        "roadmap-evidence",
+        "roadmap-failure"
+      ],
       "superseded_entry_ids": [],
-      "evicted_entry_ids": ["roadmap-distractor"],
+      "evicted_entry_ids": [
+        "roadmap-distractor"
+      ],
       "current_task_retrieval_count": 3
     }
   ],
-  "report_id": "memory-campaign-readiness-38469eebf1d31185",
-  "fingerprint": "38469eebf1d31185599355ac29f2eb95fa0ff0de6c7740241a5d1dea227f2a53"
+  "report_id": "memory-campaign-readiness-67476935dbc5ac73",
+  "fingerprint": "67476935dbc5ac73fe76a8f1ab6b54cbe712adba55016128cc84e55ef3979356"
 }

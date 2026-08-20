@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "pilot_id": "verified-product-demo",
+  "template_ref": "examples/live-pilot-template",
+  "run_root_ref": ".agentic-runs",
+  "arm": {
+    "id": "verified-default",
+    "workflow": "verified-single-agent-v0.1",
+    "config_ref": "workflow.md"
+  },
+  "task": {
+    "id": "median-fix",
+    "repository": "isolated-template-copy",
+    "spec_ref": ".agentic/active-spec.json"
+  },
+  "spec_history_ref": "examples/live-pilot-template/spec-history.json",
+  "evidence_contract_ref": "evidence-contract.json",
+  "rates_ref": "examples/live-pilot-rates.json",
+  "environment_ref": "examples/codex-environment.json",
+  "model": "gpt-5.6-luna",
+  "sandbox": "workspace-write",
+  "approval_mode": "auto-review",
+  "timeout_seconds": 600,
+  "seed": 0
+}

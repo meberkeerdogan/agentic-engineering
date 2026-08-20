@@ -85,6 +85,63 @@ def test_failed_evidence_rejects_then_allows_retry(tmp_path: Path) -> None:
     assert retried["work_items"][0]["status"] == "ready"
 
 
+def test_target_scored_evidence_can_verify_state(tmp_path: Path) -> None:
+    contract = load_json(
+        "examples/long-task/evaluators/multi-target-upgrade/evidence-contract.json"
+    )
+    report = run_single_pass_baseline(
+        contract, ROOT / "examples" / "long-task" / "multi-target-upgrade"
+    )
+    store = VerifiedStateStore(tmp_path / "state.jsonl")
+    store.create(
+        "target-run",
+        contract["spec_id"],
+        [{"id": contract["work_item_id"], "depends_on": []}],
+        T0,
+    )
+    store.start(contract["work_item_id"], T1)
+    store.submit(contract["work_item_id"], ["fulfillment"], "candidate ready", T2)
+
+    state = store.record_evaluation(
+        contract["work_item_id"], report, "rev-targets", T3
+    )
+
+    assert state["status"] == "rejected"
+    assert report["scores"]["target_completion"] == 0.0
+
+
+def test_target_scores_cannot_contradict_target_evidence(tmp_path: Path) -> None:
+    contract = load_json(
+        "examples/long-task/evaluators/multi-target-upgrade/evidence-contract.json"
+    )
+    report = run_single_pass_baseline(
+        contract, ROOT / "examples" / "long-task" / "multi-target-upgrade"
+    )
+    forged = deepcopy(report)
+    forged["scores"]["targets_passed"] = 5
+    payload = {
+        key: forged[key]
+        for key in set(forged) - {"report_id", "fingerprint"}
+    }
+    import hashlib
+
+    canonical = json.dumps(payload, ensure_ascii=False, separators=(",", ":"), sort_keys=True)
+    forged["fingerprint"] = hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+    forged["report_id"] = f"evaluation-{forged['fingerprint'][:16]}"
+    store = VerifiedStateStore(tmp_path / "state.jsonl")
+    store.create(
+        "target-run",
+        contract["spec_id"],
+        [{"id": contract["work_item_id"], "depends_on": []}],
+        T0,
+    )
+    store.start(contract["work_item_id"], T1)
+    store.submit(contract["work_item_id"], ["fulfillment"], "candidate ready", T2)
+
+    with pytest.raises(StateTransitionError, match="scores contradict"):
+        store.record_evaluation(contract["work_item_id"], forged, "rev-targets", T3)
+
+
 def test_forged_report_is_rejected_without_appending(tmp_path: Path) -> None:
     store = create_store(tmp_path / "state.jsonl")
     store.start("fixture-task", T1)
@@ -163,4 +220,3 @@ def test_state_and_events_validate_against_schemas(tmp_path: Path) -> None:
 
     assert not list(state_validator.iter_errors(state))
     assert all(not list(event_validator.iter_errors(event)) for event in store.events())
-

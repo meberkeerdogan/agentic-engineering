@@ -31,6 +31,7 @@
       }
     },
     "evidence_contract_ref": { "$ref": "#/$defs/relativePath" },
+    "spec_history_ref": { "$ref": "#/$defs/relativePath" },
     "rates_ref": { "$ref": "#/$defs/relativePath" },
     "environment_ref": { "$ref": "#/$defs/relativePath" },
     "model": { "type": "string", "minLength": 1 },

@@ -47,7 +47,7 @@ def _parse_timestamp(value: str):
 
 
 def _validate_evaluation_report(report: Mapping[str, Any]) -> None:
-    required_fields = {
+    base_fields = {
         "version",
         "contract_id",
         "work_item_id",
@@ -59,8 +59,11 @@ def _validate_evaluation_report(report: Mapping[str, Any]) -> None:
         "report_id",
         "fingerprint",
     }
-    if set(report) != required_fields:
+    optional_fields = {"target_results", "scores"}
+    if not base_fields <= set(report) or not set(report) <= base_fields | optional_fields:
         raise StateTransitionError("evaluation report fields do not match the contract")
+    if ("target_results" in report) != ("scores" in report):
+        raise StateTransitionError("evaluation target results and scores must appear together")
     if report.get("version") != 1 or report.get("outcome") not in {
         "pass",
         "fail",
@@ -109,12 +112,76 @@ def _validate_evaluation_report(report: Mapping[str, Any]) -> None:
         evaluator_refs = criterion.get("evaluator_ids")
         if not isinstance(evaluator_refs, list) or not set(evaluator_refs) <= set(result_ids):
             raise StateTransitionError("evaluation criterion references invalid evaluators")
+        if "target_id" in criterion:
+            _require_id(criterion["target_id"], "evaluation target ID")
     regressions = report.get("regressions")
     if not isinstance(regressions, list) or not all(
         isinstance(regression, str) and regression in result_ids for regression in regressions
     ):
         raise StateTransitionError("evaluation report regressions are invalid")
-    payload = {key: report[key] for key in required_fields - {"report_id", "fingerprint"}}
+    if "target_results" in report:
+        target_results = report["target_results"]
+        scores = report["scores"]
+        if not isinstance(target_results, list) or not target_results:
+            raise StateTransitionError("evaluation target results are invalid")
+        criteria_by_id = {
+            criterion["criterion_id"]: criterion
+            for criterion in report["criterion_results"]
+        }
+        expected_targets: dict[str, list[str]] = {}
+        for criterion in report["criterion_results"]:
+            target_id = criterion.get("target_id")
+            if target_id is not None:
+                expected_targets.setdefault(target_id, [])
+                if criterion["required"]:
+                    expected_targets[target_id].append(criterion["criterion_id"])
+        target_ids = []
+        for target in target_results:
+            if not isinstance(target, Mapping):
+                raise StateTransitionError("evaluation target result must be an object")
+            target_ids.append(_require_id(target.get("target_id"), "evaluation target ID"))
+            if target.get("outcome") not in {"pass", "fail", "error"}:
+                raise StateTransitionError("evaluation target outcome is invalid")
+            criterion_ids = target.get("criterion_ids")
+            if (
+                not isinstance(criterion_ids, list)
+                or not criterion_ids
+                or len(criterion_ids) != len(set(criterion_ids))
+                or not set(criterion_ids) <= set(criteria_by_id)
+            ):
+                raise StateTransitionError("evaluation target criteria are invalid")
+            expected_criteria = sorted(expected_targets.get(target["target_id"], []))
+            if criterion_ids != expected_criteria:
+                raise StateTransitionError("evaluation target criteria contradict the report")
+            outcomes = [criteria_by_id[criterion_id]["outcome"] for criterion_id in criterion_ids]
+            expected_outcome = "pass"
+            if "error" in outcomes:
+                expected_outcome = "error"
+            elif any(outcome != "pass" for outcome in outcomes):
+                expected_outcome = "fail"
+            if target["outcome"] != expected_outcome:
+                raise StateTransitionError("evaluation target outcome contradicts its criteria")
+        if (
+            len(target_ids) != len(set(target_ids))
+            or set(target_ids) != set(expected_targets)
+            or not isinstance(scores, Mapping)
+        ):
+            raise StateTransitionError("evaluation target results are invalid")
+        passed = sum(target.get("outcome") == "pass" for target in target_results)
+        total = len(target_results)
+        completion = passed / total
+        expected_scores = {
+            "targets_passed": passed,
+            "targets_total": total,
+            "target_completion": completion,
+            "strict_target_completion": 0.0 if regressions else completion,
+        }
+        if dict(scores) != expected_scores:
+            raise StateTransitionError("evaluation target scores contradict their evidence")
+    payload = {
+        key: report[key]
+        for key in set(report) - {"report_id", "fingerprint"}
+    }
     fingerprint = hashlib.sha256(_canonical_json(payload).encode("utf-8")).hexdigest()
     if report.get("fingerprint") != fingerprint:
         raise StateTransitionError("evaluation report fingerprint is invalid")

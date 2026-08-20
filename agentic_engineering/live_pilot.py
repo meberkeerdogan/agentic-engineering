@@ -13,6 +13,7 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
+from .active_spec import compile_history
 from .codex_adapter import (
     SAFE_SANDBOXES,
     CodexAdapterError,
@@ -50,6 +51,7 @@ CONFIG_FIELDS = {
     "timeout_seconds",
     "seed",
 }
+OPTIONAL_CONFIG_FIELDS = {"spec_history_ref"}
 RATE_FIELDS = {
     "version",
     "model",
@@ -100,9 +102,11 @@ def _require_id(value: Any, label: str) -> str:
 
 
 def _validate_config(config: Mapping[str, Any]) -> None:
-    if set(config) != CONFIG_FIELDS:
+    if not CONFIG_FIELDS <= set(config) or not set(config) <= (
+        CONFIG_FIELDS | OPTIONAL_CONFIG_FIELDS
+    ):
         missing = sorted(CONFIG_FIELDS - set(config))
-        extra = sorted(set(config) - CONFIG_FIELDS)
+        extra = sorted(set(config) - CONFIG_FIELDS - OPTIONAL_CONFIG_FIELDS)
         raise LivePilotError(f"pilot config fields do not match; missing={missing}, extra={extra}")
     if config["version"] != 1:
         raise LivePilotError("pilot config version must be 1")
@@ -141,6 +145,11 @@ def _validate_config(config: Mapping[str, Any]) -> None:
     seed = config["seed"]
     if isinstance(seed, bool) or not isinstance(seed, int) or seed < 0:
         raise LivePilotError("pilot seed must be a non-negative integer")
+    if "spec_history_ref" in config and (
+        not isinstance(config["spec_history_ref"], str)
+        or not config["spec_history_ref"]
+    ):
+        raise LivePilotError("specification history reference must be a non-empty string")
 
 
 def _run_git(workspace: Path, *arguments: str) -> None:
@@ -212,6 +221,13 @@ def run_live_pilot(
     environment_path = _resolve_inside(
         project_root, config["environment_ref"], "environment-policy reference"
     )
+    history_path = None
+    if "spec_history_ref" in config:
+        history_path = _resolve_inside(
+            project_root, config["spec_history_ref"], "specification history reference"
+        )
+        if not history_path.is_file():
+            raise LivePilotError("specification history reference does not exist")
     run_root = _resolve_inside(project_root, config["run_root_ref"], "run-root reference")
     if not template.is_dir():
         raise LivePilotError(f"pilot template does not exist: {template}")
@@ -238,6 +254,17 @@ def run_live_pilot(
     evidence_root = run_dir / "evidence"
     workspace.parent.mkdir(parents=True, exist_ok=False)
     shutil.copytree(template, workspace)
+    if history_path is not None:
+        history = _load_object(history_path, "specification history")
+        try:
+            active_spec = compile_history(history)
+        except (TypeError, ValueError) as error:
+            raise LivePilotError(f"could not compile specification history: {error}") from error
+        spec_path = _resolve_inside(
+            workspace, config["task"]["spec_ref"], "specification reference"
+        )
+        spec_path.parent.mkdir(parents=True, exist_ok=True)
+        _write_json(spec_path, active_spec)
     for label, reference in (
         ("workflow config reference", config["arm"]["config_ref"]),
         ("specification reference", config["task"]["spec_ref"]),
