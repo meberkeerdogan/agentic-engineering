@@ -23,11 +23,12 @@ This file is a short map of what the project has taught, what is being tested no
 - Memory review and implementation audit: Prometheus caches repository evidence, ContextBench shows that broad retrieval can add noise, and PMCoder couples episodic recall with planning and recovery. Our bounded phase ledger is a safer project-memory adaptation, not a reproduction. Its `9/9` versus `9/9` campaign remains a useful negative result.
 - Long-task evaluation review: release-sized and continuous benchmarks show that partial progress is common, regressions accumulate, and isolated successes often fail to compose. Our three small tasks are valid safety fixtures but too easy for efficacy claims. Review the [synthesis](research/reviews/long-task/SYNTHESIS.md) and [harder test design](research/reviews/long-task/HARDER_TEST_DESIGN.md).
 - Regression-safe target scoring: harder evidence contracts can group criteria by target. Reports preserve the raw fraction completed, while the strict score becomes zero if protected old behavior breaks. Review `run_single_pass_baseline` in [evaluators.py](agentic_engineering/evaluators.py).
+- Level 1 task validation: a 749-line project now has five named upgrade targets, visible checks, hidden checks, and an external oracle. The untouched project scores `0/5` without regressions; the oracle scores `5/5`. Review [M06k](docs/modules/06k-long-task-level-1.md).
 - Optional Learning Companion boundary: a fresh teaching agent can now receive bounded milestone evidence and return a lesson proposal without verification or engineering-mutation authority. Review [M10](docs/modules/10-learning-companion.md).
 
 ## Current topic
 
-Build the offline Level 1 multi-target fixture using the new grouped-target and regression-safe partial scores.
+Build the Level 2 persistent milestone fixture and compare isolated oracle milestones with the same changes applied continuously.
 
 ## Current exercise
 
@@ -37,8 +38,8 @@ Why should the same milestone be tested both alone and after earlier agent work?
 
 ## Suggested next topics
 
-1. Add target-level partial scoring with strict regression handling.
-2. Build and validate the two offline harder-task levels.
+1. Build and validate the Level 2 continuous-evolution fixture.
+2. Add held-out variants and run offline acceptance checks.
 3. Reassess product readiness, then freeze the `v0.1` workflow and user journey.
 4. Keep additional research methods in the post-release backlog.
 

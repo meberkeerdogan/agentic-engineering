@@ -1,0 +1,118 @@
+diff --git a/fulfillment/inventory.py b/fulfillment/inventory.py
+--- a/fulfillment/inventory.py
++++ b/fulfillment/inventory.py
+@@ -101 +101,17 @@
+-        raise NotImplementedError("multi-target upgrade: ranked warehouse sources")
++        normalized_sku = normalize_sku(sku)
++        destination = normalize_identifier(destination_zone, "destination zone").casefold()
++        stocked = [
++            warehouse
++            for warehouse in self._warehouses.values()
++            if self.available(warehouse.warehouse_id, normalized_sku) > 0
++        ]
++        return tuple(
++            sorted(
++                stocked,
++                key=lambda warehouse: (
++                    warehouse.zone.casefold() != destination,
++                    warehouse.priority,
++                    warehouse.warehouse_id,
++                ),
++            )
++        )
+diff --git a/fulfillment/orders.py b/fulfillment/orders.py
+--- a/fulfillment/orders.py
++++ b/fulfillment/orders.py
+@@ -100 +100,33 @@
+-    raise NotImplementedError("multi-target upgrade: split order allocation")
++    checked = validate_order(order, catalog)
++    shortages = {
++        line.sku: line.quantity - inventory.total_available(line.sku)
++        for line in checked.lines
++        if inventory.total_available(line.sku) < line.quantity
++    }
++    if shortages:
++        detail = ", ".join(
++            f"{sku}={quantity}" for sku, quantity in sorted(shortages.items())
++        )
++        raise InsufficientStockError(f"order cannot be fully allocated: {detail}")
++
++    planned: list[Allocation] = []
++    for line in checked.lines:
++        remaining = line.quantity
++        for warehouse in inventory.ranked_sources(
++            line.sku, checked.destination_zone
++        ):
++            quantity = min(
++                remaining,
++                inventory.available(warehouse.warehouse_id, line.sku),
++            )
++            if quantity:
++                planned.append(Allocation(warehouse.warehouse_id, line.sku, quantity))
++                remaining -= quantity
++            if not remaining:
++                break
++
++    for allocation in planned:
++        inventory.reserve(
++            allocation.warehouse_id, allocation.sku, allocation.quantity
++        )
++    return tuple(planned)
+diff --git a/fulfillment/reporting.py b/fulfillment/reporting.py
+--- a/fulfillment/reporting.py
++++ b/fulfillment/reporting.py
+@@ -10 +10 @@
+-from .orders import allocation_quantities, unallocated_quantities
++from .orders import allocation_quantities, requested_quantities, unallocated_quantities
+@@ -72 +72,13 @@
+-    raise NotImplementedError("multi-target upgrade: exception reporting")
++    requested = requested_quantities(order)
++    allocated = allocation_quantities(allocations)
++    missing = unallocated_quantities(order, allocations)
++    return [
++        {
++            "type": "unallocated",
++            "sku": sku,
++            "requested": requested[sku],
++            "allocated": allocated.get(sku, 0),
++            "missing": missing[sku],
++        }
++        for sku in sorted(missing)
++    ]
+diff --git a/fulfillment/service.py b/fulfillment/service.py
+--- a/fulfillment/service.py
++++ b/fulfillment/service.py
+@@ -61 +61,9 @@
+-        raise NotImplementedError("multi-target upgrade: integrated plan")
++        checked = validate_order(order, self.catalog)
++        allocations = allocate_order(checked, self.catalog, self.inventory)
++        quotes = quote_allocations(
++            allocations,
++            checked.destination_zone,
++            self.catalog,
++            self.inventory,
++        )
++        return {"status": "ready", **build_plan_sections(checked, allocations, quotes)}
+diff --git a/fulfillment/shipping.py b/fulfillment/shipping.py
+--- a/fulfillment/shipping.py
++++ b/fulfillment/shipping.py
+@@ -86 +86,18 @@
+-    raise NotImplementedError("multi-target upgrade: split shipping quotes")
++    records = tuple(allocations)
++    if not records:
++        return ()
++    grouped = allocations_by_warehouse(records)
++    quotes = []
++    for warehouse_id in sorted(grouped):
++        warehouse = inventory.warehouse(warehouse_id)
++        weight = shipment_weight(grouped[warehouse_id], catalog)
++        quotes.append(
++            ShippingQuote(
++                warehouse_id,
++                weight,
++                quote_one_shipment(
++                    warehouse.zone, destination_zone, weight
++                ),
++            )
++        )
++    return tuple(quotes)

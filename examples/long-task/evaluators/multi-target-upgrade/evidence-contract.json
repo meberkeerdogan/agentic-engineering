@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "id": "fulfillment-upgrade-evidence",
+  "work_item_id": "fulfillment-upgrade",
+  "spec_id": "fulfillment-upgrade-spec",
+  "criteria": [
+    {
+      "id": "EC-RANKED-SOURCES",
+      "spec_criterion_id": "AC-RANKED-SOURCES",
+      "description": "Warehouses are ranked by zone, priority, and ID.",
+      "target_id": "ranked-sources",
+      "evaluator_ids": ["target-ranked-sources"],
+      "required": true
+    },
+    {
+      "id": "EC-SPLIT-ALLOCATION",
+      "spec_criterion_id": "AC-SPLIT-ALLOCATION",
+      "description": "Orders allocate atomically across ranked sources.",
+      "target_id": "split-allocation",
+      "evaluator_ids": ["target-split-allocation"],
+      "required": true
+    },
+    {
+      "id": "EC-SHIPPING",
+      "spec_criterion_id": "AC-SHIPPING",
+      "description": "Split allocations produce deterministic shipment quotes.",
+      "target_id": "shipping-quotes",
+      "evaluator_ids": ["target-shipping-quotes"],
+      "required": true
+    },
+    {
+      "id": "EC-EXCEPTIONS",
+      "spec_criterion_id": "AC-EXCEPTIONS",
+      "description": "Missing allocations produce stable exception records.",
+      "target_id": "exception-report",
+      "evaluator_ids": ["target-exception-report"],
+      "required": true
+    },
+    {
+      "id": "EC-INTEGRATION",
+      "spec_criterion_id": "AC-INTEGRATION",
+      "description": "The service builds and reserves a complete plan.",
+      "target_id": "integrated-plan",
+      "evaluator_ids": ["target-integrated-plan"],
+      "required": true
+    },
+    {
+      "id": "EC-PROTECTED",
+      "spec_criterion_id": "AC-PROTECTED",
+      "description": "Existing behavior remains correct.",
+      "evaluator_ids": ["protected-behavior"],
+      "required": true
+    }
+  ],
+  "evaluators": [
+    {
+      "id": "target-ranked-sources",
+      "type": "command",
+      "command": ["{python}", "-m", "evaluator_tests.run_suite", "evaluator_tests.test_targets.RankedSourcesTests"],
+      "expected_exit_code": 0,
+      "timeout_seconds": 20,
+      "read_only": true
+    },
+    {
+      "id": "target-split-allocation",
+      "type": "command",
+      "command": ["{python}", "-m", "evaluator_tests.run_suite", "evaluator_tests.test_targets.SplitAllocationTests"],
+      "expected_exit_code": 0,
+      "timeout_seconds": 20,
+      "read_only": true
+    },
+    {
+      "id": "target-shipping-quotes",
+      "type": "command",
+      "command": ["{python}", "-m", "evaluator_tests.run_suite", "evaluator_tests.test_targets.ShippingQuoteTests"],
+      "expected_exit_code": 0,
+      "timeout_seconds": 20,
+      "read_only": true
+    },
+    {
+      "id": "target-exception-report",
+      "type": "command",
+      "command": ["{python}", "-m", "evaluator_tests.run_suite", "evaluator_tests.test_targets.ExceptionReportTests"],
+      "expected_exit_code": 0,
+      "timeout_seconds": 20,
+      "read_only": true
+    },
+    {
+      "id": "target-integrated-plan",
+      "type": "command",
+      "command": ["{python}", "-m", "evaluator_tests.run_suite", "evaluator_tests.test_targets.IntegratedPlanTests"],
+      "expected_exit_code": 0,
+      "timeout_seconds": 20,
+      "read_only": true
+    },
+    {
+      "id": "protected-behavior",
+      "type": "command",
+      "command": ["{python}", "-m", "evaluator_tests.run_suite", "tests.test_existing", "evaluator_tests.test_protected"],
+      "expected_exit_code": 0,
+      "timeout_seconds": 20,
+      "read_only": true
+    }
+  ],
+  "baselines": [
+    {"evaluator_id": "target-ranked-sources", "result": "fail", "artifact_refs": []},
+    {"evaluator_id": "target-split-allocation", "result": "fail", "artifact_refs": []},
+    {"evaluator_id": "target-shipping-quotes", "result": "fail", "artifact_refs": []},
+    {"evaluator_id": "target-exception-report", "result": "fail", "artifact_refs": []},
+    {"evaluator_id": "target-integrated-plan", "result": "fail", "artifact_refs": []},
+    {"evaluator_id": "protected-behavior", "result": "pass", "artifact_refs": []}
+  ],
+  "regression_policy": {
+    "protected_evaluator_ids": ["protected-behavior"],
+    "exploration_allowed": false,
+    "restore_best_known_on_failure": true
+  },
+  "evidence_directory": ".agent/evidence/fulfillment-upgrade"
+}
